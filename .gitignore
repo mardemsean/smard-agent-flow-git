@@ -1,0 +1,13 @@
+# Claude Code: configuração local da máquina (caminhos, endpoints) — nunca versionar
+.claude/settings.local.json
+
+# Worktrees de subagentes (Claude Code)
+.claude/worktrees/
+
+# higiene (sessao 2026-09-27)
+.claude/*.bak-*-pre-otel-pin
+__pycache__/
+*.pyc
+
+# Memoria local entre sessoes; publicacao exige promocao explicita.
+/.session-memory/
