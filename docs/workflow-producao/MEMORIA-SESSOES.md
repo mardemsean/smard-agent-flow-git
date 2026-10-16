@@ -5,9 +5,23 @@
 entre sessões. Devem participar obrigatoriamente da passagem ao sucessor antes
 da compactação, por integração com o evento precompact.
 
-**Ainda não definido:** funções particulares, relações e conteúdo de cada um.
-Não deduzir responsabilidades pelos nomes, não fundir arquivos e não inventar
-cinco esquemas. O contrato abaixo propõe somente armazenamento e continuidade.
+**Funções mapeadas em 2026-10-16** [observação documental das convenções
+HYPERBRAIN e da skill `smard-ledger-handoff` 4.2.0; o que restar marcado como
+aberto continua reservado ao operador]:
+
+| Arquivo | Função observada | Evidência |
+| --- | --- | --- |
+| `sledge-handoff.md` | Handoff intencional de fim de sessão: cold start, Basis, Verify block, "What not to retry" (classes E0–E7), intents, ledger JSON; escrito em duplicata (raiz do projeto, deliverables, HTML para o operador, HYPERBRAIN). Provável referência à skill `smard-ledger-handoff` [dedução; o nome "sledge" não consta na skill — confirmar com o operador] | `SKILL.md` da skill (M1–M5, F1–F4); instinct `handoff-as-file` |
+| `DIAMOND.md` | Lição cristalizada a partir de erro de tool call ou de código ("erro de tool call ou de codigo vira DIAMOND"), minerada deterministicamente (error_miner, classes E0–E7) e indexada em `B:\DIAMONDS\INDICE.md` | `B:\DIAMONDS\INDICE.md` |
+| `hyperbrain-lesson.md` | Aprendizagem depositada no HYPERBRAIN via `snap.py` (`knowledge-<data>-<slug>.md` em `B:\persistent-memory\research\` ou `pre-compact-knowledge\`). A distinção exata frente a `knowledge.md` permanece **aberta** | destinos de `snap.py`; `knowledge-2026-10-16-smard-agent-flow-kit-speckit.md` |
+| `knowledge.md` | Gotchas factuais da sessão, cada um com fonte literal | `knowledge-2026-10-16-smard-agent-flow-kit-speckit.md` |
+| `cortex.md` | **Aberto e ambíguo na casa:** plugin Hermes (`cortexlayer`/`hicortex`) ou HYPERBRAIN `B:\persistent-memory`; questão registrada sem resposta no handoff `hermes-claude-acp-2206` (2026-10-15). Não definir sem o operador | `handoff-2026-10-16-hermes-claude-acp-2206.md`, seção Open questions |
+
+**Ainda não definido:** distinção final `hyperbrain-lesson.md` × `knowledge.md`,
+papel de `cortex.md`, relações e conteúdo detalhado de cada um.
+Não deduzir responsabilidades além do evidenciado acima, não fundir arquivos e
+não inventar cinco esquemas. O contrato abaixo propõe somente armazenamento e
+continuidade.
 **Origem:** diálogo de 2026-10-16; localização e protocolo são propostas de desenho.
 
 ## 1. Localização proposta
@@ -136,7 +150,9 @@ referências que seus consumidores não podem acessar.
 
 ## 7. Decisões reservadas ao amadurecimento do design
 
-- Responsabilidade e conteúdo de cada um dos cinco arquivos.
+- Distinção final entre `hyperbrain-lesson.md` e `knowledge.md` e o papel de
+  `cortex.md` (mapeamento parcial evidenciado no cabeçalho; o restante segue
+  reservado ao operador).
 - Destino persistente entre hosts/worktrees e política de retenção/acesso.
 - Harness inicial, integração real de hook e forma de recuperação pelo sucessor.
 - Critérios que tornam um checkpoint parcial impeditivo e exceções possíveis.
