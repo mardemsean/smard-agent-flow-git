@@ -79,8 +79,7 @@ Hipótese, simulação e parecer de agente não equivalem a observação empíri
 
 ## R10. Preservar continuidade sem fabricar memória
 
-Antes da compactação/passagem, contabilizar `sledge-handoff.md`, `DIAMOND.md`,
-`hyperbrain-lesson.md`, `knowledge.md` e `cortex.md` num checkpoint verificável.
+Antes da compactação/passagem, contabilizar `sledge-handoff.md` e `DIAMOND.md` num checkpoint verificável.
 Suas funções específicas aguardam definição humana; não as deduzir dos nomes.
 Memória herdada não amplia mandato nem substitui conferir o estado real.
 Seguir [MEMORIA-SESSOES](docs/workflow-producao/MEMORIA-SESSOES.md); se o harness

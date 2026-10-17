@@ -1,9 +1,11 @@
 # Continuidade entre sessões e sucessão de agentes
 
-**Confirmado pelo humano:** `sledge-handoff.md`, `DIAMOND.md`,
-`hyperbrain-lesson.md`, `knowledge.md` e `cortex.md` são memórias persistentes
-entre sessões. Devem participar obrigatoriamente da passagem ao sucessor antes
-da compactação, por integração com o evento precompact.
+**Confirmado pelo humano em 2026-10-17:** as memórias persistentes entre
+sessões reconhecidas pelo método são `sledge-handoff.md` e `DIAMOND.md`. Devem
+participar obrigatoriamente da passagem ao sucessor antes da compactação, por
+integração com o evento precompact. `hyperbrain-lesson.md`, `knowledge.md` e
+`cortex.md`, citados em versões anteriores deste documento, **não existem** e
+foram removidos do contrato; não recriá-los nem deduzir substitutos.
 
 **Funções mapeadas em 2026-10-16** [observação documental das convenções
 HYPERBRAIN e da skill `smard-ledger-handoff` 4.2.0; o que restar marcado como
@@ -13,14 +15,10 @@ aberto continua reservado ao operador]:
 | --- | --- | --- |
 | `sledge-handoff.md` | Handoff intencional de fim de sessão: cold start, Basis, Verify block, "What not to retry" (classes E0–E7), intents, ledger JSON; escrito em duplicata (raiz do projeto, deliverables, HTML para o operador, HYPERBRAIN). Provável referência à skill `smard-ledger-handoff` [dedução; o nome "sledge" não consta na skill — confirmar com o operador] | `SKILL.md` da skill (M1–M5, F1–F4); instinct `handoff-as-file` |
 | `DIAMOND.md` | Lição cristalizada a partir de erro de tool call ou de código ("erro de tool call ou de codigo vira DIAMOND"), minerada deterministicamente (error_miner, classes E0–E7) e indexada em `B:\DIAMONDS\INDICE.md` | `B:\DIAMONDS\INDICE.md` |
-| `hyperbrain-lesson.md` | Aprendizagem depositada no HYPERBRAIN via `snap.py` (`knowledge-<data>-<slug>.md` em `B:\persistent-memory\research\` ou `pre-compact-knowledge\`). A distinção exata frente a `knowledge.md` permanece **aberta** | destinos de `snap.py`; `knowledge-2026-10-16-smard-agent-flow-kit-speckit.md` |
-| `knowledge.md` | Gotchas factuais da sessão, cada um com fonte literal | `knowledge-2026-10-16-smard-agent-flow-kit-speckit.md` |
-| `cortex.md` | **Aberto e ambíguo na casa:** plugin Hermes (`cortexlayer`/`hicortex`) ou HYPERBRAIN `B:\persistent-memory`; questão registrada sem resposta no handoff `hermes-claude-acp-2206` (2026-10-15). Não definir sem o operador | `handoff-2026-10-16-hermes-claude-acp-2206.md`, seção Open questions |
 
-**Ainda não definido:** distinção final `hyperbrain-lesson.md` × `knowledge.md`,
-papel de `cortex.md`, relações e conteúdo detalhado de cada um.
+**Ainda não definido:** relações e conteúdo detalhado de cada registro.
 Não deduzir responsabilidades além do evidenciado acima, não fundir arquivos e
-não inventar cinco esquemas. O contrato abaixo propõe somente armazenamento e
+não inventar esquemas adicionais. O contrato abaixo propõe somente armazenamento e
 continuidade.
 **Origem:** diálogo de 2026-10-16; localização e protocolo são propostas de desenho.
 
@@ -35,13 +33,10 @@ continuidade.
           checkpoint.md
           sledge-handoff.md
           DIAMOND.md
-          hyperbrain-lesson.md
-          knowledge.md
-          cortex.md
 ```
 
 IDs são técnicos e fornecidos pelo harness, sem exigir naming do humano.
-Checkpoint é um pacote de continuidade; não redefine a semântica dos cinco
+Checkpoint é um pacote de continuidade; não redefine a semântica dos dois
 arquivos. Este desenho não criou pacotes nem memórias de sessão fictícias.
 O [template de checkpoint](templates/CHECKPOINT-SESSAO.md) é o envelope comum.
 
@@ -53,14 +48,14 @@ seleção inequívoca do pacote pronto mais recente da linhagem pretendida.
 
 ## 2. Obrigação de preservação não é obrigação de inventar conteúdo
 
-Todo checkpoint contabiliza explicitamente os cinco nomes e sua revisão/origem.
+Todo checkpoint contabiliza explicitamente os dois nomes e sua revisão/origem.
 Se um arquivo existe, preservar sua informação sem reinterpretar sua função.
 Se não existe, está inacessível ou sua função ainda não foi definida, registrar
 essa lacuna. Não criar arquivo vazio e marcar a transferência como completa.
 
 Enquanto os contratos particulares permanecerem abertos, o envelope pode
 conservar estado operacional conhecido e referências sem distribuir conteúdo
-arbitrariamente entre os cinco nomes. Isso é continuidade parcial identificada,
+arbitrariamente entre os dois nomes. Isso é continuidade parcial identificada,
 não implementação concluída do método de memória.
 
 ## 3. Ciclo precompact → checkpoint → recuperação
@@ -68,10 +63,10 @@ não implementação concluída do método de memória.
 | Momento | Dever do agente/adaptador | Evidência |
 | --- | --- | --- |
 | Durante a sessão | Manter registros incrementais com elaboração visível; não esperar o último instante | Conteúdo e pendências apresentados no chat |
-| Ao receber aviso anterior à compactação | Identificar os cinco registros e preparar snapshot coerente da linhagem | Envelope, estado dos arquivos e referências exatas |
+| Ao receber aviso anterior à compactação | Identificar os dois registros e preparar snapshot coerente da linhagem | Envelope, estado dos arquivos e referências exatas |
 | Antes de declarar pronto | Verificar leitura, integridade, completude declarada e localização acessível ao sucessor autorizado | Pacote pronto ou parcial/falha explícita |
 | Compactação | Bloquear se a ferramenta realmente permitir e faltar requisito impeditivo; caso contrário, relatar que não foi possível garantir preservação | Resultado real do hook, não sucesso presumido |
-| Início/retomada pelo sucessor | Localizar pacote pronto da linhagem correta, ler envelope e cinco arquivos disponíveis | Registro de recuperação e lacunas |
+| Início/retomada pelo sucessor | Localizar pacote pronto da linhagem correta, ler envelope e os dois arquivos disponíveis | Registro de recuperação e lacunas |
 | Antes de continuar trabalho | Confrontar memória com arquivos, diff, branch, processos e permissões atuais | Divergências explicitadas e contexto reconciliado |
 
 A memória transmite contexto, não novos poderes. Recuperar autorização registrada
@@ -111,7 +106,7 @@ um checkpoint que não ocorreu.
 
 O `.gitignore` deste laboratório exclui `/.session-memory/` desde a criação,
 não apenas na publicação. Templates e contratos do método continuam versionados.
-Não usar exclusões globais como `knowledge.md` ou `DIAMOND.md`, que poderiam
+Não usar exclusões globais como `sledge-handoff.md` ou `DIAMOND.md`, que poderiam
 ocultar documentos legítimos em outros contextos.
 
 `.git/info/exclude` é alternativa local, não política distribuída. Em worktrees,
@@ -150,9 +145,6 @@ referências que seus consumidores não podem acessar.
 
 ## 7. Decisões reservadas ao amadurecimento do design
 
-- Distinção final entre `hyperbrain-lesson.md` e `knowledge.md` e o papel de
-  `cortex.md` (mapeamento parcial evidenciado no cabeçalho; o restante segue
-  reservado ao operador).
 - Destino persistente entre hosts/worktrees e política de retenção/acesso.
 - Harness inicial, integração real de hook e forma de recuperação pelo sucessor.
 - Critérios que tornam um checkpoint parcial impeditivo e exceções possíveis.

@@ -14,7 +14,7 @@ Este índice mapeia responsabilidades, não comprova leitura ou aprovação.
 | [Contrato documental](docs/workflow-producao/CONTRATO-DOCUMENTAL.md) | Gatilhos, evidências e elaboração visível |
 | [Baseline](docs/workflow-producao/BASELINE-METODO.md) | Constituição documental e capacidades condicionais |
 | [Prompts](docs/workflow-producao/prompts/README.md) | Interações reutilizáveis e estado dos roteiros |
-| [Memória entre sessões](docs/workflow-producao/MEMORIA-SESSOES.md) | Cinco registros persistentes, checkpoint e sucessão; funções particulares ainda abertas |
+| [Memória entre sessões](docs/workflow-producao/MEMORIA-SESSOES.md) | Dois registros persistentes (`sledge-handoff.md`, `DIAMOND.md`), checkpoint e sucessão; hook ainda não implementado |
 | [Adaptação ao Spec Kit](docs/workflow-producao/ADAPTACAO-SPECKIT.md) | Preflight corrigido: diálogo, gates, vínculo de ratificação e execução segmentada |
 
 ## Templates disponíveis, não documentos de produto preenchidos

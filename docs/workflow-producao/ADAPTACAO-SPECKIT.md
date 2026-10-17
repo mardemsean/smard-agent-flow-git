@@ -39,7 +39,7 @@ constatações abaixo dizem respeito aos arquivos locais efetivamente lidos, nã
 
 Os arquivos de memória citados na captura foram localizados. Seus relatos e
 preferências orientam a retomada, mas não substituem fonte técnica nem concedem
-novas permissões. Não redefinem as funções dos cinco registros persistentes.
+novas permissões. Não redefinem as funções dos dois registros persistentes.
 
 ## 2. Correções factuais com trechos da fonte
 

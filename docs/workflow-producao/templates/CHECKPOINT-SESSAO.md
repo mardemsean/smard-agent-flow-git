@@ -1,6 +1,6 @@
 # Checkpoint — [ID técnico]
 
-Envelope de continuidade, não substituto dos cinco contratos de memória.
+Envelope de continuidade, não substituto dos dois contratos de memória.
 O agente prepara; não é formulário para o humano. Não registrar segredos.
 
 **Estado:** [em preparação | parcial | pronto | falha]
@@ -10,15 +10,12 @@ O agente prepara; não é formulário para o humano. Não registrar segredos.
 **Destino persistente autorizado:** [localização e condições de acesso]
 **Elaboração no chat:** [conteúdo apresentado, referência e lacunas de apresentação]
 
-## 1. Inventário obrigatório dos cinco registros
+## 1. Inventário obrigatório dos dois registros
 
 | Arquivo | Estado real | Revisão/origem e localização | Verificação / lacuna |
 | --- | --- | --- | --- |
 | sledge-handoff.md | [...] | [...] | [...] |
 | DIAMOND.md | [...] | [...] | [...] |
-| hyperbrain-lesson.md | [...] | [...] | [...] |
-| knowledge.md | [...] | [...] | [...] |
-| cortex.md | [...] | [...] | [...] |
 
 Não interpretar funções pelos nomes. Ausente ou não definido não é transferido.
 Preservar arquivo existente sem fabricar conteúdo para completar a tabela.
@@ -32,7 +29,7 @@ Preservar arquivo existente sem fabricar conteúdo para completar a tabela.
 **Incertezas, divergências e riscos de perda:** [...]
 
 Estas informações ajudam a recuperar contexto sem definir antecipadamente em
-qual dos cinco documentos cada conteúdo pertencerá no método amadurecido.
+qual dos dois documentos cada conteúdo pertencerá no método amadurecido.
 
 ## 3. Verificação antes da compactação
 
