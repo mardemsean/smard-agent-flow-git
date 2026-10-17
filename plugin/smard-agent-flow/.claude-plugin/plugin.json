@@ -1,0 +1,11 @@
+{
+  "name": "smard-agent-flow",
+  "displayName": "SMard Agent Flow",
+  "version": "0.1.0",
+  "description": "Roteia o trabalho de agentes pelo método smard-agent-flow-git (da inquietação à produção): aponta o contrato documental, o template e as regras certas para cada ação, sem redefinir política.",
+  "author": {
+    "name": "SMard Labs"
+  },
+  "repository": "https://github.com/mardemsean/smard-agent-flow-git",
+  "keywords": ["workflow", "method", "specs", "ratification", "handoff"]
+}
