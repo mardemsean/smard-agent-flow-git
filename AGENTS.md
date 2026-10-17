@@ -18,8 +18,8 @@ material deve ser explicitado, não resolvido silenciosamente.
 | Alterar prompt, skill, MCP ou adaptador | Baseline, inventário pertinente e contratos da ferramenta adotada | Procedência, permissões, instalação/remoção e compatibilidade verificadas |
 | Alterar execução determinística | Contrato técnico, configuração e testes existentes da área | Cobertura positiva/negativa; regressão para bug |
 | Abrir PR, integrar ou liberar | Regras de revisão/release existentes e registro DEL pertinente | Evidências e autorizações da revisão atual |
-| Preparar compactação ou passagem de sessão | MEMORIA-SESSOES e registros locais disponíveis da linhagem | Checkpoint verificável dos cinco nomes, sem inventar suas funções |
-| Retomar como sucessor | MEMORIA-SESSOES, envelope e cinco registros disponíveis | Recuperação explícita, lacunas e reconciliação com estado atual |
+| Preparar compactação ou passagem de sessão | MEMORIA-SESSOES e registros locais disponíveis da linhagem | Checkpoint verificável dos dois nomes, sem inventar suas funções |
+| Retomar como sucessor | MEMORIA-SESSOES, envelope e os dois registros disponíveis | Recuperação explícita, lacunas e reconciliação com estado atual |
 
 O contrato de memória está em
 [MEMORIA-SESSOES.md](docs/workflow-producao/MEMORIA-SESSOES.md).

@@ -102,7 +102,7 @@ compromisso não ratificado.
 ## 6. O que não foi ativado
 
 Memória persistente e sucessão têm contrato próprio em
-[MEMORIA-SESSOES.md](MEMORIA-SESSOES.md). Os cinco registros vivem, por proposta,
+[MEMORIA-SESSOES.md](MEMORIA-SESSOES.md). Os dois registros vivem, por proposta,
 num espaço local excluído do Git. O evento precompact exige adaptador verificado;
 nenhum hook ou transporte entre hosts foi ativado por esta baseline.
 
