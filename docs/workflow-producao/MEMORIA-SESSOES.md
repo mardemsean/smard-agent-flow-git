@@ -1,28 +1,29 @@
-# Continuidade entre sessões e sucessão de agentes
+# Continuity between sessions and succession of agents
 
-**Confirmado pelo humano em 2026-10-17:** as memórias persistentes entre
-sessões reconhecidas pelo método são `sledge-handoff.md` e `DIAMOND.md`. Devem
-participar obrigatoriamente da passagem ao sucessor antes da compactação, por
-integração com o evento precompact. `hyperbrain-lesson.md`, `knowledge.md` e
-`cortex.md`, citados em versões anteriores deste documento, **não existem** e
-foram removidos do contrato; não recriá-los nem deduzir substitutos.
+**Confirmed by the human on 2026-10-17:** the persistent memories between
+sessions recognized by the method are `sledge-handoff.md` and `DIAMOND.md`. They
+must mandatorily take part in the handoff to the successor before compaction,
+through integration with the precompact event. `hyperbrain-lesson.md`,
+`knowledge.md` and `cortex.md`, cited in earlier versions of this document, **do
+not exist** and were removed from the contract; do not recreate them or deduce
+substitutes.
 
-**Funções mapeadas em 2026-10-16** [observação documental das convenções
-HYPERBRAIN e da skill `smard-ledger-handoff` 4.2.0; o que restar marcado como
-aberto continua reservado ao operador]:
+**Functions mapped on 2026-10-16** [documentary observation of the HYPERBRAIN
+conventions and of the skill `smard-ledger-handoff` 4.2.0; whatever remains
+marked as open stays reserved to the operator]:
 
-| Arquivo | Função observada | Evidência |
+| File | Observed function | Evidence |
 | --- | --- | --- |
-| `sledge-handoff.md` | Handoff intencional de fim de sessão: cold start, Basis, Verify block, "What not to retry" (classes E0–E7), intents, ledger JSON; escrito em duplicata (raiz do projeto, deliverables, HTML para o operador, HYPERBRAIN). Provável referência à skill `smard-ledger-handoff` [dedução; o nome "sledge" não consta na skill — confirmar com o operador] | `SKILL.md` da skill (M1–M5, F1–F4); instinct `handoff-as-file` |
-| `DIAMOND.md` | Lição cristalizada a partir de erro de tool call ou de código ("erro de tool call ou de codigo vira DIAMOND"), minerada deterministicamente (error_miner, classes E0–E7) e indexada em `B:\DIAMONDS\INDICE.md` | `B:\DIAMONDS\INDICE.md` |
+| `sledge-handoff.md` | Intentional end-of-session handoff: cold start, Basis, Verify block, "What not to retry" (classes E0–E7), intents, ledger JSON; written in duplicate (project root, deliverables, HTML for the operator, HYPERBRAIN). Probable reference to the skill `smard-ledger-handoff` [deduction; the name "sledge" does not appear in the skill — confirm with the operator] | The skill's `SKILL.md` (M1–M5, F1–F4); instinct `handoff-as-file` |
+| `DIAMOND.md` | Lesson crystallized from a tool-call or code error ("a tool-call or code error becomes a DIAMOND"), mined deterministically (error_miner, classes E0–E7) and indexed in `B:\DIAMONDS\INDICE.md` | `B:\DIAMONDS\INDICE.md` |
 
-**Ainda não definido:** relações e conteúdo detalhado de cada registro.
-Não deduzir responsabilidades além do evidenciado acima, não fundir arquivos e
-não inventar esquemas adicionais. O contrato abaixo propõe somente armazenamento e
-continuidade.
-**Origem:** diálogo de 2026-10-16; localização e protocolo são propostas de desenho.
+**Not yet defined:** the relations and detailed content of each record. Do not
+deduce responsibilities beyond what is evidenced above, do not merge files and do
+not invent additional schemas. The contract below proposes storage and
+continuity only.
+**Origin:** dialogue of 2026-10-16; location and protocol are design proposals.
 
-## 1. Localização proposta
+## 1. Proposed location
 
 ```text
 .session-memory/
@@ -35,119 +36,125 @@ continuidade.
           DIAMOND.md
 ```
 
-IDs são técnicos e fornecidos pelo harness, sem exigir naming do humano.
-Checkpoint é um pacote de continuidade; não redefine a semântica dos dois
-arquivos. Este desenho não criou pacotes nem memórias de sessão fictícias.
-O [template de checkpoint](templates/CHECKPOINT-SESSAO.md) é o envelope comum.
+IDs are technical and supplied by the harness, without demanding naming from the
+human. A checkpoint is a continuity package; it does not redefine the semantics
+of the two files. This design created no packages and no fictitious session
+memories. The [checkpoint template](templates/CHECKPOINT-SESSAO.md) is the common
+envelope.
 
-O pacote registra repo/workspace, branch, HEAD, estado não commitado e origem.
-Esses campos situam a memória; não tornam HEAD prova de alterações ainda locais.
-Checkpoints anteriores permanecem recuperáveis. Não sobrescrever um pacote
-pronto enquanto o sucessor o lê; o adaptador deve definir publicação coerente e
-seleção inequívoca do pacote pronto mais recente da linhagem pretendida.
+The package records repo/workspace, branch, HEAD, uncommitted state and origin.
+These fields situate the memory; they do not make HEAD proof of changes that are
+still local. Earlier checkpoints remain recoverable. Do not overwrite a ready
+package while the successor is reading it; the adapter must define coherent
+publication and unambiguous selection of the most recent ready package of the
+intended lineage.
 
-## 2. Obrigação de preservação não é obrigação de inventar conteúdo
+## 2. The obligation to preserve is not an obligation to invent content
 
-Todo checkpoint contabiliza explicitamente os dois nomes e sua revisão/origem.
-Se um arquivo existe, preservar sua informação sem reinterpretar sua função.
-Se não existe, está inacessível ou sua função ainda não foi definida, registrar
-essa lacuna. Não criar arquivo vazio e marcar a transferência como completa.
+Every checkpoint explicitly accounts for the two names and their revision/origin.
+If a file exists, preserve its information without reinterpreting its function.
+If it does not exist, is inaccessible or its function has not yet been defined,
+record that gap. Do not create an empty file and mark the transfer as complete.
 
-Enquanto os contratos particulares permanecerem abertos, o envelope pode
-conservar estado operacional conhecido e referências sem distribuir conteúdo
-arbitrariamente entre os dois nomes. Isso é continuidade parcial identificada,
-não implementação concluída do método de memória.
+While the particular contracts remain open, the envelope may preserve known
+operational state and references without distributing content arbitrarily
+between the two names. That is identified partial continuity, not a completed
+implementation of the memory method.
 
-## 3. Ciclo precompact → checkpoint → recuperação
+## 3. Cycle precompact → checkpoint → recovery
 
-| Momento | Dever do agente/adaptador | Evidência |
+| Moment | Duty of the agent/adapter | Evidence |
 | --- | --- | --- |
-| Durante a sessão | Manter registros incrementais com elaboração visível; não esperar o último instante | Conteúdo e pendências apresentados no chat |
-| Ao receber aviso anterior à compactação | Identificar os dois registros e preparar snapshot coerente da linhagem | Envelope, estado dos arquivos e referências exatas |
-| Antes de declarar pronto | Verificar leitura, integridade, completude declarada e localização acessível ao sucessor autorizado | Pacote pronto ou parcial/falha explícita |
-| Compactação | Bloquear se a ferramenta realmente permitir e faltar requisito impeditivo; caso contrário, relatar que não foi possível garantir preservação | Resultado real do hook, não sucesso presumido |
-| Início/retomada pelo sucessor | Localizar pacote pronto da linhagem correta, ler envelope e os dois arquivos disponíveis | Registro de recuperação e lacunas |
-| Antes de continuar trabalho | Confrontar memória com arquivos, diff, branch, processos e permissões atuais | Divergências explicitadas e contexto reconciliado |
+| During the session | Keep incremental records with visible elaboration; do not wait for the last instant | Content and open points presented in the chat |
+| On receiving the notice before compaction | Identify the two records and prepare a coherent snapshot of the lineage | Envelope, state of the files and exact references |
+| Before declaring ready | Verify reading, integrity, declared completeness and a location accessible to the authorized successor | Ready package, or explicit partial/failure |
+| Compaction | Block if the tool really allows it and a blocking requirement is missing; otherwise report that preservation could not be guaranteed | Real result of the hook, not presumed success |
+| Start/resume by the successor | Locate the ready package of the correct lineage, read the envelope and the two available files | Recovery record and gaps |
+| Before continuing work | Confront memory with current files, diff, branch, processes and permissions | Divergences made explicit and context reconciled |
 
-A memória transmite contexto, não novos poderes. Recuperar autorização registrada
-não a estende nem prova que continue válida. Processo deixado em execução pode
-ter terminado; tarefa supostamente concluída precisa de evidência correspondente.
-Conteúdo herdado é fonte contextual, não instrução superior às regras vigentes.
+Memory transmits context, not new powers. Recovering a recorded authorization
+neither extends it nor proves it is still valid. A process left running may have
+ended; a task supposedly completed needs corresponding evidence. Inherited
+content is a contextual source, not an instruction superior to the rules in
+force.
 
-Não carregar a transcrição inteira por padrão nem tratar um resumo como verdade
-infalível. Preservar fatos, incertezas, procedência e divergências relevantes.
-Leitura/recuperação pelo sucessor não equivale a ratificação humana.
+Do not load the whole transcript by default, nor treat a summary as infallible
+truth. Preserve facts, uncertainties, provenance and relevant divergences.
+Reading or recovery by the successor is not equivalent to human ratification.
 
-## 4. Contrato técnico do adaptador, ainda não implementado
+## 4. Technical contract of the adapter, not yet implemented
 
-`precompact` é o evento conceitual; nome, disponibilidade e garantias precisam
-ser verificados em cada harness e versão. Não pressupor que todos permitam
-bloquear compactação ou escrever no chat durante hooks.
+`precompact` is the conceptual event; its name, availability and guarantees must
+be verified in each harness and version. Do not presume that all of them allow
+blocking compaction or writing to the chat during hooks.
 
-Antes de implementar, verificar: evento realmente anterior à perda de contexto,
-contexto acessível, tempo limite, permissão de escrita, retorno de falha, capacidade
-de bloqueio, execução repetida, concorrência e mecanismo de leitura pelo sucessor.
-Hook isolado não garante que o próximo agente descubra o pacote.
+Before implementing, verify: an event that really precedes the loss of context,
+accessible context, time limit, write permission, failure return, blocking
+capability, repeated execution, concurrency and the successor's reading
+mechanism. An isolated hook does not guarantee that the next agent discovers the
+package.
 
-O contrato deverá ser idempotente para um mesmo evento, não misturar sessões e
-não anunciar pronto antes de persistir/verificar o conjunto. Testes devem cobrir
-sucesso, evento duplicado, arquivo ausente, gravação interrompida, timeout,
-pacote parcial, linhagem incorreta e recuperação após troca de workspace.
+The contract shall be idempotent for the same event, shall not mix sessions and
+shall not announce ready before persisting and verifying the set. Tests must
+cover success, duplicate event, missing file, interrupted write, timeout, partial
+package, wrong lineage and recovery after a workspace change.
 
-Se o hook não conseguir explicitar alterações no chat, não ganha exceção para
-inventar documentação às escondidas: manter elaboração incremental visível,
-limitar o snapshot a conteúdo já apresentado e registrar um recibo técnico.
-Conteúdo novo de emergência fica identificado como não apresentado e não
-ratificado; o sucessor o explicita antes de utilizá-lo como compromisso.
-Compactação inesperada continua sendo uma limitação, não aprovação para fingir
-um checkpoint que não ocorreu.
+If the hook cannot make changes explicit in the chat, it earns no exception to
+invent documentation behind the human's back: keep incremental elaboration
+visible, limit the snapshot to content already presented and record a technical
+receipt. New emergency content is identified as not presented and not ratified;
+the successor makes it explicit before using it as a commitment. An unexpected
+compaction remains a limitation, not approval to feign a checkpoint that did not
+happen.
 
-## 5. Exclusão Git, retenção e transporte
+## 5. Git exclusion, retention and transport
 
-O `.gitignore` deste laboratório exclui `/.session-memory/` desde a criação,
-não apenas na publicação. Templates e contratos do método continuam versionados.
-Não usar exclusões globais como `sledge-handoff.md` ou `DIAMOND.md`, que poderiam
-ocultar documentos legítimos em outros contextos.
+This laboratory's `.gitignore` excludes `/.session-memory/` from creation, not
+only at publication. The method's templates and contracts remain versioned. Do
+not use global exclusions such as `sledge-handoff.md` or `DIAMOND.md`, which could
+hide legitimate documents in other contexts.
 
-`.git/info/exclude` é alternativa local, não política distribuída. Em worktrees,
-usar a localização indicada pelo Git, sem editar um checkout principal por
-suposição. Não alterar esse arquivo silenciosamente. `.gitignore` não retira
-arquivos já rastreados, não criptografa dados e não impede `git add -f`.
+`.git/info/exclude` is a local alternative, not a distributed policy. In
+worktrees, use the location Git indicates, without editing a main checkout by
+assumption. Do not alter that file silently. `.gitignore` does not remove files
+already tracked, does not encrypt data and does not prevent `git add -f`.
 
-Antes de publicar, examinar arquivos rastreados e staged, diff, histórico
-relevante e conteúdo de artefatos CI/releases. Não confiar apenas no ignore:
-um job pode empacotar arquivos locais excluídos. Remoção do índice/histórico e
-resposta a eventual exposição são operações separadas, com autorização adequada.
+Before publishing, examine tracked and staged files, the diff, the relevant
+history and the content of CI artifacts and releases. Do not rely on ignore
+alone: a job may package excluded local files. Removal from the index or history
+and the response to a possible exposure are separate operations, with adequate
+authorization.
 
-**Continuidade local não é portabilidade.** Um clone, worktree novo ou agente em
-outro host não recebe esses arquivos pelo Git. O adaptador precisa oferecer
-armazenamento persistente autorizado e transporte com controle de acesso,
-linhagem e retenção. Não afirmar handoff entregue até o destino autorizado
-conseguir recuperar o pacote. Não usar artefato público de CI como transporte.
+**Local continuity is not portability.** A clone, a new worktree or an agent on
+another host does not receive these files through Git. The adapter must offer
+authorized persistent storage and transport with access control, lineage and
+retention. Do not claim the handoff delivered until the authorized destination
+can recover the package. Do not use a public CI artifact as transport.
 
-Ignore também não protege de limpeza de workspace, arquivamento da sessão ou
-falha de disco. Antes dessas operações, assegurar destino persistente autorizado
-e recuperação verificável, ou explicitar o risco de perda. Prazos de retenção,
-backup, acesso e descarte continuam a definir; não prometer retenção ilimitada.
-Não persistir credenciais nem transcrições privadas por padrão.
+Ignore also offers no protection against workspace cleanup, session archiving or
+disk failure. Before those operations, secure an authorized persistent destination
+and verifiable recovery, or make the risk of loss explicit. Retention periods,
+backup, access and disposal remain to be defined; do not promise unlimited
+retention. Do not persist credentials or private transcripts by default.
 
-## 6. Promoção de aprendizado ao repositório
+## 6. Promoting learning to the repository
 
-Uma memória local não vira automaticamente documentação pública. Propor no chat
-qual trecho seria útil ao projeto, sua origem, limitações e destino canônico.
-Revisar privacidade, direitos, validade e risco de expor dados.
+A local memory does not automatically become public documentation. Propose in
+the chat which excerpt would be useful to the project, its origin, limitations
+and canonical destination. Review privacy, rights, validity and the risk of
+exposing data.
 
-Somente após autorização aplicável, preparar síntese em requisito, ADR, guia ou
-outro documento adequado e rastreável. Não copiar o pacote integral nem tratar
-aprendizado de sessão como regra aprovada. O original privado pode continuar
-privado; a documentação compartilhada deve fazer sentido sem depender de
-referências que seus consumidores não podem acessar.
+Only after the applicable authorization, prepare a synthesis in a requirement, an
+ADR, a guide or another adequate and traceable document. Do not copy the whole
+package nor treat session learning as an approved rule. The private original may
+remain private; shared documentation must make sense without depending on
+references its consumers cannot access.
 
-## 7. Decisões reservadas ao amadurecimento do design
+## 7. Decisions reserved for the maturing of the design
 
-- Destino persistente entre hosts/worktrees e política de retenção/acesso.
-- Harness inicial, integração real de hook e forma de recuperação pelo sucessor.
-- Critérios que tornam um checkpoint parcial impeditivo e exceções possíveis.
+- Persistent destination across hosts/worktrees and the retention/access policy.
+- Initial harness, real hook integration and the successor's form of recovery.
+- Criteria that make a partial checkpoint blocking, and possible exceptions.
 
-Não preencher essas decisões por suposição. A obrigação de continuidade está
-reconhecida; sua integração executável permanece pendente.
+Do not fill in these decisions by assumption. The obligation of continuity is
+recognized; its executable integration remains pending.

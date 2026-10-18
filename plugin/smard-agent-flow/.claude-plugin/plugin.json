@@ -1,11 +1,20 @@
 {
   "name": "smard-agent-flow",
   "displayName": "SMard Agent Flow",
-  "version": "0.1.0",
-  "description": "Roteia o trabalho de agentes pelo método smard-agent-flow-git (da inquietação à produção): aponta o contrato documental, o template e as regras certas para cada ação, sem redefinir política.",
+  "version": "0.3.0",
+  "description": "Routes the work of agents through the smard-agent-flow-git method (from discomfort to production): points to the documentary contract, the template and the right rules for each action, without redefining policy.",
   "author": {
     "name": "SMard Labs"
   },
   "repository": "https://github.com/mardemsean/smard-agent-flow-git",
-  "keywords": ["workflow", "method", "specs", "ratification", "handoff"]
+  "keywords": ["workflow", "method", "specs", "ratification", "handoff"],
+  "userConfig": {
+    "method_repo": {
+      "type": "string",
+      "title": "Method repository (optional)",
+      "description": "Local path of the smard-agent-flow-git clone. If empty, the skills use the copy of the method packaged in the plugin.",
+      "sensitive": false,
+      "required": false
+    }
+  }
 }

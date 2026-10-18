@@ -1,83 +1,84 @@
-# Preflight — [Requisito e decisão em exame]
+# Preflight — [Requirement and decision under examination]
 
-**Elaboração no chat:** [origem, conteúdo/revisão apresentados e pendências;
-seguir o protocolo do contrato documental, sem presumir ciência ou concordância]
+**Elaboration in the chat:** [origin, content/revision presented and open points;
+follow the protocol of the documentary contract, without presuming awareness or agreement]
 
-**Requisito e revisão:** [...]
-**Estado:** [investigação | pronto para decisão | retorno à exploração]
-**Responsável / autoridade decisória:** [...]
+**Requirement and revision:** [...]
+**State:** [investigation | ready for decision | return to exploration]
+**Responsible / deciding authority:** [...]
 
-O preflight antecede o compromisso arquitetural. A parte ADR só é preenchida
-quando houver uma decisão relevante a registrar. Se houver várias decisões
-independentes, criar registros separados, com referências ao preflight comum.
+The preflight precedes the architectural commitment. The ADR part is filled in
+only when there is a relevant decision to record. If there are several
+independent decisions, create separate records, with references to the common
+preflight.
 
-## 1. Decisões candidatas e restrições
+## 1. Candidate decisions and constraints
 
-**Decisão em exame e por que precisa ocorrer agora:** [...]
-**Forças e restrições reais, com origem:** [...]
-**Escolhas provisórias herdadas de protótipos:** [...]
-**O que pode continuar aberto ou reversível:** [...]
+**Decision under examination and why it must happen now:** [...]
+**Real forces and constraints, with origin:** [...]
+**Provisional choices inherited from prototypes:** [...]
+**What may stay open or reversible:** [...]
 
-| Opção | Benefício | Custo e desvantagem | Evidência / lacuna | Reversibilidade |
+| Option | Benefit | Cost and drawback | Evidence / gap | Reversibility |
 | --- | --- | --- | --- | --- |
-| [incluir adiar ou não mudar, se plausível] | [...] | [...] | [...] | [...] |
+| [include postponing or not changing, if plausible] | [...] | [...] | [...] | [...] |
 
-## 2. Antecipação de falhas e passagem do tempo
+## 2. Anticipation of failures and the passage of time
 
-**Risco que justifica esta análise:** [...]
-**Método:** [premortem, experimento, modelo, cenário narrativo ou combinação]
+**Risk that justifies this analysis:** [...]
+**Method:** [premortem, experiment, model, narrative scenario or a combination]
 
-| Horizonte / cenário | Premissas e procedimento | Consequências previstas | Evidência disponível | Sinal de invalidação / resposta |
+| Horizon / scenario | Premises and procedure | Foreseen consequences | Available evidence | Invalidation signal / response |
 | --- | --- | --- | --- | --- |
-| [horizonte escolhido por motivo explícito] | [...] | [...] | [...] | [...] |
+| [horizon chosen for an explicit reason] | [...] | [...] | [...] | [...] |
 
-**O que o método não demonstra:** [...]
-**Teste empírico necessário antes do compromisso:** [ou justificativa de dispensa]
-**Risco residual e aceite por autoridade identificada:** [...]
-**Gatilho, responsável e momento de reavaliação:** [...]
+**What the method does not demonstrate:** [...]
+**Empirical test needed before the commitment:** [or justification for waiving it]
+**Residual risk and acceptance by an identified authority:** [...]
+**Trigger, responsible person and moment of reassessment:** [...]
 
-Não descrever previsões como fatos futuros. Pareceres de agentes compartilham
-possíveis vieses; concordância entre eles não prova independência da evidência.
+Do not describe predictions as future facts. Agents' opinions share possible
+biases; agreement among them does not prove independence of the evidence.
 
-## 3. Resultado do preflight
+## 3. Result of the preflight
 
-**Encaminhamento:** [decidir | experimentar | rever requisito | voltar à exploração]
-**Lacunas que impedem a decisão:** [...]
-**Razão e autorização para avançar:** [referência recuperável ou pendente]
+**Routing:** [decide | experiment | review the requirement | return to exploration]
+**Gaps that block the decision:** [...]
+**Reason and authorization to advance:** [recoverable reference or pending]
 
 ---
 
-# ADR-[NNNN] — [Decisão, quando cabível]
+# ADR-[NNNN] — [Decision, when applicable]
 
-**Discussão desta decisão no chat:** [opções e consequências apresentadas,
-discordâncias e resposta efetiva; apresentação do preflight não é aceite do ADR]
+**Discussion of this decision in the chat:** [options and consequences presented,
+disagreements and effective response; presentation of the preflight is not acceptance of the ADR]
 
-**Estado:** [proposto | aceito | rejeitado | substituído | depreciado]
-**Data / revisão:** [...]
-**Decisores e registro de aceite:** [ou pendente]
-**Requisito, revisão e preflight:** [...]
-**Substitui / substituído por:** [...]
+**State:** [proposed | accepted | rejected | superseded | deprecated]
+**Date / revision:** [...]
+**Deciders and acceptance record:** [or pending]
+**Requirement, revision and preflight:** [...]
+**Supersedes / superseded by:** [...]
 
-## Contexto
+## Context
 
-[Forças relevantes e referências às evidências; não duplicar todo o preflight.]
+[Relevant forces and references to the evidence; do not duplicate the whole preflight.]
 
-## Decisão e alternativas
+## Decision and alternatives
 
-[O que foi escolhido, alternativas consideradas e por que os trade-offs foram
-aceitos. Não justificar uma escolha apenas porque já está no protótipo.]
+[What was chosen, alternatives considered and why the trade-offs were accepted.
+Do not justify a choice merely because it is already in the prototype.]
 
-## Consequências
+## Consequences
 
-**O que melhora / o que fica mais difícil:** [...]
-**Efeitos sobre dados, operação, custo e evolução:** [...]
-**Reversão, migração e limitações:** [...]
-**Condições de reavaliação e responsável:** [...]
+**What improves / what becomes harder:** [...]
+**Effects on data, operation, cost and evolution:** [...]
+**Reversal, migration and limitations:** [...]
+**Reassessment conditions and responsible person:** [...]
 
-## Continuidade
+## Continuity
 
-**Specs e critérios afetados:** [...]
-**Ações de implementação e verificação:** [referências, não segunda lista divergente]
+**Specs and criteria affected:** [...]
+**Implementation and verification actions:** [references, not a second divergent list]
 
-Alterar uma decisão aceita exige registro explícito de revisão ou substituição,
-sem apagar a razão histórica da escolha anterior.
+Altering an accepted decision requires an explicit record of revision or
+supersession, without erasing the historical reason for the earlier choice.

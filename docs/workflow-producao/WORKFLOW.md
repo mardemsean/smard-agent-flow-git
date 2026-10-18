@@ -1,190 +1,196 @@
-# Da inquietação à produção
+# From discomfort to production
 
-> Uma proposta de workflow em que a intenção humana pode amadurecer antes de
-> virar compromisso, e o compromisso pode ser acompanhado até seus efeitos reais.
+> A proposal for a workflow in which human intent may mature before it becomes a
+> commitment, and the commitment may be accompanied all the way to its real
+> effects.
 
-**Estado:** proposta para discussão, não política já aprovada.
+**State:** proposal for discussion, not an already approved policy.
 
-**Entrada metodológica:** [METHODOLOGY.md](../../METHODOLOGY.md).
-**Regras canônicas:** [RULES.md](../../RULES.md).
-**Mapa documental:** [INDEX.md](../../INDEX.md).
-O desenho foi autorizado para elaboração; isso não ratifica automaticamente
-detalhes operacionais nem compromissos de um produto futuro.
+**Methodological entry:** [METHODOLOGY.md](../../METHODOLOGY.md).
+**Canonical rules:** [RULES.md](../../RULES.md).
+**Documentary map:** [INDEX.md](../../INDEX.md).
+The design was authorized for elaboration; that does not automatically ratify
+operational details or the commitments of a future product.
 
-## 1. O que este método procura corrigir
+## 1. What this method seeks to correct
 
-O trabalho pode começar com insatisfação, curiosidade, oportunidade, uma ideia de
-solução ou uma decisão já tomada. Nenhuma dessas entradas exige fabricar uma
-história de descoberta que não aconteceu.
+Work may begin with dissatisfaction, curiosity, an opportunity, an idea for a
+solution or a decision already taken. None of these entries requires fabricating
+a discovery story that did not happen.
 
-O método conecta trabalho criativo e exploratório a desenvolvimento orientado
-por especificações e por tarefas. Não substitui um executor como Spec Kit ou
-OpenSpec: define o contexto, a intenção e os limites que esse executor recebe,
-e como seus resultados retornam ao ciclo do produto.
+The method connects creative and exploratory work to spec-driven and task-driven
+development. It does not replace an executor such as Spec Kit or OpenSpec: it
+defines the context, the intent and the boundaries that executor receives, and
+how its results return to the product cycle.
 
-O humano é autor e interlocutor da intenção, representante inicial dos futuros
-usuários e autoridade sobre compromissos delegados. Não é fiscal de cada passo
-do agente. Sua representação dos usuários é uma fonte relevante, mas não deve
-ser apresentada como pesquisa com usuários que não ocorreu.
+The human is the author and interlocutor of the intent, the initial
+representative of future users and the authority over delegated commitments. The
+human is not an inspector of every step the agent takes. Their representation of
+the users is a relevant source, but it must not be presented as user research
+that did not take place.
 
-## 2. Invariantes
+## 2. Invariants
 
-1. **Companhia antes de cobrança.** Uma inquietação pode ser explorada sem nome
-   de produto, justificativa econômica, formulário ou obrigação de continuar.
-2. **Divergência não é defeito.** Alternativas, contradições e ideias descartadas
-   podem ser conhecimento útil; não são automaticamente tarefas pendentes.
-3. **Provocação tem contexto.** Grill me pode ser uma sessão estruturada e
-   deliberadamente intensa, ou uma intervenção pontual. Objetivo, intensidade e
-   condição de encerramento são combinados; não se torna interrogatório permanente.
-4. **Aprender não é prometer.** Protótipos e simulações não autorizam implementação
-   produtiva, nem convertem hipóteses em evidência observada.
-5. **A entrada é variável.** Uma iniciativa madura começa adiante, com procedência,
-   limites e lacunas explícitos; não precisa repetir ritos já desnecessários.
-6. **Autonomia tem fronteira.** O agente executa dentro de um mandato e interrompe
-   quando o ultrapassa, não em cada escolha local reversível.
-7. **Discordância não desaparece por resumo.** Sínteses distinguem voz humana,
-   interpretação do agente, evidência e decisões efetivamente ratificadas.
-8. **Produção reabre perguntas.** Efeitos observados podem provocar novas
-   explorações, requisitos e revisões das premissas fundadoras.
-9. **Infraestrutura não define maturidade.** Conversar não exige repositório,
-   nome de produto, slug ou branch. Identificadores técnicos provisórios podem
-   ser gerados sem solicitar uma decisão de identidade ao humano.
-10. **Documentação tem ocasião.** Cada obrigação precisa de gatilho, responsável,
-    consumidor e consequência de ausência; nenhum catálogo inteiro é exigido
-    na entrada. O agente prepara os registros, não terceiriza seu preenchimento
-    ao humano como condição para ajudá-lo.
-11. **Documentação nasce à vista.** Cada documento criado ou alterado é explicitado
-    no chat, com finalidade, conteúdo substantivo, procedência e pendências.
-    Redigir não é decidir; apresentar não é obter ciência comprovada; silêncio,
-    existência do arquivo e merge não ratificam interpretações do agente.
+1. **Companionship before accountability.** A discomfort may be explored without
+   a product name, an economic justification, a form or an obligation to continue.
+2. **Divergence is not a defect.** Alternatives, contradictions and discarded
+   ideas may be useful knowledge; they are not automatically pending tasks.
+3. **Provocation has a context.** Grill me may be a structured, deliberately
+   intense session or a one-off intervention. Goal, intensity and stop condition
+   are agreed; it does not become a permanent interrogation.
+4. **Learning is not promising.** Prototypes and simulations neither authorize
+   production implementation nor convert hypotheses into observed evidence.
+5. **Entry is variable.** A mature initiative starts further along, with explicit
+   provenance, boundaries and gaps; it need not repeat rites already unnecessary.
+6. **Autonomy has a boundary.** The agent executes inside a mandate and stops when
+   it exceeds it, not at every reversible local choice.
+7. **Disagreement does not vanish by summary.** Syntheses distinguish the human
+   voice, the agent's interpretation, evidence and decisions actually ratified.
+8. **Production reopens questions.** Observed effects may trigger new
+   explorations, requirements and revisions of the founding premises.
+9. **Infrastructure does not define maturity.** Conversing requires no
+   repository, product name, slug or branch. Provisional technical identifiers
+   may be generated without asking the human for an identity decision.
+10. **Documentation has an occasion.** Every obligation needs a trigger, an owner,
+    a consumer and a consequence of absence; no whole catalog is demanded at
+    entry. The agent prepares the records; it does not outsource filling them to
+    the human as a condition for helping.
+11. **Documentation is born in plain sight.** Every document created or altered is
+    made explicit in the chat, with purpose, substantive content, provenance and
+    open points. Drafting is not deciding; presenting is not obtaining proven
+    awareness; silence, the existence of the file and a merge do not ratify the
+    agent's interpretations.
 
-## 3. Árvore de entrada, decisão e retorno
+## 3. Tree of entry, decision and return
 
-As caixas são estados de trabalho, não departamentos nem cerimônias obrigatórias.
-Os retornos podem atravessar mais de uma caixa.
+The boxes are working states, not departments or mandatory ceremonies. Returns
+may cross more than one box.
 
 ```mermaid
 flowchart TD
-    A0["Espaço pré-repositório: conversa e memória privada opcional"] --> A["Entrada: inquietação, ideia, problema ou mudança"]
-    A --> B{"Há intenção suficientemente madura?"}
-    B -- "Não" --> C["Exploração acompanhada"]
-    C --> D{"O que precisamos agora?"}
-    D -- "Abrir possibilidades" --> C
-    D -- "Confrontar uma hipótese" --> E["Grill me, pesquisa ou engenharia reversa"]
-    D -- "Experimentar" --> F["Protótipo ou experimento delimitado"]
-    D -- "Incubar ou encerrar" --> P["Pausar, abandonar ou não construir"]
+    A0["Pre-repository space: conversation and optional private memory"] --> A["Entry: discomfort, idea, problem or change"]
+    A --> B{"Is the intent mature enough?"}
+    B -- "No" --> C["Accompanied exploration"]
+    C --> D{"What do we need now?"}
+    D -- "Open possibilities" --> C
+    D -- "Confront a hypothesis" --> E["Grill me, research or reverse engineering"]
+    D -- "Experiment" --> F["Bounded prototype or experiment"]
+    D -- "Incubate or close" --> P["Pause, abandon or not build"]
     E --> C
-    F --> G{"O aprendizado sustenta uma direção?"}
-    G -- "Não" --> C
-    G -- "Sim" --> H["Sintetizar intenção e limites"]
-    B -- "Sim: registrar origem e lacunas" --> H
-    H --> I{"Produto novo ou mudança?"}
-    I -- "Produto novo" --> Z["REQUIREMENT-ZERO"]
-    I -- "Mudança" --> R["requirement-NNNN"]
-    Z --> J["Preflight de decisões e riscos"]
+    F --> G{"Does the learning sustain a direction?"}
+    G -- "No" --> C
+    G -- "Yes" --> H["Synthesize intent and boundaries"]
+    B -- "Yes: record origin and gaps" --> H
+    H --> I{"New product or change?"}
+    I -- "New product" --> Z["REQUIREMENT-ZERO"]
+    I -- "Change" --> R["requirement-NNNN"]
+    Z --> J["Preflight of decisions and risks"]
     R --> J
-    J --> K{"Incerteza relevante exige experimento?"}
-    K -- "Sim" --> L["Protótipo, premortem ou simulação temporal"]
-    L --> M{"A intenção continua adequada?"}
-    M -- "Não" --> H
-    M -- "Ainda não sabemos" --> C
-    M -- "Sim" --> J
-    K -- "Não: limites aceitos" --> N["Ratificar requisito e registrar ADRs necessários"]
-    N --> S["Specs e critérios verificáveis"]
-    S --> Q{"Surgiu conflito ou decisão sem suporte?"}
-    Q -- "Sim" --> J
-    Q -- "Não" --> T["Tarefas e mandato de execução"]
-    T --> U["Implementação, PR, checks e revisão"]
-    U --> V{"Dentro da intenção e dos critérios?"}
-    V -- "Não: defeito de execução" --> T
-    V -- "Não: intenção precisa mudar" --> H
-    V -- "Sim" --> W["Merge e entrega controlada"]
-    W --> X["Observar uso, operação e efeitos"]
-    X --> Y{"Resultado e premissas se sustentam?"}
-    Y -- "Sim" --> O["Manter e acompanhar"]
-    Y -- "Não" --> A
-    P -- "Retomada com novo sinal" --> A
+    J --> K{"Does a relevant uncertainty demand an experiment?"}
+    K -- "Yes" --> L["Prototype, premortem or temporal simulation"]
+    L --> M{"Is the intent still adequate?"}
+    M -- "No" --> H
+    M -- "We do not know yet" --> C
+    M -- "Yes" --> J
+    K -- "No: boundaries accepted" --> N["Ratify the requirement and record the necessary ADRs"]
+    N --> S["Specs and verifiable criteria"]
+    S --> Q{"Did a conflict or an unsupported decision emerge?"}
+    Q -- "Yes" --> J
+    Q -- "No" --> T["Tasks and execution mandate"]
+    T --> U["Implementation, PR, checks and review"]
+    U --> V{"Within the intent and the criteria?"}
+    V -- "No: execution defect" --> T
+    V -- "No: the intent must change" --> H
+    V -- "Yes" --> W["Merge and controlled delivery"]
+    W --> X["Observe use, operation and effects"]
+    X --> Y{"Do the outcome and the premises hold?"}
+    Y -- "Yes" --> O["Maintain and accompany"]
+    Y -- "No" --> A
+    P -- "Resumed on a new signal" --> A
 ```
 
-**Atalho legítimo:** decisões, specs e tarefas preexistentes podem levar
-diretamente ao estado correspondente, desde que os requisitos relevantes estejam
-ratificados, as referências sejam recuperáveis e as lacunas críticas estejam
-resolvidas ou aceitas pela autoridade competente. Não se exige reproduzir
-exploração, protótipo ou ADR desnecessário.
+**Legitimate shortcut:** pre-existing decisions, specs and tasks may lead directly
+to the corresponding state, provided the relevant requirements are ratified, the
+references are recoverable and the critical gaps are resolved or accepted by the
+competent authority. There is no demand to reproduce an unnecessary exploration,
+prototype or ADR.
 
-**Ausência de documentação anterior:** registrar uma base retrospectiva curta,
-identificada como tal, e submeter sua interpretação à ratificação humana.
-Não inventar validações, consenso ou alternativas supostamente avaliadas.
+**Absence of earlier documentation:** record a short retrospective base,
+identified as such, and submit its interpretation to human ratification. Do not
+invent validations, consensus or alternatives supposedly evaluated.
 
-**Nascimento do repositório é uma decisão independente:** pode ocorrer durante
-um protótipo, depois do ZERO ou já ter ocorrido. Não é condição para a exploração
-nem consequência automática da síntese de intenção. Aplicar a árvore e os
-gatilhos do [contrato documental](CONTRATO-DOCUMENTAL.md) quando houver necessidade
-de versionamento, colaboração ou execução integrada.
+**The birth of the repository is an independent decision:** it may happen during
+a prototype, after the ZERO, or may already have happened. It is neither a
+condition for exploration nor an automatic consequence of intent synthesis. Apply
+the tree and the triggers of the [documentary contract](CONTRATO-DOCUMENTAL.md)
+when versioning, collaboration or integrated execution becomes necessary.
 
-## 4. Estados e evidências mínimas
+## 4. States and minimum evidence
 
-| Estado | Trabalho permitido | Condição para avançar |
+| State | Permitted work | Condition to advance |
 | --- | --- | --- |
-| Exploração | Conversar, divergir, pesquisar, simular, questionar, pausar | Humano reconhece uma direção que merece síntese; não apenas agente declara conclusão |
-| Prototipagem exploratória | Testar uso, viabilidade ou outra hipótese delimitada | Aprendizado e limitações registrados; decidir descartar, experimentar novamente ou sintetizar |
-| Síntese de intenção | Preparar ZERO ou requisito numerado | Intenção reconhecível, fronteiras, lacunas e autoridade identificadas |
-| Preflight | Examinar decisões candidatas e riscos; testar cenários | Riscos materiais examinados; lacunas impeditivas resolvidas e riscos residuais aceitos |
-| Compromisso | Ratificar requisito e aceitar ADRs necessários | Registro explícito da decisão e da revisão documental que foi ratificada |
-| Especificação | Descrever comportamento e critérios verificáveis | Cobertura rastreável da intenção; conflitos devolvidos ao preflight |
-| Execução | Decompor e implementar sob mandato | PR com evidências proporcionais ao risco e checks aplicáveis |
-| Entrega | Revisar, integrar, liberar e observar | Autorizações aplicáveis, estratégia de recuperação e sinais de resultado |
-| Aprendizado | Comparar efeitos reais às expectativas | Manter, corrigir defeito, abrir mudança ou reconsiderar fundamento |
+| Exploration | Converse, diverge, research, simulate, question, pause | The human recognizes a direction that deserves synthesis; the agent alone declaring a conclusion is not enough |
+| Exploratory prototyping | Test use, feasibility or another bounded hypothesis | Learning and limitations recorded; decide to discard, experiment again or synthesize |
+| Intent synthesis | Prepare the ZERO or a numbered requirement | Recognizable intent, boundaries, gaps and authority identified |
+| Preflight | Examine candidate decisions and risks; test scenarios | Material risks examined; blocking gaps resolved and residual risks accepted |
+| Commitment | Ratify the requirement and accept the necessary ADRs | Explicit record of the decision and of the documentary revision that was ratified |
+| Specification | Describe behavior and verifiable criteria | Traceable coverage of the intent; conflicts returned to the preflight |
+| Execution | Decompose and implement under a mandate | PR with evidence proportional to risk and the applicable checks |
+| Delivery | Review, integrate, release and observe | Applicable authorizations, recovery strategy and outcome signals |
+| Learning | Compare real effects with expectations | Maintain, fix a defect, open a change or reconsider the foundation |
 
-Cada estado pode conter ciclos internos. Uma lacuna só impede avanço quando
-ameaça a validade da decisão seguinte. O responsável deve explicar esse nexo,
-em vez de exigir completude documental abstrata.
+Each state may contain internal cycles. A gap blocks advancement only when it
+threatens the validity of the next decision. The person responsible must explain
+that link, instead of demanding abstract documentary completeness.
 
-## 5. A posição do humano e o mandato do agente
+## 5. The position of the human and the agent's mandate
 
-O contrato é de **autonomia delimitada por intenção**, não abandono nem supervisão
-contínua. A frequência de interação depende do trabalho: exploração pode precisar
-de conversa intensa; execução bem delimitada pode precisar apenas de checkpoints.
+The contract is one of **autonomy bounded by intent**, neither abandonment nor
+continuous supervision. The frequency of interaction depends on the work:
+exploration may need intense conversation; well-bounded execution may need only
+checkpoints.
 
-Antes de um trecho autônomo, combinar:
+Before an autonomous stretch, agree on:
 
-- Resultado buscado, referências ratificadas e o que não pode ser alterado.
-- Ações permitidas, limites de custo, tempo, acesso e efeitos externos.
-- Decisões delegadas e decisões reservadas a uma pessoa ou papel.
-- Condições de interrupção, checkpoint e encerramento.
-- Forma de relatar resultados sem despejar logs ou pedir decisões triviais.
+- The outcome sought, the ratified references and what may not be altered.
+- Permitted actions and the limits on cost, time, access and external effects.
+- Delegated decisions and decisions reserved to a person or role.
+- Conditions for interruption, checkpoint and closure.
+- How to report results without dumping logs or asking for trivial decisions.
 
-**Interromper:** conflito com intenção, necessidade de ampliar escopo, evidência
-que invalida premissa relevante, ação fora da autorização, risco material novo
-ou tentativas que atingem o limite combinado.
+**Interrupt:** conflict with the intent, need to widen the scope, evidence that
+invalidates a relevant premise, action outside the authorization, a new material
+risk, or attempts that reach the agreed limit.
 
-**Não interromper por padrão:** escolha local reversível, correção de teste
-introduzido pela própria implementação ou refatoração dentro do escopo autorizado.
-Políticas da ferramenta e do repositório continuam prevalecendo.
+**Do not interrupt by default:** a reversible local choice, fixing a test the
+implementation itself introduced, or refactoring within the authorized scope.
+The policies of the tool and the repository continue to prevail.
 
-Consolidar perguntas relacionadas no checkpoint; apresentar alternativas,
-consequências e recomendação. Falta de resposta nunca significa aprovação.
+Consolidate related questions in the checkpoint; present alternatives,
+consequences and a recommendation. Lack of an answer never means approval.
 
-## 6. Contrato documental e rastreabilidade
+## 6. Documentary contract and traceability
 
-METHODOLOGY, RULES, INDEX e as bibliotecas de prompts/templates constituem
-infraestrutura do método, disponível antes do produto. A
-[baseline](BASELINE-METODO.md) define sua incorporação ao repo e os gatilhos de
-AGENTS, adaptadores, skills e MCPs. Não são perguntas iniciais ao criador.
+METHODOLOGY, RULES, INDEX and the prompt and template libraries constitute the
+infrastructure of the method, available before the product. The
+[baseline](BASELINE-METODO.md) defines their incorporation into the repo and the
+triggers for AGENTS, adapters, skills and MCPs. They are not opening questions to
+the creator.
 
-O [contrato documental por momento e ação](CONTRATO-DOCUMENTAL.md) complementa
-esta arquitetura: prevê arquivos de repositório, anotações, registros nativos do
-GitHub, obrigações condicionais e os eventos que os tornam necessários.
-O catálogo não é um checklist de abertura.
-Seu protocolo de elaboração visível rege todos esses registros: antes da redação,
-identificar no chat cada documento e sua proposta; depois, apresentar o conteúdo
-ou delta substantivo, interpretações e pontos que exigem decisão. Rascunhos podem
-ser gravados como rascunhos; compromissos novos não entram em execução sem a
-ratificação aplicável. Atualizações editoriais são comunicadas sem nova cerimônia
-de aprovação. O humano não precisa descobrir decisões lendo um diff surpresa.
+The [documentary contract by moment and action](CONTRATO-DOCUMENTAL.md)
+complements this architecture: it foresees repository files, annotations, native
+GitHub records, conditional obligations and the events that make them necessary.
+The catalog is not an opening checklist.
+Its visible elaboration protocol governs all these records: before drafting,
+identify each document and its proposal in the chat; afterwards, present the
+substantive content or delta, the interpretations and the points that require a
+decision. Drafts may be saved as drafts; new commitments do not enter execution
+without the applicable ratification. Editorial updates are communicated without a
+new approval ceremony. The human need not discover decisions by reading a
+surprise diff.
 
-Esta é a organização sugerida para um produto que adotar o método. Os arquivos
-de exemplo abaixo não são documentos de produto já preenchidos.
+This is the suggested organization for a product that adopts the method. The
+example files below are not already filled-in product documents.
 
 ```text
 docs/
@@ -197,161 +203,167 @@ docs/
   decisions/
     ADR-0001.md
   specs/
-    <documentos nativos do executor escolhido>
+    <native documents of the chosen executor>
   deliveries/
     DEL-0001.md
 ```
 
-| Documento | Responsabilidade | Não deve virar |
+| Document | Responsibility | Must not become |
 | --- | --- | --- |
-| [Exploração](templates/EXPLORACAO.md) | Preservar alternativas, perguntas e aprendizado selecionado | Transcrição compulsória ou formulário de entrada |
-| [REQUIREMENT-ZERO](templates/REQUIREMENT-ZERO.MD) | Fundar a intenção, o sentido e os limites do produto | Constituição imutável, PRD exaustivo ou arquitetura disfarçada |
-| [requirement-NNNN](templates/requirement-NNNN.md) | Fundamentar uma mudança ou expansão e seus efeitos no ZERO | ID de cada requisito atômico ou tarefa de implementação |
-| [Preflight e ADR](templates/PREFLIGHT-ADR.md) | Examinar alternativas e consequências; registrar decisão quando justificada | Ritual obrigatório para toda alteração |
-| [Ponte para specs e tarefas](templates/PONTE-SPECS-TAREFAS.md) | Traduzir compromisso em contrato de execução rastreável | Segunda cópia divergente das specs e tarefas |
-| [Entrega e aprendizado](templates/ENTREGA-APRENDIZADO.md) | Ligar PRs, release, recuperação e efeitos observados | Suposição de que merge equivale a sucesso em produção |
+| [Exploration](templates/EXPLORACAO.md) | Preserve alternatives, questions and selected learning | A compulsory transcript or an entry form |
+| [REQUIREMENT-ZERO](templates/REQUIREMENT-ZERO.MD) | Found the intent, the meaning and the boundaries of the product | An immutable constitution, an exhaustive PRD or architecture in disguise |
+| [requirement-NNNN](templates/requirement-NNNN.md) | Ground a change or expansion and its effects on the ZERO | An ID for every atomic requirement or implementation task |
+| [Preflight and ADR](templates/PREFLIGHT-ADR.md) | Examine alternatives and consequences; record the decision when justified | A mandatory ritual for every change |
+| [Bridge to specs and tasks](templates/PONTE-SPECS-TAREFAS.md) | Translate the commitment into a traceable execution contract | A second, divergent copy of the specs and tasks |
+| [Delivery and learning](templates/ENTREGA-APRENDIZADO.md) | Link PRs, release, recovery and observed effects | The assumption that a merge equals success in production |
 
-**Identidade:** ZERO é único por produto. A sequência `0001`, `0002` etc. identifica
-iniciativas de mudança, não substitui versões do ZERO e não é reiniciada por
-release. Antes de haver repositório, IDs locais provisórios bastam e não precisam
-ser escolhidos pelo humano. Reservar o próximo número pela coordenação do
-repositório quando o registro for incorporado; não reutilizar
-IDs de iniciativas abandonadas. Em trabalhos concorrentes, resolver colisões
-antes do merge.
+**Identity:** the ZERO is unique per product. The sequence `0001`, `0002` and so
+on identifies change initiatives; it does not replace versions of the ZERO and is
+not restarted per release. Before there is a repository, provisional local IDs
+suffice and need not be chosen by the human. Reserve the next number through the
+repository's coordination when the record is incorporated; do not reuse the IDs
+of abandoned initiatives. In concurrent work, resolve collisions before the merge.
 
-**Versionamento:** a história Git conserva revisões dos documentos. A ratificação
-refere-se a uma revisão concreta: SHA, PR ou registro equivalente identificável.
-Mudança material no texto exige nova ratificação; aprovação de versão anterior
-não autoriza escopo acrescentado depois.
+**Versioning:** Git history preserves the revisions of the documents.
+Ratification refers to a concrete revision: SHA, PR or an equivalent identifiable
+record. A material change in the text requires a new ratification; approval of an
+earlier version does not authorize scope added later.
 
-**Mudança do fundamento:** um requisito numerado deve declarar se preserva,
-estende ou contradiz o ZERO. Se alterar fundamento, incluir emenda explícita ao
-ZERO no mesmo conjunto de revisão, com razão, efeitos e nova ratificação.
-Não reescrever o passado para fingir continuidade.
+**Change of foundation:** a numbered requirement must declare whether it
+preserves, extends or contradicts the ZERO. If it alters the foundation, include
+an explicit amendment to the ZERO in the same revision set, with reason, effects
+and a new ratification. Do not rewrite the past to feign continuity.
 
-**Cadeia:** intenção → requisito e sua revisão → decisão, quando necessária →
-critério de spec → tarefa → PR/check → release → observação.
-Uma relação pode ter múltiplos destinos. Corrigir um bug que restaura um contrato
-existente não exige novo requisito numerado; mudar o contrato exige.
+**Chain:** intent → requirement and its revision → decision, when necessary →
+spec criterion → task → PR/check → release → observation.
+One relation may have several destinations. Fixing a bug that restores an
+existing contract requires no new numbered requirement; changing the contract
+does.
 
-Usar IDs locais estáveis para critérios e tarefas. Evitar duplicar o conteúdo
-nativo de Spec Kit ou OpenSpec: manter referências e mapa de cobertura. A escolha
-do executor e seu mapeamento concreto permanecem em aberto.
+Use stable local IDs for criteria and tasks. Avoid duplicating the native content
+of Spec Kit or OpenSpec: keep references and a coverage map. The choice of
+executor and its concrete mapping remain open.
 
-## 7. Preflight e simulações que atravessam o tempo
+## 7. Preflight and simulations that cross time
 
-O primeiro preflight lista decisões candidatas, não decisões já aceitas. Escolhas
-provisórias de um protótipo devem ser identificadas como tal. O preflight pode
-retornar à exploração; uma spec também pode revelar a necessidade de novo ADR.
+The first preflight lists candidate decisions, not decisions already accepted.
+Provisional choices from a prototype must be identified as such. The preflight may
+return to exploration; a spec may also reveal the need for a new ADR.
 
-Aplicar premortem, experimentos e simulações temporais conforme o risco, não como
-um pacote obrigatório. Para cada cenário selecionado, registrar premissas,
-mecanismo de análise, consequências previstas, sinais de invalidação e resposta.
+Apply premortem, experiments and temporal simulations according to risk, not as a
+mandatory package. For each selected scenario, record premises, analysis
+mechanism, foreseen consequences, invalidation signals and response.
 
-Horizontes e cenários possíveis: crescimento ou queda de uso, custo acumulado,
-migração, saída de fornecedor, mudança regulatória, troca de mantenedor,
-recuperação de dados, acessibilidade e envelhecimento de dependências.
+Possible horizons and scenarios: growth or decline in use, accumulated cost,
+migration, vendor exit, regulatory change, change of maintainer, data recovery,
+accessibility and aging of dependencies.
 
-**Separação epistemológica:** conversa simulada com usuário não é entrevista;
-projeção de escala não é benchmark; premortem não é incidente observado; parecer
-de outro agente não é validação independente por si só. Quando não for possível
-testar, registrar risco residual, responsável e gatilho de revisão.
+**Epistemological separation:** a simulated conversation with a user is not an
+interview; a scale projection is not a benchmark; a premortem is not an observed
+incident; another agent's opinion is not, by itself, independent validation. When
+testing is not possible, record the residual risk, the person responsible and the
+review trigger.
 
-## 8. GitHub: coordenação sem transformar exploração em ticket
+## 8. GitHub: coordination without turning exploration into a ticket
 
-### Issues e branches
+### Issues and branches
 
-Exploração não exige sequer repositório, muito menos issue ou branch por conversa.
-Se a ferramenta hospedeira exigir branch ou workspace, o harness fornece um
-identificador técnico provisório; essa limitação não vira pergunta de produto.
-Publicar apenas a síntese
-selecionada pelo humano, sem segredos, dados pessoais ou transcrições privadas.
-Uma issue passa a ser útil quando há trabalho a coordenar; aponta ao requisito
-canônico e pode agregar experimentos, decisões e PRs.
+Exploration does not even require a repository, let alone an issue or a branch
+per conversation. If the host tool requires a branch or workspace, the harness
+supplies a provisional technical identifier; that limitation does not become a
+product question.
+Publish only the synthesis
+selected by the human, without secrets, personal data or private transcripts.
+An issue becomes useful when there is work to coordinate; it points to the
+canonical requirement and may aggregate experiments, decisions and PRs.
 
-Protótipos executáveis ficam isolados e identificados como experimentais.
-Promovê-los a código produtivo exige o mesmo contrato de intenção, critérios e
-revisão de qualquer implementação; demonstração convincente não dispensa isso.
+Executable prototypes stay isolated and identified as experimental. Promoting
+them to production code requires the same contract of intent, criteria and
+review as any implementation; a convincing demo does not waive it.
 
-### Classes de PR
+### PR classes
 
-| Classe declarada | Evidência esperada |
+| Declared class | Expected evidence |
 | --- | --- |
-| Exploração/documentação | Aprendizado ou mudança documental e limites; sem alegar entrega funcional |
-| Experimento/protótipo | Hipótese, procedimento, resultado e isolamento de efeitos |
-| Requisito/decisão | Revisão proposta, divergências e ratificação por autoridade identificada |
-| Implementação | Requisito ratificado, critérios, testes e decisões relevantes |
-| Correção | Contrato vigente, reprodução, correção e não regressão |
-| Release/operação | Revisão liberada, autorização, recuperação e observação |
+| Exploration/documentation | Learning or documentary change and its limits; no claim of functional delivery |
+| Experiment/prototype | Hypothesis, procedure, result and isolation of effects |
+| Requirement/decision | Proposed revision, divergences and ratification by an identified authority |
+| Implementation | Ratified requirement, criteria, tests and relevant decisions |
+| Fix | Current contract, reproduction, fix and absence of regression |
+| Release/operation | Released revision, authorization, recovery and observation |
 
-Um PR pode combinar classes, mas recebe a união das exigências aplicáveis.
-Declarar "documentação" não exclui verificações se houver código executável.
-O [template de entrega](templates/ENTREGA-APRENDIZADO.md) contém um bloco para PR;
-ele não foi instalado como template obrigatório do repositório.
+A PR may combine classes, but it receives the union of the applicable
+requirements. Declaring "documentation" does not exclude checks if there is
+executable code. The [delivery template](templates/ENTREGA-APRENDIZADO.md)
+contains a block for the PR; it was not installed as a mandatory template of the
+repository.
 
-### Contrato proposto para GitHub Actions
+### Proposed contract for GitHub Actions
 
-Actions pode verificar estrutura, referências e comportamento. Não pode
-certificar que uma ideia amadureceu nem ratificar a intenção pelo humano.
+Actions can verify structure, references and behavior. It cannot certify that an
+idea has matured, nor ratify the intent on the human's behalf.
 
-| Check lógico proposto | Verifica | Limite |
+| Proposed logical check | Verifies | Limit |
 | --- | --- | --- |
-| `workflow-integrity` | Referências resolvíveis, IDs únicos, documentos exigidos para a classe e cobertura declarada | Presença não prova qualidade semântica |
-| `scope-policy` | Arquivos alterados, classe efetiva e regras aplicáveis, sem confiar apenas no rótulo do autor | Mudança fora do mandato exige revisão humana |
-| Checks de engenharia | Lint, tipos, testes, build e outros controles aplicáveis | Testes verdes não provam valor nem cobrem toda a intenção |
-| Gate de integração | Checks exigidos e revisões/autorização da revisão atual | Merge não autoriza automaticamente deploy produtivo |
-| Gate de entrega | Artefato/revisão, ambiente e autorização de release | Saúde operacional não demonstra benefício ao usuário |
+| `workflow-integrity` | Resolvable references, unique IDs, documents required for the class and declared coverage | Presence does not prove semantic quality |
+| `scope-policy` | Altered files, effective class and applicable rules, without trusting the author's label alone | A change outside the mandate requires human review |
+| Engineering checks | Lint, types, tests, build and other applicable controls | Green tests prove neither value nor coverage of the whole intent |
+| Integration gate | Required checks and reviews/authorization of the current revision | Merge does not automatically authorize production deploy |
+| Delivery gate | Artifact/revision, environment and release authorization | Operational health does not demonstrate benefit to the user |
 
-Esses nomes são um desenho de interface; **não existem como novos jobs neste
-repositório**. A implementação futura deve:
+These names are an interface design; **they do not exist as new jobs in this
+repository**. The future implementation must:
 
-- Manter um check agregador estável que execute também em PRs documentais e
-  indique explicitamente verificações não aplicáveis, sem checks requeridos
-  eternamente pendentes por filtros de caminhos.
-- Se adotar merge queue, cobrir o evento `merge_group` nos checks requeridos.
-- Aplicar classificação a partir do diff e política confiável, não só de texto
-  livre ou labels editáveis no PR.
-- Tratar conteúdo de PR como entrada não confiável; não executar código de forks
-  com segredos ou privilégios de escrita. Não usar `pull_request_target` para
-  executar código da contribuição.
-- Adotar permissões mínimas e referências de Actions fixadas em revisões
-  verificadas. Não conceder ao agente aprovação de sua própria exceção.
-- Invalidar ratificações materialmente afetadas por mudanças posteriores;
-  branch rules, revisores autorizados e environments devem refletir isso.
-- Prever exceção emergencial explícita: motivo, autoridade, escopo, risco,
-  recuperação e revisão posterior. Não esconder bypass como sucesso normal.
+- Keep a stable aggregating check that also runs on documentary PRs and
+  explicitly flags non-applicable verifications, without required checks left
+  eternally pending by path filters.
+- If a merge queue is adopted, cover the `merge_group` event in the required
+  checks.
+- Apply classification from the diff and a trusted policy, not only from free
+  text or editable labels on the PR.
+- Treat PR content as untrusted input; do not run code from forks with secrets
+  or write privileges. Do not use `pull_request_target` to run the contribution's
+  code.
+- Adopt minimal permissions and Actions references pinned to verified revisions.
+  Do not grant the agent approval of its own exception.
+- Invalidate ratifications materially affected by later changes; branch rules,
+  authorized reviewers and environments must reflect this.
+- Provide for an explicit emergency exception: reason, authority, scope, risk,
+  recovery and later review. Do not hide a bypass as normal success.
 
-O workflow existente, `.github/workflows/smard-ide.yml`, permanece intacto.
-Seus checks de Rust e artefatos são evidência de engenharia, não ratificação
-de requisitos nem comprovação de deploy. Este desenho não configura branch
-protection, environments, merge queue ou acesso.
+This design configures no branch protection, environments, merge queue or
+access.
 
-## 9. Fechamento do ciclo
+## 9. Closing the cycle
 
-Antes de entregar, definir o que será observado, durante quanto tempo e por quem.
-Separar saúde técnica de resultado humano. Registrar o que ocorreu, inclusive
-ausência de dados; uma janela de observação encerrada sem medição não é sucesso.
+Before delivering, define what will be observed, for how long and by whom.
+Separate technical health from human outcome. Record what happened, including
+the absence of data; an observation window closed without measurement is not
+success.
 
-Possíveis desfechos: manter; corrigir defeito; abrir requisito numerado;
-reexplorar problema; reverter entrega; retirar produto. Rollback deve respeitar
-dados e migrações: reverter um binário pode não desfazer efeitos irreversíveis.
+Possible outcomes: maintain; fix a defect; open a numbered requirement;
+re-explore the problem; revert the delivery; withdraw the product. Rollback must
+respect data and migrations: reverting a binary may not undo irreversible
+effects.
 
-## 10. Adoção proporcional e decisões ainda abertas
+## 10. Proportional adoption and decisions still open
 
-Uma primeira iniciativa precisa apenas dos registros necessários para sua
-próxima decisão. Não preencher todos os templates para provar adesão ao método.
-Os templates de [constituição do repositório](templates/CONSTITUICAO-REPOSITORIO.md)
-e [registro de passagem](templates/REGISTRO-PASSAGEM.md) são preparados pelo
-agente quando seus gatilhos ocorrerem, não entregues como formulários iniciais.
-Um ZERO inicial pode ser curto e conter perguntas em aberto; sua ratificação
-depende de elas não inviabilizarem o compromisso autorizado.
+A first initiative needs only the records necessary for its next decision. Do not
+fill in every template to prove adherence to the method. The templates for the
+[constitution of the repository](templates/CONSTITUICAO-REPOSITORIO.md) and the
+[handoff record](templates/REGISTRO-PASSAGEM.md) are prepared by the agent when
+their triggers occur, not handed over as opening forms. An initial ZERO may be
+short and contain open questions; its ratification depends on them not making
+the authorized commitment unviable.
 
-Este desenho ainda precisa de decisão do responsável pelo produto sobre:
+This design still needs a decision from the person responsible for the product
+on:
 
-- Executor de specs/tarefas e mapeamento de seus artefatos nativos.
-- Papéis reais, autoridade de ratificação e limites de execução autônoma.
-- Classificação de risco e checks exigidos em cada contexto.
-- Política de merge, release, exceções e observação operacional.
+- The specs/tasks executor and the mapping of its native artifacts.
+- Real roles, ratification authority and limits of autonomous execution.
+- Risk classification and the checks required in each context.
+- Merge, release, exception and operational observation policy.
 
-Essas escolhas não foram tomadas em nome do humano. O primeiro uso do método
-deve revelar onde ele ajuda e onde cria burocracia; o próprio método é revisável.
+These choices were not made on the human's behalf. The first use of the method
+should reveal where it helps and where it creates bureaucracy; the method itself
+is revisable.

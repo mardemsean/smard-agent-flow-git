@@ -1,17 +1,17 @@
-# Biblioteca de prompts
+# Prompt library
 
-**Estado:** roteiros propostos para uso acompanhado, não comandos instalados.
+**State:** scripts proposed for accompanied use, not installed commands.
 
-Prompts conduzem interação; templates conservam registros. Um prompt não precisa
-terminar criando arquivo, escolhendo tecnologia ou fechando uma decisão.
-Submetem-se às regras canônicas e ao modo combinado com o humano.
+Prompts conduct interaction; templates preserve records. A prompt need not
+end by creating a file, choosing a technology or closing a decision.
+Prompts are subject to the canonical rules and to the mode agreed with the human.
 
-| Roteiro | Disponibilidade | Uso |
+| Script | Availability | Use |
 | --- | --- | --- |
-| [Exploração acompanhada](exploracao-acompanhada.md) | Proposto neste laboratório | Receber inquietação sem exigir identidade de produto |
-| Grill me, síntese ZERO, preflight e entrega | Ainda sem roteiro próprio nesta biblioteca | Não presumir implementação; usar contratos e templates pertinentes com contexto explícito |
+| [Accompanied exploration](exploracao-acompanhada.md) | Proposed in this laboratory | Receive discomfort without demanding a product identity |
+| Grill me, ZERO synthesis, preflight and delivery | Still without a script of its own in this library | Do not presume implementation; use the pertinent contracts and templates with explicit context |
 
-Antes de adotar ou modificar um roteiro, explicitar no chat sua finalidade,
-mudança substantiva e limites. Se gerar documento, seguir o protocolo documental.
-Instalação numa ferramenta, invocação por slash command ou associação a uma skill
-são integrações separadas e exigem verificação.
+Before adopting or modifying a script, make explicit in the chat its purpose,
+substantive change and limits. If it generates a document, follow the documentary protocol.
+Installation in a tool, invocation by slash command or association with a skill
+are separate integrations and require verification.

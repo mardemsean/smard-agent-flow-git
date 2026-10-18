@@ -1,67 +1,67 @@
-# REQ-[NNNN] — [Intenção da mudança]
+# REQ-[NNNN] — [Intent of the change]
 
-**Elaboração no chat:** [origem, conteúdo/revisão apresentados e pendências;
-seguir o protocolo do contrato documental, sem presumir ciência ou concordância]
+**Elaboration in the chat:** [origin, content/revision presented and open points;
+follow the protocol of the documentary contract, without presuming awareness or agreement]
 
-**Arquivo de produto:** `requirement-[NNNN].md`, com quatro dígitos.
-**Estado:** [exploração | em elaboração | em ratificação | ratificado | entregue | abandonado | substituído]
-**Responsável humano:** [pessoa/papel]
-**Revisão/data:** [...]
-**ZERO de referência:** [link e revisão]
-**Issue e explorações relacionadas:** [quando existirem]
-**Substitui / é substituído por:** [ID ou não se aplica]
+**Product file:** `requirement-[NNNN].md`, with four digits.
+**State:** [exploration | in elaboration | in ratification | ratified | delivered | abandoned | superseded]
+**Human responsible:** [person/role]
+**Revision/date:** [...]
+**Reference ZERO:** [link and revision]
+**Related issue and explorations:** [when they exist]
+**Supersedes / is superseded by:** [ID or not applicable]
 
-Este documento representa uma iniciativa de mudança ou expansão do produto,
-não uma tarefa nem a enumeração de todo comportamento atômico. Pode nascer de
-uma nova inquietação e retornar à exploração.
+This document represents an initiative to change or expand the product, not a
+task nor the enumeration of every atomic behavior. It may be born from a new
+discomfort and return to exploration.
 
-## 1. De onde vem a mudança
+## 1. Where the change comes from
 
-[Insatisfação, oportunidade, resultado em produção ou decisão recebida.
-Separar observação, relato, hipótese e interpretação.]
+[Dissatisfaction, opportunity, result in production or a received decision.
+Separate observation, report, hypothesis and interpretation.]
 
-**Quem precisa dela e em qual situação:** [...]
-**O que acontece se não mudarmos:** [...]
+**Who needs it and in which situation:** [...]
+**What happens if we do not change:** [...]
 
-## 2. Intenção e fronteiras
+## 2. Intent and boundaries
 
-**Resultado desejado:** [...]
-**Incluído / excluído:** [...]
-**Como reconhecer melhora:** [critério de resultado e forma de observação]
-**Alternativas, inclusive manter o comportamento atual:** [...]
-**Exploração ou protótipos realizados:** [referências e limites; não inventar etapas]
+**Desired outcome:** [...]
+**Included / excluded:** [...]
+**How to recognize improvement:** [outcome criterion and way of observing]
+**Alternatives, including keeping the current behavior:** [...]
+**Exploration or prototypes carried out:** [references and limits; do not invent stages]
 
-## 3. Relação com a intenção fundadora
+## 3. Relation to the founding intent
 
-**Relação:** [preserva | estende | contradiz e propõe emenda]
-**Trechos e compromissos do ZERO afetados:** [...]
-**Justificativa:** [...]
-**Emenda ao ZERO, se necessária:** [diff proposto e ratificação requerida]
+**Relation:** [preserves | extends | contradicts and proposes an amendment]
+**Passages and commitments of the ZERO affected:** [...]
+**Justification:** [...]
+**Amendment to the ZERO, if necessary:** [proposed diff and required ratification]
 
-Uma mudança que altera fundamento não pode ser ratificada como extensão neutra.
-Se o fundamento mudar, revisar os contratos dependentes; não apenas este arquivo.
+A change that alters the foundation cannot be ratified as a neutral extension. If
+the foundation changes, review the dependent contracts; not only this file.
 
-## 4. Efeitos e incertezas
+## 4. Effects and uncertainties
 
-| Superfície afetada | Efeito esperado / risco | Evidência ou hipótese | Tratamento |
+| Surface affected | Expected effect / risk | Evidence or hypothesis | Treatment |
 | --- | --- | --- | --- |
-| [usuários, compatibilidade, dados, operação, custo etc.] | [...] | [...] | [...] |
+| [users, compatibility, data, operation, cost, etc.] | [...] | [...] | [...] |
 
-**Perguntas impeditivas:** [decisão que cada uma impede]
-**Experimentos ou simulações necessários:** [ou justificativa de dispensa]
-**Riscos residuais:** [responsável e aceite]
-**Condição de pausa, abandono ou revisão:** [...]
+**Blocking questions:** [the decision each one blocks]
+**Experiments or simulations needed:** [or justification for waiving them]
+**Residual risks:** [responsible person and acceptance]
+**Condition for pause, abandonment or review:** [...]
 
-## 5. Passagem e ratificação
+## 5. Passage and ratification
 
-**Próximo estado proposto:** [...]
-**Autorização solicitada e limites:** [...]
-**Ratificação:** [autoridade, data, revisão exata e ressalvas; ou pendente]
-**ADRs / specs / ponte para tarefas:** [referências canônicas quando existirem]
+**Proposed next state:** [...]
+**Authorization requested and limits:** [...]
+**Ratification:** [authority, date, exact revision and reservations; or pending]
+**ADRs / specs / bridge to tasks:** [canonical references when they exist]
 
-## 6. Resultado posterior
+## 6. Later outcome
 
-**PRs e releases:** [...]
-**Observação:** [resultado real, fonte e período; ou ainda não medido]
-**Desfecho:** [manter, corrigir, abrir nova mudança, reexplorar ou retirar]
-**Aprendizado que deve retornar ao ZERO:** [se houver]
+**PRs and releases:** [...]
+**Observation:** [real result, source and period; or not yet measured]
+**Outcome:** [maintain, fix, open a new change, re-explore or withdraw]
+**Learning that must return to the ZERO:** [if any]
