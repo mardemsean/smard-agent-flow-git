@@ -1,143 +1,144 @@
-# REQUIREMENT-ZERO — [Nome do produto]
+# REQUIREMENT-ZERO — [Product name]
 
-**Elaboração no chat:** [origem, conteúdo/revisão apresentados e pendências;
-seguir o protocolo do contrato documental, sem presumir ciência ou concordância]
+**Elaboration in the chat:** [origin, content/revision presented and open points;
+follow the protocol of the documentary contract, without presuming awareness or agreement]
 
-> Antes de decidir o que construir, preservar o que fez valer a pena imaginar.
+> Before deciding what to build, preserve what made it worth imagining.
 
-**Natureza:** documento fundador e evolutivo da intenção do produto.
-**Estado:** [em elaboração | em ratificação | ratificado | substituído]
-**Autor humano da intenção:** [pessoa/papel]
-**Colaboradores e papel da IA:** [identificar contribuições sem atribuir consenso]
-**Revisão e data:** [referência recuperável; data]
-**Origem:** [exploração | decisão preexistente | reconstrução retrospectiva]
-**Ratificação desta revisão:** [pendente ou registro explícito e autoridade]
+**Nature:** founding and evolving document of the product's intent.
+**State:** [in elaboration | in ratification | ratified | superseded]
+**Human author of the intent:** [person/role]
+**Collaborators and the role of AI:** [identify contributions without attributing consensus]
+**Revision and date:** [recoverable reference; date]
+**Origin:** [exploration | pre-existing decision | retrospective reconstruction]
+**Ratification of this revision:** [pending, or explicit record and authority]
 
-## Como habitar este documento
+## How to inhabit this document
 
-Este não é um formulário para autorizar uma conversa, nem uma spec prematura.
-É a ponte entre o que foi vivido, imaginado e experimentado e o compromisso que
-se está disposto a assumir.
+This is not a form to authorize a conversation, nor a premature spec. It is the
+bridge between what was lived, imagined and experimented and the commitment one
+is willing to take on.
 
-Começar pelo que tem vida. Registrar lacunas sem inventar respostas. Remover
-instruções do template na versão de produto. Não publicar transcrições privadas
-ou dados sensíveis. Se a iniciativa já chega madura, registrar sua procedência
-sem encenar exploração anterior.
+Start with what has life. Record gaps without inventing answers. Remove the
+template instructions in the product version. Do not publish private transcripts
+or sensitive data. If the initiative already arrives mature, record its
+provenance without staging an earlier exploration.
 
-As seções abaixo são lentes de elaboração. Antes da ratificação, precisa ser
-possível reconhecer a intenção, seus limites, as lacunas que afetam o compromisso,
-a evidência disponível e quem autorizou avançar. Não se exige uma resposta
-exaustiva em cada seção.
+The sections below are lenses for elaboration. Before ratification, it must be
+possible to recognize the intent, its boundaries, the gaps that affect the
+commitment, the available evidence and who authorized advancing. An exhaustive
+answer in every section is not required.
 
-## 1. A inquietação que nos trouxe até aqui
+## 1. The discomfort that brought us here
 
-[O que incomoda, falta, surpreende ou parece possível? Em que situação isso se
-manifesta? Preservar palavras do humano quando forem importantes ao sentido.]
+[What bothers, is missing, surprises or seems possible? In which situation does
+it show? Preserve the human's words when they matter to the meaning.]
 
-**O que não queremos perder ao formalizar:** [nuance, desejo ou tensão essencial]
+**What we do not want to lose when formalizing:** [essential nuance, desire or tension]
 
-## 2. Para quem isso importa
+## 2. Who this matters to
 
-[Quem vive a situação? Quem se beneficia, quem opera, quem mantém e quem pode
-ser prejudicado? O que sabemos diretamente e o que estamos apenas supondo?]
+[Who lives the situation? Who benefits, who operates, who maintains and who may
+be harmed? What do we know directly and what are we merely assuming?]
 
-**Papel do operador humano:** [usuário, representante, especialista ou combinação]
-**Limites dessa representação:** [perspectivas ainda ausentes]
-**Alternativa atual, inclusive não fazer nada:** [como se vive sem este produto]
+**Role of the human operator:** [user, representative, specialist or a combination]
+**Limits of that representation:** [perspectives still absent]
+**Current alternative, including doing nothing:** [how one lives without this product]
 
-## 3. A transformação desejada
+## 3. The desired transformation
 
-[Descrever uma situação futura concreta, sem obrigar a escolher a implementação.]
+[Describe a concrete future situation, without forcing a choice of implementation.]
 
-**Hoje:** [situação]
-**Queremos tornar possível:** [mudança na experiência ou capacidade]
-**Por que isso merece existir:** [valor humano e/ou operacional]
-**Como perceberemos que melhorou:** [sinais, comparação e modo de observar]
+**Today:** [situation]
+**We want to make possible:** [change in experience or capability]
+**Why this deserves to exist:** [human and/or operational value]
+**How we will notice it improved:** [signals, comparison and way of observing]
 
-## 4. O percurso que sustenta esta direção
+## 4. The path that sustains this direction
 
-| Possibilidade explorada | O que atraiu ou preocupou | O que aprendemos | Destino e motivo |
+| Possibility explored | What attracted or worried | What we learned | Destination and reason |
 | --- | --- | --- | --- |
-| [alternativa, solução pronta ou não construir] | [...] | [...] | [seguir, guardar, descartar] |
+| [alternative, off-the-shelf solution or not building] | [...] | [...] | [proceed, keep, discard] |
 
-[Referenciar sínteses de brainstorm, sessões grill me, pesquisa, engenharia
-reversa e protótipos que realmente ocorreram. Se não ocorreram, dizer isso.]
+[Reference syntheses of brainstorming, grill me sessions, research, reverse
+engineering and prototypes that really happened. If they did not happen, say so.]
 
-**Divergências que permanecem:** [não transformar discordância em consenso]
+**Divergences that remain:** [do not turn disagreement into consensus]
 
-## 5. O que sabemos — e de que maneira
+## 5. What we know — and in what way
 
-| Afirmação | Natureza | Fonte/procedimento e data | Limitação | Efeito na decisão |
+| Statement | Nature | Source/procedure and date | Limitation | Effect on the decision |
 | --- | --- | --- | --- | --- |
-| [...] | [observação, relato, hipótese, inferência ou simulação] | [...] | [...] | [...] |
+| [...] | [observation, report, hypothesis, inference or simulation] | [...] | [...] | [...] |
 
-**Hipótese mais perigosa:** [a que mudaria a direção se fosse falsa]
-**Forma proporcional de confrontá-la:** [experimento, pesquisa ou risco aceito]
+**Most dangerous hypothesis:** [the one that would change the direction if false]
+**Proportional way to confront it:** [experiment, research or accepted risk]
 
-## 6. Intenção fundadora
+## 6. Founding intent
 
-**Este produto existe para:** [enunciado claro em linguagem humana]
+**This product exists to:** [clear statement in human language]
 
-**Compromissos de identidade:** [qualidades e limites cuja perda descaracterizaria
-o produto; não usar termos abstratos sem explicar sua consequência prática]
+**Identity commitments:** [qualities and limits whose loss would denature the
+product; do not use abstract terms without explaining their practical consequence]
 
-**O que não estamos prometendo:** [limites da intenção, não desculpas futuras]
+**What we are not promising:** [limits of the intent, not future excuses]
 
-## 7. Fronteiras do primeiro compromisso
+## 7. Boundaries of the first commitment
 
-**Incluído agora:** [recorte suficientemente pequeno para aprender e entregar]
-**Fora deste compromisso:** [exclusões explícitas e seus motivos]
-**Reservado para possível evolução:** [possibilidades, sem promessa de roadmap]
-**Restrições reais:** [tempo, recursos, privacidade, operação ou outras; origem]
-**Escolhas ainda abertas:** [não congelar stack ou arquitetura por acidente]
+**Included now:** [a cut small enough to learn and deliver]
+**Outside this commitment:** [explicit exclusions and their reasons]
+**Reserved for possible evolution:** [possibilities, without a roadmap promise]
+**Real constraints:** [time, resources, privacy, operation or others; origin]
+**Choices still open:** [do not freeze stack or architecture by accident]
 
-## 8. Relação desejada entre humano e agentes
+## 8. Desired relationship between human and agents
 
-**Onde precisamos de companhia:** [exploração, elaboração, confronto, síntese]
-**Como combinar sessões de provocação:** [objetivo, intensidade e encerramento]
-**O que pode ser delegado:** [classes de decisão, não autorização irrestrita]
-**O que permanece com o humano:** [compromissos e decisões reservadas]
-**Quando chamar de volta:** [condições materiais, não confirmação a cada passo]
+**Where we need companionship:** [exploration, elaboration, confrontation, synthesis]
+**How to agree on provocation sessions:** [goal, intensity and closure]
+**What may be delegated:** [classes of decision, not unrestricted authorization]
+**What stays with the human:** [reserved commitments and decisions]
+**When to call back:** [material conditions, not confirmation at every step]
 
-[O mandato concreto de cada execução será delimitado na ponte para tarefas.]
+[The concrete mandate of each execution will be bounded in the bridge to tasks.]
 
-## 9. Horizonte, consequências e cuidado
+## 9. Horizon, consequences and care
 
-**O que pode envelhecer mal:** [premissas de uso, dependências, custo ou contexto]
-**Quem arca com consequências indesejadas:** [incluir manutenção e efeitos externos]
-**Cenários a examinar no preflight:** [seleção justificada, não futurologia exaustiva]
-**Sinais que exigiriam reconsiderar a intenção:** [eventos observáveis]
+**What may age badly:** [premises of use, dependencies, cost or context]
+**Who bears the unwanted consequences:** [include maintenance and external effects]
+**Scenarios to examine in the preflight:** [justified selection, not exhaustive futurology]
+**Signals that would require reconsidering the intent:** [observable events]
 
-## 10. O que ainda não podemos afirmar
+## 10. What we cannot yet state
 
-| Pergunta ou tensão | Por que importa | Impede qual decisão? | Como tratar / responsável |
+| Question or tension | Why it matters | Which decision does it block? | How to handle / responsible |
 | --- | --- | --- | --- |
-| [...] | [...] | [nenhuma ou decisão específica] | [...] |
+| [...] | [...] | [none or a specific decision] | [...] |
 
-**Razões para pausar ou não construir:** [possibilidades legítimas]
+**Reasons to pause or not build:** [legitimate possibilities]
 
-## 11. Passagem para decisões e especificações
+## 11. Passage to decisions and specifications
 
-**Direção proposta:** [avançar ao preflight | explorar mais | incubar | encerrar]
-**Compromisso que se pede ao humano agora:** [escopo limitado da autorização]
-**O que esta passagem não autoriza:** [ex.: merge, deploy, compra ou acesso]
-**Lacunas impeditivas:** [resolvidas com referências ou impedimentos atuais]
-**Riscos residuais aceitos e por quem:** [explícitos; silêncio não é aceite]
-**Referências de continuidade:** [preflight, ADRs e specs, quando existirem]
+**Proposed direction:** [advance to the preflight | explore more | incubate | close]
+**Commitment asked of the human now:** [limited scope of the authorization]
+**What this passage does not authorize:** [e.g. merge, deploy, purchase or access]
+**Blocking gaps:** [resolved with references, or current impediments]
+**Residual risks accepted and by whom:** [explicit; silence is not acceptance]
+**Continuity references:** [preflight, ADRs and specs, when they exist]
 
-**Registro de ratificação:** [pessoa/papel, data, revisão exata, decisão e ressalvas]
+**Ratification record:** [person/role, date, exact revision, decision and reservations]
 
-A IA pode redigir a proposta. Não pode preencher uma aprovação humana inexistente.
-Antes de pedir ratificação, explicitar no chat a intenção, limites, escolhas,
-interpretações acrescentadas e questões abertas deste documento.
-Ratificar o ZERO não aprova automaticamente ADRs, specs, PRs ou releases futuros.
+The AI may draft the proposal. It may not fill in a human approval that does not
+exist. Before asking for ratification, make explicit in the chat the intent,
+limits, choices, added interpretations and open questions of this document.
+Ratifying the ZERO does not automatically approve future ADRs, specs, PRs or
+releases.
 
-## 12. Vida posterior deste fundamento
+## 12. Later life of this foundation
 
-| Data / revisão | Requisito de mudança | O que mudou na intenção | Motivo e ratificação |
+| Date / revision | Change requirement | What changed in the intent | Reason and ratification |
 | --- | --- | --- | --- |
-| [...] | [requirement-NNNN ou fundação inicial] | [...] | [...] |
+| [...] | [requirement-NNNN or initial foundation] | [...] | [...] |
 
-Requisitos numerados podem preservar, estender ou propor emenda a este fundamento.
-Alterações materiais exigem emenda explícita e nova ratificação; revisões anteriores
-continuam recuperáveis na história.
+Numbered requirements may preserve, extend or propose an amendment to this
+foundation. Material alterations require an explicit amendment and a new
+ratification; earlier revisions remain recoverable in the history.

@@ -1,112 +1,115 @@
-# Baseline metodológica e integrações
+# Methodological baseline and integrations
 
-**Estado:** proposta operacional do desenho autorizado para elaboração.
-**Origem:** discussão de 2026-10-16 sobre documentos de governança, instruções
-de agentes e adaptação de executores. Não comprova implantação de ferramentas.
+**State:** operational proposal of the design authorized for elaboration.
+**Origin:** discussion of 2026-10-16 on governance documents, agent instructions
+and executor adaptation. It does not prove the deployment of any tool.
 
-## 1. Infraestrutura antes do produto
+## 1. Infrastructure before the product
 
-O método pode viver num workspace ou repositório próprio, com regras, prompts
-e templates. Isso não obriga uma pessoa em exploração a criar repo, nomear
-produto ou decidir branches. Um produto maduro pode incorporar a infraestrutura
-diretamente, preservando documentos e políticas preexistentes.
+The method may live in its own workspace or repository, with rules, prompts and
+templates. That does not oblige a person in exploration to create a repo, name a
+product or decide on branches. A mature product may incorporate the
+infrastructure directly, preserving pre-existing documents and policies.
 
-Neste laboratório os arquivos de entrada ficam na raiz. Num produto adotante,
-seus caminhos devem ser definidos e indexados sem sobrescrever regras existentes.
-Usar `AGENTS.md` com esta grafia como convenção do método; adaptar localização e
-descoberta à ferramenta real, sem presumir que todas leiam o mesmo arquivo.
+In this laboratory the entry files sit at the root. In an adopting product their
+paths must be defined and indexed without overwriting existing rules. Use
+`AGENTS.md`, with this spelling, as the method's convention; adapt location and
+discovery to the real tool, without presuming that every tool reads the same file.
 
-## 2. Três conjuntos, não um pacote exigido na primeira conversa
+## 2. Three sets, not one package demanded in the first conversation
 
-| Conjunto | Conteúdo | Gatilho |
+| Set | Content | Trigger |
 | --- | --- | --- |
-| Infraestrutura do método | METHODOLOGY, RULES, INDEX, biblioteca de prompts e templates | Adoção/implementação do método; reutilizável antes do repo do produto |
-| Baseline do repo adotante | README contextualizado, entradas metodológicas ou referências canônicas, AGENTS quando houver execução delegada, inventário de aplicabilidade | Constituição/incorporação do repo e ativação das atividades pertinentes |
-| Complementos condicionais | Adaptadores, skills, MCPs, CI, comunidade, licenças, publicação web, operação | Necessidade real e autorização correspondente; não mera presença no catálogo |
+| Method infrastructure | METHODOLOGY, RULES, INDEX, prompt and template library | Adoption/implementation of the method; reusable before the product repo |
+| Baseline of the adopting repo | Contextualized README, methodological entries or canonical references, AGENTS when there is delegated execution, applicability inventory | Constitution/incorporation of the repo and activation of the pertinent activities |
+| Conditional complements | Adapters, skills, MCPs, CI, community, licenses, web publication, operation | Real need and the corresponding authorization; not mere presence in the catalog |
 
-O índice é obrigatório como mapa da baseline documental deste método. Uma seção
-com referências pode bastar numa adoção pequena, desde que seja fonte canônica
-explicitamente identificada; não duplicar índice e inventários divergentes.
+The index is mandatory as the map of this method's documentary baseline. A
+section with references may suffice in a small adoption, provided it is an
+explicitly identified canonical source; do not duplicate the index and divergent
+inventories.
 
-Biblioteca disponível não significa prompt executado. Template disponível não
-significa documento de produto instanciado. Inventário proposto não significa
-instalação. Cada documento continua sujeito à apresentação no chat.
+An available library does not mean an executed prompt. An available template does
+not mean an instantiated product document. A proposed inventory does not mean an
+installation. Every document remains subject to presentation in the chat.
 
-## 3. Prompts, templates, skills e MCPs têm contratos diferentes
+## 3. Prompts, templates, skills and MCPs have different contracts
 
-| Tipo | Define | Não demonstra por si |
+| Type | Defines | Does not demonstrate by itself |
 | --- | --- | --- |
-| Prompt | Como conduzir uma interação e que contexto usar | Capacidade instalada, consenso ou autorização externa |
-| Template | Estrutura de registro, seus campos e gatilho | Preenchimento correto ou aprovação |
-| Skill | Procedimento reutilizável, entradas, limites e evidências | Disponibilidade em toda ferramenta ou permissão para qualquer ação |
-| MCP | Interface de ferramentas/recursos com acesso e efeitos definidos | Confiança irrestrita no servidor ou autorização de cada operação |
-| Adaptador de agente | Descoberta, formato e encaminhamento para fontes canônicas | Política independente ou compatibilidade não testada |
-| Executor de specs/tarefas | Tradução e execução de contratos com seu próprio formato | Poder para inventar intenção ou ratificar o próprio trabalho |
+| Prompt | How to conduct an interaction and which context to use | Installed capability, consensus or external authorization |
+| Template | Structure of a record, its fields and its trigger | Correct filling or approval |
+| Skill | Reusable procedure, inputs, limits and evidence | Availability in every tool or permission for any action |
+| MCP | Interface of tools/resources with defined access and effects | Unrestricted trust in the server or authorization of each operation |
+| Agent adapter | Discovery, format and routing to canonical sources | Independent policy or untested compatibility |
+| Specs/tasks executor | Translation and execution of contracts in its own format | Power to invent intent or ratify its own work |
 
-Registrar adoções no [inventário de capacidades](templates/CAPACIDADES-INTEGRACOES.md).
-Usar fontes, versões e estados reais. Não catalogar como "instalado e autorizado"
-algo apenas citado na conversa ou encontrado no ambiente.
+Record adoptions in the [capabilities inventory](templates/CAPACIDADES-INTEGRACOES.md).
+Use real sources, versions and states. Do not catalog as "installed and
+authorized" something merely cited in the conversation or found in the
+environment.
 
-## 4. Adaptadores e publicação para máquinas
+## 4. Adapters and publication for machines
 
-`CLAUDE.md` é condicional à integração escolhida. Se adotado, deve encaminhar
-às regras canônicas e acrescentar apenas particularidades verificadas da ferramenta,
-incluindo escopo, descoberta e manutenção. Outros agentes podem precisar de outros
-arquivos. Não criar todos preventivamente nem sobrescrever configuração existente.
+`CLAUDE.md` is conditional on the chosen integration. If adopted, it must route
+to the canonical rules and add only verified particularities of the tool,
+including scope, discovery and maintenance. Other agents may need other files. Do
+not create them all preemptively, nor overwrite existing configuration.
 
-Skills e MCPs não têm um caminho universal de instalação. Documentar escopo
-(projeto, usuário, sessão ou outro suportado), origem, acesso, segredos por
-referência segura, efeitos externos, instalação/remoção e responsável.
+Skills and MCPs have no universal installation path. Document scope (project,
+user, session or another supported one), origin, access, secrets by secure
+reference, external effects, install/removal and the person responsible.
 
-`llms.txt`, se adotado, orienta consumo da documentação publicada. `robots.txt`
-expressa regras de rastreamento web. Não são intercambiáveis com AGENTS ou regras
-de execução, não são controle de acesso e não precisam nascer num repo sem site.
-Sua adoção exige finalidade e comportamento dos consumidores verificados.
+`llms.txt`, if adopted, guides consumption of the published documentation.
+`robots.txt` expresses web crawling rules. They are not interchangeable with
+AGENTS or execution rules, they are not access control, and they need not be born
+in a repo without a site. Their adoption requires a verified purpose and verified
+consumer behavior.
 
-## 5. Ponte futura com Specify / Spec Kit
+## 5. Future bridge with Specify / Spec Kit
 
-O [preflight corrigido](ADAPTACAO-SPECKIT.md) documenta a inspeção posterior de
-arquivos do snapshot local e a passagem proposta entre conversa, revisão,
-ratificação e execução. Distingue evidência lida de decisão relatada e ainda
-não confirma integridade do pacote, compatibilidade em execução ou instalação.
-Em qualquer divergência entre este repositório e mapas externos anteriores (como
-`PONTE-SPECS-TAREFAS--smard-agent-flow-kit.md`), prevalece o contrato de
-[ADAPTACAO-SPECKIT.md](ADAPTACAO-SPECKIT.md).
+The [corrected preflight](ADAPTACAO-SPECKIT.md) documents the later inspection of
+files from the local snapshot and the proposed passage between conversation,
+revision, ratification and execution. It distinguishes evidence read from
+decisions reported, and does not yet confirm package integrity, runtime
+compatibility or installation. In any divergence between this repository and
+earlier external maps (such as `PONTE-SPECS-TAREFAS--smard-agent-flow-kit.md`),
+the contract of [ADAPTACAO-SPECKIT.md](ADAPTACAO-SPECKIT.md) prevails.
 
-O usuário trouxe as seguintes leituras condicionais do projeto como referência
-de desenho. Elas precisam ser localizadas e verificadas na versão escolhida antes
-de implementar qualquer integração:
+The user brought the following conditional readings of the project as design
+references. They must be located and verified in the chosen version before any
+integration is implemented:
 
-| Superfície alterada | Leitura técnica indicada | Contrato a verificar |
+| Surface altered | Technical reading indicated | Contract to verify |
 | --- | --- | --- |
-| CLI | Shared Command Application Architecture; Specify CLI Command Architecture | Fronteira compartilhada, registro, módulos e testes espelhados |
-| MCP de comandos | Shared Command Application Architecture; Specify MCP Command Architecture | Tipos, inventário, efeitos e protocolo local |
-| Integração de agente | Agent Integration Design | Rotas de entrega, formatos, registro, instalação e remoção |
-| Passo de workflow | Workflow Step Design | Registro, validação, execução, retomada e pacotes |
-| Comportamento determinístico | Testing deterministic behavior | Casos positivos/negativos e evidência de regressão |
+| CLI | Shared Command Application Architecture; Specify CLI Command Architecture | Shared boundary, registration, modules and mirrored tests |
+| Command MCP | Shared Command Application Architecture; Specify MCP Command Architecture | Types, inventory, effects and local protocol |
+| Agent integration | Agent Integration Design | Delivery routes, formats, registration, install and removal |
+| Workflow step | Workflow Step Design | Registration, validation, execution, resume and packages |
+| Deterministic behavior | Testing deterministic behavior | Positive/negative cases and regression evidence |
 
-Esses títulos foram inicialmente fornecidos na conversa. A inspeção posterior
-registrada no preflight cobre parte dessas fontes; os demais contratos continuam
-pendentes de leitura específica. Não há compatibilidade executável confirmada.
+These titles were initially supplied in the conversation. The later inspection
+recorded in the preflight covers part of these sources; the remaining contracts
+still await specific reading. No executable compatibility has been confirmed.
 
-Antes de escolher extensão suportada, complemento externo ou modificação do
-executor, registrar: versão e fonte; mecanismo disponível; entradas/saídas;
-propriedade de arquivos gerados; retomada; remoção; testes; riscos de atualização.
-Não duplicar a fonte nativa de specs e tarefas.
+Before choosing a supported extension, an external complement or a modification
+of the executor, record: version and source; available mechanism; inputs and
+outputs; ownership of generated files; resume; removal; tests; update risks. Do
+not duplicate the native source of specs and tasks.
 
-O contrato de integração deve preservar ZERO/requisitos como origem de intenção,
-passar decisões e critérios rastreáveis e apresentar cada documento gerado no
-chat. Geração automática não cria exceção ao diálogo nem autoriza execução de
-compromisso não ratificado.
+The integration contract must preserve the ZERO and the requirements as the
+origin of intent, pass traceable decisions and criteria, and present every
+generated document in the chat. Automatic generation creates no exception to the
+dialogue and does not authorize execution of an unratified commitment.
 
-## 6. O que não foi ativado
+## 6. What was not activated
 
-Memória persistente e sucessão têm contrato próprio em
-[MEMORIA-SESSOES.md](MEMORIA-SESSOES.md). Os dois registros vivem, por proposta,
-num espaço local excluído do Git. O evento precompact exige adaptador verificado;
-nenhum hook ou transporte entre hosts foi ativado por esta baseline.
+Persistent memory and succession have their own contract in
+[MEMORIA-SESSOES.md](MEMORIA-SESSOES.md). The two records live, by proposal, in a
+local space excluded from Git. The precompact event requires a verified adapter;
+no hook or transport between hosts was activated by this baseline.
 
-Esta baseline adiciona orientação documental. Não instala skills/MCPs, não cria
-CLAUDE.md, llms.txt ou robots.txt, não habilita novos jobs, não altera regras
-remotas e não implementa comandos do Specify. A necessidade e a autorização
-dessas ações serão decididas quando seus gatilhos ocorrerem.
+This baseline adds documentary guidance. It installs no skills or MCPs, creates
+no CLAUDE.md, llms.txt or robots.txt, enables no new jobs, alters no remote rules
+and implements no Specify commands. The need for and authorization of those
+actions will be decided when their triggers occur.

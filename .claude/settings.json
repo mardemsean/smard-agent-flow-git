@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "smard-agent-flow-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "mardemsean/smard-agent-flow-git"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "smard-agent-flow@smard-agent-flow-marketplace": true
+  }
+}

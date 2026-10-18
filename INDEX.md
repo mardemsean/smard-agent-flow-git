@@ -1,42 +1,41 @@
-# Índice canônico do método
+# Canonical index of the method
 
-Este índice mapeia responsabilidades, não comprova leitura ou aprovação.
+This index maps responsibilities; it does not prove reading or approval.
 
-## Entrada e governança
+## Entry and governance
 
-| Fonte | Responsabilidade |
+| Source | Responsibility |
 | --- | --- |
-| [README](README.md) | Orientação de entrada e estado do laboratório |
-| [METHODOLOGY](METHODOLOGY.md) | Intenção e articulação do ciclo |
-| [RULES](RULES.md) | Regras de trabalho humano-agente |
-| [AGENTS](AGENTS.md) | Roteamento operacional e leituras por ação |
-| [Workflow](docs/workflow-producao/WORKFLOW.md) | Árvore, estados, passagens e integração com entrega |
-| [Contrato documental](docs/workflow-producao/CONTRATO-DOCUMENTAL.md) | Gatilhos, evidências e elaboração visível |
-| [Baseline](docs/workflow-producao/BASELINE-METODO.md) | Constituição documental e capacidades condicionais |
-| [Prompts](docs/workflow-producao/prompts/README.md) | Interações reutilizáveis e estado dos roteiros |
-| [Memória entre sessões](docs/workflow-producao/MEMORIA-SESSOES.md) | Dois registros persistentes (`sledge-handoff.md`, `DIAMOND.md`), checkpoint e sucessão; hook ainda não implementado |
-| [Adaptação ao Spec Kit](docs/workflow-producao/ADAPTACAO-SPECKIT.md) | Preflight corrigido: diálogo, gates, vínculo de ratificação e execução segmentada |
+| [README](README.md) | Entry orientation and state of the laboratory |
+| [METHODOLOGY](METHODOLOGY.md) | Intent and articulation of the cycle |
+| [RULES](RULES.md) | Human–agent working rules |
+| [AGENTS](AGENTS.md) | Operational routing and readings per action |
+| [Workflow](docs/workflow-producao/WORKFLOW.md) | Tree, states, transitions and integration with delivery |
+| [Documentary contract](docs/workflow-producao/CONTRATO-DOCUMENTAL.md) | Triggers, evidence and visible elaboration |
+| [Baseline](docs/workflow-producao/BASELINE-METODO.md) | Documentary constitution and conditional capabilities |
+| [Prompts](docs/workflow-producao/prompts/README.md) | Reusable interactions and state of the scripts |
+| [Memory between sessions](docs/workflow-producao/MEMORIA-SESSOES.md) | Two persistent records (`sledge-handoff.md`, `DIAMOND.md`), checkpoint and succession; hook not yet implemented |
+| [Adaptation to Spec Kit](docs/workflow-producao/ADAPTACAO-SPECKIT.md) | Corrected preflight: dialogue, gates, ratification binding and segmented execution |
 
-## Templates disponíveis, não documentos de produto preenchidos
+## Available templates, not filled-in product documents
 
-| Template | Gatilho |
+| Template | Trigger |
 | --- | --- |
-| [Exploração](docs/workflow-producao/templates/EXPLORACAO.md) | Preservar aprendizado selecionado |
-| [ZERO](docs/workflow-producao/templates/REQUIREMENT-ZERO.MD) | Elaborar fundamento do produto |
-| [Requisito numerado](docs/workflow-producao/templates/requirement-NNNN.md) | Mudança ou expansão da intenção |
-| [Preflight e ADR](docs/workflow-producao/templates/PREFLIGHT-ADR.md) | Examinar risco e decisão material |
-| [Ponte de execução](docs/workflow-producao/templates/PONTE-SPECS-TAREFAS.md) | Conectar specs/tarefas e mandato |
-| [Entrega e aprendizado](docs/workflow-producao/templates/ENTREGA-APRENDIZADO.md) | Revisar, liberar e observar |
-| [Constituição](docs/workflow-producao/templates/CONSTITUICAO-REPOSITORIO.md) | Necessidade concreta de repo/incorporação |
-| [Passagem](docs/workflow-producao/templates/REGISTRO-PASSAGEM.md) | Conservar decisão/transição relevante |
-| [Capacidades e integrações](docs/workflow-producao/templates/CAPACIDADES-INTEGRACOES.md) | Adotar ou modificar prompt, skill, MCP, agente ou executor |
-| [Checkpoint de sessão](docs/workflow-producao/templates/CHECKPOINT-SESSAO.md) | Preservar e recuperar memória antes da compactação/passagem |
-| [Recibo de ratificação](docs/workflow-producao/templates/RATIFICACAO-DOCUMENTAL.md) | Relacionar conteúdo apresentado, resposta humana e revisão autorizada |
+| [Exploration](docs/workflow-producao/templates/EXPLORACAO.md) | Preserve selected learning |
+| [ZERO](docs/workflow-producao/templates/REQUIREMENT-ZERO.MD) | Elaborate the foundation of the product |
+| [Numbered requirement](docs/workflow-producao/templates/requirement-NNNN.md) | Change or expansion of the intent |
+| [Preflight and ADR](docs/workflow-producao/templates/PREFLIGHT-ADR.md) | Examine risk and a material decision |
+| [Execution bridge](docs/workflow-producao/templates/PONTE-SPECS-TAREFAS.md) | Connect specs/tasks and the mandate |
+| [Delivery and learning](docs/workflow-producao/templates/ENTREGA-APRENDIZADO.md) | Review, release and observe |
+| [Constitution](docs/workflow-producao/templates/CONSTITUICAO-REPOSITORIO.md) | Concrete need for a repo or incorporation |
+| [Handoff](docs/workflow-producao/templates/REGISTRO-PASSAGEM.md) | Preserve a relevant decision or transition |
+| [Capabilities and integrations](docs/workflow-producao/templates/CAPACIDADES-INTEGRACOES.md) | Adopt or modify a prompt, skill, MCP, agent or executor |
+| [Session checkpoint](docs/workflow-producao/templates/CHECKPOINT-SESSAO.md) | Preserve and recover memory before compaction or handoff |
+| [Ratification receipt](docs/workflow-producao/templates/RATIFICACAO-DOCUMENTAL.md) | Relate presented content, human response and authorized revision |
 
-## Limites do inventário
+## Limits of the inventory
 
-O índice cobre o método em elaboração, não certifica toda a documentação ou
-capacidade instalada no laboratório. Componentes existentes como `.claude/`,
-`.github/`, `smard-ide/` e `skills-web/` não foram auditados como integrações
-do método. A presença de um arquivo ou diretório não demonstra ativação,
-autorização ou compatibilidade.
+The index covers the method under elaboration; it does not certify all the
+documentation or capabilities installed in the laboratory. Existing components
+such as `.claude/` were not audited as integrations of the method. The presence of a file or directory does not
+demonstrate activation, authorization or compatibility.

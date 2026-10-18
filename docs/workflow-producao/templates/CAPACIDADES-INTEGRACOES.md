@@ -1,41 +1,42 @@
-# Inventário de capacidades e integrações — [Contexto]
+# Inventory of capabilities and integrations — [Context]
 
-**Estado/data:** [...]
-**Responsável:** [...]
-**Elaboração no chat:** [proposta, conteúdo apresentado e pendências; não presumir aceite]
-**Escopo:** [workspace do método, produto, projeto, usuário ou sessão]
+**State/date:** [...]
+**Responsible:** [...]
+**Elaboration in the chat:** [proposal, content presented and open points; do not presume acceptance]
+**Scope:** [method workspace, product, project, user or session]
 
-Usar quando houver adoção ou alteração concreta. Pode integrar o inventário de
-constituição existente. Não preencher com capacidades presumidas nem copiar
-credenciais. Disponibilidade, instalação e autorização são estados distintos.
+Use when there is a concrete adoption or alteration. It may be part of the
+existing constitution inventory. Do not fill in with presumed capabilities, nor
+copy credentials. Availability, installation and authorization are distinct
+states.
 
-## 1. Catálogo contextual
+## 1. Contextual catalog
 
-| ID / tipo | Finalidade e gatilho | Origem / versão | Localização e escopo | Estado real / evidência | Responsável |
+| ID / type | Purpose and trigger | Origin / version | Location and scope | Real state / evidence | Responsible |
 | --- | --- | --- | --- | --- | --- |
-| [prompt, skill, MCP, adaptador ou executor] | [...] | [...] | [...] | [...] | [...] |
+| [prompt, skill, MCP, adapter or executor] | [...] | [...] | [...] | [...] | [...] |
 
-**Estados possíveis:** proposto, disponível verificado, instalado verificado,
-habilitado, suspenso ou removido. Registrar separadamente o mandato/autorização
-de uso; não inferir permissão a partir de qualquer desses estados.
+**Possible states:** proposed, available and verified, installed and verified,
+enabled, suspended or removed. Record the mandate/authorization of use
+separately; do not infer permission from any of these states.
 
-## 2. Contrato da capacidade adotada
+## 2. Contract of the adopted capability
 
-**Entradas, saídas e documentos gerados:** [...]
-**Fontes canônicas e leituras por ação:** [...]
-**Ferramentas, acessos e efeitos externos:** [...]
-**Autorizações exigidas e limites delegados:** [...]
-**Segredos:** [somente mecanismo/referência segura; nunca valor]
-**Instalação, registro e propriedade dos arquivos:** [...]
-**Retomada, atualização, remoção e preservação dos dados:** [...]
-**Compatibilidade verificada e evidência de funcionamento:** [ou pendente]
-**Testes positivos/negativos e regressão, quando executável:** [...]
-**Como os documentos gerados serão apresentados no chat:** [...]
+**Inputs, outputs and generated documents:** [...]
+**Canonical sources and readings per action:** [...]
+**Tools, access and external effects:** [...]
+**Authorizations required and delegated limits:** [...]
+**Secrets:** [mechanism/secure reference only; never the value]
+**Installation, registration and ownership of the files:** [...]
+**Resume, update, removal and preservation of data:** [...]
+**Verified compatibility and evidence of operation:** [or pending]
+**Positive/negative tests and regression, when executable:** [...]
+**How the generated documents will be presented in the chat:** [...]
 
-## 3. Decisão e manutenção
+## 3. Decision and maintenance
 
-**Alternativas e justificativa:** [...]
-**Riscos, limitações e conflitos com integrações existentes:** [...]
-**Decisão efetiva, autoridade e revisão:** [ou proposta pendente]
-**Condições de reavaliação e responsável:** [...]
-**Referências à implementação e evidências:** [quando existirem]
+**Alternatives and justification:** [...]
+**Risks, limitations and conflicts with existing integrations:** [...]
+**Effective decision, authority and revision:** [or pending proposal]
+**Reassessment conditions and responsible person:** [...]
+**References to the implementation and evidence:** [when they exist]

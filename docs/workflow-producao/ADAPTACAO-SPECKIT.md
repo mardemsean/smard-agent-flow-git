@@ -1,334 +1,347 @@
-# Adaptação ao Spec Kit — passagem entre conversa e execução
+# Adaptation to Spec Kit — the passage between conversation and execution
 
-**Repositório constituído por decisão humana:** `mardemsean/smard-agent-flow-git` (originalmente citado no handoff anterior como `smard-agent-flow-kit`).
-**Estado:** preflight corrigido e proposta de integração, não implementação.
-**Origem:** solicitação humana de 2026-10-16 para corrigir a passagem de ponta a
-ponta, após leitura do handoff de 10:37, mapa PONTE e parecer adversarial.
-**Elaboração no chat:** proposta de correção explicitada antes desta redação;
-detalhes abaixo são recomendações do agente, não escolhas humanas presumidas.
+**Repository constituted by human decision:** `mardemsean/smard-agent-flow-git` (originally cited in the earlier handoff as `smard-agent-flow-kit`).
+**State:** corrected preflight and integration proposal, not an implementation.
+**Origin:** human request of 2026-10-16 to correct the end-to-end passage, after
+reading the 10:37 handoff, the PONTE map and the adversarial opinion.
+**Elaboration in the chat:** correction proposal made explicit before this text
+was drafted; the details below are the agent's recommendations, not presumed
+human choices.
 
-## 1. Escopo e procedência
+## 1. Scope and provenance
 
-Este documento complementa a [baseline](BASELINE-METODO.md) e corrige o mapa
-externo `PONTE-SPECS-TAREFAS--smard-agent-flow-kit.md`, sem sobrescrevê-lo nem
-importar memórias privadas para o repositório. Em qualquer divergência entre o
-mapa externo anterior e este documento, prevalece este `ADAPTACAO-SPECKIT.md`.
+This document complements the [baseline](BASELINE-METODO.md) and corrects the
+external map `PONTE-SPECS-TAREFAS--smard-agent-flow-kit.md`, without overwriting
+it or importing private memories into the repository. In any divergence between
+the earlier external map and this document, this `ADAPTACAO-SPECKIT.md` prevails.
 
-O handoff registra decisões tomadas em outra sessão: Claude Code como integração;
-configuração antes de fork; possibilidade de um tipo de passo Python próprio;
-reavaliação de fork após três pilotos pequenos satisfatórios; `agent-context`
-para seções de contexto; memória via hook Claude fora do executor.
-São decisões **relatadas pelo predecessor**, cuja conversa original não foi
-consultada. Este documento não as transforma em autorização de instalação.
+The handoff records decisions taken in another session: Claude Code as the
+integration; configuration before a fork; the possibility of a Python step type of
+our own; reassessment of a fork after three satisfactory small pilots;
+`agent-context` for context sections; memory via a Claude hook outside the
+executor. These are decisions **reported by the predecessor**, whose original
+conversation was not consulted. This document does not turn them into
+authorization to install.
 
-A opção de gate nativo foi registrada naquele mapa, mas depende de um encaixe
-que o próprio handoff deixou sem resolver. Preservar a intenção de ratificação
-humana; não tratar o mecanismo como tecnicamente resolvido.
+The native-gate option was recorded in that map, but it depends on a fit the
+handoff itself left unresolved. Preserve the intent of human ratification; do
+not treat the mechanism as technically solved.
 
-### Evidência consultada e limite
+### Evidence consulted and its limit
 
-Foram lidos arquivos do snapshot local atribuído a
-`96774bc52fd7dccc7185791e1cac7572b9e09dea`, documentação e implementação de gate
-e despacho de comandos. Não foi conferido novamente o hash do pacote original,
-nem demonstrado que o conteúdo extraído corresponde a esse commit: o diretório
-consultado não contém metadados Git utilizáveis. Antes de qualquer piloto
-executável, é obrigatório verificar esse hash contra um checkout Git íntegro e
-fixar a versão exata da árvore (`workflows/step/` vs `workflows/steps/`). As
-constatações abaixo dizem respeito aos arquivos locais efetivamente lidos, não
-à versão atual na internet.
+Files were read from the local snapshot attributed to
+`96774bc52fd7dccc7185791e1cac7572b9e09dea`, together with the documentation and
+implementation of the gate and command dispatch. The hash of the original
+package was not re-checked, nor was it demonstrated that the extracted content
+corresponds to that commit: the directory consulted contains no usable Git
+metadata. Before any executable pilot, it is mandatory to verify that hash
+against an intact Git checkout and to pin the exact version of the tree
+(`workflows/step/` vs `workflows/steps/`). The findings below concern the local
+files actually read, not the current version on the internet.
 
-Os arquivos de memória citados na captura foram localizados. Seus relatos e
-preferências orientam a retomada, mas não substituem fonte técnica nem concedem
-novas permissões. Não redefinem as funções dos dois registros persistentes.
+The memory files cited in the capture were located. Their reports and
+preferences guide the resumption, but they neither replace a technical source
+nor grant new permissions. They do not redefine the functions of the two
+persistent records.
 
-## 2. Correções factuais com trechos da fonte
+## 2. Factual corrections with excerpts from the source
 
-Os localizadores abaixo são relativos à raiz do snapshot do Spec Kit.
-Trechos são evidência de contrato/implementação lida; testes não foram executados.
+The locators below are relative to the root of the Spec Kit snapshot. Excerpts
+are evidence of contract or implementation read; tests were not executed.
 
-| Tema | Fonte e trecho literal | Consequência para o desenho |
+| Topic | Source and literal excerpt | Consequence for the design |
 | --- | --- | --- |
-| Skills no Claude | `docs/reference/integrations.md:13`: “Skills-based integration; installs skills in `.claude/skills`.” | Skill avulsa não comprova execução de um workflow |
-| Workflow e integração | `design/workflow-step.md:3–6`: “distinct from an agent integration: integrations dispatch work to an agent; steps validate and execute workflow behavior.” | Separar interlocução, despacho e controle de passagem |
-| Gate não se limita a um sim/não sem documento | `src/specify_cli/workflows/step/gate/__init__.py`, `GateStep.execute`: “`show_file` contents are folded into the displayed message” | Pode exibir arquivo no terminal interativo; o parecer anterior omitiu essa capacidade |
-| Sem terminal interativo | Mesmo arquivo, antes de retornar `PAUSED`: “Non-interactive: pause for later resume (the file is not read here)” | Pausa do engine não prova apresentação do documento no chat |
-| Limite de apresentação | `GateStep.MAX_SHOW_FILE_LINES = 200`; `_read_show_file` descreve aviso quando arquivo não pode ser lido | Arquivos com mais de 200 linhas são truncados no terminal interativo e nem sequer são lidos fora de TTY; `show_file` nunca substitui apresentação no chat (R2) |
-| Veredicto por input | `docs/reference/workflows.md:1177–1182`: “Gate auto-decides”; “A non-empty `default` is consumed as a verdict on the first run” | Nunca preencher aprovação antecipada nem confundir input com manifestação humana autenticada |
-| Validação prévia e `on_reject` | `src/specify_cli/workflows/step/gate/__init__.py:56–64, 85–94`: o engine não autovalida antes de `execute`; `on_reject: retry` limpa o input vinculado (`:210`) e exige `""` no enum (`engine.py:528–553`) | Obrigar `specify workflow validate` antes de toda execução e exigir `on_reject: abort` nos gates de ratificação |
-| Interrupção e fim de entrada | `src/specify_cli/workflows/step/gate/__init__.py:257–287`: `Ctrl+C` relança e pausa a corrida (`PAUSED`); `EOF` resolve como rejeição | Tratar `EOF` como rejeição efetiva e `Ctrl+C` como pausa que exige nova apresentação/decisão antes de retomar |
-| Estado da corrida em texto puro | `src/specify_cli/workflows/engine.py:776–777, 1195`: `state.json` e `inputs.json` são gravados em JSON simples | Proibir o agente de editar `state.json`/`inputs.json` ou de disparar `specify workflow resume` com veredicto de aprovação |
-| Retomada | `docs/reference/workflows.md:85–88`: “Updated values affect only unfinished work; completed steps and calls are not reinterpreted or repeated” | Verificador concluído não volta a validar arquivos alterados só porque ocorreu resume |
-| Contexto de agente | `design/integration.md:378–382`: “The opt-in `extensions/agent-context/` owns their defaults”; “`specify init` does not enable the extension implicitly” | Adoção exige operação explícita; não tomar posse de CLAUDE.md inteiro |
-| Hooks condicionais | `templates/commands/specify.md:30`: “If the hook defines a non-empty `condition`, skip the hook” | Não prometer enforcement automático de hook pelo template |
-| Composição | `docs/reference/presets.md:292`: “wrap replaces `{CORE_TEMPLATE}`”; “script wrappers use `$CORE_SCRIPT`” | Distinguir templates/comandos de scripts; composição não é gate |
-| Fonte de instalação | `docs/reference/extensions.md:207`: “Do not flip a discovery-only catalog to `install_allowed`.” | Descoberta não autoriza instalação; fonte confiável precisa de avaliação própria |
-| Saída do comando | `src/specify_cli/workflows/step/command/__init__.py`: docstring diz “Full `stdout`/`stderr` capture is a planned enhancement”, mas as linhas `172–173` já gravam `output["stdout"]` e `output["stderr"]` vindos de `dispatch_result` | O contrato textual declara captura pendente, enquanto o código já grava as chaves conforme a integração; não presumir captura pronta sem verificar a integração específica (§8) |
+| Skills in Claude | `docs/reference/integrations.md:13`: “Skills-based integration; installs skills in `.claude/skills`.” | A loose skill does not prove execution of a workflow |
+| Workflow and integration | `design/workflow-step.md:3–6`: “distinct from an agent integration: integrations dispatch work to an agent; steps validate and execute workflow behavior.” | Separate interlocution, dispatch and transition control |
+| A gate is not limited to a yes/no without a document | `src/specify_cli/workflows/step/gate/__init__.py`, `GateStep.execute`: “`show_file` contents are folded into the displayed message” | It can display a file in the interactive terminal; the earlier opinion omitted this capability |
+| Without an interactive terminal | Same file, before returning `PAUSED`: “Non-interactive: pause for later resume (the file is not read here)” | A pause of the engine does not prove presentation of the document in the chat |
+| Presentation limit | `GateStep.MAX_SHOW_FILE_LINES = 200`; `_read_show_file` describes a warning when the file cannot be read | Files over 200 lines are truncated in the interactive terminal and are not even read outside a TTY; `show_file` never replaces presentation in the chat (R2) |
+| Verdict by input | `docs/reference/workflows.md:1177–1182`: “Gate auto-decides”; “A non-empty `default` is consumed as a verdict on the first run” | Never fill in an approval in advance nor confuse an input with an authenticated human manifestation |
+| Prior validation and `on_reject` | `src/specify_cli/workflows/step/gate/__init__.py:56–64, 85–94`: the engine does not self-validate before `execute`; `on_reject: retry` clears the bound input (`:210`) and requires `""` in the enum (`engine.py:528–553`) | Make `specify workflow validate` mandatory before every execution and require `on_reject: abort` on ratification gates |
+| Interruption and end of input | `src/specify_cli/workflows/step/gate/__init__.py:257–287`: `Ctrl+C` re-raises and pauses the run (`PAUSED`); `EOF` resolves as rejection | Treat `EOF` as an effective rejection and `Ctrl+C` as a pause that requires a new presentation/decision before resuming |
+| Run state in plain text | `src/specify_cli/workflows/engine.py:776–777, 1195`: `state.json` and `inputs.json` are written as plain JSON | Prohibit the agent from editing `state.json`/`inputs.json` or from triggering `specify workflow resume` with an approval verdict |
+| Resume | `docs/reference/workflows.md:85–88`: “Updated values affect only unfinished work; completed steps and calls are not reinterpreted or repeated” | A completed verifier does not re-validate altered files merely because a resume occurred |
+| Agent context | `design/integration.md:378–382`: “The opt-in `extensions/agent-context/` owns their defaults”; “`specify init` does not enable the extension implicitly” | Adoption requires an explicit operation; do not take ownership of the whole CLAUDE.md |
+| Conditional hooks | `templates/commands/specify.md:30`: “If the hook defines a non-empty `condition`, skip the hook” | Do not promise automatic hook enforcement by the template |
+| Composition | `docs/reference/presets.md:292`: “wrap replaces `{CORE_TEMPLATE}`”; “script wrappers use `$CORE_SCRIPT`” | Distinguish templates/commands from scripts; composition is not a gate |
+| Installation source | `docs/reference/extensions.md:207`: “Do not flip a discovery-only catalog to `install_allowed`.” | Discovery does not authorize installation; a trusted source needs its own assessment |
+| Command output | `src/specify_cli/workflows/step/command/__init__.py`: the docstring says “Full `stdout`/`stderr` capture is a planned enhancement”, yet lines `172–173` already write `output["stdout"]` and `output["stderr"]` from `dispatch_result` | The textual contract declares capture pending while the code already writes the keys according to the integration; do not presume capture is ready without verifying the specific integration (§8) |
 
-O código observado organiza tipos em `workflows/step/`, enquanto o design
-consultado menciona `workflows/steps/`. Não copiar caminhos de implementação
-sem conferir a árvore real. Descoberta dessa divergência é mais um motivo para
-fixar e verificar a versão antes de programar o adaptador.
+The code observed organizes types under `workflows/step/`, while the design
+consulted mentions `workflows/steps/`. Do not copy implementation paths without
+checking the real tree. Discovering that divergence is one more reason to pin and
+verify the version before programming the adapter.
 
-**Conclusão:** gate nativo é útil, mas não implementa sozinho o contrato de
-ratificação do método. Tampouco ficou demonstrado que Python é obrigatório em
-qualquer piloto. Um verificador pode comprovar vínculos e integridade; não pode
-inferir compreensão humana nem criar uma fonte confiável de aprovação.
+**Conclusion:** the native gate is useful, but by itself it does not implement
+the method's ratification contract. Nor was it demonstrated that Python is
+mandatory in any pilot. A verifier can prove bindings and integrity; it cannot
+infer human understanding or create a trusted source of approval.
 
-## 3. Arquitetura recomendada: diálogo contínuo, execução segmentada
+## 3. Recommended architecture: continuous dialogue, segmented execution
 
-Não recomendar uma escolha excludente entre “só skills” e “engine governa tudo”.
-O diálogo é a interface humana do método; o engine pode executar segmentos
-delimitados após compromissos adequados. Uma skill pode ajudar a elaborar ou
-apresentar um documento, sem que isso lhe conceda autoridade de liberação.
+Do not recommend an exclusive choice between "skills only" and "the engine
+governs everything". The dialogue is the human interface of the method; the
+engine may execute bounded segments after adequate commitments. A skill may help
+elaborate or present a document without that granting it release authority.
 
 ```mermaid
 flowchart TD
-    A["Exploração no diálogo; sem repo obrigatório"] --> B["Documento candidato elaborado à vista"]
-    B --> C["Fixar revisão e apresentar conteúdo no chat"]
-    C --> D{"Resposta humana"}
-    D -- "Corrigir ou explorar" --> B
-    D -- "Pausar ou não construir" --> P["Preservar contexto sem forçar execução"]
-    D -- "Ratificar escopo e revisão" --> E["Recibo ligado à manifestação real"]
-    E --> F["Conferir revisão, autoridade, mandato e pendências"]
-    F -- "Divergência" --> B
-    F -- "Conferido" --> G["Executar somente segmento autorizado"]
-    G --> H["Conferir artefatos; apresentar cada documento gerado"]
-    H --> I{"Novo compromisso ou mudança material?"}
-    I -- "Sim" --> B
-    I -- "Não; ainda no mandato" --> F
+    A["Exploration in the dialogue; no mandatory repo"] --> B["Candidate document elaborated in plain sight"]
+    B --> C["Pin the revision and present the content in the chat"]
+    C --> D{"Human response"}
+    D -- "Correct or explore" --> B
+    D -- "Pause or not build" --> P["Preserve context without forcing execution"]
+    D -- "Ratify scope and revision" --> E["Receipt bound to the real manifestation"]
+    E --> F["Check revision, authority, mandate and open points"]
+    F -- "Divergence" --> B
+    F -- "Checked" --> G["Execute only the authorized segment"]
+    G --> H["Check artifacts; present every generated document"]
+    H --> I{"New commitment or material change?"}
+    I -- "Yes" --> B
+    I -- "No; still within the mandate" --> F
 ```
 
-### Uma passagem concreta
+### One concrete passage
 
-1. O agente explicita que está preparando o ZERO e com quais fontes/pendências.
-2. Persiste candidato identificado, ainda sem aprová-lo.
-3. Fixa o conteúdo candidato e apresenta sua substância no chat, com acesso
-   ao texto integral e sem ocultar limites/discordâncias.
-4. Pede uma decisão isolada sobre esse conteúdo, não sobre “continuar o workflow”.
-5. Registra a resposta efetiva e o escopo autorizado. Corrigir, pausar ou rejeitar
-   não se convertem em approve.
-6. Confere que a revisão atual corresponde à apresentada e ratificada. Se mudou
-   materialmente, reabre a discussão; não reaproveita o aceite anterior.
-7. Autoriza somente o próximo segmento: por exemplo, elaborar specs sob o ZERO,
-   não implementar, fazer merge ou publicar.
-8. O segmento produz candidatos de specs/planos. O agente os apresenta
-   individualmente no chat (por meio de leitura/captura de artefato ainda a
-   definir conforme §8), explicita escolhas novas e retorna ao compromisso
-   aplicável. Em lote de múltiplos documentos, a rejeição parcial de qualquer
-   item bloqueia o avanço dos demais itens dependentes, salvo autorização humana
-   expressa em contrário.
+1. The agent states that it is preparing the ZERO and with which sources and
+   open points.
+2. It persists an identified candidate, still without approving it.
+3. It pins the candidate content and presents its substance in the chat, with
+   access to the full text and without hiding limits or disagreements.
+4. It asks for an isolated decision about that content, not about "continuing
+   the workflow".
+5. It records the effective response and the authorized scope. Correcting,
+   pausing or rejecting do not convert into approve.
+6. It checks that the current revision matches the one presented and ratified.
+   If it changed materially, it reopens the discussion; it does not reuse the
+   earlier acceptance.
+7. It authorizes only the next segment: for example, elaborating specs under the
+   ZERO, not implementing, merging or publishing.
+8. The segment produces candidate specs/plans. The agent presents them
+   individually in the chat (through artifact reading/capture still to be
+   defined per §8), makes new choices explicit and returns to the applicable
+   commitment. In a batch of several documents, the partial rejection of any
+   item blocks the advance of the other dependent items, unless the human
+   expressly authorizes otherwise.
 
-A fase inicial de exploração no diálogo (nó `A`, correspondente ao espaço
-pré-repositório protegido pela regra R1) permanece inteiramente livre de hashes,
-digests ou recibos burocráticos: o objetivo é proteger a liberdade de pensamento
-do `HOMUS-FIATIVUM`. A obrigação de snapshot com digest nasce somente quando um
-documento candidato (como o `REQUIREMENT-ZERO.MD`) passa a ser redigido e fixado
-nos nós `B` e `C`, trazendo em seu cabeçalho as fontes e pendências oriundas da
-exploração.
+The initial exploration phase in the dialogue (node `A`, corresponding to the
+pre-repository space protected by rule R1) remains entirely free of hashes,
+digests or bureaucratic receipts: the goal is to protect the freedom of thought
+of the `HOMUS-FIATIVUM`. The obligation of a snapshot with a digest is born only
+when a candidate document (such as the `REQUIREMENT-ZERO.MD`) starts to be
+drafted and pinned in nodes `B` and `C`, carrying in its header the sources and
+open points that came from the exploration.
 
-Detalhes de arquitetura, mandato e critérios podem exigir seus próprios aceites.
-Não colocar um único approve no começo de uma corrida specify → plan → tasks →
-implement e tratá-lo como autorização de todos os documentos futuros.
+Architecture details, mandate and criteria may require their own acceptances.
+Do not place a single approve at the start of a specify → plan → tasks →
+implement run and treat it as authorization for all future documents.
 
-## 4. Contrato mínimo da ratificação
+## 4. Minimum contract of the ratification
 
-O [template de recibo](templates/RATIFICACAO-DOCUMENTAL.md) representa o vínculo,
-não uma autorização executável pronta. Pode integrar registro canônico existente.
+The [receipt template](templates/RATIFICACAO-DOCUMENTAL.md) represents the
+binding, not a ready executable authorization. It may be part of an existing
+canonical record.
 
-O vínculo precisa identificar:
+The binding must identify:
 
-- Iniciativa, documento ou conjunto delimitado e a revisão exata apresentada.
-- Conteúdo fixado: snapshot recuperável e digest `SHA-256` obrigatório calculado
-  sobre os bytes exatos gravados em disco (sem normalização), registrando a
-  codificação (`UTF-8`) e o padrão de quebra de linha (`LF` ou `CRLF`) para
-  evitar falsas divergências causadas por `core.autocrlf` no Windows; SHA Git
-  quando aplicável. SHA de HEAD sozinho não identifica arquivo modificado ou
-  não rastreado.
-- Vínculo com a execução no motor: `run_id`, `step_id` do gate, nome do
-  `verdict_input`, comando de retomada e estado de saída, além da sessão ou
-  handoff de origem, impedindo que um recibo seja reaproveitado em outra corrida.
-- Evento de apresentação no chat, conteúdo coberto e pendências de apresentação.
-- Manifestação humana real, origem, identidade/papel, decisão com ressalvas e
-  vínculo verificável com a resposta (digest `SHA-256` da mensagem humana +
-  timestamp + canal guardado em armazenamento privado autorizado, sem copiar
-  texto privado para documentação pública).
-- Escopo autorizado, ações excluídas, validade e condições de reconsideração
-  ou revogação (evento, ator e data).
-- Verificação imediatamente anterior ao uso e próximo segmento autorizado.
+- The initiative, document or bounded set and the exact revision presented.
+- The pinned content: a recoverable snapshot and a mandatory `SHA-256` digest
+  computed over the exact bytes written to disk (no normalization), recording
+  the encoding (`UTF-8`) and the line-ending pattern (`LF` or `CRLF`) to avoid
+  false divergences caused by `core.autocrlf` on Windows; the Git SHA when
+  applicable. The HEAD SHA alone does not identify a modified or untracked file.
+- The binding with the execution in the engine: `run_id`, the gate's `step_id`,
+  the name of the `verdict_input`, the resume command and the exit state, plus
+  the originating session or handoff, preventing a receipt from being reused in
+  another run.
+- The presentation event in the chat, the content covered and the presentation
+  open points.
+- The real human manifestation, its origin, identity/role, the decision with its
+  reservations and a verifiable binding with the response (`SHA-256` digest of
+  the human message + timestamp + channel kept in authorized private storage,
+  without copying private text into public documentation).
+- The authorized scope, excluded actions, validity and the conditions for
+  reconsideration or revocation (event, actor and date).
+- The check immediately before use and the next authorized segment.
 
-Hash não prova verdade nem consentimento; identifica bytes. Não incluir o hash
-do documento dentro dos mesmos bytes que ele pretende identificar: o recibo é
-externo ao snapshot candidato. Um lote usa relação explícita de caminhos/digests.
+A hash proves neither truth nor consent; it identifies bytes. Do not include the
+document's hash inside the same bytes it intends to identify: the receipt is
+external to the candidate snapshot. A batch uses an explicit list of paths and
+digests.
 
-Qualquer alteração pós-ratificação também altera bytes e **presume-se material
-por padrão**, exigindo nova apresentação e nova ratificação humana. O agente é
-proibido de autoclassificar uma edição pós-ratificação como "meramente editorial"
-para contornar novo aceite; somente o humano pode declarar uma mudança como
-editorial, registrando-se mesmo assim o novo snapshot e seu digest `SHA-256`.
+Any post-ratification alteration also alters bytes and **is presumed material by
+default**, requiring a new presentation and a new human ratification. The agent
+is prohibited from classifying a post-ratification edit as "merely editorial" on
+its own to bypass a new acceptance; only the human may declare a change
+editorial, and even then the new snapshot and its `SHA-256` digest are recorded.
 
-O registro de apresentação distingue declaração do agente de evento observável
-na interface. O recibo de decisão referencia a resposta humana; não basta um
-campo `approved: true` escrito pelo próprio agente.
+The presentation record distinguishes the agent's declaration from an event
+observable in the interface. The decision receipt references the human response;
+a field `approved: true` written by the agent itself is not enough.
 
-### Fronteira de confiança e acesso
+### Trust boundary and access
 
-No Caminho A (e em qualquer fluxo sem canal técnico isolado), se o agente
-executor tivesse permissão de enviar o veredicto de retomada, ele próprio seria
-o tradutor da resposta humana para o motor. Por isso, **a regra operacional
-central é que o agente é terminantemente proibido de executar
-`specify workflow resume --input <verdict>=approve` ou de editar `state.json` /
-`inputs.json`**. Quem executa o comando de retomada (ou fornece o veredicto ao
-motor) após ler o documento no chat é exclusivamente o operador humano.
+In Path A (and in any flow without an isolated technical channel), if the
+executing agent had permission to send the resume verdict, it would itself be the
+translator of the human response for the engine. For that reason, **the central
+operational rule is that the agent is strictly prohibited from executing
+`specify workflow resume --input <verdict>=approve` or from editing `state.json`
+/ `inputs.json`**. Whoever runs the resume command (or supplies the verdict to the
+engine) after reading the document in the chat is exclusively the human operator.
 
-Além disso, enquanto o recibo operar em `Nível de garantia = assistido`, fica
-estruturalmente bloqueada qualquer transição automática para segmentos
-irreversíveis ou de efeito externo (`implement`, `merge`, `deploy`, `publish`).
-Enforcement forte depende de canal de decisão e política de acesso fora do
-controle exclusivo desse agente. Não alegar assinatura ou autenticação que a
-interface não ofereça.
+Furthermore, while the receipt operates at `Assurance level = assisted`, any
+automatic transition to irreversible segments or segments with external effect
+(`implement`, `merge`, `deploy`, `publish`) is structurally blocked. Strong
+enforcement depends on a decision channel and an access policy outside the
+exclusive control of that agent. Do not claim a signature or authentication the
+interface does not offer.
 
-Se o chat não expuser evento estável/exportação autorizada, registrar essa
-limitação e usar conferência assistida explícita no piloto. Não inventar um ID
-de chat nem enviar conversas a serviços externos para fabricar evidência.
-Se a política exigir prova independente indisponível, o segmento afetado para.
+If the chat exposes no stable event or authorized export, record that limitation
+and use explicit assisted checking in the pilot. Do not invent a chat ID nor send
+conversations to external services to fabricate evidence. If the policy requires
+independent proof that is unavailable, the affected segment stops.
 
-Recebidos e transcrições privados permanecem em armazenamento autorizado;
-documentação pública só recebe síntese apropriada e referências seguras.
-Arquivos de origem privados não devem ser copiados neste repositório.
+Private receipts and transcripts remain in authorized storage; public
+documentation receives only an appropriate synthesis and safe references. Private
+source files must not be copied into this repository.
 
-## 5. Encaixe no engine sem atribuir poderes inexistentes
+## 5. Fitting into the engine without attributing non-existent powers
 
-### Caminho A: piloto assistido, sem passo Python próprio
+### Path A: assisted pilot, without a Python step of our own
 
-Exploração, apresentação, decisão e conferência de revisão ocorrem no diálogo.
-Após manifestação humana real, **o próprio operador humano dispara a retomada**
-(ou autoriza o início exclusivo do segmento delimitado). Gates nativos pausam
-segmentos e aguardam o veredicto humano; é proibido ao agente injetar o
-veredicto no terminal em nome do humano.
+Exploration, presentation, decision and revision checking happen in the
+dialogue. After a real human manifestation, **the human operator personally
+triggers the resume** (or authorizes the exclusive start of the bounded segment).
+Native gates pause segments and wait for the human verdict; the agent is
+prohibited from injecting the verdict into the terminal on the human's behalf.
 
-É um piloto legítimo de experiência e rastreabilidade, **não enforcement técnico
-independente**, motivo pelo qual o nível `assistido` veda etapas irreversíveis.
-Se os gates do engine forem usados, deve existir execução real do workflow;
-skills soltas não contam como execução desses gates.
+It is a legitimate pilot of experience and traceability, **not independent
+technical enforcement**, which is why the `assisted` level forbids irreversible
+stages. If the engine's gates are used, there must be a real execution of the
+workflow; loose skills do not count as execution of those gates.
 
-### Caminho B: mesmo contrato com verificação determinística
+### Path B: the same contract with deterministic verification
 
-Se o piloto exigir/justificar automação, um único **tipo** de passo próprio
-pode ter múltiplas ocorrências (posicionadas imediatamente após cada gate e
-antes de cada despacho) para conferir recibos, `run_id`, fontes e digests
-`SHA-256` em cada fronteira. Isso não significa um único check no início de
-toda a execução.
+If the pilot requires or justifies automation, a single step **type** of our own
+may have several occurrences (positioned immediately after each gate and before
+each dispatch) to check receipts, `run_id`, sources and `SHA-256` digests at each
+boundary. That does not mean a single check at the start of the whole execution.
 
-O passo recebe contrato explícito de entradas: revisão candidata, recibo,
-origem de decisão admissível, política, escopo e contexto da ocorrência.
-Falha por ausência, divergência, revogação ou fonte não confiável conforme
-política; não substitui lacuna por sucesso.
+The step receives an explicit contract of inputs: candidate revision, receipt,
+admissible decision origin, policy, scope and the context of the occurrence. It
+fails on absence, divergence, revocation or an untrusted source according to the
+policy; it does not replace a gap with success.
 
-Sem interface de evidência confiável, o passo não resolve a aprovação: limita-se
-a integridade estrutural e registra o caráter assistido da decisão.
+Without a trusted evidence interface, the step does not resolve the approval: it
+limits itself to structural integrity and records the assisted character of the
+decision.
 
-### Uso de gate nativo no caminho escolhido
+### Using the native gate on the chosen path
 
-- Executar obrigatoriamente `specify workflow validate` antes de qualquer
-  execução de workflow, pois o engine não autovalida o YAML antes de `execute`.
-- Configurar obrigatoriamente `on_reject: abort` em todos os gates de
-  ratificação documental; nunca usar `on_reject: skip`. Se `on_reject: retry`
-  for estudado no futuro, lembrar que o engine exige `""` no enum de veredicto.
-- Inicializar cada input de veredicto vazio; não reutilizar um approve entre gates.
-- Em modo sem TTY, esperar `PAUSED`, apresentar o documento no chat e aguardar
-  que o próprio operador humano execute o comando de retomada após a decisão.
-- Quando `show_file` for usado em terminal interativo, apontá-lo para o caminho
-  do snapshot imutável referenciado no recibo, nunca para um arquivo de trabalho
-  mutável sujeito a condição de corrida entre exibição e uso.
-- Nunca confiar em `show_file` para cumprir a regra R2: ele trunca arquivos com
-  mais de 200 linhas (`MAX_SHOW_FILE_LINES = 200`), não lê o arquivo em modo sem
-  TTY e não prova apresentação no chat. Documentos acima de 200 linhas exigem
-  sempre apresentação estruturada no chat fora do gate.
-- Tratar `EOF` no gate como rejeição e `Ctrl+C` como pausa (`PAUSED`) que exige
-  nova conferência antes de retomar.
-- Manter gates fora de fan-out; o contrato documentado não suporta
-  `verdict_input` nesse contexto. Não paralelizar ratificações humanas por padrão.
+- Mandatorily run `specify workflow validate` before any workflow execution,
+  because the engine does not self-validate the YAML before `execute`.
+- Mandatorily configure `on_reject: abort` on every documentary ratification
+  gate; never use `on_reject: skip`. If `on_reject: retry` is studied in the
+  future, remember that the engine requires `""` in the verdict enum.
+- Initialize every verdict input empty; do not reuse an approve across gates.
+- In no-TTY mode, wait for `PAUSED`, present the document in the chat and wait
+  for the human operator to personally run the resume command after deciding.
+- When `show_file` is used in an interactive terminal, point it to the path of
+  the immutable snapshot referenced in the receipt, never to a mutable working
+  file subject to a race between display and use.
+- Never rely on `show_file` to satisfy rule R2: it truncates files over 200
+  lines (`MAX_SHOW_FILE_LINES = 200`), does not read the file in no-TTY mode and
+  does not prove presentation in the chat. Documents over 200 lines always
+  require structured presentation in the chat outside the gate.
+- Treat `EOF` at the gate as rejection and `Ctrl+C` as a pause (`PAUSED`) that
+  requires a new check before resuming.
+- Keep gates out of fan-out; the documented contract does not support
+  `verdict_input` in that context. Do not parallelize human ratifications by
+  default.
 
-### Resume e mudança posterior à aprovação
+### Resume and change after approval
 
-O engine reaproveita ocorrências concluídas. Portanto, um check antes de um gate
-não será necessariamente repetido após uma pausa. A conferência deve ocorrer
-no lado ainda não concluído da fronteira e novamente antes de cada ação
-dependente de revisão. Conferir imediatamente antes do despacho ou executar
-sobre snapshot imutável controlado; check separado de arquivo mutável não elimina
-a corrida entre verificação e uso.
+The engine reuses completed occurrences. Therefore a check before a gate will not
+necessarily be repeated after a pause. The check must happen on the not yet
+completed side of the boundary, and again before each action that depends on the
+revision. Check immediately before dispatch or execute over a controlled immutable
+snapshot; a separate check of a mutable file does not eliminate the race between
+verification and use.
 
-Se uma ação pausada/falha vai ser retomada após mudança material de suas entradas,
-interromper essa linhagem e gerar nova revisão/segmento, em vez de esperar que
-resume reinterprete etapas concluídas. O desenho de locks/snapshots e isolamento
-continua requisito de implementação, não capacidade nativa aqui demonstrada.
+If a paused or failed action is going to be resumed after a material change in
+its inputs, interrupt that lineage and generate a new revision/segment, instead
+of expecting resume to reinterpret completed steps. The design of locks,
+snapshots and isolation remains an implementation requirement, not a native
+capability demonstrated here.
 
-## 6. Mapa corrigido do método para superfícies do executor
+## 6. Corrected map of the method onto the executor's surfaces
 
-| Parte do método | Encaixe candidato | Limite e pendência |
+| Part of the method | Candidate fit | Limit and open point |
 | --- | --- | --- |
-| METHODOLOGY/RULES/AGENTS | Fontes canônicas próprias; contexto por `agent-context` opt-in se adotado | Não substituir regras canônicas silenciosamente pela constitution |
-| Constitution do executor | Derivação explícita dos princípios aplicáveis ao trabalho especificado | Documento próprio apresentado no chat, com mapa de origem e sem substituir ZERO |
-| Exploração, grill me e ZERO | Diálogo e roteiros/skills de extensão candidatos | Nomes/IDs e instalação ainda não definidos |
-| Requisitos numerados | Documentos canônicos do método e eventual comando de apoio | Não confundir sequência de mudança com feature/branch do executor |
-| Preflight e ADR | Templates/apoio de extensão, com decisão humana vinculada | Gate é mecanismo possível, não o contrato inteiro |
-| Specify/plan/tasks | Overrides locais para piloto pequeno ou preset para reutilização | Verificar formato, prioridade, materialização e procedência da composição |
-| Ponte/mandato | Referências a specs/tarefas nativas e registro de autorização | Não assumir que plan.md/tasks.md por si preservam todo o mandato |
-| Implementação | Segmento delimitado por critérios, mandato e revisão | Encerra antes de decisões novas não autorizadas |
-| GitHub e entrega | Integração correspondente mais registros de PR, revisão e DEL | `taskstoissues` não implementa revisão, merge, release e observação por inteiro |
-| Memórias de sessão | Contrato próprio e futuro hook Claude fora do engine | Compactação do modelo e checkpoint/resume do workflow são mecanismos diferentes |
+| METHODOLOGY/RULES/AGENTS | Canonical sources of their own; context via opt-in `agent-context` if adopted | Do not silently replace the canonical rules with the constitution |
+| The executor's constitution | Explicit derivation of the principles applicable to the specified work | A document of its own, presented in the chat, with an origin map and without replacing the ZERO |
+| Exploration, grill me and ZERO | Dialogue and candidate extension scripts/skills | Names/IDs and installation not yet defined |
+| Numbered requirements | Canonical documents of the method and a possible support command | Do not confuse the change sequence with the executor's feature/branch |
+| Preflight and ADR | Templates/extension support, with a bound human decision | A gate is a possible mechanism, not the whole contract |
+| Specify/plan/tasks | Local overrides for a small pilot or a preset for reuse | Verify format, priority, materialization and provenance of the composition |
+| Bridge/mandate | References to native specs/tasks and an authorization record | Do not assume plan.md/tasks.md by themselves preserve the whole mandate |
+| Implementation | Segment bounded by criteria, mandate and revision | Ends before new unauthorized decisions |
+| GitHub and delivery | Corresponding integration plus PR, review and DEL records | `taskstoissues` does not implement review, merge, release and observation in full |
+| Session memories | Contract of their own and a future Claude hook outside the engine | Model compaction and workflow checkpoint/resume are different mechanisms |
 
-`wrap`/`prepend` continuam escolhas pendentes de experimento, não decisões aqui
-tomadas. Override local pode ser mais simples no piloto; pacote reutilizável
-exige contrato de distribuição, ownership e remoção verificado.
+`wrap`/`prepend` remain choices pending experiment, not decisions taken here. A
+local override may be simpler in the pilot; a reusable package requires a
+verified contract of distribution, ownership and removal.
 
-Fonte de instalação continua pendente. Não habilitar catálogo community para
-instalar. Avaliar fonte local ou artefato específico verificado antes de pedir
-autorização de operação. Não executar init/add/install neste preflight.
+The installation source remains pending. Do not enable the community catalog for
+installation. Evaluate a local source or a specific verified artifact before
+asking for operational authorization. Do not run init/add/install in this
+preflight.
 
-Migrar extensão/preset para fork pode exigir adaptação de registro, estrutura,
-ownership e testes. A promessa anterior de “nada descartável/sem reescrita” não
-é garantia demonstrada; reaproveitamento é objetivo a medir nos pilotos.
+Migrating an extension/preset to a fork may require adapting registration,
+structure, ownership and tests. The earlier promise of "nothing disposable, no
+rewriting" is not a demonstrated guarantee; reuse is a goal to be measured in
+the pilots.
 
-## 7. Verificação exigida antes de um piloto executável
+## 7. Verification required before an executable pilot
 
-| Caso | Resultado esperado |
+| Case | Expected result |
 | --- | --- |
-| Candidato apresentado e ratificado, revisão inalterada, mandato válido | Só o segmento autorizado pode iniciar |
-| Arquivo ainda sem apresentação, recibo ausente ou resposta ambígua | Não converter em aprovação |
-| Resposta rejeita, pede correção ou pausa (ou rejeição parcial em lote) | Nenhum despacho autorizado por aquele gate; `on_reject: abort` encerra o segmento |
-| Arquivo muda após apresentação/aceite (mesmo sob alegação de ajuste editorial) | Vínculo inválido; presume-se mudança material e exige nova ratificação humana (salvo declaração humana expressa de edição editorial com novo digest `SHA-256`) |
-| Diferença de quebra de linha (`CRLF` vs `LF`) no Windows | Digest `SHA-256` calculado sobre bytes exatos gravados em disco com registro explícito de `UTF-8` e `LF`/`CRLF`, sem normalização silenciosa |
-| Documento com mais de 200 linhas em gate com `show_file` | Tratado como truncado no terminal; exige apresentação completa/estruturada no chat fora do gate |
-| Gate sem TTY e input vazio | Pausa (`PAUSED`); agente apresenta no chat e somente o humano executa o comando de retomada |
-| Agente tenta executar `specify workflow resume --input ...=approve` ou editar `state.json`/`inputs.json` | Violação crítica de fronteira; envio do veredicto de retomada é exclusivo do operador humano |
-| Tentativa de reaproveitar recibo em outro `run_id` ou `step_id` | Bloqueado pela conferência obrigatória de `run_id`, `step_id` e `verdict_input` no recibo |
-| Gate recebe `EOF` ou `Ctrl+C` | `EOF` resolve como rejeição (`abort`); `Ctrl+C` pausa (`PAUSED`) sem aprovar |
-| Execução de workflow sem validação prévia do YAML | Proibido; executar `specify workflow validate` antes de `specify workflow run` |
-| Gate recebe approve por default/input não originado de resposta humana | Política da ponte impede tratar como ratificação |
-| Resume reaproveita check concluído | Verificador posicionado imediatamente após cada gate confere estado; não confia no check anterior à pausa |
-| Repetição/interrupção de passo próprio | Sem duplicar efeitos; explicitar garantia at-least-once |
-| Recibo em `Nível de garantia = assistido` | Bloqueia estruturalmente segmentos irreversíveis (`implement`, `merge`, `deploy`, `publish`) |
-| Saída transmitida apenas ao terminal | Não marcar documento como apresentado no chat |
-| Sucessor recupera memória | Conferir revisão/mandato e sessão de origem no recibo; não herdar approve genérico |
+| Candidate presented and ratified, revision unchanged, mandate valid | Only the authorized segment may start |
+| File not yet presented, receipt missing or ambiguous response | Do not convert into approval |
+| Response rejects, asks for correction or pauses (or partial rejection in a batch) | No dispatch authorized by that gate; `on_reject: abort` ends the segment |
+| File changes after presentation/acceptance (even under a claim of editorial adjustment) | Binding invalid; a material change is presumed and a new human ratification is required (unless the human expressly declares an editorial edit with a new `SHA-256` digest) |
+| Line-ending difference (`CRLF` vs `LF`) on Windows | `SHA-256` digest computed over the exact bytes written to disk with explicit record of `UTF-8` and `LF`/`CRLF`, without silent normalization |
+| Document over 200 lines at a gate with `show_file` | Treated as truncated in the terminal; requires complete/structured presentation in the chat outside the gate |
+| Gate without TTY and empty input | Pause (`PAUSED`); the agent presents in the chat and only the human runs the resume command |
+| Agent attempts to run `specify workflow resume --input ...=approve` or to edit `state.json`/`inputs.json` | Critical boundary violation; sending the resume verdict is exclusive to the human operator |
+| Attempt to reuse a receipt in another `run_id` or `step_id` | Blocked by the mandatory check of `run_id`, `step_id` and `verdict_input` in the receipt |
+| Gate receives `EOF` or `Ctrl+C` | `EOF` resolves as rejection (`abort`); `Ctrl+C` pauses (`PAUSED`) without approving |
+| Workflow execution without prior YAML validation | Prohibited; run `specify workflow validate` before `specify workflow run` |
+| Gate receives approve by default/input not originating from a human response | The bridge policy prevents treating it as ratification |
+| Resume reuses a completed check | A verifier positioned immediately after each gate checks the state; it does not trust the check made before the pause |
+| Repetition/interruption of a step of our own | No duplicated effects; make the at-least-once guarantee explicit |
+| Receipt at `Assurance level = assisted` | Structurally blocks irreversible segments (`implement`, `merge`, `deploy`, `publish`) |
+| Output transmitted only to the terminal | Do not mark the document as presented in the chat |
+| Successor recovers memory | Check revision/mandate and originating session in the receipt; do not inherit a generic approve |
 
-Estes são critérios do futuro piloto, não testes já executados. Contrato de
-StepBase exige validação em execução, estado por ocorrência, thread-safety,
-contextos independentes de fan-out e tolerância a repetição de efeitos.
+These are criteria for the future pilot, not tests already executed. The
+StepBase contract requires runtime validation, per-occurrence state,
+thread-safety, fan-out-independent contexts and tolerance to repeated effects.
 
-## 8. Recomendação e decisões ainda abertas
+## 8. Recommendation and decisions still open
 
-**Recomendação:** começar com um pequeno piloto assistido da passagem ZERO →
-spec candidata, usando execução segmentada e recibo de revisão. Não adotar
-enforcement independente como alegação até verificar o canal de evidência.
-Selecionar o passo próprio somente se sua função determinística e fonte de
-dados estiverem definidas; não adicioná-lo para simular compreensão humana.
+**Recommendation:** start with a small assisted pilot of the passage ZERO →
+candidate spec, using segmented execution and a revision receipt. Do not adopt
+independent enforcement as a claim until the evidence channel is verified. Select
+the step of our own only if its deterministic function and data source are
+defined; do not add it to simulate human understanding.
 
-**Ainda abertos:** escolha do caminho A/B; versão e integridade do executor;
-experiência de pausa/retomada no Claude; mecanismo de captura e apresentação;
-canal confiável de decisão; formato e armazenamento dos recibos; distribuição
-e comandos exatos de instalação; nomes de skills e composição.
+**Still open:** choice of path A/B; version and integrity of the executor;
+pause/resume experience in Claude; capture and presentation mechanism; trusted
+decision channel; format and storage of receipts; distribution and exact
+installation commands; skill names and composition.
 
-O piloto recomendado não está autorizado para execução por este documento.
-Nenhum desses detalhes pendentes foi decidido em nome do humano. A entrega
-desta rodada é a correção rastreável do desenho.
+The recommended pilot is not authorized for execution by this document. None of
+these pending details was decided on the human's behalf. The deliverable of this
+round is the traceable correction of the design.

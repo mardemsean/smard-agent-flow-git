@@ -1,51 +1,52 @@
 ---
 name: method
-description: Use ao explorar uma ideia de software, criar ou alterar documentos do método, fundar requisitos, decidir arquitetura, especificar, delegar, abrir PR, entregar ou passar sessão no fluxo smard-agent-flow-git (inquietação à produção). Indica quais documentos canônicos ler antes de agir.
+description: Use when exploring a software idea, creating or altering the method's documents, founding requirements, deciding architecture, specifying, delegating, opening a PR, delivering or handing off a session in the smard-agent-flow-git flow (discomfort to production). Indicates which canonical documents to read before acting.
 ---
 
-# smard-agent-flow: roteador do método
+# smard-agent-flow: router of the method
 
-Esta skill é só um ponteiro. A política vive no repositório canônico; não a
-redefina aqui nem de memória.
+This skill is only a pointer. The policy lives in the canonical repository; do
+not redefine it here nor from memory.
 
-- Repositório local: `B:\agent-deliverables-to-sean\smard-agent-flow-git`
-- Remoto (privado): `mardemsean/smard-agent-flow-git`
+- Precedence of the ROOT: `${user_config.method_repo}` if non-empty and existing; otherwise the packaged copy `${CLAUDE_PLUGIN_ROOT}/method`.
+- Remote (private): `mardemsean/smard-agent-flow-git`
 
-Se o caminho local não existir, diga isso ao operador e pare; não improvise as regras.
+All relative paths below start from the ROOT. If neither exists, tell the
+operator and stop; do not improvise the rules.
 
-## 1. Sempre, ao começar
+## 1. Always, when starting
 
-Leia, nesta ordem: `AGENTS.md`, `METHODOLOGY.md`, `RULES.md`, `INDEX.md`
-(todos na raiz do repositório). Conflito material entre fontes é explicitado ao
-operador, nunca resolvido em silêncio.
+Read, in this order: `AGENTS.md`, `METHODOLOGY.md`, `RULES.md`, `INDEX.md`
+(all at the repository root). A material conflict between sources is made
+explicit to the operator, never resolved in silence.
 
-## 2. Depois, leia o contrato da ação
+## 2. Then read the contract of the action
 
-Caminhos relativos à raiz do repositório. A tabela completa e a evidência
-esperada estão em `AGENTS.md`; esta é apenas a rota.
+Paths relative to the repository root. The full table and the expected evidence
+are in `AGENTS.md`; this is only the route.
 
-| Ação | Leia |
+| Action | Read |
 | --- | --- |
-| Explorar intenção | `docs/workflow-producao/WORKFLOW.md`, `docs/workflow-producao/prompts/exploracao-acompanhada.md`, `docs/workflow-producao/templates/EXPLORACAO.md` |
-| Criar ou alterar documento | `docs/workflow-producao/CONTRATO-DOCUMENTAL.md` (protocolo de elaboração visível) |
-| Fundar ou mudar intenção | `docs/workflow-producao/templates/REQUIREMENT-ZERO.MD`, `docs/workflow-producao/templates/requirement-NNNN.md` |
-| Constituir repositório ou baseline | `docs/workflow-producao/BASELINE-METODO.md`, `docs/workflow-producao/templates/CONSTITUICAO-REPOSITORIO.md` |
-| Decisão arquitetural | `docs/workflow-producao/templates/PREFLIGHT-ADR.md` |
-| Especificar ou delegar | `docs/workflow-producao/ADAPTACAO-SPECKIT.md`, `docs/workflow-producao/templates/PONTE-SPECS-TAREFAS.md`, `docs/workflow-producao/templates/RATIFICACAO-DOCUMENTAL.md` |
-| Alterar prompt, skill, MCP ou adaptador | `docs/workflow-producao/BASELINE-METODO.md`, `docs/workflow-producao/templates/CAPACIDADES-INTEGRACOES.md` |
-| Abrir PR, integrar ou liberar | `docs/workflow-producao/templates/ENTREGA-APRENDIZADO.md` (registro DEL) |
-| Passar ou retomar sessão | `docs/workflow-producao/MEMORIA-SESSOES.md`, `docs/workflow-producao/templates/CHECKPOINT-SESSAO.md`, `docs/workflow-producao/templates/REGISTRO-PASSAGEM.md` |
+| Explore an intent | `docs/workflow-producao/WORKFLOW.md`, `docs/workflow-producao/prompts/exploracao-acompanhada.md`, `docs/workflow-producao/templates/EXPLORACAO.md` |
+| Create or alter a document | `docs/workflow-producao/CONTRATO-DOCUMENTAL.md` (visible elaboration protocol) |
+| Found or change an intent | `docs/workflow-producao/templates/REQUIREMENT-ZERO.MD`, `docs/workflow-producao/templates/requirement-NNNN.md` |
+| Constitute a repository or baseline | `docs/workflow-producao/BASELINE-METODO.md`, `docs/workflow-producao/templates/CONSTITUICAO-REPOSITORIO.md` |
+| Architectural decision | `docs/workflow-producao/templates/PREFLIGHT-ADR.md` |
+| Specify or delegate | `docs/workflow-producao/ADAPTACAO-SPECKIT.md`, `docs/workflow-producao/templates/PONTE-SPECS-TAREFAS.md`, `docs/workflow-producao/templates/RATIFICACAO-DOCUMENTAL.md` |
+| Alter a prompt, skill, MCP or adapter | `docs/workflow-producao/BASELINE-METODO.md`, `docs/workflow-producao/templates/CAPACIDADES-INTEGRACOES.md` |
+| Open a PR, integrate or release | `docs/workflow-producao/templates/ENTREGA-APRENDIZADO.md` (DEL record) |
+| Hand off or resume a session | `docs/workflow-producao/MEMORIA-SESSOES.md`, `docs/workflow-producao/templates/CHECKPOINT-SESSAO.md`, `docs/workflow-producao/templates/REGISTRO-PASSAGEM.md` |
 
-## 3. Fronteiras (resumo; a fonte é `AGENTS.md`, seção Fronteiras)
+## 3. Boundaries (summary; the source is `AGENTS.md`, section Boundaries)
 
-- Não preencher aprovação humana, não gerar documentação em silêncio, não tratar
-  merge como ratificação genérica.
-- Não criar repositório, publicar, conceder acesso, instalar skills ou MCPs, nem
-  habilitar CI com base só num template.
-- Toda elaboração documental é mostrada no chat antes de virar arquivo.
+- Do not fill in human approval, do not generate documentation in silence, do not
+  treat a merge as generic ratification.
+- Do not create a repository, publish, grant access, install skills or MCPs, or
+  enable CI on the basis of a template alone.
+- Every documentary elaboration is shown in the chat before it becomes a file.
 
-## 4. O que ainda não existe
+## 4. What does not exist yet
 
-Hook de compactação, recuperação automática de sessão e a integração com o
-Specify não estão implementados; o piloto do Spec Kit não está autorizado. Não
-afirme o contrário. Este plugin não instala hooks nem executa nada.
+The compaction hook, automatic session recovery and the Specify integration are
+not implemented; the Spec Kit pilot is not authorized. Do not claim otherwise.
+This plugin installs no hooks and executes nothing.

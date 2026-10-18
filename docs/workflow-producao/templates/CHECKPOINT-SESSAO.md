@@ -1,55 +1,56 @@
-# Checkpoint — [ID técnico]
+# Checkpoint — [Technical ID]
 
-Envelope de continuidade, não substituto dos dois contratos de memória.
-O agente prepara; não é formulário para o humano. Não registrar segredos.
+Continuity envelope, not a substitute for the two memory contracts.
+The agent prepares it; it is not a form for the human. Do not record secrets.
 
-**Estado:** [em preparação | parcial | pronto | falha]
-**Evento/data:** [precompact, encerramento ou passagem explícita; evidência real]
-**Origem e linhagem:** [sessão/agente, checkpoint anterior, sucessor se conhecido]
-**Contexto:** [repo, workspace, branch, HEAD e estado local não commitado]
-**Destino persistente autorizado:** [localização e condições de acesso]
-**Elaboração no chat:** [conteúdo apresentado, referência e lacunas de apresentação]
+**State:** [in preparation | partial | ready | failure]
+**Event/date:** [precompact, closure or explicit handoff; real evidence]
+**Origin and lineage:** [session/agent, previous checkpoint, successor if known]
+**Context:** [repo, workspace, branch, HEAD and uncommitted local state]
+**Authorized persistent destination:** [location and access conditions]
+**Elaboration in the chat:** [content presented, reference and presentation gaps]
 
-## 1. Inventário obrigatório dos dois registros
+## 1. Mandatory inventory of the two records
 
-| Arquivo | Estado real | Revisão/origem e localização | Verificação / lacuna |
+| File | Real state | Revision/origin and location | Verification / gap |
 | --- | --- | --- | --- |
 | sledge-handoff.md | [...] | [...] | [...] |
 | DIAMOND.md | [...] | [...] | [...] |
 
-Não interpretar funções pelos nomes. Ausente ou não definido não é transferido.
-Preservar arquivo existente sem fabricar conteúdo para completar a tabela.
+Do not interpret functions from the names. Absent or undefined is not
+transferred. Preserve an existing file without fabricating content to complete
+the table.
 
-## 2. Contexto transversal de recuperação
+## 2. Cross-cutting recovery context
 
-**Intenção/mandato vigentes e suas referências:** [...]
-**Pedidos humanos ainda abertos e decisões pendentes:** [...]
-**Estado observado do trabalho e evidências:** [...]
-**Alterações locais, processos ou efeitos externos a conferir:** [...]
-**Incertezas, divergências e riscos de perda:** [...]
+**Intent/mandate in force and their references:** [...]
+**Human requests still open and pending decisions:** [...]
+**Observed state of the work and evidence:** [...]
+**Local changes, processes or external effects to check:** [...]
+**Uncertainties, divergences and risks of loss:** [...]
 
-Estas informações ajudam a recuperar contexto sem definir antecipadamente em
-qual dos dois documentos cada conteúdo pertencerá no método amadurecido.
+This information helps recover context without deciding in advance which of the
+two documents each piece of content will belong to in the matured method.
 
-## 3. Verificação antes da compactação
+## 3. Verification before compaction
 
-**Conjunto persistido e legível:** [evidência ou falha]
-**Completude declarada e lacunas:** [...]
-**Como selecionar este pacote sem confundir linhagens:** [...]
-**Hook executado e resultado efetivo:** [ou ainda não implementado/não observado]
-**Compactação pode ser bloqueada neste harness?** [evidência ou desconhecido]
-**Limitações comunicadas:** [...]
+**Set persisted and readable:** [evidence or failure]
+**Declared completeness and gaps:** [...]
+**How to select this package without confusing lineages:** [...]
+**Hook executed and effective result:** [or not yet implemented/not observed]
+**Can compaction be blocked in this harness?** [evidence or unknown]
+**Limitations communicated:** [...]
 
-Não marcar pronto por ter apenas criado este envelope.
+Do not mark ready for having merely created this envelope.
 
-## 4. Recibo do sucessor
+## 4. Successor's receipt
 
-**Agente/sessão e data de recuperação:** [preencher só quando ocorrer]
-**Pacote e arquivos efetivamente lidos:** [...]
-**Lacunas e diferenças contra estado atual do workspace:** [...]
-**Autorizações que precisam ser reconfirmadas:** [...]
-**Conteúdo ainda não apresentado ao humano:** [...]
-**Encaminhamento:** [continuar no mandato, reconciliar, aguardar decisão]
+**Agent/session and date of recovery:** [fill in only when it happens]
+**Package and files actually read:** [...]
+**Gaps and differences against the current state of the workspace:** [...]
+**Authorizations that need to be reconfirmed:** [...]
+**Content not yet presented to the human:** [...]
+**Routing:** [continue within the mandate, reconcile, wait for a decision]
 
-Conservar o snapshot de origem; recibo pode ser registro separado referenciando-o.
-Não simular leitura, transporte concluído ou aceite do humano.
+Preserve the originating snapshot; the receipt may be a separate record that
+references it. Do not simulate reading, completed transport or human acceptance.

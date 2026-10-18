@@ -1,74 +1,74 @@
-# DEL-[NNNN] — [Entrega / iniciativa]
+# DEL-[NNNN] — [Delivery / initiative]
 
-**Elaboração no chat:** [origem, conteúdo/revisão apresentados e pendências;
-seguir o protocolo do contrato documental, sem presumir ciência ou concordância]
+**Elaboration in the chat:** [origin, content/revision presented and open points;
+follow the protocol of the documentary contract, without presuming awareness or agreement]
 
-**Requisito e revisão:** [...]
-**Ponte de execução:** [...]
-**Estado:** [preparação | em revisão | integrado | liberado | em observação | concluído | revertido]
-**Responsáveis por integração, release e observação:** [...]
+**Requirement and revision:** [...]
+**Execution bridge:** [...]
+**State:** [preparation | under review | integrated | released | under observation | completed | reverted]
+**Those responsible for integration, release and observation:** [...]
 
-## 1. Bloco para descrição de PR
+## 1. Block for the PR description
 
-Copiar apenas esta seção quando for útil como corpo de PR. Não é um template
-obrigatório instalado no GitHub.
+Copy only this section when it is useful as a PR body. It is not a mandatory
+template installed on GitHub.
 
-**Classe(s):** [exploração/documentação, experimento, requisito/decisão,
-implementação, correção, release/operação]
-**Intenção atendida e referências:** [...]
-**Mudança efetiva e limites:** [...]
-**Critérios de spec cobertos:** [...]
-**Evidências e checks:** [referências aos resultados; incluir falhas e não aplicáveis]
-**Compatibilidade, dados e operação:** [...]
-**Riscos, divergências e pendências:** [...]
-**Ratificações e revisões necessárias:** [...]
-**Apresentação deste PR e documentos alterados no chat:** [referências por
-documento, escolhas substantivas e pendências; merge não equivale a ciência]
-**O que este merge não entrega ou não autoriza:** [...]
+**Class(es):** [exploration/documentation, experiment, requirement/decision,
+implementation, fix, release/operation]
+**Intent served and references:** [...]
+**Effective change and limits:** [...]
+**Spec criteria covered:** [...]
+**Evidence and checks:** [references to the results; include failures and non-applicable ones]
+**Compatibility, data and operation:** [...]
+**Risks, divergences and open points:** [...]
+**Ratifications and reviews required:** [...]
+**Presentation of this PR and of the altered documents in the chat:** [references per
+document, substantive choices and open points; merge is not equivalent to awareness]
+**What this merge does not deliver or does not authorize:** [...]
 
-Não marcar um critério como atendido apenas porque a tarefa correspondente
-foi concluída. Revisar a classe a partir do diff efetivo.
+Do not mark a criterion as met merely because the corresponding task was
+completed. Review the class from the effective diff.
 
-## 2. Integração
+## 2. Integration
 
-**PRs e revisão final integrada:** [...]
-**Checks exigidos e resultados da revisão atual:** [...]
-**Revisão humana ou delegação aplicável:** [...]
-**Desvios autorizados, justificativa e responsável:** [...]
-**Condição de merge e registro da integração:** [...]
+**PRs and final integrated review:** [...]
+**Required checks and results of the current revision:** [...]
+**Human review or applicable delegation:** [...]
+**Authorized deviations, justification and responsible person:** [...]
+**Merge condition and record of the integration:** [...]
 
-## 3. Liberação
+## 3. Release
 
-**Artefato e revisão exatos:** [...]
-**Ambiente, público e estratégia de exposição:** [...]
-**Mudanças de dados ou migrações:** [...]
-**Autoridade e autorização de release:** [ou pendente]
-**Condição de interrupção e responsável:** [...]
-**Recuperação / rollback e suas limitações:** [...]
-**Registro de liberação:** [quando efetivamente ocorrer]
+**Exact artifact and revision:** [...]
+**Environment, audience and exposure strategy:** [...]
+**Data changes or migrations:** [...]
+**Release authority and authorization:** [or pending]
+**Interruption condition and responsible person:** [...]
+**Recovery / rollback and its limitations:** [...]
+**Release record:** [when it actually happens]
 
-Um build publicado como artefato não comprova implantação. Reverter código
-não desfaz automaticamente migrações, notificações ou efeitos em terceiros.
+A build published as an artifact does not prove deployment. Reverting code does
+not automatically undo migrations, notifications or effects on third parties.
 
-## 4. Observação previamente combinada
+## 4. Observation agreed in advance
 
-| Pergunta | Sinal / fonte | Referência anterior e alvo, se aplicável | Janela | Responsável | Resposta ao desvio |
+| Question | Signal / source | Earlier reference and target, if applicable | Window | Responsible | Response to deviation |
 | --- | --- | --- | --- | --- | --- |
-| [saúde operacional] | [...] | [...] | [...] | [...] | [...] |
-| [benefício esperado ao usuário] | [...] | [...] | [...] | [...] | [...] |
+| [operational health] | [...] | [...] | [...] | [...] | [...] |
+| [expected benefit to the user] | [...] | [...] | [...] | [...] | [...] |
 
-**Limites de coleta e privacidade:** [...]
-**Como distinguir falta de dados de resultado positivo:** [...]
+**Collection and privacy limits:** [...]
+**How to tell lack of data from a positive result:** [...]
 
-## 5. O que aconteceu
+## 5. What happened
 
-**Resultados observados, fontes e período:** [ou ainda não observado]
-**Diferença entre expectativa e realidade:** [...]
-**Incidentes, efeitos indesejados e resposta:** [...]
-**Hipóteses confirmadas, enfraquecidas ou ainda abertas:** [...]
-**Desfecho e autoridade:** [manter, corrigir, reverter, retirar ou reexplorar]
-**Novo requisito ou emenda ao ZERO:** [referências, se necessários]
-**Data/gatilho da próxima observação:** [se houver trabalho ainda aberto]
+**Observed results, sources and period:** [or not yet observed]
+**Difference between expectation and reality:** [...]
+**Incidents, unwanted effects and response:** [...]
+**Hypotheses confirmed, weakened or still open:** [...]
+**Outcome and authority:** [maintain, fix, revert, withdraw or re-explore]
+**New requirement or amendment to the ZERO:** [references, if necessary]
+**Date/trigger of the next observation:** [if work remains open]
 
-Concluir uma entrega não obriga declarar sucesso. Uma iniciativa pode terminar
-com aprendizado útil, ausência de evidência ou decisão de não prosseguir.
+Completing a delivery does not oblige declaring success. An initiative may end
+with useful learning, absence of evidence or a decision not to proceed.

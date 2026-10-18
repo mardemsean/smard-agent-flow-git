@@ -1,43 +1,43 @@
-# Registro de passagem — [Ação ou decisão relevante]
+# Handoff record — [Relevant action or decision]
 
-Usar dentro do documento, issue, PR ou registro canônico pertinente. Só criar
-arquivo separado quando necessário. Não preencher por comando ou interação.
-O agente prepara; o humano decide apenas o que exigir sua autoridade.
-Preparar não é redigir nos bastidores: explicitar este registro e seu conteúdo
-no chat, conforme o protocolo do contrato documental.
+Use inside the pertinent document, issue, PR or canonical record. Create a
+separate file only when necessary. Do not fill in per command or interaction.
+The agent prepares; the human decides only what requires their authority.
+Preparing is not drafting backstage: make this record and its content explicit
+in the chat, according to the protocol of the documentary contract.
 
-**Contexto/data:** [...]
-**Diálogo de origem e conteúdo/revisão apresentados:** [...]
-**Interpretações do agente e pontos sem concordância:** [...]
-**Estado de origem → estado proposto:** [...]
-**Ação que se pretende realizar:** [...]
-**Motivo para realizá-la agora:** [...]
+**Context/date:** [...]
+**Originating dialogue and content/revision presented:** [...]
+**Agent's interpretations and points without agreement:** [...]
+**Origin state → proposed state:** [...]
+**Action intended:** [...]
+**Reason to carry it out now:** [...]
 
-## Antes
+## Before
 
-**Intenção e revisão de referência:** [se já houver compromisso formal]
-**Gatilhos documentais acionados e origem de cada exigência:** [...]
-**Evidências antecedentes e localização canônica:** [...]
-**Lacunas e qual decisão/ação impedem:** [...]
-**Autorizações necessárias:** [autoridade, escopo e evidência; ou pendentes]
-**Trabalho permitido enquanto houver pendências:** [...]
+**Intent and reference revision:** [if a formal commitment already exists]
+**Documentary triggers fired and origin of each requirement:** [...]
+**Antecedent evidence and canonical location:** [...]
+**Gaps and which decision/action they block:** [...]
+**Authorizations required:** [authority, scope and evidence; or pending]
+**Work permitted while open points remain:** [...]
 
-## Decisão
+## Decision
 
-**Proposta do agente:** [...]
-**Decisão efetiva:** [prosseguir, limitar, retornar, pausar ou encerrar; ou pendente]
-**Quem decidiu e com qual autoridade:** [...]
-**Revisão/escopo exato a que se aplica:** [...]
-**Riscos residuais, ressalvas e validade:** [...]
+**Agent's proposal:** [...]
+**Effective decision:** [proceed, limit, return, pause or close; or pending]
+**Who decided and with which authority:** [...]
+**Exact revision/scope it applies to:** [...]
+**Residual risks, reservations and validity:** [...]
 
-Não preencher decisão humana ainda inexistente. Escolha local dentro de mandato
-vigente pode referenciar esse mandato, sem exigir nova aprovação.
+Do not fill in a human decision that does not yet exist. A local choice within a
+mandate in force may reference that mandate, without requiring a new approval.
 
-## Depois
+## After
 
-**O que efetivamente ocorreu:** [preencher após o evento; não previsão]
-**Evidência, resultado e revisão/artefato envolvidos:** [...]
-**Registros que precisam ser atualizados ou substituídos:** [...]
-**Quem recebe o resultado / próximo estado:** [...]
-**Condição de revisão ou retorno:** [...]
-**Preservação e acesso:** [quando retenção ou sensibilidade exigirem cuidado]
+**What actually happened:** [fill in after the event; not a forecast]
+**Evidence, result and revision/artifact involved:** [...]
+**Records that need to be updated or superseded:** [...]
+**Who receives the result / next state:** [...]
+**Review or return condition:** [...]
+**Preservation and access:** [when retention or sensitivity require care]

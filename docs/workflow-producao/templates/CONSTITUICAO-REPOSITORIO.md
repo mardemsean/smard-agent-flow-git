@@ -1,65 +1,67 @@
-# Constituição e inventário — [Identificador provisório suficiente]
+# Constitution and inventory — [Provisional identifier is enough]
 
-**Elaboração no chat:** [origem, conteúdo/revisão apresentados e pendências;
-seguir o protocolo do contrato documental, sem presumir ciência ou concordância]
+**Elaboration in the chat:** [origin, content/revision presented and open points;
+follow the protocol of the documentary contract, without presuming awareness or agreement]
 
-**Natureza:** registro preparado quando surgir necessidade de repositório ou de
-incorporação a um existente. Não é formulário de entrada na exploração.
-**Estado/data:** [...]
-**Responsável por manter o inventário:** [...]
+**Nature:** record prepared when the need for a repository, or for incorporation
+into an existing one, arises. It is not an entry form for the exploration.
+**State/date:** [...]
+**Responsible for maintaining the inventory:** [...]
 
-## 1. Por que um repositório agora
+## 1. Why a repository now
 
-**Necessidade concreta:** [versionamento, colaboração, CI, distribuição ou outra]
-**Destino:** [existente autorizado | novo proposto | ainda não decidido]
-**Alternativa sem criar repo:** [...]
-**Nome técnico sugerido pelo agente:** [opcional, provisório, sem compromisso de marca]
-**O que permanece sem nome/decisão:** [...]
+**Concrete need:** [versioning, collaboration, CI, distribution or another]
+**Destination:** [existing and authorized | new, proposed | not yet decided]
+**Alternative without creating a repo:** [...]
+**Technical name suggested by the agent:** [optional, provisional, no brand commitment]
+**What remains without a name/decision:** [...]
 
-## 2. Operações e autoridade
+## 2. Operations and authority
 
-| Operação proposta | Destino / consequência | Autoridade competente | Registro da autorização | Estado |
+| Proposed operation | Destination / consequence | Competent authority | Record of the authorization | State |
 | --- | --- | --- | --- | --- |
-| [criar, publicar conteúdo, mudar visibilidade, conceder acesso etc.] | [...] | [...] | [ou pendente] | [...] |
+| [create, publish content, change visibility, grant access, etc.] | [...] | [...] | [or pending] | [...] |
 
-**Dono/organização e visibilidade:** [propostos ou efetivamente autorizados]
-**Conteúdo que pode ser incorporado:** [...]
-**Conteúdo privado excluído da publicação:** [descrever classes, não expor conteúdo]
-**Regras existentes e fontes:** [não substituir políticas preexistentes]
+**Owner/organization and visibility:** [proposed or actually authorized]
+**Content that may be incorporated:** [...]
+**Private content excluded from publication:** [describe classes, do not expose content]
+**Existing rules and sources:** [do not replace pre-existing policies]
 
-Não executar operação externa com base apenas neste rascunho. Autorizar criação
-não autoriza tornar público, conceder acessos ou publicar memórias privadas.
+Do not run an external operation on the basis of this draft alone. Authorizing
+creation does not authorize making public, granting access or publishing private
+memories.
 
-## 3. Inventário de aplicabilidade
+## 3. Applicability inventory
 
-Preparar a partir do catálogo do contrato documental. Não copiar todas as linhas
-como pendências: registrar obrigações acionadas e não aplicabilidades relevantes.
-O inventário é revisado ao mudar distribuição, usuários, stack, organização,
-tratamento de dados ou responsabilidade operacional.
+Prepare from the catalog of the documentary contract. Do not copy every row as a
+pending item: record triggered obligations and relevant non-applicabilities. The
+inventory is reviewed when distribution, users, stack, organization, data
+handling or operational responsibility change.
 
-| Obrigação / origem e fonte | Gatilho / ação dependente | Registro canônico e revisão | Estado / justificativa | Quem prepara / quem decide | Consumidor | Rever quando |
+| Obligation / origin and source | Trigger / dependent action | Canonical record and revision | State / justification | Who prepares / who decides | Consumer | Review when |
 | --- | --- | --- | --- | --- | --- | --- |
 | [...] | [...] | [...] | [...] | [...] | [...] | [...] |
 
-**Estados:** não acionado; pendente; rascunho; em revisão; vigente; não aplicável
-com motivo; exceção autorizada; substituído.
+**States:** not triggered; pending; draft; under review; in force; not applicable
+with reason; authorized exception; superseded.
 
-**Obrigações adicionais da organização, stack, setor ou contrato:** [...]
-**Incertezas que precisam de responsável competente:** [...]
+**Additional obligations of the organization, stack, sector or contract:** [...]
+**Uncertainties that need a competent responsible person:** [...]
 
-## 4. Pendências e exceções
+## 4. Open points and exceptions
 
-| Lacuna | Ação específica impedida | Trabalho que pode continuar | Responsável / resolução | Exceção, autoridade e validade se admitida |
+| Gap | Specific action blocked | Work that may continue | Responsible / resolution | Exception, authority and validity if admitted |
 | --- | --- | --- | --- | --- |
 | [...] | [...] | [...] | [...] | [...] |
 
-Não marcar documento inexistente como vigente nem interpretar silêncio como aceite.
-Exceção não pode ser concedida por quem não detém autoridade sobre a obrigação.
+Do not mark a non-existent document as in force, nor interpret silence as
+acceptance. An exception cannot be granted by someone who holds no authority over
+the obligation.
 
-## 5. Incorporação e continuidade
+## 5. Incorporation and continuity
 
-**Procedência das sínteses e protótipos incorporados:** [...]
-**Mapa de IDs provisórios para referências canônicas:** [...]
-**Baseline criada / equivalente já existente:** [referências, sem duplicação]
-**Configurações remotas efetivamente verificadas:** [evidência; ou não configuradas]
-**Próximo gatilho de revisão do inventário:** [...]
+**Provenance of the incorporated syntheses and prototypes:** [...]
+**Map of provisional IDs to canonical references:** [...]
+**Baseline created / equivalent already existing:** [references, without duplication]
+**Remote configurations actually verified:** [evidence; or not configured]
+**Next trigger for reviewing the inventory:** [...]

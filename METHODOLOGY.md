@@ -1,63 +1,67 @@
-# Metodologia — da inquietação à produção
+# Methodology — from discomfort to production
 
-**Estado:** desenho autorizado para elaboração; detalhes operacionais permanecem
-propostos quando não houver decisão explícita.
-**Escopo:** este laboratório desenvolve o método; sua infraestrutura não constitui
-automaticamente o produto que uma exploração futura poderá originar.
-**Origem:** diálogo de 2026-10-16 sobre continuidade entre criação, especificação
-e entrega. A autorização para prosseguir não ratifica escolhas técnicas futuras.
+**State:** design authorized for elaboration; operational details remain
+proposed wherever no explicit decision exists.
+**Scope:** this laboratory develops the method; its infrastructure does not
+automatically constitute the product a future exploration may originate.
+**Origin:** dialogue of 2026-10-16 on continuity between creation, specification
+and delivery. Authorization to proceed does not ratify future technical choices.
 
-## Intenção
+## Intent
 
-Acompanhar o humano desde uma inquietação ainda sem linguagem até os efeitos de
-software em uso. Articular exploração criativa, desenvolvimento orientado por
-especificações e execução orientada por tarefas sem reduzir a pessoa a
-fornecedora de briefing, supervisora de comandos ou aprovadora de merges.
+To accompany the human from a discomfort that still has no language to the
+effects of software in use. To articulate creative exploration, spec-driven
+development and task-driven execution without reducing the person to a supplier
+of briefings, a supervisor of commands or an approver of merges.
 
-## Ciclo e entradas
+## Cycle and entry points
 
-Exploração e ideação ↔ prototipagem → síntese da intenção → preflight e
-simulações proporcionais ao risco → decisões e specs → tarefas sob mandato →
-implementação e PR → revisão e merge → entrega → observação e nova exploração.
+Exploration and ideation ↔ prototyping → intent synthesis → preflight and
+simulations proportional to risk → decisions and specs → tasks under a mandate →
+implementation and PR → review and merge → delivery → observation and new
+exploration.
 
-Não é uma sequência obrigatória de cerimônias. Pode-se começar adiante quando
-há maturidade e evidência suficientes; retornar, incubar ou não construir são
-desfechos legítimos. O nascimento do repositório é independente da maturidade
-da intenção. Nome de produto, repo e branch não são requisitos para pensar.
+This is not a mandatory sequence of ceremonies. One may start further along when
+there is enough maturity and evidence; returning, incubating or not building are
+legitimate outcomes. The birth of the repository is independent of the maturity
+of the intent. A product name, a repo and a branch are not prerequisites for
+thinking.
 
-O [workflow canônico](docs/workflow-producao/WORKFLOW.md) contém a árvore de
-decisões, estados, critérios de passagem, posição do humano e contrato de
-integração com GitHub. Este arquivo é sua porta de entrada, não outra definição
-concorrente do ciclo.
+The [canonical workflow](docs/workflow-producao/WORKFLOW.md) holds the decision
+tree, the states, the transition criteria, the position of the human and the
+contract of integration with GitHub. This file is its entry door, not a second,
+competing definition of the cycle.
 
-## Documentos que acompanham o amadurecimento
+## Documents that accompany maturation
 
-O `REQUIREMENT-ZERO.MD` funda e acompanha a intenção do produto entre exploração
-e formalização. Os `requirement-NNNN.md` representam mudanças posteriores,
-inclusive propostas de emenda ao fundamento. ADRs registram decisões materiais;
-specs estabelecem contratos verificáveis; tarefas organizam execução, não
-substituem intenção nem verificação.
+`REQUIREMENT-ZERO.MD` founds and accompanies the intent of the product between
+exploration and formalization. The `requirement-NNNN.md` files represent later
+changes, including proposed amendments to the foundation. ADRs record material
+decisions; specs establish verifiable contracts; tasks organize execution, they
+replace neither intent nor verification.
 
-O [contrato documental](docs/workflow-producao/CONTRATO-DOCUMENTAL.md) é a fonte
-dos gatilhos, responsabilidades e evidências. O agente explicita cada documento
-no chat antes de redigir e apresenta conteúdo substantivo depois. Rascunho,
-apresentação, resposta humana e ratificação são estados diferentes.
+The [documentary contract](docs/workflow-producao/CONTRATO-DOCUMENTAL.md) is the
+source of triggers, responsibilities and evidence. The agent makes each document
+explicit in the chat before drafting it and presents its substantive content
+afterwards. Draft, presentation, human response and ratification are different
+states.
 
-## Infraestrutura e executores
+## Infrastructure and executors
 
-O método, suas regras, prompts e templates podem existir num workspace anterior
-ao repositório do produto. A [baseline](docs/workflow-producao/BASELINE-METODO.md)
-define sua incorporação proporcional. Ferramentas específicas recebem adaptadores,
-não versões concorrentes da política.
+The method, its rules, prompts and templates may exist in a workspace that
+precedes the product repository. The [baseline](docs/workflow-producao/BASELINE-METODO.md)
+defines their proportional incorporation. Specific tools receive adapters, not
+competing versions of the policy.
 
-Spec Kit ou outro executor poderá receber requisitos e decisões amadurecidos e
-devolver specs, planos, tarefas e evidências. A rota técnica e a versão ainda
-precisam ser verificadas; este desenho não instala nem modifica o executor.
+Spec Kit or another executor may receive matured requirements and decisions and
+return specs, plans, tasks and evidence. The technical route and the version
+still need to be verified; this design neither installs nor modifies the
+executor.
 
-## Evolução do próprio método
+## Evolution of the method itself
 
-Mudanças seguem as [regras](RULES.md), com discussão visível e procedência.
-Experiência de uso pode justificar simplificação ou revisão. Não converter
-templates vazios, etapas cumpridas ou volume documental em medida de maturidade.
-Papéis reais, limites de autonomia, executor e políticas remotas de integração
-continuam dependentes de decisões contextualizadas.
+Changes follow the [rules](RULES.md), with visible discussion and provenance.
+Experience of use may justify simplification or revision. Do not convert empty
+templates, completed stages or documentary volume into a measure of maturity.
+Real roles, limits of autonomy, the executor and remote integration policies
+remain dependent on contextualized decisions.
