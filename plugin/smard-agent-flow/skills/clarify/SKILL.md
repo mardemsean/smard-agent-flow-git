@@ -14,9 +14,9 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 ## Read before acting (mandatory)
 
 1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
-2. `docs/workflow-producao/WORKFLOW.md` (invariants; grill me with an agreed goal and stop condition)
-3. `docs/workflow-producao/prompts/exploracao-acompanhada.md`
-4. `docs/workflow-producao/templates/EXPLORACAO.md`
+2. `docs/production-workflow/WORKFLOW.md` (invariants; grill me with an agreed goal and stop condition)
+3. `docs/production-workflow/prompts/accompanied-exploration.md`
+4. `docs/production-workflow/templates/EXPLORATION.md`
 5. `.claude/skills/grill-me/SKILL.md` of the ROOT (form of the interview)
 6. The target document, if the operator indicated one.
 

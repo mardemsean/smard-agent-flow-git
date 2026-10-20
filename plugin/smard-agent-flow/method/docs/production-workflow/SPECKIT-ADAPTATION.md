@@ -10,10 +10,10 @@ human choices.
 
 ## 1. Scope and provenance
 
-This document complements the [baseline](BASELINE-METODO.md) and corrects the
-external map `PONTE-SPECS-TAREFAS--smard-agent-flow-kit.md`, without overwriting
+This document complements the [baseline](METHOD-BASELINE.md) and corrects the
+external map `SPECS-TASKS-BRIDGE--smard-agent-flow-kit.md`, without overwriting
 it or importing private memories into the repository. In any divergence between
-the earlier external map and this document, this `ADAPTACAO-SPECKIT.md` prevails.
+the earlier external map and this document, this `SPECKIT-ADAPTATION.md` prevails.
 
 The handoff records decisions taken in another session: Claude Code as the
 integration; configuration before a fork; the possibility of a Python step type of
@@ -138,7 +138,7 @@ implement run and treat it as authorization for all future documents.
 
 ## 4. Minimum contract of the ratification
 
-The [receipt template](templates/RATIFICACAO-DOCUMENTAL.md) represents the
+The [receipt template](templates/DOCUMENTARY-RATIFICATION.md) represents the
 binding, not a ready executable authorization. It may be part of an existing
 canonical record.
 

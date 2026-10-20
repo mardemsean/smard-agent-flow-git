@@ -15,15 +15,15 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 
 1. The general route: `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1:
    `AGENTS.md`, `METHODOLOGY.md`, `RULES.md`, `INDEX.md`.
-2. `docs/workflow-producao/BASELINE-METODO.md`
-3. `docs/workflow-producao/templates/CONSTITUICAO-REPOSITORIO.md`
-4. `docs/workflow-producao/CONTRATO-DOCUMENTAL.md` (visible elaboration protocol)
-5. `docs/workflow-producao/ADAPTACAO-SPECKIT.md`, section 6 (the executor's constitution = explicit derivation)
+2. `docs/production-workflow/METHOD-BASELINE.md`
+3. `docs/production-workflow/templates/REPOSITORY-CONSTITUTION.md`
+4. `docs/production-workflow/DOCUMENTARY-CONTRACT.md` (visible elaboration protocol)
+5. `docs/production-workflow/SPECKIT-ADAPTATION.md`, section 6 (the executor's constitution = explicit derivation)
 6. Policies already existing in the target repository, if any.
 
 ## Artifact
 
-A `CONSTITUICAO-REPOSITORIO` proposal following the template, with a contextual inventory and
+A `REPOSITORY-CONSTITUTION` proposal following the template, with a contextual inventory and
 an origin map for each principle. The proposal is shown in the chat before it becomes a file.
 The persisted file is a draft until human ratification (RULES R3).
 

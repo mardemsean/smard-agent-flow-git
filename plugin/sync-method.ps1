@@ -24,7 +24,7 @@ $files = @(
     'explore.md', 'specs.md', 'adrZERO.md', 'plugin\README.md',
     '.claude\skills\grill-me\SKILL.md'
 )
-$files += Get-ChildItem (Join-Path $repo 'docs\workflow-producao') -Recurse -File |
+$files += Get-ChildItem (Join-Path $repo 'docs\production-workflow') -Recurse -File |
     ForEach-Object { $_.FullName.Substring($repo.Length + 1) }
 
 $drift = @()

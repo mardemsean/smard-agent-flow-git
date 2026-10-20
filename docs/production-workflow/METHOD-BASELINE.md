@@ -44,7 +44,7 @@ installation. Every document remains subject to presentation in the chat.
 | Agent adapter | Discovery, format and routing to canonical sources | Independent policy or untested compatibility |
 | Specs/tasks executor | Translation and execution of contracts in its own format | Power to invent intent or ratify its own work |
 
-Record adoptions in the [capabilities inventory](templates/CAPACIDADES-INTEGRACOES.md).
+Record adoptions in the [capabilities inventory](templates/CAPABILITIES-INTEGRATIONS.md).
 Use real sources, versions and states. Do not catalog as "installed and
 authorized" something merely cited in the conversation or found in the
 environment.
@@ -68,13 +68,13 @@ consumer behavior.
 
 ## 5. Future bridge with Specify / Spec Kit
 
-The [corrected preflight](ADAPTACAO-SPECKIT.md) documents the later inspection of
+The [corrected preflight](SPECKIT-ADAPTATION.md) documents the later inspection of
 files from the local snapshot and the proposed passage between conversation,
 revision, ratification and execution. It distinguishes evidence read from
 decisions reported, and does not yet confirm package integrity, runtime
 compatibility or installation. In any divergence between this repository and
-earlier external maps (such as `PONTE-SPECS-TAREFAS--smard-agent-flow-kit.md`),
-the contract of [ADAPTACAO-SPECKIT.md](ADAPTACAO-SPECKIT.md) prevails.
+earlier external maps (such as `SPECS-TASKS-BRIDGE--smard-agent-flow-kit.md`),
+the contract of [SPECKIT-ADAPTATION.md](SPECKIT-ADAPTATION.md) prevails.
 
 The user brought the following conditional readings of the project as design
 references. They must be located and verified in the chosen version before any
@@ -105,7 +105,7 @@ dialogue and does not authorize execution of an unratified commitment.
 ## 6. What was not activated
 
 Persistent memory and succession have their own contract in
-[MEMORIA-SESSOES.md](MEMORIA-SESSOES.md). The two records live, by proposal, in a
+[SESSION-MEMORY.md](SESSION-MEMORY.md). The two records live, by proposal, in a
 local space excluded from Git. The precompact event requires a verified adapter;
 no hook or transport between hosts was activated by this baseline.
 

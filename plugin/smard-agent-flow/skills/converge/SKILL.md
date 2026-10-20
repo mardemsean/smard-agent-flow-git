@@ -14,9 +14,9 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 ## Read before acting (mandatory)
 
 1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
-2. The current PONTE-SPECS-TAREFAS (coverage map, commitments without coverage, changes during execution).
-3. `docs/workflow-producao/templates/ENTREGA-APRENDIZADO.md`
-4. `docs/workflow-producao/WORKFLOW.md`, sections on PRs/issues and on closing the cycle.
+2. The current SPECS-TASKS-BRIDGE (coverage map, commitments without coverage, changes during execution).
+3. `docs/production-workflow/templates/LEARNING-DELIVERY.md`
+4. `docs/production-workflow/WORKFLOW.md`, sections on PRs/issues and on closing the cycle.
 5. Review and release rules existing in the target repository (AGENTS.md, row "Open a PR, integrate or release").
 
 ## Artifact

@@ -1,6 +1,6 @@
 ---
 name: tasks
-description: Equivalent of /speckit.tasks in the smard-agent-flow-git method. Assembles the PONTE-SPECS-TAREFAS - coverage map from the ratified requirement to the executor's canonical specs and tasks, discovered commitments and a bounded autonomy mandate. Use when specifying or delegating execution.
+description: Equivalent of /speckit.tasks in the smard-agent-flow-git method. Assembles the SPECS-TASKS-BRIDGE - coverage map from the ratified requirement to the executor's canonical specs and tasks, discovered commitments and a bounded autonomy mandate. Use when specifying or delegating execution.
 argument-hint: "[ratified requirement and chosen executor]"
 ---
 
@@ -15,14 +15,14 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 
 1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
 2. The ratified requirement and the applicable ADRs (AGENTS.md, row "Specify or delegate").
-3. `docs/workflow-producao/templates/PONTE-SPECS-TAREFAS.md`
-4. `docs/workflow-producao/templates/RATIFICACAO-DOCUMENTAL.md`
-5. `docs/workflow-producao/ADAPTACAO-SPECKIT.md` (continuous dialogue, segmented execution, ratification binding)
-6. `docs/workflow-producao/WORKFLOW.md`, sections on the mandate and the documentary set.
+3. `docs/production-workflow/templates/SPECS-TASKS-BRIDGE.md`
+4. `docs/production-workflow/templates/DOCUMENTARY-RATIFICATION.md`
+5. `docs/production-workflow/SPECKIT-ADAPTATION.md` (continuous dialogue, segmented execution, ratification binding)
+6. `docs/production-workflow/WORKFLOW.md`, sections on the mandate and the documentary set.
 
 ## Artifact
 
-A PONTE-SPECS-TAREFAS proposal in the chat: revision of the ratified requirement, ADRs, chosen executor,
+A SPECS-TASKS-BRIDGE proposal in the chat: revision of the ratified requirement, ADRs, chosen executor,
 canonical specs and tasks **referenced, not copied** (RULES R6), coverage map,
 commitments without coverage and the autonomy mandate. The mandate is valid only after human ratification (R3).
 

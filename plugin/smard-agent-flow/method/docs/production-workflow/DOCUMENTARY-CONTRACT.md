@@ -2,7 +2,7 @@
 
 **State:** proposal that is part of the workflow, still without automatic enforcement.
 
-The [method's baseline](BASELINE-METODO.md) establishes its own obligations:
+The [method's baseline](METHOD-BASELINE.md) establishes its own obligations:
 METHODOLOGY, RULES, index and the prompt and template libraries, with AGENTS
 before delegated execution in the repo and adapters/capabilities as they are
 adopted. Do not confuse that prior infrastructure with forms demanded of the
@@ -83,7 +83,7 @@ are not local choices it may silently assume.
 ## 3. Rules of birth, maintenance and waiver
 
 For each triggered obligation, the agent keeps a record in the
-[constitution inventory](templates/CONSTITUICAO-REPOSITORIO.md), or in the
+[constitution inventory](templates/REPOSITORY-CONSTITUTION.md), or in the
 equivalent canonical record that already exists:
 
 - Trigger and the action that depends on it; origin of the requirement.
@@ -195,7 +195,7 @@ adoption. No row demands redoing phases that already have adequate evidence.
 | Respond to an incident | Channel, responsibilities and applicable runbook already prepared | Timeline, containment, restricted evidence and proportional learning | Incident owner; pertinent authorities | Do not delay containment to fill in a report; do not waive a required authorization |
 | Discontinue / archive | Impact on users, data, obligations and an authorized plan | Applicable notices, data destination, support and updated documentation | Owner and competent responsible persons | Do not confuse abandoning an idea with shutting down a service in use |
 
-The [handoff record](templates/REGISTRO-PASSAGEM.md) supplies the common fields
+The [handoff record](templates/PASSAGE-RECORD.md) supplies the common fields
 when no canonical support exists. One does not create a file per click, command
 or comment: only decisions, transitions and evidence that need to survive.
 ## 5. Catalog of repository files and configurations
@@ -214,7 +214,7 @@ canonical equivalent avoids duplication.
 | `CLAUDE.md` and other specific adapters | Conditional: the adopted integration requires its own discovery/format | Maintainer validates; agent prepares | Route to the canonical rules, without a competing policy |
 | Inventory of skills and MCPs | Conditional method: before adopting/altering the capability | Agent presents provenance and contracts; authority authorizes actions | State, access, effects, install/removal; do not version credentials |
 | `sledge-handoff.md`, `DIAMOND.md` | Method: persistence and handoff before compaction; particular functions not yet defined | Predecessor preserves; successor recovers; the human defines future semantics | Proposed private location in `.session-memory/`; do not fabricate content nor publish automatically |
-| Checkpoint envelope and receipt | Method: coherence and verifiable recovery of the handoff | Adapter/agents; real result of the hook | Contract in MEMORIA-SESSOES; ignore guarantees neither retention nor transport between worktrees/hosts |
+| Checkpoint envelope and receipt | Method: coherence and verifiable recovery of the handoff | Adapter/agents; real result of the hook | Contract in SESSION-MEMORY; ignore guarantees neither retention nor transport between worktrees/hosts |
 | `llms.txt` / `robots.txt` | Convention/web context, when purpose and consumers justify it | Person responsible for publication | Guidance for LLMs and crawling are distinct functions; they neither control access nor govern local execution |
 | `README.md` | Method: first versioned sharing | Agent prepares; maintainer answers for the content | State provisional purpose, maturity and guidance; update with real use/installation, without demanding a commercial name |
 | `.gitignore` and local exclusion rules | Method: before versioning generated, local or sensitive artifacts | Agent proposes per stack; maintainer reviews | Adjust with tooling; ignore neither removes an already tracked secret nor replaces the response to an exposure |

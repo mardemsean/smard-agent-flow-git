@@ -15,10 +15,10 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 
 1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
 2. The current ZERO or requirement, if one exists, and the pertinent exploration (AGENTS.md, row "Found or change an intent").
-3. `docs/workflow-producao/templates/REQUIREMENT-ZERO.MD`
-4. `docs/workflow-producao/templates/requirement-NNNN.md`
-5. `docs/workflow-producao/CONTRATO-DOCUMENTAL.md`
-6. `docs/workflow-producao/WORKFLOW.md` (states and decision tree)
+3. `docs/production-workflow/templates/REQUIREMENT-ZERO.MD`
+4. `docs/production-workflow/templates/requirement-NNNN.md`
+5. `docs/production-workflow/DOCUMENTARY-CONTRACT.md`
+6. `docs/production-workflow/WORKFLOW.md` (states and decision tree)
 
 ## Artifact
 

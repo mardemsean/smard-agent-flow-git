@@ -1,6 +1,6 @@
 # Repository tree and root-file addendum
 
-**State:** approved by the operator on 2026-10-18 as the target tree of this repository. Folders exist now, empty, with `.gitkeep`; root files listed in section 3 are foreseen, not yet written. Nothing here is to be improvised: each file is written when its trigger occurs (see `docs/workflow-producao/CONTRATO-DOCUMENTAL.md`, section 5).
+**State:** approved by the operator on 2026-10-18 as the target tree of this repository. Folders exist now, empty, with `.gitkeep`; root files listed in section 3 are foreseen, not yet written. Nothing here is to be improvised: each file is written when its trigger occurs (see `docs/production-workflow/DOCUMENTARY-CONTRACT.md`, section 5).
 
 **Role of this repository (operator, 2026-10-18):** once its documentary structure and tree are finished, this repository becomes the house's first standard model for every existing and new repository.
 
@@ -9,7 +9,7 @@
 | Path | Purpose | State |
 | --- | --- | --- |
 | `METHODOLOGY.md`, `RULES.md`, `AGENTS.md`, `INDEX.md`, `README.md`, `explore.md`, `specs.md`, `adrZERO.md` | the method, in English | present |
-| `docs/workflow-producao/` | canonical docs, prompts, templates of the method | present |
+| `docs/production-workflow/` | canonical docs, prompts, templates of the method | present |
 | `docs/requirements/` | `REQUIREMENT-ZERO.MD` and `requirement-NNNN.md` of this repository as a product | reserved |
 | `docs/explorations/` | `EXP-NNNN.md` | reserved |
 | `docs/decisions/` and `docs/adr/` | `ADR-NNNN.md` (one of the two names will be kept when the first ADR lands) | reserved |

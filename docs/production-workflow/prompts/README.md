@@ -8,7 +8,7 @@ Prompts are subject to the canonical rules and to the mode agreed with the human
 
 | Script | Availability | Use |
 | --- | --- | --- |
-| [Accompanied exploration](exploracao-acompanhada.md) | Proposed in this laboratory | Receive discomfort without demanding a product identity |
+| [Accompanied exploration](accompanied-exploration.md) | Proposed in this laboratory | Receive discomfort without demanding a product identity |
 | Grill me, ZERO synthesis, preflight and delivery | Still without a script of its own in this library | Do not presume implementation; use the pertinent contracts and templates with explicit context |
 
 Before adopting or modifying a script, make explicit in the chat its purpose,

@@ -18,11 +18,11 @@ material conflict must be made explicit, not resolved silently.
 | Alter a prompt, skill, MCP or adapter | Baseline, pertinent inventory and the contracts of the adopted tool | Provenance, permissions, install/removal and compatibility verified |
 | Alter deterministic execution | Technical contract, configuration and the area's existing tests | Positive and negative coverage; regression test for a bug |
 | Open a PR, integrate or release | Existing review/release rules and the pertinent DEL record | Evidence and authorizations of the current revision |
-| Prepare compaction or a session handoff | MEMORIA-SESSOES and the lineage's available local records | Verifiable checkpoint of the two names, without inventing their functions |
-| Resume as successor | MEMORIA-SESSOES, the envelope and the two available records | Explicit recovery, gaps and reconciliation with the current state |
+| Prepare compaction or a session handoff | SESSION-MEMORY and the lineage's available local records | Verifiable checkpoint of the two names, without inventing their functions |
+| Resume as successor | SESSION-MEMORY, the envelope and the two available records | Explicit recovery, gaps and reconciliation with the current state |
 
 The memory contract is in
-[MEMORIA-SESSOES.md](docs/workflow-producao/MEMORIA-SESSOES.md).
+[SESSION-MEMORY.md](docs/production-workflow/SESSION-MEMORY.md).
 The precompact hook and automatic recovery are not yet implemented.
 
 ## Execution in the repository
