@@ -14,8 +14,8 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 ## Read before acting (mandatory)
 
 1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
-2. `docs/workflow-producao/WORKFLOW.md`, section on the documentary set (the traceability chain).
-3. `docs/workflow-producao/CONTRATO-DOCUMENTAL.md`
+2. `docs/production-workflow/WORKFLOW.md`, section on the documentary set (the traceability chain).
+3. `docs/production-workflow/DOCUMENTARY-CONTRACT.md`
 4. The artifacts of the chain that exist: ZERO/requirement, PREFLIGHT-ADR, PONTE, the executor's specs and tasks, PR, DEL.
 
 ## Artifact

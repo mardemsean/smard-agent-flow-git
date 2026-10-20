@@ -79,7 +79,7 @@ Method docs (canonical sources):
 
 - [METHODOLOGY.md](METHODOLOGY.md) — intent and the articulation of the cycle.
 - [RULES.md](RULES.md) — the human-agent working rules.
-- [WORKFLOW.md](docs/workflow-producao/WORKFLOW.md) — the decision tree, states,
+- [WORKFLOW.md](docs/production-workflow/WORKFLOW.md) — the decision tree, states,
   passage criteria, and GitHub integration contract.
 
 If you build with autonomous agents and you have felt the quiet wrongness of

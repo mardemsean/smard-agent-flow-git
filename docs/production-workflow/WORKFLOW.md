@@ -122,7 +122,7 @@ invent validations, consensus or alternatives supposedly evaluated.
 **The birth of the repository is an independent decision:** it may happen during
 a prototype, after the ZERO, or may already have happened. It is neither a
 condition for exploration nor an automatic consequence of intent synthesis. Apply
-the tree and the triggers of the [documentary contract](CONTRATO-DOCUMENTAL.md)
+the tree and the triggers of the [documentary contract](DOCUMENTARY-CONTRACT.md)
 when versioning, collaboration or integrated execution becomes necessary.
 
 ## 4. States and minimum evidence
@@ -173,11 +173,11 @@ consequences and a recommendation. Lack of an answer never means approval.
 
 METHODOLOGY, RULES, INDEX and the prompt and template libraries constitute the
 infrastructure of the method, available before the product. The
-[baseline](BASELINE-METODO.md) defines their incorporation into the repo and the
+[baseline](METHOD-BASELINE.md) defines their incorporation into the repo and the
 triggers for AGENTS, adapters, skills and MCPs. They are not opening questions to
 the creator.
 
-The [documentary contract by moment and action](CONTRATO-DOCUMENTAL.md)
+The [documentary contract by moment and action](DOCUMENTARY-CONTRACT.md)
 complements this architecture: it foresees repository files, annotations, native
 GitHub records, conditional obligations and the events that make them necessary.
 The catalog is not an opening checklist.
@@ -210,12 +210,12 @@ docs/
 
 | Document | Responsibility | Must not become |
 | --- | --- | --- |
-| [Exploration](templates/EXPLORACAO.md) | Preserve alternatives, questions and selected learning | A compulsory transcript or an entry form |
+| [Exploration](templates/EXPLORATION.md) | Preserve alternatives, questions and selected learning | A compulsory transcript or an entry form |
 | [REQUIREMENT-ZERO](templates/REQUIREMENT-ZERO.MD) | Found the intent, the meaning and the boundaries of the product | An immutable constitution, an exhaustive PRD or architecture in disguise |
 | [requirement-NNNN](templates/requirement-NNNN.md) | Ground a change or expansion and its effects on the ZERO | An ID for every atomic requirement or implementation task |
 | [Preflight and ADR](templates/PREFLIGHT-ADR.md) | Examine alternatives and consequences; record the decision when justified | A mandatory ritual for every change |
-| [Bridge to specs and tasks](templates/PONTE-SPECS-TAREFAS.md) | Translate the commitment into a traceable execution contract | A second, divergent copy of the specs and tasks |
-| [Delivery and learning](templates/ENTREGA-APRENDIZADO.md) | Link PRs, release, recovery and observed effects | The assumption that a merge equals success in production |
+| [Bridge to specs and tasks](templates/SPECS-TASKS-BRIDGE.md) | Translate the commitment into a traceable execution contract | A second, divergent copy of the specs and tasks |
+| [Delivery and learning](templates/LEARNING-DELIVERY.md) | Link PRs, release, recovery and observed effects | The assumption that a merge equals success in production |
 
 **Identity:** the ZERO is unique per product. The sequence `0001`, `0002` and so
 on identifies change initiatives; it does not replace versions of the ZERO and is
@@ -294,7 +294,7 @@ review as any implementation; a convincing demo does not waive it.
 
 A PR may combine classes, but it receives the union of the applicable
 requirements. Declaring "documentation" does not exclude checks if there is
-executable code. The [delivery template](templates/ENTREGA-APRENDIZADO.md)
+executable code. The [delivery template](templates/LEARNING-DELIVERY.md)
 contains a block for the PR; it was not installed as a mandatory template of the
 repository.
 
@@ -350,8 +350,8 @@ effects.
 
 A first initiative needs only the records necessary for its next decision. Do not
 fill in every template to prove adherence to the method. The templates for the
-[constitution of the repository](templates/CONSTITUICAO-REPOSITORIO.md) and the
-[handoff record](templates/REGISTRO-PASSAGEM.md) are prepared by the agent when
+[constitution of the repository](templates/REPOSITORY-CONSTITUTION.md) and the
+[handoff record](templates/PASSAGE-RECORD.md) are prepared by the agent when
 their triggers occur, not handed over as opening forms. An initial ZERO may be
 short and contain open questions; its ratification depends on them not making
 the authorized commitment unviable.

@@ -39,7 +39,7 @@ continuity only.
 IDs are technical and supplied by the harness, without demanding naming from the
 human. A checkpoint is a continuity package; it does not redefine the semantics
 of the two files. This design created no packages and no fictitious session
-memories. The [checkpoint template](templates/CHECKPOINT-SESSAO.md) is the common
+memories. The [checkpoint template](templates/SESSION-CHECKPOINT.md) is the common
 envelope.
 
 The package records repo/workspace, branch, HEAD, uncommitted state and origin.

@@ -96,7 +96,7 @@ Check 'entry command has no machine-specific path' ($cmdText -notmatch '(?i)[A-Z
 Check 'no plugin/commands-user directory (non-standard)' (-not (Test-Path (Join-Path $here 'commands-user')))
 
 # --- hygiene ---------------------------------------------------------------------------------
-# The packaged copy is a byte copy of the canonical documents (MEMORIA-SESSOES.md legitimately names the three registers as non-existent); only the plugin's own skills are checked.
+# The packaged copy is a byte copy of the canonical documents (SESSION-MEMORY.md legitimately names the three registers as non-existent); only the plugin's own skills are checked.
 Check 'no undefined memory names in plugin skills' (@(Get-ChildItem (Join-Path $src 'skills') -Recurse -File -Force | Select-String -Pattern 'cortex|hyperbrain-lesson|knowledge\.md').Count -eq 0)
 $exec = @(Get-ChildItem $src -Recurse -File -Force | Where-Object Extension -in '.ps1', '.cmd', '.bat', '.sh', '.js', '.py')
 $reserved = @('hooks','agents','scripts') | ForEach-Object { Get-ChildItem (Join-Path $src $_) -File -Recurse -Force -ErrorAction SilentlyContinue | Where-Object Name -ne '.gitkeep' }

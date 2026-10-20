@@ -20,7 +20,7 @@ Related documents may be handled in a batch, but never omitted.
 Distinguish human contribution, evidence, interpretation and the agent's
 suggestion. Do not invent decisions, research, consensus or ratifications. Keep
 gaps and disagreements identified. Apply the protocol of the
-[documentary contract](docs/workflow-producao/CONTRATO-DOCUMENTAL.md).
+[documentary contract](docs/production-workflow/DOCUMENTARY-CONTRACT.md).
 
 ## R3. Separate drafting from commitment
 
@@ -85,7 +85,7 @@ Before compaction or handoff, account for `sledge-handoff.md` and `DIAMOND.md` i
 a verifiable checkpoint. Their specific functions await human definition; do not
 deduce them from the names. Inherited memory neither widens the mandate nor
 replaces checking the real state. Follow
-[MEMORIA-SESSOES](docs/workflow-producao/MEMORIA-SESSOES.md); if the harness does
+[SESSION-MEMORY](docs/production-workflow/SESSION-MEMORY.md); if the harness does
 not guarantee preservation and recovery, declare the limitation. Do not publish
 local memory, nor claim a hook is active merely because its contract was
 documented.

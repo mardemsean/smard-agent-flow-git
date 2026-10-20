@@ -27,7 +27,7 @@ legitimate outcomes. The birth of the repository is independent of the maturity
 of the intent. A product name, a repo and a branch are not prerequisites for
 thinking.
 
-The [canonical workflow](docs/workflow-producao/WORKFLOW.md) holds the decision
+The [canonical workflow](docs/production-workflow/WORKFLOW.md) holds the decision
 tree, the states, the transition criteria, the position of the human and the
 contract of integration with GitHub. This file is its entry door, not a second,
 competing definition of the cycle.
@@ -40,7 +40,7 @@ changes, including proposed amendments to the foundation. ADRs record material
 decisions; specs establish verifiable contracts; tasks organize execution, they
 replace neither intent nor verification.
 
-The [documentary contract](docs/workflow-producao/CONTRATO-DOCUMENTAL.md) is the
+The [documentary contract](docs/production-workflow/DOCUMENTARY-CONTRACT.md) is the
 source of triggers, responsibilities and evidence. The agent makes each document
 explicit in the chat before drafting it and presents its substantive content
 afterwards. Draft, presentation, human response and ratification are different
@@ -49,7 +49,7 @@ states.
 ## Infrastructure and executors
 
 The method, its rules, prompts and templates may exist in a workspace that
-precedes the product repository. The [baseline](docs/workflow-producao/BASELINE-METODO.md)
+precedes the product repository. The [baseline](docs/production-workflow/METHOD-BASELINE.md)
 defines their proportional incorporation. Specific tools receive adapters, not
 competing versions of the policy.
 

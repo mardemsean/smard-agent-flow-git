@@ -27,15 +27,15 @@ are in `AGENTS.md`; this is only the route.
 
 | Action | Read |
 | --- | --- |
-| Explore an intent | `docs/workflow-producao/WORKFLOW.md`, `docs/workflow-producao/prompts/exploracao-acompanhada.md`, `docs/workflow-producao/templates/EXPLORACAO.md` |
-| Create or alter a document | `docs/workflow-producao/CONTRATO-DOCUMENTAL.md` (visible elaboration protocol) |
-| Found or change an intent | `docs/workflow-producao/templates/REQUIREMENT-ZERO.MD`, `docs/workflow-producao/templates/requirement-NNNN.md` |
-| Constitute a repository or baseline | `docs/workflow-producao/BASELINE-METODO.md`, `docs/workflow-producao/templates/CONSTITUICAO-REPOSITORIO.md` |
-| Architectural decision | `docs/workflow-producao/templates/PREFLIGHT-ADR.md` |
-| Specify or delegate | `docs/workflow-producao/ADAPTACAO-SPECKIT.md`, `docs/workflow-producao/templates/PONTE-SPECS-TAREFAS.md`, `docs/workflow-producao/templates/RATIFICACAO-DOCUMENTAL.md` |
-| Alter a prompt, skill, MCP or adapter | `docs/workflow-producao/BASELINE-METODO.md`, `docs/workflow-producao/templates/CAPACIDADES-INTEGRACOES.md` |
-| Open a PR, integrate or release | `docs/workflow-producao/templates/ENTREGA-APRENDIZADO.md` (DEL record) |
-| Hand off or resume a session | `docs/workflow-producao/MEMORIA-SESSOES.md`, `docs/workflow-producao/templates/CHECKPOINT-SESSAO.md`, `docs/workflow-producao/templates/REGISTRO-PASSAGEM.md` |
+| Explore an intent | `docs/production-workflow/WORKFLOW.md`, `docs/production-workflow/prompts/accompanied-exploration.md`, `docs/production-workflow/templates/EXPLORATION.md` |
+| Create or alter a document | `docs/production-workflow/DOCUMENTARY-CONTRACT.md` (visible elaboration protocol) |
+| Found or change an intent | `docs/production-workflow/templates/REQUIREMENT-ZERO.MD`, `docs/production-workflow/templates/requirement-NNNN.md` |
+| Constitute a repository or baseline | `docs/production-workflow/METHOD-BASELINE.md`, `docs/production-workflow/templates/REPOSITORY-CONSTITUTION.md` |
+| Architectural decision | `docs/production-workflow/templates/PREFLIGHT-ADR.md` |
+| Specify or delegate | `docs/production-workflow/SPECKIT-ADAPTATION.md`, `docs/production-workflow/templates/SPECS-TASKS-BRIDGE.md`, `docs/production-workflow/templates/DOCUMENTARY-RATIFICATION.md` |
+| Alter a prompt, skill, MCP or adapter | `docs/production-workflow/METHOD-BASELINE.md`, `docs/production-workflow/templates/CAPABILITIES-INTEGRATIONS.md` |
+| Open a PR, integrate or release | `docs/production-workflow/templates/LEARNING-DELIVERY.md` (DEL record) |
+| Hand off or resume a session | `docs/production-workflow/SESSION-MEMORY.md`, `docs/production-workflow/templates/SESSION-CHECKPOINT.md`, `docs/production-workflow/templates/PASSAGE-RECORD.md` |
 
 ## 3. Boundaries (summary; the source is `AGENTS.md`, section Boundaries)
 

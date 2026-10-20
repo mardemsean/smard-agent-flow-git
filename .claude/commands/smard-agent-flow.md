@@ -11,7 +11,7 @@ Short entry point of the method. Do not redefine policy here: the source is the 
 1. The plugin skill `smard-agent-flow:method` is loaded: invoke it and follow it literally. It resolves the ROOT itself
    (`${user_config.method_repo}` if set, otherwise the copy of the method packaged in the plugin).
 2. The plugin is not loaded and the current working directory is a clone of the method repository
-   (`AGENTS.md`, `METHODOLOGY.md`, `RULES.md`, `INDEX.md` and `docs/workflow-producao/` present): ROOT = the current working directory.
+   (`AGENTS.md`, `METHODOLOGY.md`, `RULES.md`, `INDEX.md` and `docs/production-workflow/` present): ROOT = the current working directory.
    This is the case in a Claude Code cloud session of `mardemsean/smard-agent-flow-git`.
 3. Otherwise read `skills/smard-agent-flow/skills/method/SKILL.md` under the Claude Code configuration folder
    (`CLAUDE_CONFIG_DIR`, by default `~/.claude`), where `install.ps1` places the plugin; its packaged copy of the method is `skills/smard-agent-flow/method/` in the same folder.

@@ -19,7 +19,7 @@ delegated commitments — not an inspector of every agent step.
 
 The entry point for the method is `METHODOLOGY.md`; the canonical workflow (its
 decision tree, states, and GitHub integration) lives in
-`docs/workflow-producao/WORKFLOW.md`; the working rules are in `RULES.md`.
+`docs/production-workflow/WORKFLOW.md`; the working rules are in `RULES.md`.
 
 ## 2. Invariants
 
@@ -118,7 +118,7 @@ environments, merge queue, or access.
 The source marks these as **proposed**, not implemented, and this spec repeats
 that honestly:
 
-- The **precompact hook** and **automatic session recovery** (`MEMORIA-SESSOES`)
+- The **precompact hook** and **automatic session recovery** (`SESSION-MEMORY`)
   are not implemented.
 - The **Spec Kit integration** is a future investigation; the technical route
   and version still need verification. This design neither installs nor modifies
