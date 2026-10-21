@@ -47,7 +47,7 @@ Check 'marketplace entry does not pin a second version' ($null -eq $entry[0].ver
 
 # --- skills ----------------------------------------------------------------------------------
 $skills = @(Get-ChildItem (Join-Path $src 'skills') -Directory | ForEach-Object { Join-Path $_.FullName 'SKILL.md' })
-Check 'nine skills present' (@($skills).Count -eq 9) "found $(@($skills).Count)"
+Check 'ten skills present' (@($skills).Count -eq 10) "found $(@($skills).Count)"
 Check 'method skill exists' (Test-Path (Join-Path $src 'skills\method\SKILL.md'))
 $bad = @()
 foreach ($s in $skills) {
