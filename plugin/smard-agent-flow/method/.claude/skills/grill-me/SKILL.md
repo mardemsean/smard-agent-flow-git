@@ -1,9 +1,21 @@
 ---
 name: grill-me
-description: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
+description: Interview the user thoroughly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
 ---
 
-Interview the user relentlessly about every aspect of their plan until you reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one.
+## Preamble — agree before starting (invariant I3)
+
+Before the first question, confirm three things with the user:
+
+1. **Goal** — what specific aspect or decision the session must resolve.
+2. **Intensity** — light (surface check), moderate (probe assumptions), or intense (adversarial challenge).
+3. **Stop condition** — a concrete criterion for ending: a number of rounds, a time box, or "when all branches of topic X are resolved."
+
+Present these as one AskUserQuestion with sensible defaults. If the user overrides any default, respect it. The session never becomes an open-ended permanent interrogation.
+
+## Conduct
+
+Walk down each branch of the design tree within the agreed goal, resolving dependencies between decisions one by one. Challenge assumptions at the agreed intensity; do not escalate beyond it without asking.
 
 ## How to ask questions
 

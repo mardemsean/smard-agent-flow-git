@@ -73,7 +73,7 @@ files from the local snapshot and the proposed passage between conversation,
 revision, ratification and execution. It distinguishes evidence read from
 decisions reported, and does not yet confirm package integrity, runtime
 compatibility or installation. In any divergence between this repository and
-earlier external maps (such as `SPECS-TASKS-BRIDGE--smard-agent-flow-kit.md`),
+earlier external maps (such as the former `SPECS-TASKS-BRIDGE` document),
 the contract of [SPECKIT-ADAPTATION.md](SPECKIT-ADAPTATION.md) prevails.
 
 The user brought the following conditional readings of the project as design

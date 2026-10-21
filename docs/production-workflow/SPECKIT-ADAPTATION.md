@@ -11,9 +11,9 @@ human choices.
 ## 1. Scope and provenance
 
 This document complements the [baseline](METHOD-BASELINE.md) and corrects the
-external map `SPECS-TASKS-BRIDGE--smard-agent-flow-kit.md`, without overwriting
+earlier external `SPECS-TASKS-BRIDGE` document, without overwriting
 it or importing private memories into the repository. In any divergence between
-the earlier external map and this document, this `SPECKIT-ADAPTATION.md` prevails.
+that earlier document and this one, this `SPECKIT-ADAPTATION.md` prevails.
 
 The handoff records decisions taken in another session: Claude Code as the
 integration; configuration before a fork; the possibility of a Python step type of
