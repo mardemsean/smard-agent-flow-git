@@ -102,7 +102,7 @@ Selecting them is a human act of choice, and the method keeps it in human hands.
 
 A bounded experiment is built to feel the conception rather than argue about it.
 The prototype has a question, a hypothesis, limits and a stop condition
-(`templates/EXPLORACAO.md`, section 4). It may be an interaction sketch, a spike,
+(`templates/EXPLORATION.md`, section 4). It may be an interaction sketch, a spike,
 a simulation or a throwaway build. It is identified as experimental and isolated
 from anything productive. Learning is its only deliverable.
 

@@ -185,9 +185,10 @@ Its visible elaboration protocol governs all these records: before drafting,
 identify each document and its proposal in the chat; afterwards, present the
 substantive content or delta, the interpretations and the points that require a
 decision. Drafts may be saved as drafts; new commitments do not enter execution
-without the applicable ratification. Editorial updates are communicated without a
-new approval ceremony. The human need not discover decisions by reading a
-surprise diff.
+without the applicable ratification. Whether a post-ratification change is
+editorial or material is classified by the human, not presumed by the agent;
+when in doubt the agent treats the change as material and asks (R3). The human
+need not discover decisions by reading a surprise diff.
 
 This is the suggested organization for a product that adopts the method. The
 example files below are not already filled-in product documents.
