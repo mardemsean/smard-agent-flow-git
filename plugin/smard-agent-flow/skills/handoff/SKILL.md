@@ -122,10 +122,11 @@ failure ledger manually from the session's errors following these classes.
 9. **M2 Chain:** append this link's deltas to the chain log.
 10. **Size:** aim for 8,000 to 25,000 characters for a typical session.
     Short sessions may be shorter; the handoff should carry enough for a
-    successor to resume without re-reading the transcript.
+    successor to resume without re-reading the transcript. If below the floor,
+    run Phase 2 (fill before waive) before writing any waiver.
 11. **Write F1**, run the redaction pass, write F2. Git-exclude the files.
 12. **M4 (optional):** if the project has a task board, hand the card to review.
-13. **Run VERIFY.** Set `completeness:` from the result.
+13. **Run VERIFY.** Then run Phase 3 (adversarial self-review) unless this is a subagent write. Set `completeness:` from the result.
 
 ## Mode READ
 
@@ -148,6 +149,76 @@ failure ledger manually from the session's errors following these classes.
 - [ ] Every state line is tagged.
 - [ ] "What not to retry" section present (even if "none").
 - [ ] Redaction pass returns no hits (no secrets, tokens, emails, credentials).
+
+## Phase 2: fill before waive (portable)
+
+Phase 2 runs inside Mode WRITE step 10 whenever a waiver is about to be invoked:
+the handoff is below the size floor, a section is about to receive N/A, or any
+"exhausted / not applicable / nothing more" on a gated field. Phase 2 is a
+prerequisite: a waiver invoked before Phase 2 ran is rejected, and the handoff
+cannot be COMPLETE.
+
+### P2.1 Name the premise
+
+Write the waiver premise as a falsifiable sentence:
+- "There is no more genuine, non-duplicative content to add" (size floor).
+- "This section truly has no content for this artifact" (N/A field).
+
+If the premise cannot be stated in one sentence, the writer is not ready to waive.
+
+### P2.2 Walk the fill order
+
+Walk these categories top to bottom, asking "do I have material here that I
+observed or decided this session and have not yet written down?":
+1. Measurements and facts (command outputs, sizes, versions, timings).
+2. Contracts of what was built or changed (signatures, flags, file map, ports).
+3. Decisions, each with its rejected alternative.
+4. Failures, dead ends and traps.
+5. Verification steps.
+6. Open fronts and questions.
+7. Pointers (last; only for content that genuinely lives at the target).
+
+### P2.3 Apply the floor test
+
+> If reciting the premise out loud would embarrass you in front of the person who
+> asked for the deliverable, it is false. Keep filling.
+
+Compare the handoff's density to a comparable earlier one for a similar amount of
+work; a value far below its peers without explanation is a duty to investigate.
+
+### P2.4 Waive only the genuine remainder
+
+After P2.1-P2.3, write the waiver with: the tested premise, the honest cause, and
+the real measured value. A waiver after Phase 2 is a verdict; before Phase 2, an
+excuse.
+
+### The negative guard
+
+A genuinely-empty section MUST receive an N/A with reason, never padding. Phase 2
+does not overcorrect into filling honestly-empty sections.
+
+## Phase 3: adversarial self-review (portable)
+
+Phase 3 runs after Mode VERIFY and before reporting COMPLETE. It is enabled by
+default on manual invocations and skipped on subagent handoffs.
+
+### P3.1 Three strongest attacks
+
+State the three strongest attacks against the finished handoff:
+1. thin sections (density below peers);
+2. unverified claims (`[carried-forward]` or `[assumed]` the successor relies on);
+3. premises that break on first command (a Basis line a `git pull` would change).
+
+### P3.2 Answer or fix each
+
+Fix in the handoff if possible, or record the answer in Basis with
+`[Phase 3 reviewed]`. An unanswerable attack downgrades `completeness:` to
+INCOMPLETE.
+
+### P3.3 Record
+
+Add a line to the header: `phase-3: reviewed <UTC> | <n> attacks, <n> fixed,
+<n> accepted`.
 
 ## Redaction pass
 
@@ -190,6 +261,7 @@ session: <slug>
 continues from: <earlier slug | none>
 chain: <tag seq n | none>
 Stale if: <1-4 conditions | nothing, self-contained>
+phase-3: <reviewed UTC | n attacks, n fixed, n accepted | skipped: reason | not run>
 
 ## Basis (collected by commands at WRITE)
 - HEAD: <sha> | branch: <name> | checkout: <path>
