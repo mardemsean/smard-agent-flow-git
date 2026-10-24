@@ -1,8 +1,8 @@
 # smard-agent-flow plugin for Claude Code
 
-Eleven namespaced skills (`/smard-agent-flow:method`, `:clarify`, `:specify`, `:preflight`, `:constitution`,
-`:tasks`, `:implement`, `:analyze`, `:converge`, `:handoff`, `:coordinate`) plus the short entry command `/smard-agent-flow`.
-The plugin is a pointer to the method: it installs no hooks and no MCP servers, executes nothing by itself (the `coordinate` skill ships two helper scripts the session runs explicitly), and ships two read-only agents (coordinate-surveyor, coordinate-reviewer) used by `:coordinate`.
+Twelve namespaced skills (`/smard-agent-flow:method`, `:clarify`, `:specify`, `:preflight`, `:constitution`,
+`:tasks`, `:implement`, `:analyze`, `:converge`, `:handoff`, `:coordinate`, `:dont-speak-alien`) plus the short entry command `/smard-agent-flow`.
+The plugin is a pointer to the method: it installs no hooks and no MCP servers, executes nothing by itself (the `coordinate` and `dont-speak-alien` skills ship helper scripts the session runs explicitly), and ships two read-only agents (coordinate-surveyor, coordinate-reviewer) used by `:coordinate`.
 
 ## Install
 
