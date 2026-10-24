@@ -1,0 +1,238 @@
+{
+ "project": "ORBIT-LEDGER",
+ "generated_at": "2026-10-24T20:08:02Z",
+ "sources": [
+  "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/CLAUDE.md",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/docs/ratification/RAT-0001.md",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r2.md",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r3.md",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/ENGINE-PROBE-2026-10-07.md",
+  "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/requirement-0002-PROPOSED.md",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/PROTOCOL.md",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/LEDGER.md",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_MED.json",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_ARCH.json",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_REV.json",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0001..0003",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0001.md",
+  "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0002.md",
+  "md5sum skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r2.md",
+  "ls skills/coordinate/tests/fixtures/fixture-1/channel/messages | tail -1",
+  "ls skills/coordinate/tests/fixtures/fixture-1/proj/kanban/config.yml",
+  "ls skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r3.md",
+  "grep -c SQLite skills/coordinate/tests/fixtures/fixture-1/proj/CLAUDE.md",
+  "TZ=UTC find proj channel -type f -printf '%p %T...'"
+ ],
+ "lineage": [
+  {
+   "who": "MEDIATOR (cse_FIXTURE_MED)",
+   "period": "2026-09-10 to 2026-09-12",
+   "claim": "Designated by the operator 2026-09-10; its own card still says ATIVO, but the COORD1 card says it has been inactive since 2026-09-12",
+   "tag": "carried-forward"
+  },
+  {
+   "who": "COORDINATOR 1 (cse_FIXTURE_COORD1, handoff coordinator-2026-10-05)",
+   "period": "2026-10-04T12:00Z to 2026-10-05T12:30Z",
+   "claim": "Designated by the operator; ran ATA-0001 and ATA-0002, moved the loop to trig_FIXTURE_LOOP, handed off at chain seq 3",
+   "tag": "carried-forward"
+  },
+  {
+   "who": "COORDINATOR 2 (session_FIXTURE_COORD2)",
+   "period": "2026-10-05T12:30Z to at least 2026-10-07",
+   "claim": "Named as successor in the handoff; it has no card and no handoff, and no chain link. It revised requirement-0002, ran the engine probe and owns trig_FIXTURE_COORD2",
+   "tag": "inference"
+  }
+ ],
+ "sessions": [
+  {
+   "id": "cse_FIXTURE_MED",
+   "role": "MEDIATOR",
+   "live_state": "ATIVO per own card (stale; superseded per COORD1 card)",
+   "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_MED.json",
+   "tag": "carried-forward"
+  },
+  {
+   "id": "cse_FIXTURE_COORD1",
+   "role": "COORDINATOR 1",
+   "live_state": "card says ATIVO; the handoff says the session ended 2026-10-05",
+   "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json",
+   "tag": "carried-forward"
+  },
+  {
+   "id": "session_FIXTURE_COORD2",
+   "role": "COORDINATOR 2 (successor)",
+   "live_state": "no card; supervision task trig_FIXTURE_COORD2 was enabled with a one-shot run at 2026-10-07T18:03Z",
+   "source": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+   "tag": "inference"
+  },
+  {
+   "id": "cse_FIXTURE_ARCH",
+   "role": "Architecture and specification",
+   "live_state": "OCIOSA since 2026-10-05T12:13Z",
+   "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_ARCH.json",
+   "tag": "carried-forward"
+  },
+  {
+   "id": "cse_FIXTURE_REV",
+   "role": "Adversarial reviewer",
+   "live_state": "OCIOSA; T1-T2 done; resumes on new minutes",
+   "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_REV.json",
+   "tag": "carried-forward"
+  }
+ ],
+ "documents": {
+  "ratified": [
+   {
+    "text": "RAT-0001: plan v0.1 and REQUIREMENT-ZERO r1 (SQLite, metadata only, content indexing excluded); this is the only receipt on disk",
+    "tag": "verified-this-run"
+   },
+   {
+    "text": "Register r2 rows 1-3 CONTRACTED (operator), as the handoff states",
+    "tag": "carried-forward"
+   }
+  ],
+  "proposed": [
+   {
+    "text": "requirement-0002-PROPOSED (ZERO r2, admits content indexing), drafted 2026-10-03 and revised 2026-10-06 by COORDINATOR 2; awaits ratification (o3)",
+    "tag": "carried-forward"
+   },
+   {
+    "text": "Register r3 row 5 (sqlite-vec vector similarity) PRE-CONTRACTED",
+    "tag": "carried-forward"
+   },
+   {
+    "text": "Register r2 row 4 (thumbnail extraction) PRE-CONTRACTED in r2",
+    "tag": "carried-forward"
+   }
+  ],
+  "built": [
+   {
+    "text": "Nothing built (both handoffs say so); the engine probe created no schema",
+    "tag": "carried-forward"
+   }
+  ],
+  "drift": [
+   {
+    "text": "COMPONENT-REGISTER-r3.md exists and claims operator ratification ('r3 ok', 2026-10-06) with no receipt in docs/ratification",
+    "tag": "inference"
+   },
+   {
+    "text": "Register rows 3 and 5 contract content indexing that the ratified ZERO r1 excludes (the r3 note says so)",
+    "tag": "verified-this-run"
+   },
+   {
+    "text": "ENGINE-PROBE-2026-10-07.md and the revision of requirement-0002 were made by COORDINATOR 2 after the cut-off, with no chain link",
+    "tag": "carried-forward"
+   },
+   {
+    "text": "Register r2 MD5 is 33134fdf... and the handoff's 1111... does not match",
+    "tag": "verified-this-run"
+   }
+  ]
+ },
+ "chain": {
+  "links": [
+   {
+    "seq": "1",
+    "date": "2026-10-03T11:12:00Z",
+    "session": "orbit-plan-0310",
+    "content": "CHARTER c0; OPEN o1; TURN t1 plan v0.1, SQLite"
+   },
+   {
+    "seq": "2",
+    "date": "2026-10-03T14:00:00Z",
+    "session": "orbit-specify-1355",
+    "content": "CLOSE o1 (RAT-0001); OPEN o2; TURN t2 requirement-0002 drafted"
+   },
+   {
+    "seq": "3",
+    "date": "2026-10-05T12:30:00Z",
+    "session": "coordinator-2026-10-05",
+    "content": "OPEN o3 supersedes o2; CLOSE o2; OPEN RULE r2, r3; TURN t3 hand-off to COORDINATOR 2"
+   }
+  ],
+  "missing_link": true,
+  "open_items": [
+   "o3 OWED: operator ratifies requirement-0002 (content layer)",
+   "r2 RULE: one coordinator loop only (trig_FIXTURE_LOOP)",
+   "r3 RULE: verify every bridge write by hash"
+  ]
+ },
+ "scheduled_tasks": [
+  {
+   "name": "trig_FIXTURE_LOOP: ORBIT coordinator channel loop",
+   "schedule": "23 * * * * (hourly)",
+   "model_permission": "not stated; persist_session false",
+   "last_run": "SUCCEEDED 2026-10-07T16:23:00Z",
+   "reading": "This is the single loop that rule r2 allows. It records only and has been idle 9 times running"
+  },
+  {
+   "name": "trig_FIXTURE_COORD2: Coordinator 2 supervision cycle",
+   "schedule": "run_once_at 2026-10-07T18:03:00Z, self-reschedules +60 min",
+   "model_permission": "not stated; persistent session session_FIXTURE_COORD2",
+   "last_run": "none recorded",
+   "reading": "This is a second coordinator loop and it breaks rule r2. Its only job is to watch the :23 loop"
+  },
+  {
+   "name": "trig_FIXTURE_REVWAKE: LOOP reviewer wake",
+   "schedule": "46 * * * * (hourly)",
+   "model_permission": "not stated; persistent session session_FIXTURE_REV",
+   "last_run": "SUCCEEDED 2026-10-07T16:46:00Z",
+   "reading": "It wakes the idle reviewer to re-read ATA-0002, yet the REV card says its loop is not scheduled"
+  },
+  {
+   "name": "trig_FIXTURE_OLDHB: Sessions heartbeat",
+   "schedule": "46 * * * * (disabled)",
+   "model_permission": "not stated",
+   "last_run": "SUCCEEDED 2026-10-01T13:46:00Z",
+   "reading": "Disabled; it does nothing"
+  }
+ ],
+ "verify_block": {
+  "status": "rerun",
+  "rows": [
+   {
+    "claim": "register r2 on disk is the written version (MD5 1111...)",
+    "result": "md5sum -> 33134fdfcfa45333a1a0d0df0558fd09; Stale-if (1) triggered",
+    "state": "divergence"
+   },
+   {
+    "claim": "no new channel message since 0003",
+    "result": "ls messages | tail -1 -> 0003__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md; Stale-if (2) not triggered",
+    "state": "ok"
+   },
+   {
+    "claim": "the loop is one recurring scheduled task trig_FIXTURE_LOOP",
+    "result": "scheduled-tasks.json: trig_FIXTURE_LOOP enabled, but trig_FIXTURE_COORD2 and trig_FIXTURE_REVWAKE are also enabled",
+    "state": "divergence"
+   },
+   {
+    "claim": "M4 board kanban/config.yml absent",
+    "result": "ls -> No such file or directory (the operator said the project does not use kanban)",
+    "state": "ok"
+   },
+   {
+    "claim": "Stale-if (3): no COMPONENT-REGISTER-r3.md",
+    "result": "ls -> docs/drafts/COMPONENT-REGISTER-r3.md exists; handoff stale",
+    "state": "fail"
+   },
+   {
+    "claim": "Stale-if (4): CLAUDE.md names SQLite",
+    "result": "grep -c SQLite -> 1; not triggered",
+    "state": "ok"
+   }
+  ]
+ },
+ "owed_by_operator": [
+  "Ratify or reject requirement-0002 / ZERO r2 (o3), which resolves the conflict between ZERO r1 and register rows 3 and 5",
+  "Confirm or deny that he gave 'r3 ok' on 2026-10-06; if he did, a receipt is owed",
+  "Decide register r3 row 5 (sqlite-vec), which is PRE-CONTRACTED",
+  "Confirm who coordinates now (COORDINATOR 2 has no card), and decide on the redundant loops trig_FIXTURE_COORD2 and trig_FIXTURE_REVWAKE"
+ ]
+}

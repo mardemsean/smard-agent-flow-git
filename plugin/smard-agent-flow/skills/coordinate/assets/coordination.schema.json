@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coordination.schema.json",
+  "title": "coordination",
+  "description": "Per-project configuration contract for the coordinate skill.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["project_root", "handoff_glob", "chain_log_glob", "docs_dir", "channel", "scheduler", "handoff_skill", "recent_handoffs", "deliverables_dir"],
+  "properties": {
+    "project_root": {"type": "string", "minLength": 1},
+    "handoff_glob": {"type": "string", "minLength": 1},
+    "chain_log_glob": {"type": "string", "minLength": 1},
+    "docs_dir": {"type": "string", "minLength": 1},
+    "channel": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "path", "cards_dir", "messages_dir", "minutes_dir", "ledger", "loop_state", "protocol"],
+          "properties": {
+            "kind": {"enum": ["handshake-v1"]},
+            "path": {"type": "string", "minLength": 1},
+            "cards_dir": {"type": "string", "minLength": 1},
+            "messages_dir": {"type": "string", "minLength": 1},
+            "minutes_dir": {"type": "string", "minLength": 1},
+            "ledger": {"type": "string", "minLength": 1},
+            "loop_state": {"type": "string", "minLength": 1},
+            "protocol": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    },
+    "scheduler": {"enum": ["list_triggers", "none"]},
+    "handoff_skill": {"enum": ["smard-ledger-handoff", "smard-agent-flow:handoff"]},
+    "recent_handoffs": {"type": "integer", "minimum": 1, "default": 4},
+    "deliverables_dir": {"type": ["string", "null"]}
+  }
+}

@@ -1,0 +1,2 @@
+# Fixture changelog
+- 2026-10-24 fixture-1 r2 (generator make_fixture1.py): corrections after the first model-compare run found three unplanned inconsistencies — requirement-0002 now has one authorship line consistent with chain seq 2 and message 0001; the newest handoff is timestamped 2026-10-05T12:30Z, after ATA-0002 (12:20Z) and message 0003 (12:10Z) that it marks verified; the register wording says rows 1-4 / row 5 to match the files. Channel directory names are English (cards, messages, minutes, PROTOCOL.md). The o2/o3 duplicate is now an explicit CLOSE o2 at seq 3.

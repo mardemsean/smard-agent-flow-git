@@ -1,7 +1,7 @@
 {
   "name": "smard-agent-flow",
   "displayName": "SMard Agent Flow",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Routes the work of agents through the smard-agent-flow-git method (from discomfort to production): points to the documentary contract, the template and the right rules for each action, without redefining policy.",
   "author": {
     "name": "SMard Labs"

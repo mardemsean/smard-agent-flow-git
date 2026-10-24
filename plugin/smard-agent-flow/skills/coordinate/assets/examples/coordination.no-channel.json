@@ -1,0 +1,11 @@
+{
+  "project_root": "tools/coordinate-test/no-channel/proj",
+  "handoff_glob": "HANDOFF.*.md",
+  "chain_log_glob": "handoff-chain.*.log",
+  "docs_dir": "docs",
+  "channel": null,
+  "scheduler": "none",
+  "handoff_skill": "smard-agent-flow:handoff",
+  "recent_handoffs": 4,
+  "deliverables_dir": null
+}

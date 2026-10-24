@@ -1,0 +1,8 @@
+{
+ "last_message_seen": "0003",
+ "last_ata": "ATA-0002",
+ "last_run_utc": "2026-10-07T16:23:30Z",
+ "bridge_down_since": null,
+ "consecutive_idle": 9,
+ "notes": "ATA-0002 covers up to 0003."
+}
