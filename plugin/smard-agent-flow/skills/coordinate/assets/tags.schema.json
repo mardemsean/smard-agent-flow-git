@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tags.schema.json",
+  "title": "tag",
+  "description": "Evidence tag shared by every schema of the coordinate skill.",
+  "enum": [
+    "verified-this-run",
+    "carried-forward",
+    "inference",
+    "assumed"
+  ]
+}

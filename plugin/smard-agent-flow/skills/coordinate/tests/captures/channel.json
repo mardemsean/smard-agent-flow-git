@@ -1,0 +1,225 @@
+{
+  "scope": "channel",
+  "facts": [
+    {
+      "claim": "The channel directory exists and holds LEDGER.md, LOOP-STATE.json, PROTOCOL.md and the directories cards, messages and minutes.",
+      "source": "ls -la skills/coordinate/tests/fixtures/fixture-1/channel",
+      "observed": "LEDGER.md 161 B; LOOP-STATE.json 191 B; PROTOCOL.md 482 B; cards/; messages/; minutes/",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "cards/ holds four session cards: cse_FIXTURE_ARCH, cse_FIXTURE_COORD1, cse_FIXTURE_MED, cse_FIXTURE_REV.",
+      "source": "ls -la skills/coordinate/tests/fixtures/fixture-1/channel/cards",
+      "observed": "cse_FIXTURE_ARCH.json, cse_FIXTURE_COORD1.json, cse_FIXTURE_MED.json, cse_FIXTURE_REV.json",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "messages/ holds three messages, 0001 to 0003, all addressed to cse_FIXTURE_COORD1.",
+      "source": "ls -la skills/coordinate/tests/fixtures/fixture-1/channel/messages",
+      "observed": "0001__de-cse_FIXTURE_ARCH__para-cse_FIXTURE_COORD1.md; 0002__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md; 0003__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "minutes/ holds two minutes, ATA-0001 and ATA-0002.",
+      "source": "ls -la skills/coordinate/tests/fixtures/fixture-1/channel/minutes",
+      "observed": "ATA-0001.md, ATA-0002.md",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Every file of the channel scope is under the 60 KB budget and was read whole.",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1/channel -type f -exec stat -c '%n %s %y' {} \\;",
+      "observed": "largest file PROTOCOL.md at 482 bytes",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "PROTOCOL.md declares HANDSHAKE PROTOCOL v1: one card per session edited only by its owner, messages named NNNN__de-<X>__para-<Y>.md with a YAML header, minutes written by the coordinator or its loop, and nothing deleted, overwritten or renamed.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/PROTOCOL.md",
+      "observed": "# HANDSHAKE PROTOCOL v1 ... Only the owning session edits its card. ... Minutes: minutes/ATA-NNNN.md, written by the coordinator or its loop. - NOTHING IS DELETED, OVERWRITTEN OR RENAMED.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The card of cse_FIXTURE_COORD1 states the role of COORDINATOR of project ORBIT-LEDGER, designated 2026-10-04T12:00Z, succeeding the MEDIATOR inactive since 2026-09-12; state ATIVO; ultima_lida empty; emitted 2026-10-04T12:05:00Z.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json",
+      "observed": "\"papel\": \"COORDINATOR of sessions of project ORBIT-LEDGER, designated by the operator on 2026-10-04T12:00Z; succeeds the MEDIATOR (inactive since 2026-09-12)\", \"estado\": \"ATIVO\", \"ultima_lida\": \"\", \"emitido_em_utc\": \"2026-10-04T12:05:00Z\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The card of cse_FIXTURE_MED states the role of MEDIATOR designated 2026-09-10, state 'ATIVO: folder created; waiting for cards', emitted 2026-09-10T19:00:00Z.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_MED.json",
+      "observed": "\"estado\": \"ATIVO: folder created; waiting for cards\", \"emitido_em_utc\": \"2026-09-10T19:00:00Z\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The card of cse_FIXTURE_ARCH states the role of architecture and specification session, state OCIOSA since 2026-10-05T12:13Z with everything left depending on the operator, ultima_lida 0003, emitted 2026-10-05T12:13:00Z.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_ARCH.json",
+      "observed": "\"estado\": \"OCIOSA since 2026-10-05T12:13Z: no task; everything left depends on the operator\", \"ultima_lida\": \"0003\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The card of cse_FIXTURE_REV states the role of adversarial reviewer of the provenance design, state OCIOSA with T1-T2 done, its loop not scheduled, resuming on new minutes; ultima_lida 0003; emitted 2026-10-07T16:46:30Z.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_REV.json",
+      "observed": "\"estado\": \"OCIOSA: tasks T1-T2 done (msgs 0002, 0003); loop not scheduled; resumes on new minutes\", \"emitido_em_utc\": \"2026-10-07T16:46:30Z\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "All four cards state modelo_configurado claude-opus-5-5 and project orbit-ledger; this is the cards' assertion, not checked against any live session.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/*.json",
+      "observed": "\"projeto\": \"orbit-ledger\", \"modelo_configurado\": \"claude-opus-5-5\" in each card",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "All four cards carry the placeholder uuid_sessao 00000000-0000-0000-0000-000000000000.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/*.json",
+      "observed": "\"uuid_sessao\": \"00000000-0000-0000-0000-000000000000\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Message 0001 (ARCH to COORD1, 2026-10-04T12:30:00Z) states that requirement-0002, drafted by orbit-specify-1355 at chain seq 2, is at proj/docs/drafts awaiting ratification.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0001__de-cse_FIXTURE_ARCH__para-cse_FIXTURE_COORD1.md",
+      "observed": "Card written. requirement-0002 (drafted by orbit-specify-1355, chain seq 2) is at proj/docs/drafts and awaits ratification.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Message 0002 (REV to COORD1, 2026-10-05T11:00:00Z) states T1 done: the hash chain holds only under one writer and the multi-writer claim is retracted, citing proj/docs/drafts/COMPONENT-REGISTER-r2.md row 2.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0002__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md",
+      "observed": "T1 done: hash chain holds only under one writer; multi-writer claim retracted. Evidence: proj/docs/drafts/COMPONENT-REGISTER-r2.md row 2 and the probe notes.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Message 0003 (REV to COORD1, in reply to 0002, 2026-10-05T12:10:00Z) states T2 done, card set to OCIOSA, loop not rescheduled by REV.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0003__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md",
+      "observed": "T2 done. Card set to OCIOSA. Loop not rescheduled by me.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "ATA-0001 (2026-10-04 12:40Z) lists participants ARCH and REV, the question of reviewing the provenance design, tasks T1 and T2 assigned to REV, deadline 2026-10-05.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0001.md",
+      "observed": "Participants: cse_FIXTURE_ARCH, cse_FIXTURE_REV. Question: review the provenance design. Tasks: T1 (REV) review; T2 (REV) sources. Deadline: 2026-10-05.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "ATA-0002 (2026-10-05 12:20Z) states that messages 0002 and 0003 were checked, T1 and T2 accepted, all sessions OCIOSA, the coordinator loop moved to the hourly scheduled task trig_FIXTURE_LOOP, and requirement-0002 pending with the operator.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0002.md",
+      "observed": "Messages 0002 and 0003 checked. T1, T2 accepted. All sessions OCIOSA. Coordinator loop moved to the hourly scheduled task trig_FIXTURE_LOOP. Pending with the operator: requirement-0002.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The existence and schedule of trig_FIXTURE_LOOP are asserted only by ATA-0002; no scheduled-task listing was checked in this scope.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0002.md",
+      "observed": "Coordinator loop moved to the hourly scheduled task trig_FIXTURE_LOOP.",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "LEDGER.md has three entries; the last is '2026-10-07 13:23 -03: no news (loop)'.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/LEDGER.md",
+      "observed": "- 2026-10-04 09:40 -03: ATA-0001 opened.\n- 2026-10-05 09:20 -03: ATA-0002: T1-T2 accepted; sessions OCIOSA; loop hourly.\n- 2026-10-07 13:23 -03: no news (loop).",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "LOOP-STATE.json states last_message_seen 0003, last_ata ATA-0002, last_run_utc 2026-10-07T16:23:30Z, bridge_down_since null, consecutive_idle 9.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json",
+      "observed": "\"last_message_seen\": \"0003\", \"last_ata\": \"ATA-0002\", \"last_run_utc\": \"2026-10-07T16:23:30Z\", \"bridge_down_since\": null, \"consecutive_idle\": 9, \"notes\": \"ATA-0002 covers up to 0003.\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The last LEDGER entry (2026-10-07 13:23 -03, i.e. 16:23Z) matches LOOP-STATE last_run_utc 2026-10-07T16:23:30Z; no channel file records a loop run after that time.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/LEDGER.md; skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json",
+      "observed": "2026-10-07 13:23 -03 vs 2026-10-07T16:23:30Z",
+      "tag": "inference"
+    },
+    {
+      "claim": "The newest message is 0003 and the newest minutes is ATA-0002, which covers up to 0003; no message is unread by the loop according to LOOP-STATE.",
+      "source": "ls skills/coordinate/tests/fixtures/fixture-1/channel/messages skills/coordinate/tests/fixtures/fixture-1/channel/minutes; skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json",
+      "observed": "messages 0001-0003; ATA-0001, ATA-0002; last_message_seen 0003",
+      "tag": "inference"
+    },
+    {
+      "claim": "LOOP-STATE consecutive_idle is 9 while LEDGER records only one idle ('no news') entry.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json; skills/coordinate/tests/fixtures/fixture-1/channel/LEDGER.md",
+      "observed": "\"consecutive_idle\": 9 vs one '- 2026-10-07 13:23 -03: no news (loop).' line",
+      "tag": "inference"
+    },
+    {
+      "claim": "The card of cse_FIXTURE_MED still states ATIVO while the card of cse_FIXTURE_COORD1 states the MEDIATOR inactive since 2026-09-12.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_MED.json; skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json",
+      "observed": "MED: \"estado\": \"ATIVO: folder created; waiting for cards\"; COORD1: \"succeeds the MEDIATOR (inactive since 2026-09-12)\"",
+      "tag": "inference"
+    },
+    {
+      "claim": "The card of cse_FIXTURE_COORD1 has ultima_lida empty while LOOP-STATE (coordinator loop) records last_message_seen 0003 and ATA-0002 states messages 0002 and 0003 checked.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json; skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json; skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0002.md",
+      "observed": "\"ultima_lida\": \"\" vs \"last_message_seen\": \"0003\"",
+      "tag": "inference"
+    },
+    {
+      "claim": "The card of cse_FIXTURE_REV was emitted 2026-10-07T16:46:30Z, after ATA-0002 and after the last loop run (16:23:30Z); no message after 0003 accompanies that card update.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_REV.json; skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json; ls skills/coordinate/tests/fixtures/fixture-1/channel/messages",
+      "observed": "emitido_em_utc 2026-10-07T16:46:30Z; last_run_utc 2026-10-07T16:23:30Z; messages end at 0003",
+      "tag": "inference"
+    },
+    {
+      "claim": "All twelve channel files have the same mtime, 2026-10-24T19:37:15Z, later than the cut-off 2026-10-05T12:30:00Z.",
+      "source": "TZ=UTC find skills/coordinate/tests/fixtures/fixture-1/channel -type f -exec stat -c '%n|%y' {} \\;",
+      "observed": "every file: 2026-10-24 19:37:15.6865xx-.6867xx +0000",
+      "tag": "verified-this-run"
+    }
+  ],
+  "changed_after_cutoff": [
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/LEDGER.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/PROTOCOL.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_ARCH.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_MED.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_REV.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0001__de-cse_FIXTURE_ARCH__para-cse_FIXTURE_COORD1.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0002__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0003__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0001.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0002.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    }
+  ],
+  "open_questions": [
+    "Is the scheduled task trig_FIXTURE_LOOP still present and enabled, given that the last recorded loop run is 2026-10-07T16:23:30Z?",
+    "Is the mediator session cse_FIXTURE_MED still running, given that its card says ATIVO and the coordinator card says it is inactive since 2026-09-12?",
+    "Why does the coordinator card leave ultima_lida empty while the coordinator loop records message 0003 as seen?",
+    "What prompted the card of cse_FIXTURE_REV to be re-emitted at 2026-10-07T16:46:30Z without an accompanying message?",
+    "Has requirement-0002 been ratified by the operator since ATA-0002 recorded it as pending?",
+    "Do the uniform mtimes of 2026-10-24T19:37:15Z reflect a copy or fixture creation rather than real edits after the cut-off?"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "handoffs",
+  "facts": [
+    {"claim": "Two handoff files match HANDOFF.*.md under project_root", "source": "ls proj/HANDOFF.*.md", "observed": "HANDOFF.coordinator-2026-10-05.md HANDOFF.orbit-plan-0310.md", "tag": "verified-this-run"},
+    {"claim": "The coordinator-2026-10-05 handoff declares itself incomplete", "source": "proj/HANDOFF.coordinator-2026-10-05.md", "observed": "completeness: INCOMPLETE: M4", "tag": "verified-this-run"},
+    {"claim": "The handoff states that the successor is COORDINATOR 2", "source": "proj/HANDOFF.coordinator-2026-10-05.md", "observed": "successor is COORDINATOR 2", "tag": "carried-forward"}
+  ],
+  "changed_after_cutoff": [],
+  "open_questions": ["No handoff by COORDINATOR 2 matches the glob; whether one exists elsewhere is not settled by these files."]
+}

@@ -1,0 +1,278 @@
+{
+  "blockers": [
+    "The ratified scope (ZERO r1) still excludes content indexing while register r4 contracts a context engine; only the operator ratifies, so no session can build content without violating the method, and ZERO r2 has awaited ratification since 2026-10-23T14:09Z.",
+    "All capacity went into documentation and review: six handoffs, eleven ATAs, seventeen messages, three substrate ADRs and two constitution drafts, but no database, no git repository and no tested line of code; the only physical act is the pgvector installed today.",
+    "Coordination changed three times in six weeks and each change restarts the reading (72% of the measured cost is re-reading fixed context), so the marginal cost of each session goes to orientation and not to delivery.",
+    "Decisions K1-K9 of the knowledge substrate were treated as a general blocker, although bridge seg1 itself declares that the index core does not depend on them."
+  ],
+  "options": [
+    {
+      "id": "A",
+      "name": "Close the scope first, then build",
+      "description": "Ratify ZERO r2 and requirement-0003; write ADRs 0007-0009 of the engine; only then open the bridge and implement. Sequential and pure, but weeks without code.",
+      "scores": [
+        9,
+        3,
+        5,
+        8,
+        5,
+        3
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Vertical slice now: segment 1 (local core) now, content layer in parallel",
+      "description": "Authorize the already drafted bridge seg1 (inside the ratified r1 scope) and build it on the server while ZERO r2 is ratified; then segment 2 (hash, extraction, search cascade, MCP bridge).",
+      "scores": [
+        9,
+        7,
+        7,
+        8,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Context engine directly, without a metadata core",
+      "description": "Skip the provider table and the incremental index; ingest a subset of <data volume>\\ into pgvector and measure the cascade. Quick demonstration, but contradicts ZERO r1 and line 1 of r4 (incremental indexing is the base).",
+      "scores": [
+        3,
+        8,
+        8,
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "D",
+      "name": "Google Drive first (letter of the Project instruction)",
+      "description": "Build the Drive metadata adapter before any content. In scope, but depends on ADR-0002, OAuth and credentials, and proves no component of the engine.",
+      "scores": [
+        8,
+        4,
+        2,
+        7,
+        4,
+        3
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C1",
+      "text": "Conformity with the ratified scope and with the method (nothing enters without requirement, ADR, bridge)",
+      "weight": 5
+    },
+    {
+      "id": "C2",
+      "text": "Time to the first useful query answered by the database (days)",
+      "weight": 4
+    },
+    {
+      "id": "C3",
+      "text": "How much of register r4 is proven by measurement (lines 1-5, 10, 13)",
+      "weight": 4
+    },
+    {
+      "id": "C4",
+      "text": "Low risk of new drift or rework (10 = minimum risk)",
+      "weight": 3
+    },
+    {
+      "id": "C5",
+      "text": "Cost in tokens and sessions to the first converge (10 = cheapest)",
+      "weight": 3
+    },
+    {
+      "id": "C6",
+      "text": "Independence from still-open operator decisions (K1-K9, OAuth, credentials)",
+      "weight": 2
+    }
+  ],
+  "matrix": {
+    "method": "inline",
+    "winner": "B",
+    "margin_pct": 29,
+    "loses_on": [
+      "Segment 2 remains dependent on the ratification of ZERO r2.",
+      "Session cost is medium because two fronts run at the same time."
+    ]
+  },
+  "fronts": [
+    {
+      "name": "Front 0 - Governance and foundation (day 0, one session)",
+      "tasks": [
+        {
+          "id": "D0-01",
+          "deliverable": "One coordinator, one loop: the elected session writes the channel card and handoff seq 10 and closes the cards of ORION and cse_EXAMPLE_COORD1; the hourly :23 task stays as registrar; the \"Coordenadora 2\" cycle and the reviewer's \"LOOP handshake\" are removed or suspended by the operator.",
+          "proof": "One coordinator with an ACTIVE card and handoff seq 10 in the chain.",
+          "executor": "Coordinator (Opus); operator decides the schedules"
+        },
+        {
+          "id": "D0-02",
+          "deliverable": "Batch ratification RAT-0003: ZERO r2 + requirement-0003 + constitution r2 + authorization of the bridge seg1 mandate; /smard-agent-flow:analyze runs before the signature is requested.",
+          "proof": "RAT-0003 signed.",
+          "executor": "Operator signs; coordinator runs analyze"
+        },
+        {
+          "id": "D0-03",
+          "deliverable": "Physical foundation: dedicated cluster <data volume>\\SDI-PGDATA on port 5433, roles sdi_owner/sdi_collector/sdi_reader, CREATE EXTENSION vector and pg_trgm, private git repository in <project root>\\repo with only construction and specs.",
+          "proof": "Cluster on 5433 answers; vector and pg_trgm installable; repository created.",
+          "executor": "Operator runs the PowerShell commands; coordinator drafts setup.sql"
+        },
+        {
+          "id": "D0-04",
+          "deliverable": "Project instruction corrected for delegation to cloud sessions and explicit acceptance of /smard-agent-flow:handoff alongside smard-ledger-handoff.",
+          "proof": "Project instruction no longer contains \"No in-process subagents\".",
+          "executor": "Operator"
+        }
+      ]
+    },
+    {
+      "name": "Front 1 - Segment 1: local index core (week 1)",
+      "tasks": [
+        {
+          "id": "S1-01",
+          "deliverable": "Schema: provider, source, entry (source, native_id, generation), parent link, size_kind, jsonb extras; migrations 0001..n with down.",
+          "proof": "pgTAP: two parents accepted; unknown size excluded from the total and counted; migration applies and reverts.",
+          "executor": "Sonnet, lean-fanout on the server"
+        },
+        {
+          "id": "S1-02",
+          "deliverable": "NTFS loader in Python + COPY, idempotent batches, cursor after commit, tombstones only in a subtree read in full, exclusions enforced by the database.",
+          "proof": "pytest: same batch twice = same state; kill in the middle and restart loses nothing; collector DELETE fails.",
+          "executor": "Sonnet"
+        },
+        {
+          "id": "S1-03",
+          "deliverable": "Rollup per published generation; generation switch in one transaction; advisory lock per source.",
+          "proof": "pytest: totals equal robocopy /L; reader never sees a partial load.",
+          "executor": "Sonnet"
+        },
+        {
+          "id": "S1-04",
+          "deliverable": "Roles, RLS per source, owner without login, default privileges.",
+          "proof": "pgTAP: matrix profile x source x operation.",
+          "executor": "Sonnet"
+        },
+        {
+          "id": "S1-05",
+          "deliverable": "Curation separated from facts, proposals by agents, optimistic version.",
+          "proof": "pytest: sync never alters curation; concurrent edit raises a conflict.",
+          "executor": "Sonnet"
+        },
+        {
+          "id": "S1-06",
+          "deliverable": "Full load of <data volume>\\ measured on the dedicated cluster.",
+          "proof": "Time recorded; target PRF-001 below 10 s.",
+          "executor": "Sonnet; measurement reported to the operator"
+        }
+      ]
+    },
+    {
+      "name": "Front 2 - Segment 2: content layer of the engine (week 2, after RAT-0003)",
+      "tasks": [
+        {
+          "id": "S2-01",
+          "deliverable": "BLAKE3 hash per file and Merkle per folder in the incremental loader; only what changed is reprocessed (r4 line 1).",
+          "proof": "pytest: changing one file reprocesses one; moving a folder does not reprocess content.",
+          "executor": "Sonnet"
+        },
+        {
+          "id": "S2-02",
+          "deliverable": "Extraction and chunking: Xberg CLI for prose/PDF, tree-sitter for code; chunk table with three text columns (original, normalized, lemmatized - the last filled later) (r4 lines 2, 3, 16).",
+          "proof": "pytest: 20 sample files -> chunks with reproducible offsets.",
+          "executor": "Sonnet"
+        },
+        {
+          "id": "S2-03",
+          "deliverable": "Search cascade in SQL: exact (live ripgrep) -> pg_trgm -> identifier-aware FTS -> pgvector EmbeddingGemma 2 fp32 768d -> RRF fusion; response contract \"NÃO EXISTE; vizinhos:\" and strict: true (r4 lines 4, 5, 13, 18).",
+          "proof": "bakeoff2 on the server with the operator's questions: zero silent empty results; Recall@5 and MRR@10 recorded.",
+          "executor": "Sonnet"
+        },
+        {
+          "id": "S2-04",
+          "deliverable": "Minimal MCP bridge over stdio (rmcp): search, read_chunk, outline; authority taken from the database roles (r4 line 10).",
+          "proof": "Claude Code and Kiro query the index; 5 real questions answered by the database.",
+          "executor": "Sonnet"
+        },
+        {
+          "id": "S2-05",
+          "deliverable": "Measurement of the reranker (bge-reranker-v2-m3, Qwen3-Reranker-0.6B, Xberg cross-encoder) and of the Matryoshka dimension; choice by measurement (r4 lines 11, 18).",
+          "proof": "HTML report with cited column headers (rule r-r1).",
+          "executor": "Sonnet"
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "role": "Coordination",
+      "who": "one persistent cloud session (the elected one)",
+      "model": "Opus",
+      "rule": "writes ATAs, bridge, analyze/converge, handoff WRITE at the end of every session; never implements"
+    },
+    {
+      "role": "Architecture",
+      "who": "the same session or a short preflight session",
+      "model": "Opus",
+      "rule": "ADR-0007 content schema, ADR-0008 cascade, ADR-0009 MCP bridge, derived from r4, before segment 2"
+    },
+    {
+      "role": "Implementation",
+      "who": "Invoke-LeanFanout on <host> (the database is there)",
+      "model": "Sonnet, auto-approve envelope (3 sonnet)",
+      "rule": "one S-xx task per agent, against the bridge; two attempts and stop; report = result, evidence, pending item"
+    },
+    {
+      "role": "Repetitive verification",
+      "who": "lean-fanout",
+      "model": "Haiku",
+      "rule": "secret scans, migration lint, hash checks"
+    },
+    {
+      "role": "Adversarial review",
+      "who": "cse_EXAMPLE_REVIEWER (or a new one), only at converge",
+      "model": "Opus or Fable, by operator order",
+      "rule": "no hourly loop; summoned by ATA"
+    },
+    {
+      "role": "Channel registrar",
+      "who": "scheduled task at :23",
+      "model": "Opus auto",
+      "rule": "stays as is; reads the newest handoff, which will now exist"
+    }
+  ],
+  "done_when": [
+    {
+      "milestone": "Day 0",
+      "condition": "RAT-0003 signed; cluster on 5433 answers; vector and pg_trgm installable; repository created; a single coordinator with an ACTIVE card and handoff seq 10 in the chain."
+    },
+    {
+      "milestone": "Segment 1",
+      "condition": "S1-01..S1-06 green on the dedicated cluster; full load of <data volume>\\ below 10 s; RLS matrix green; totals equal to robocopy /L."
+    },
+    {
+      "milestone": "Segment 2",
+      "condition": "bakeoff2 on the server with the operator's questions without silent empty results; Claude Code queries the index through the MCP bridge and answers five real questions about the operator's collection; reranker and dimension chosen by recorded measurement."
+    },
+    {
+      "milestone": "Full context engine",
+      "condition": "Goal of segment 3; declared only when lines 6, 7, 8 and 10 of r4 are measured against the benchmarks the operator fixed (JB Context, Serena, Context7, Augment)."
+    }
+  ],
+  "cost": {
+    "measured": false,
+    "statement": "Quota used and week elapsed are not measurable from this cloud session; before the first fan-out they are read from <data volume>\\persistent-memory\\spend-ledger.md and the account panel and declared in the required form (quota X% used, Y% of the week, estimated cost Z USD). Prior estimate, to be confirmed: segment 1 with six Sonnet tasks of about 150 thousand tokens each and one 300 thousand token coordinator session is about 1.2 million tokens; segment 2, with embeddings and bakeoff, about 2 million. All inside the auto-approve envelope if the tasks are launched in series of three."
+  },
+  "risks": [
+    "Write through the bridge with stale content: every write to <data volume>\\ is checked by hash before use (rule r-c8-1).",
+    "Citations of other models: no version or license enters a record without a primary source (rule r-c9-1).",
+    "pg_textsearch and pgvectorscale on Windows: treated as experimental; native FTS is the already ratified fallback (adjustment 1 of r4).",
+    "Scope drift: nothing of segment 2 starts before RAT-0003; if r2 is rejected, segment 1 proceeds alone and the plan is revised.",
+    "Non-commercial licenses: allowed in the pilot and marked as debt (rule r-c8-2)."
+  ],
+  "reviewer_findings": []
+}

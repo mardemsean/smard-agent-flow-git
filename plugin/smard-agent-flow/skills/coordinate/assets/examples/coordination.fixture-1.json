@@ -1,0 +1,20 @@
+{
+  "project_root": "tools/coordinate-test/fixture-1/proj",
+  "handoff_glob": "HANDOFF.*.md",
+  "chain_log_glob": "handoff-chain.*.log",
+  "docs_dir": "docs",
+  "channel": {
+    "kind": "handshake-v1",
+    "path": "tools/coordinate-test/fixture-1/channel",
+    "cards_dir": "cards",
+    "messages_dir": "messages",
+    "minutes_dir": "minutes",
+    "ledger": "LEDGER.md",
+    "loop_state": "LOOP-STATE.json",
+    "protocol": "PROTOCOL.md"
+  },
+  "scheduler": "none",
+  "handoff_skill": "smard-agent-flow:handoff",
+  "recent_handoffs": 2,
+  "deliverables_dir": null
+}

@@ -1,0 +1,330 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project",
+    "generated_at",
+    "sources",
+    "lineage",
+    "sessions",
+    "documents",
+    "chain",
+    "scheduled_tasks",
+    "verify_block",
+    "owed_by_operator"
+  ],
+  "properties": {
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "lineage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "who",
+          "period",
+          "claim",
+          "tag"
+        ],
+        "properties": {
+          "who": {
+            "type": "string",
+            "minLength": 1
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tag": {
+            "$ref": "tags.schema.json"
+          }
+        }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "role",
+          "live_state",
+          "source",
+          "tag"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "live_state": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tag": {
+            "$ref": "tags.schema.json"
+          }
+        }
+      }
+    },
+    "documents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ratified",
+        "proposed",
+        "built",
+        "drift"
+      ],
+      "properties": {
+        "ratified": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "tag": {
+                "$ref": "tags.schema.json"
+              }
+            }
+          }
+        },
+        "proposed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "tag": {
+                "$ref": "tags.schema.json"
+              }
+            }
+          }
+        },
+        "built": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "tag": {
+                "$ref": "tags.schema.json"
+              }
+            }
+          }
+        },
+        "drift": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "tag": {
+                "$ref": "tags.schema.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "links",
+        "missing_link",
+        "open_items"
+      ],
+      "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "seq",
+              "date",
+              "session",
+              "content"
+            ],
+            "properties": {
+              "seq": {
+                "type": "string",
+                "minLength": 1
+              },
+              "date": {
+                "type": "string",
+                "minLength": 1
+              },
+              "session": {
+                "type": "string",
+                "minLength": 1
+              },
+              "content": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "missing_link": {
+          "type": "boolean"
+        },
+        "open_items": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "scheduled_tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "schedule",
+          "model_permission",
+          "last_run",
+          "reading"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schedule": {
+            "type": "string",
+            "minLength": 1
+          },
+          "model_permission": {
+            "type": "string",
+            "minLength": 1
+          },
+          "last_run": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reading": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "verify_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "rows"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "rerun",
+            "no block"
+          ]
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim",
+              "result",
+              "state"
+            ],
+            "properties": {
+              "claim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "result": {
+                "type": "string",
+                "minLength": 1
+              },
+              "state": {
+                "enum": [
+                  "ok",
+                  "divergence",
+                  "fail"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "owed_by_operator": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "situation.schema.json",
+  "title": "situation",
+  "description": "Situation report of a coordinated project: lineage, sessions, documents, chain, schedule, verify block."
+}

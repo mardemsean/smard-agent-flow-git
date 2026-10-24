@@ -1,0 +1,11 @@
+2026-10-03T11:12:00Z | seq 1 | CHARTER | c0 | ORBIT-LEDGER: a ledger of orbital observations with provenance | orbit-plan-0310
+2026-10-03T11:12:00Z | seq 1 | OPEN OWED | o1 | operator ratifies plan v0.1 | orbit-plan-0310
+2026-10-03T11:12:00Z | seq 1 | TURN | t1 | plan v0.1 drafted, SQLite chosen | orbit-plan-0310
+2026-10-03T14:00:00Z | seq 2 | CLOSE o1 | o1 | plan v0.1 ratified, RAT-0001 | orbit-specify-1355
+2026-10-03T14:00:00Z | seq 2 | OPEN OWED | o2 | requirement-0002 drafted for ratification | orbit-specify-1355
+2026-10-03T14:00:00Z | seq 2 | TURN | t2 | requirement-0002 drafted | orbit-specify-1355
+2026-10-05T12:30:00Z | seq 3 | OPEN OWED | o3 | operator ratifies requirement-0002 (content layer); supersedes o2 | coordinator-2026-10-05
+2026-10-05T12:30:00Z | seq 3 | CLOSE o2 | o2 | folded into o3 | coordinator-2026-10-05
+2026-10-05T12:30:00Z | seq 3 | OPEN RULE | r2 | one coordinator loop only: trig_FIXTURE_LOOP | coordinator-2026-10-05
+2026-10-05T12:30:00Z | seq 3 | OPEN RULE | r3 | verify every bridge write by hash | coordinator-2026-10-05
+2026-10-05T12:30:00Z | seq 3 | TURN | t3 | coordinator hands off to COORDINATOR 2; nothing built | coordinator-2026-10-05

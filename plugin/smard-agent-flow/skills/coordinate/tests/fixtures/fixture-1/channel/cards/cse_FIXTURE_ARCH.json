@@ -1,0 +1,11 @@
+{
+  "esquema": "harness/handshake-de-sessao/v1",
+  "id_nuvem": "cse_FIXTURE_ARCH",
+  "uuid_sessao": "00000000-0000-0000-0000-000000000000",
+  "projeto": "orbit-ledger",
+  "modelo_configurado": "claude-opus-5-5",
+  "papel": "Architecture and specification session of ORBIT-LEDGER",
+  "estado": "OCIOSA since 2026-10-05T12:13Z: no task; everything left depends on the operator",
+  "ultima_lida": "0003",
+  "emitido_em_utc": "2026-10-05T12:13:00Z"
+}

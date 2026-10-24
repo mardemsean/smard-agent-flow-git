@@ -1,0 +1,20 @@
+{
+  "project_root": "<project root>",
+  "handoff_glob": "HANDOFF.*.md",
+  "chain_log_glob": "handoff-chain.*.log",
+  "docs_dir": "docs",
+  "channel": {
+    "kind": "handshake-v1",
+    "path": "<channel path>",
+    "cards_dir": "CARTOES",
+    "messages_dir": "MENSAGENS",
+    "minutes_dir": "ATAS",
+    "ledger": "LEDGER.md",
+    "loop_state": "LOOP-STATE.json",
+    "protocol": "00-PROTOCOLO.md"
+  },
+  "scheduler": "list_triggers",
+  "handoff_skill": "smard-agent-flow:handoff",
+  "recent_handoffs": 4,
+  "deliverables_dir": "<deliverables dir>"
+}

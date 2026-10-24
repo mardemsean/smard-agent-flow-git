@@ -1,0 +1,362 @@
+{
+  "scope": "tasks-and-docs",
+  "facts": [
+    {
+      "claim": "scheduled-tasks.json exists under project_root and lists 4 scheduled tasks: trig_FIXTURE_LOOP, trig_FIXTURE_COORD2, trig_FIXTURE_REVWAKE, trig_FIXTURE_OLDHB",
+      "source": "cat skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "\"id\": \"trig_FIXTURE_LOOP\" ... \"trig_FIXTURE_COORD2\" ... \"trig_FIXTURE_REVWAKE\" ... \"trig_FIXTURE_OLDHB\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "No live scheduled-task listing was pasted by the dispatcher; the task facts come from the scheduled-tasks.json snapshot only",
+      "source": "dispatch prompt, section 'Live scheduled-task listing'",
+      "observed": "(none)",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "trig_FIXTURE_LOOP ('ORBIT coordinator: channel loop') is enabled, recurring at cron '23 * * * *', persist_session false, last run SUCCEEDED at 2026-10-07T16:23:00Z",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "\"cron_expression\": \"23 * * * *\", \"enabled\": true, \"persist_session\": false, \"status\": \"SUCCEEDED\", \"fired_at\": \"2026-10-07T16:23:00Z\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "trig_FIXTURE_LOOP prompt describes an hourly recorder that reads the channel, writes minutes only if something is new, updates LOOP-STATE.json and never decides",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "\"Hourly recorder: read the channel, write minutes only if something is new, update LOOP-STATE.json. Never decide.\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "trig_FIXTURE_COORD2 ('Coordinator 2: supervision cycle') is enabled, one-shot with run_once_at 2026-10-07T18:03:00Z, empty cron_expression, persist_session true bound to session_FIXTURE_COORD2, and has no last_run field",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "\"cron_expression\": \"\", \"run_once_at\": \"2026-10-07T18:03:00Z\", \"enabled\": true, \"persist_session\": true, \"persistent_session_id\": \"session_FIXTURE_COORD2\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "trig_FIXTURE_COORD2 prompt states a supervision cycle that reads LOOP-STATE.json, checks the :23 loop and reschedules itself +60 min",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "\"Supervision cycle of COORDINATOR 2: read LOOP-STATE.json, check the :23 loop, reschedule +60 min.\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "trig_FIXTURE_REVWAKE ('LOOP reviewer wake') is enabled, recurring at cron '46 * * * *', persist_session true bound to session_FIXTURE_REV, last run SUCCEEDED at 2026-10-07T16:46:00Z",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "\"cron_expression\": \"46 * * * *\", \"enabled\": true, \"persistent_session_id\": \"session_FIXTURE_REV\", \"fired_at\": \"2026-10-07T16:46:00Z\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "trig_FIXTURE_REVWAKE prompt is 'LOOP: read minutes 0002 and run one cycle.'",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "\"prompt\": \"LOOP: read minutes 0002 and run one cycle.\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "trig_FIXTURE_OLDHB ('Sessions heartbeat') is disabled, cron '46 * * * *', last run SUCCEEDED at 2026-10-01T13:46:00Z, and has no prompt field",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "\"enabled\": false, \"fired_at\": \"2026-10-01T13:46:00Z\"",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Three of the four listed scheduled tasks are enabled (LOOP, COORD2, REVWAKE); two of them (LOOP recurring hourly, COORD2 self-rescheduling hourly per its prompt) concern coordinator supervision of the channel",
+      "source": "inference from scheduled-tasks.json enabled flags and prompts",
+      "observed": "LOOP enabled true; COORD2 enabled true; REVWAKE enabled true; OLDHB enabled false",
+      "tag": "inference"
+    },
+    {
+      "claim": "The handoff HANDOFF.coordinator-2026-10-05.md states rule r2 'one coordinator loop only (trig_FIXTURE_LOOP)' and the chain log records OPEN RULE r2 with the same text",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md; skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log",
+      "observed": "- RULE r2: one coordinator loop only (trig_FIXTURE_LOOP) | seq 3 | OPEN RULE | r2 | one coordinator loop only: trig_FIXTURE_LOOP",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The handoff HANDOFF.coordinator-2026-10-05.md states the loop's verify claim as 'the loop is one recurring scheduled task' expected trig_FIXTURE_LOOP",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md",
+      "observed": "| the loop is one recurring scheduled task | scheduled-tasks.json, enabled true | trig_FIXTURE_LOOP |",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The docs tree under project_root holds 5 files: docs/ratification/RAT-0001.md, docs/drafts/COMPONENT-REGISTER-r2.md, docs/drafts/COMPONENT-REGISTER-r3.md, docs/drafts/requirement-0002-PROPOSED.md, docs/drafts/ENGINE-PROBE-2026-10-07.md",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1/proj/docs -type f",
+      "observed": "RAT-0001.md (261 B), COMPONENT-REGISTER-r2.md (287 B), COMPONENT-REGISTER-r3.md (625 B), requirement-0002-PROPOSED.md (227 B), ENGINE-PROBE-2026-10-07.md (201 B)",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "No file in scope exceeds the 60 KB size budget; the largest is HANDOFF.coordinator-2026-10-05.md at 3249 bytes",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1 -type f -printf '%s %p'",
+      "observed": "3249 .../proj/HANDOFF.coordinator-2026-10-05.md",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "RAT-0001.md records ratification of plan v0.1 and REQUIREMENT-ZERO r1 (SQLite engine; metadata only; content indexing excluded) from the typed message 'plano v0.1 ok' on 2026-10-03 10:55 -03",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/ratification/RAT-0001.md",
+      "observed": "**State:** ratified ... \"plano v0.1 ok\", 2026-10-03 10:55 -03 ... (SQLite engine; metadata only; content indexing excluded)",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "RAT-0001.md is the only file in docs/ratification; no ratification receipt file exists for COMPONENT-REGISTER-r3 or requirement-0002",
+      "source": "ls skills/coordinate/tests/fixtures/fixture-1/proj/docs/ratification",
+      "observed": "RAT-0001.md",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "COMPONENT-REGISTER-r2.md lists rows 1-3 CONTRACTED (incremental observation import, provenance hash chain, full-text search over observation notes) and row 4 image thumbnail extraction PRE-CONTRACTED",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r2.md",
+      "observed": "| 3 | Full-text search over observation notes | CONTRACTED | | 4 | Image thumbnail extraction | PRE-CONTRACTED |",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "COMPONENT-REGISTER-r3.md exists in docs/drafts",
+      "source": "ls skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts",
+      "observed": "COMPONENT-REGISTER-r3.md",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "COMPONENT-REGISTER-r3.md states it was ratified by the operator on 2026-10-06 in the chat ('r3 ok') and supersedes r2",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r3.md",
+      "observed": "**Ratification:** r3 ratified by the operator on 2026-10-06 in the chat (\"r3 ok\"). Supersedes r2.",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "COMPONENT-REGISTER-r3.md lists row 4 as CONTRACTED (2026-10-06) and a new row 5 'Vector similarity over notes (sqlite-vec)' as PRE-CONTRACTED",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r3.md",
+      "observed": "| 4 | Image thumbnail extraction | CONTRACTED (2026-10-06) | | 5 | Vector similarity over notes (sqlite-vec) | PRE-CONTRACTED |",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "COMPONENT-REGISTER-r3.md notes that REQUIREMENT-ZERO r1 excludes content indexing while rows 3 and 5 contract it, and that a ZERO r2 drafted in requirement-0002-PROPOSED.md awaits ratification",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r3.md",
+      "observed": "Note: REQUIREMENT-ZERO r1 excludes content indexing while rows 3 and 5 contract it; a ZERO r2 is drafted in requirement-0002-PROPOSED.md and awaits ratification.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "requirement-0002-PROPOSED.md is in state 'draft for ratification', drafted 2026-10-03 by orbit-specify-1355 (chain seq 2, o2) and revised 2026-10-06 by the COORDINATOR 2 session",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/requirement-0002-PROPOSED.md",
+      "observed": "State: draft for ratification. Drafted 2026-10-03 by the orbit-specify-1355 session (chain seq 2, o2); revised 2026-10-06 by the COORDINATOR 2 session.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The file states that the COORDINATOR 2 session revised requirement-0002 on 2026-10-06",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/requirement-0002-PROPOSED.md",
+      "observed": "revised 2026-10-06 by the COORDINATOR 2 session.",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "ENGINE-PROBE-2026-10-07.md is labelled MACHINE PAYLOAD and states that the COORDINATOR 2 session compiled and loaded sqlite-vec 0.1.6, that FTS5 is available, that no schema was created and that it changes no ratified status",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/ENGINE-PROBE-2026-10-07.md",
+      "observed": "MACHINE PAYLOAD. Run by the COORDINATOR 2 session. sqlite-vec 0.1.6 compiled and loaded (`.load vec0` ok); FTS5 available. No schema created. Changes no ratified status.",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "CLAUDE.md names SQLite as the storage engine (ADR-0001) and states scheduled-tasks.json is a snapshot of list_triggers",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/CLAUDE.md",
+      "observed": "Scheduled tasks: see scheduled-tasks.json (snapshot of list_triggers). Storage engine: SQLite (ADR-0001).",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "absent: no ADR-0001 file exists anywhere under project_root",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1/proj -iname '*ADR*'",
+      "observed": "(no output)",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "absent: no kanban/config.yml under project_root",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1/proj -path '*kanban*'",
+      "observed": "(no output)",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The handoff-archive directory under project_root is empty",
+      "source": "ls -la skills/coordinate/tests/fixtures/fixture-1/proj/handoff-archive",
+      "observed": "total 8 (only . and ..)",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Every file under project_root and channel.path has filesystem mtime 2026-10-24T16:37:15Z, later than the cut-off 2026-10-05T12:30:00Z, so all 22 files fall in changed_after_cutoff",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1 -type f -printf '%TY-%Tm-%TdT%TH:%TM:%TSZ %p'",
+      "observed": "all 22 lines begin 2026-10-24T16:37:15.68",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Because all files share one identical mtime, filesystem mtime does not separate pre-cut-off from post-cut-off content in this tree; dates stated inside files place COMPONENT-REGISTER-r3 (2026-10-06), the requirement-0002 revision (2026-10-06), ENGINE-PROBE (2026-10-07), the REV card (2026-10-07T16:46:30Z), LOOP-STATE (2026-10-07T16:23:30Z) and the 2026-10-07 LEDGER line after the cut-off",
+      "source": "inference from find -printf mtimes and in-file dates of the named files",
+      "observed": "mtime 2026-10-24T16:37:15Z for all; in-file dates 2026-10-06 / 2026-10-07",
+      "tag": "inference"
+    },
+    {
+      "claim": "LOOP-STATE.json records last_message_seen 0003, last_ata ATA-0002, last_run_utc 2026-10-07T16:23:30Z, consecutive_idle 9, bridge_down_since null",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json",
+      "observed": "\"last_message_seen\": \"0003\", \"last_ata\": \"ATA-0002\", \"last_run_utc\": \"2026-10-07T16:23:30Z\", \"consecutive_idle\": 9",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "LEDGER.md last line is '2026-10-07 13:23 -03: no news (loop).'",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/LEDGER.md",
+      "observed": "- 2026-10-07 13:23 -03: no news (loop).",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The channel messages directory holds messages 0001 to 0003 only; none numbered 0004 or higher",
+      "source": "ls skills/coordinate/tests/fixtures/fixture-1/channel/messages",
+      "observed": "0001__de-cse_FIXTURE_ARCH__para-cse_FIXTURE_COORD1.md, 0002__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md, 0003__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The channel minutes directory holds ATA-0001 and ATA-0002 only; ATA-0002 states the coordinator loop moved to hourly scheduled task trig_FIXTURE_LOOP and requirement-0002 pending with the operator",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0002.md",
+      "observed": "Coordinator loop moved to the hourly scheduled task trig_FIXTURE_LOOP. Pending with the operator: requirement-0002.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "absent: no session card for COORDINATOR 2 (session_FIXTURE_COORD2) exists in channel/cards; the cards present are ARCH, COORD1, MED, REV",
+      "source": "ls skills/coordinate/tests/fixtures/fixture-1/channel/cards",
+      "observed": "cse_FIXTURE_ARCH.json cse_FIXTURE_COORD1.json cse_FIXTURE_MED.json cse_FIXTURE_REV.json",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Card cse_FIXTURE_REV states OCIOSA with 'loop not scheduled; resumes on new minutes', emitted 2026-10-07T16:46:30Z",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_REV.json",
+      "observed": "\"estado\": \"OCIOSA: tasks T1-T2 done (msgs 0002, 0003); loop not scheduled; resumes on new minutes\", \"emitido_em_utc\": \"2026-10-07T16:46:30Z\"",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "Card cse_FIXTURE_REV says 'loop not scheduled' while scheduled-tasks.json lists trig_FIXTURE_REVWAKE enabled and bound to session_FIXTURE_REV with a last run at 2026-10-07T16:46:00Z",
+      "source": "inference from skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_REV.json and skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "observed": "card: 'loop not scheduled'; task: enabled true, persistent_session_id session_FIXTURE_REV, fired_at 2026-10-07T16:46:00Z",
+      "tag": "inference"
+    },
+    {
+      "claim": "Card cse_FIXTURE_MED states ATIVO, emitted 2026-09-10T19:00:00Z, while card cse_FIXTURE_COORD1 states COORD1 succeeds the MEDIATOR, inactive since 2026-09-12",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_MED.json; skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json",
+      "observed": "MED: \"estado\": \"ATIVO: folder created; waiting for cards\"; COORD1: \"succeeds the MEDIATOR (inactive since 2026-09-12)\"",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "Card cse_FIXTURE_COORD1 still states ATIVO (emitted 2026-10-04T12:05:00Z) while HANDOFF.coordinator-2026-10-05.md, whose harness-session is cse_FIXTURE_COORD1, states the coordinator session ends and hands off to COORDINATOR 2",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json; skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md",
+      "observed": "card: \"estado\": \"ATIVO\"; handoff: \"STATE: Coordinator session ends; successor is COORDINATOR 2.\"",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "HANDOFF.coordinator-2026-10-05.md lists stale conditions, of which condition (3) 'a COMPONENT-REGISTER-r3.md exists' is met on disk; conditions (2) message >= 0004 and (4) CLAUDE.md no longer naming SQLite are not met; condition (1) MD5 of r2 was not checked in this run (no hashing command run)",
+      "source": "inference from skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md, ls docs/drafts, ls channel/messages, cat CLAUDE.md",
+      "observed": "Stale if: (1) register r2 MD5 changes; (2) a message numbered 0004 or higher exists ...; (3) a COMPONENT-REGISTER-r3.md exists; (4) the CLAUDE.md no longer names SQLite.",
+      "tag": "inference"
+    },
+    {
+      "claim": "HANDOFF.orbit-plan-0310.md stale condition 'a requirement-0002 exists' is met: requirement-0002-PROPOSED.md is in docs/drafts",
+      "source": "inference from skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md and ls skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts",
+      "observed": "Stale if: a requirement-0002 exists; requirement-0002-PROPOSED.md present",
+      "tag": "inference"
+    },
+    {
+      "claim": "The chain log handoff-chain.orbit.log has 11 lines ending at seq 3 (coordinator-2026-10-05); no line records COMPONENT-REGISTER-r3, a COORDINATOR 2 session, or a closing of o3",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log",
+      "observed": "last line: 2026-10-05T12:30:00Z | seq 3 | TURN | t3 | coordinator hands off to COORDINATOR 2; nothing built | coordinator-2026-10-05",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "absent: no HANDOFF file written by a COORDINATOR 2 session exists under project_root; the handoff files are HANDOFF.coordinator-2026-10-05.md and HANDOFF.orbit-plan-0310.md",
+      "source": "ls skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.*.md",
+      "observed": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md",
+      "tag": "verified-this-run"
+    }
+  ],
+  "changed_after_cutoff": [
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/LEDGER.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/LOOP-STATE.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/PROTOCOL.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_ARCH.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_COORD1.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_MED.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/cards/cse_FIXTURE_REV.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0001__de-cse_FIXTURE_ARCH__para-cse_FIXTURE_COORD1.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0002__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/messages/0003__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0001.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/channel/minutes/ATA-0002.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/CLAUDE.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r2.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/COMPONENT-REGISTER-r3.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/ENGINE-PROBE-2026-10-07.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/drafts/requirement-0002-PROPOSED.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/docs/ratification/RAT-0001.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/scheduled-tasks.json",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    }
+  ],
+  "open_questions": [
+    "Is COMPONENT-REGISTER-r3.md's claim of operator ratification on 2026-10-06 ('r3 ok') backed by any receipt, given that docs/ratification holds only RAT-0001.md?",
+    "Does the live scheduled-task listing still match the scheduled-tasks.json snapshot, in particular whether trig_FIXTURE_COORD2 has fired or been rescheduled after its run_once_at of 2026-10-07T18:03:00Z?",
+    "Is trig_FIXTURE_COORD2 (a supervision cycle of COORDINATOR 2 rescheduled every 60 min) a second coordinator loop under rule r2, which allows only trig_FIXTURE_LOOP?",
+    "Which session created trig_FIXTURE_REVWAKE, given that card cse_FIXTURE_REV states 'loop not scheduled'?",
+    "Does the operator hold REQUIREMENT-ZERO r1 (content indexing excluded) or the requirement-0002 draft as current, given that register r3 contracts rows 3 and 5 for content indexing?",
+    "Has the MD5 of COMPONENT-REGISTER-r2.md changed from the 1111... value stated in the coordinator handoff (not hashed in this run)?",
+    "Why do all fixture files carry the identical mtime 2026-10-24T16:37:15Z, and is filesystem mtime meaningful for the cut-off test in this tree?"
+  ]
+}
