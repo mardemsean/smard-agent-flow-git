@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reviewer-output.schema.json",
+  "title": "reviewer output",
+  "description": "One coordinate-reviewer pass over a retake plan and its situation report: at most eight ranked findings in four fixed classes, and a verdict. The rule that verdict fail requires a reserved finding is checked by tests/run_reviewer_sample.sh, since JSON Schema cannot express it here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["findings", "verdict"],
+  "properties": {
+    "findings": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["class", "finding", "evidence", "what_changes_if_true"],
+        "properties": {
+          "class": {"enum": ["scope", "reserved", "checkability", "cost"]},
+          "finding": {"type": "string", "minLength": 1},
+          "evidence": {"type": "string", "minLength": 1, "description": "One or more pairs <json-path>: \"<short quote>\" joined by \" / \"; a path beginning with situation. points into the situation, any other into the plan; the quote is an exact substring of the value at that path, with an inner double quote written \\\"."},
+          "what_changes_if_true": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "verdict": {"enum": ["pass", "pass-with-findings", "fail"]}
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "project": "SMARD DRIVE FILES INDEX DATABASE",
+  "generated_at": "2026-10-24T17:15:00Z",
+  "sources": [
+    "HANDOFF.coordinator-2026-10-23 (seq 8-9)",
+    "HANDOFF.self-distill-revisora-cse01ERj9 (seq 7)",
+    "HANDOFF.smard-drive-index-knowledge-substrate-0643 (seq 3)",
+    "HANDOFF.self-distill-substrato (INCOMPLETE)",
+    "handoff-chain.smard-drive-index.log",
+    "D:\\claude-harness\\HANDSHAKE (LOOP-STATE, CARTOES, ATAS, MENSAGENS, LEDGER)",
+    "list_triggers",
+    "docs/ and tools/ in B:\\SMARD-DRIVE-INDEX-DB",
+    "claude/COWORK-LEAN.agent.md"
+  ],
+  "lineage": [
+    {
+      "who": "ORION - cse_01AzMP6j2Asc5onHtb8sz2WL",
+      "period": "2026-09-08 -> inactive since 2026-09-11",
+      "claim": "Inter-session cooperation supervisor appointed by the operator. Created the folder D:\\claude-harness\\HANDSHAKE. Its card was never updated: it still says ACTIVE although its successor records it as inactive.",
+      "tag": "verified-this-run"
+    },
+    {
+      "who": "Session COORDINATOR - cse_018WhrgbkB5Bd3zaNyuCgtAf (harness 493e5173)",
+      "period": "2026-10-22T10:15Z -> WRITE 2026-10-23T10:50Z",
+      "claim": "\"Succeeds ORION\" (card). Opened ATA-0001 to ATA-0011 on 2026-10-22, conducted sessions cse_019wZ and cse_01ERj9, wrote contract registers r1-r3, the Adam book bake-off and the external review prompt; moved the loop to the hourly scheduled task at minute :23; delivered HANDOFF.coordinator-2026-10-23.md (seq 8, re-WRITE seq 9) naming the successor \"COORDINATOR 2\". Card still ACTIVE in the channel although the session ended.",
+      "tag": "verified-this-run"
+    },
+    {
+      "who": "COORDINATOR 2 - persistent session session_01Tmp8QcaSRSf1f4X95P41Qg",
+      "period": "2026-10-23 ~12:57Z -> active now (last file 2026-10-24T17:12Z)",
+      "claim": "Successor by handoff. Identity inferred from the scheduled task \"Coordenadora 2: ciclo de supervisao do loop\" (created 2026-10-24T17:02Z) and from the authorship declared in SERVER-PROBE-2026-10-24.md (\"by the COORDINATOR 2 session\"). Produced r4-PROPOSED and r4 (ratified), bakeoff2, REQUIREMENT-ZERO r2 PROPOSED, requirement-0003 PROPOSED, ONTOLOGY r1, and today compiled and installed pgvector 0.8.7 on the server. Wrote no handoff and no card in the channel: link seq 10 of the chain does not exist.",
+      "tag": "inference"
+    },
+    {
+      "who": "Missing link",
+      "period": "2026-10-23T10:50Z -> now (about 30 h)",
+      "claim": "No HANDOFF.*.md and no chain line after seq 9. The most recent handoff is STALE by its own condition (3): COMPONENT-CONTRACT-r4.md exists. The hourly task reads that handoff as current.",
+      "tag": "verified-this-run"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "cse_01MnrpNPEZGnFDweXP3dcFqi",
+      "role": "Architecture and specification session of the index; governed by smard-agent-flow. Lineage of handoffs seq 1 (plan-pilot-0245, 2026-10-17) and seq 2 (specify-0801, 2026-10-18); ratifications RAT-0001/0002 on 2026-10-21.",
+      "live_state": "IDLE since 2026-10-22T12:13Z; last read message 0016",
+      "source": "card; chain seq 1-2",
+      "tag": "inference"
+    },
+    {
+      "id": "cse_019wZKnJ5JRcJnAc1eKE3wj7 (\"protocolo self-distillation aprendizagens\", claude-43)",
+      "role": "Owner of the knowledge-substrate design: PREFLIGHT-ADR-0004/0005/0006 (proposed, not ratified), draft of the self-distill skill. Two handoffs: self-distill-substrato (INCOMPLETE: M2, M5) and its rewrite knowledge-substrate-0643 (COMPLETE, seq 3). Produced ADR-0004 r2 and r3 (seq 4-5), retracted section 2 of message 0012.",
+      "live_state": "IDLE since cycle of 2026-10-22T11:48Z; last read message 0014",
+      "source": "card; HANDOFF -0643; chain seq 3-6",
+      "tag": "verified-this-run"
+    },
+    {
+      "id": "cse_01ERj9TgSZaSavux9evPBQE9",
+      "role": "ADVERSARIAL REVIEWER of the substrate (ATA-0007); successor by handoff of the self-distill session (the operator opened it with the predecessor's handoff). Explored K1 by thought graph (reports r1-r3 in B:\\agent-deliverables-to-sean), retracted two claims (messages 0016, 0017). Handoff seq 7, COMPLETE.",
+      "live_state": "IDLE; heartbeat today 2026-10-24T16:47Z by the task \"LOOP handshake\" (:46, bypassPermissions) that wakes it hourly without yield since 2026-10-22",
+      "source": "card (mtime today); HANDOFF reviewer; list_triggers",
+      "tag": "verified-this-run"
+    },
+    {
+      "id": "cse_018WhrgbkB5Bd3zaNyuCgtAf",
+      "role": "Session COORDINATOR (see lineage).",
+      "live_state": "Card says ACTIVE; session ended by handoff on 2026-10-23T10:50Z - card out of date",
+      "source": "card; HANDOFF coordinator",
+      "tag": "verified-this-run"
+    },
+    {
+      "id": "COORDINATOR 2 (session_01Tmp8...)",
+      "role": "Current coordination plus implementation of server probes (see lineage).",
+      "live_state": "ACTIVE today; no card, no handoff; own next cycle at 18:03Z",
+      "source": "list_triggers; mtimes of docs/ and tools/",
+      "tag": "inference"
+    },
+    {
+      "id": "Hourly loop trig_017hToH1MPX3kVnc2cuGYZg1 (fresh sessions, e.g. cse_012mujP2...)",
+      "role": "Channel registrar: reads HANDSHAKE, writes an ATA only if there is news, updates LOOP-STATE.json. Never decides K1-K8.",
+      "live_state": "Last run 2026-10-24T16:56Z (manual fire, outside the :23 mark); consecutive_idle = 7; last_ata ATA-0011; last_message_seen 0017",
+      "source": "list_triggers; LOOP-STATE.json",
+      "tag": "verified-this-run"
+    },
+    {
+      "id": "cse_01AzMP6j2Asc5onHtb8sz2WL (ORION)",
+      "role": "Previous inter-session supervisor (see lineage).",
+      "live_state": "Card says ACTIVE since 2026-09-08; inactive since 2026-09-11",
+      "source": "card",
+      "tag": "verified-this-run"
+    },
+    {
+      "id": "\"Sessions heartbeat\" trig_01J6Nmaw... (Sonnet)",
+      "role": "Adversarial supervisor before the loop: woke the responsible session.",
+      "live_state": "Disabled on 2026-10-21; last fire 2026-10-21T13:46Z",
+      "source": "list_triggers",
+      "tag": "verified-this-run"
+    }
+  ],
+  "documents": {
+    "ratified": [
+      {
+        "text": "REQUIREMENT-ZERO r1 and requirements r1 (RAT-0001, 2026-10-21)",
+        "tag": "verified-this-run"
+      },
+      {
+        "text": "requirement-0001 (RAT-0002, 2026-10-21)",
+        "tag": "verified-this-run"
+      },
+      {
+        "text": "ADR-0001 PostgreSQL engine (\"p3 ok\")",
+        "tag": "carried-forward"
+      },
+      {
+        "text": "Contract register r4, 2026-10-23, signed in chat with four wording adjustments",
+        "tag": "verified-this-run"
+      }
+    ],
+    "proposed": [
+      {
+        "text": "REQUIREMENT-ZERO r2 + DIFF r1->r2 (2026-10-23T14:09Z)"
+      },
+      {
+        "text": "requirement-0003 PROPOSED"
+      },
+      {
+        "text": "PREFLIGHT-ADR-0004 (r3), 0005, 0006; decisions K1-K9 with the operator"
+      },
+      {
+        "text": "CONSTITUTION draft r1/r2; ONTOLOGY r1 (md, json, html map); PRECEDENCE-TEXTS r2; BRIDGE seg1 r1"
+      }
+    ],
+    "built": [
+      {
+        "text": "No database, schema, credential or service of the index",
+        "tag": "verified-this-run"
+      },
+      {
+        "text": "Today: pgvector 0.8.7 compiled (nmake/VS 2022) and installed in the server's PostgreSQL 18; CREATE EXTENSION still pending a credential",
+        "tag": "verified-this-run"
+      },
+      {
+        "text": "pg_trgm present in PG18 (EDB); Xberg CLI 1.3.10 has no rerank subcommand; cargo-pgrx absent",
+        "tag": "verified-this-run"
+      },
+      {
+        "text": "Bake-offs: RRF 0.88/0.77 (16 queries, without EmbeddingGemma); bakeoff2 run on 2026-10-23",
+        "tag": "verified-this-run"
+      }
+    ],
+    "drift": [
+      {
+        "text": "Scope: ZERO r1 excludes content indexing; register r4 contracts a context engine (tree-sitter, Xberg, ripgrep, PageRank graph, relevance search in PostgreSQL). Reconciliation depends on ZERO r2."
+      },
+      {
+        "text": "Governance: the Project instruction still forbids in-process subagents and names only smard-ledger-handoff; the operator ordered delegation to cloud sessions and accepts /smard-agent-flow:handoff (F3)."
+      },
+      {
+        "text": "Continuity: chain stopped at seq 9; HANDSHAKE channel without an ATA since 2026-10-22."
+      }
+    ]
+  },
+  "chain": {
+    "links": [
+      {
+        "seq": "seq 1",
+        "date": "2026-10-17",
+        "session": "smard-drive-index-plan-pilot-0245",
+        "content": "CHARTER c0; plan v0.1; PostgreSQL decision; pilot F1; folder D2; rules r1-r3 (LEAN, handoff, no in-process subagents)."
+      },
+      {
+        "seq": "seq 2",
+        "date": "2026-10-18",
+        "session": "smard-drive-index-specify-0801",
+        "content": "Plugin installed; REQUIREMENT-ZERO r1 and requirements r1 drafted; rule r4 (nothing is a commitment until ratified)."
+      },
+      {
+        "seq": "seq side",
+        "date": "2026-10-22",
+        "session": "self-distill-substrato-2026-10-22",
+        "content": "WRITE attempt without bridge: items s1-s6; later absorbed as o12, o13, r5, r6 (note n5)."
+      },
+      {
+        "seq": "seq 3",
+        "date": "2026-10-22",
+        "session": "smard-drive-index-knowledge-substrate-0643",
+        "content": "CLOSE o7 (ZERO r1 ratified on 10-21); ADRs 0004-0006 proposed; o11-o15 open; pgvector absent in PG18 (n7)."
+      },
+      {
+        "seq": "seq 4-6",
+        "date": "2026-10-22",
+        "session": "coordenacao-sessoes-0707 / cse_019wZ",
+        "content": "ADR-0004 r2 -> r3; retraction of message 0012; cse_019wZ goes IDLE."
+      },
+      {
+        "seq": "seq 7",
+        "date": "2026-10-22",
+        "session": "self-distill-revisora-cse01ERj9",
+        "content": "Retractions (0016/0017); o-r1 and r-r1 opened; session IDLE."
+      },
+      {
+        "seq": "seq 8-9",
+        "date": "2026-10-23",
+        "session": "coordinator-2026-10-23",
+        "content": "Register r2/r3; ZERO r1 vs register drift; o-c8-1..4, o-c9-1..2; rules r-c8-1..3, r-c9-1..3; TURN t9 \"-> COORDINATOR 2\"."
+      },
+      {
+        "seq": "seq 10",
+        "date": "-",
+        "session": "(not written)",
+        "content": "Work from 2026-10-23 12:57Z to 2026-10-24 17:12Z without a link: r4, bakeoff2, ZERO r2 PROPOSED, requirement-0003, ontology r1, SERVER-PROBE, pgvector installed."
+      }
+    ],
+    "missing_link": true,
+    "open_items": [
+      "o-r1 (re-measure dense arms)",
+      "o-c8-1 (ZERO r2)",
+      "o-c8-2 (rebuild presentation from the ontology)",
+      "o-c8-4 (prove the provenance hypothesis)",
+      "o-c9-1 (operator confirms lines 13-20 - done by ratifying r4, but no CLOSE in the chain)",
+      "o-c9-2 (rerun bake-off on the server with EmbeddingGemma 2 - bakeoff2 exists, no CLOSE)",
+      "live rule r-r1",
+      "live rule r-c8-1 (hash on every write through the bridge)",
+      "live rule r-c8-2 (license debt)",
+      "live rule r-c8-3 (delegate to the cloud)",
+      "live rule r-c9-1 (primary source before recording another model's citation)",
+      "live rule r-c9-2 (a single loop)",
+      "live rule r-c9-3 (recurring errors)"
+    ]
+  },
+  "scheduled_tasks": [
+    {
+      "name": "SMARD coordenador: loop do canal de sessoes (trig_017hToH...)",
+      "schedule": "CRON_TZ=America/Bahia 23 * * * *; fresh session; bound to the computer",
+      "model_permission": "Opus 5.5 / auto",
+      "last_run": "16:56:24Z SUCCEEDED (37 s)",
+      "reading": "Legitimate registrar; fired manually today; reads the stale handoff as current"
+    },
+    {
+      "name": "Coordenadora 2: ciclo de supervisao do loop (trig_019kMhwR...)",
+      "schedule": "one-shot 18:03Z; persistent session session_01Tmp8...",
+      "model_permission": "-",
+      "last_run": "created 17:02Z, has not run yet",
+      "reading": "Second coordination schedule; prompt avoids a duplicate ATA; reschedules itself every 60 min by send_later"
+    },
+    {
+      "name": "LOOP handshake (trig_01DS1tgE...)",
+      "schedule": "46 * * * *; wakes cse_01ERj9",
+      "model_permission": "Opus 5.5 / bypassPermissions",
+      "last_run": "16:46:57Z SUCCEEDED (10 ms)",
+      "reading": "Wakes the idle reviewer hourly since 2026-10-22 with no task; cost without yield; kept by the order \"do not interrupt loops\""
+    },
+    {
+      "name": "Sessions heartbeat (trig_01J6Nmaw...)",
+      "schedule": "46 * * * *",
+      "model_permission": "Sonnet 5.5 / auto",
+      "last_run": "disabled 2026-10-21",
+      "reading": "Previous adversarial supervisor; retired"
+    }
+  ],
+  "verify_block": {
+    "status": "rerun",
+    "rows": [
+      {
+        "claim": "COMPONENT-CONTRACT-r3.md MD5 8F061FA4...",
+        "result": "equal",
+        "state": "ok"
+      },
+      {
+        "claim": "COMPONENT-CONTRACT-r2.md MD5 788CAB37...",
+        "result": "equal",
+        "state": "ok"
+      },
+      {
+        "claim": "BAKEOFF-adam-2026-10-23.md MD5 F5584961...",
+        "result": "equal",
+        "state": "ok"
+      },
+      {
+        "claim": "No message >= 0018 in HANDSHAKE",
+        "result": "confirmed: last is 0017 (2026-10-22T12:10Z)",
+        "state": "ok"
+      },
+      {
+        "claim": "A single coordinator loop (trig_017hToH...)",
+        "result": "partial: the :23 loop exists and runs; today there is a second \"Coordenadora 2\" cycle (one-shot 18:03Z) supervising the first - written to avoid duplicate ATAs, but it is a second coordination schedule (rule r-c9-2)",
+        "state": "divergence"
+      },
+      {
+        "claim": "Stale if (3): COMPONENT-CONTRACT-r4.md exists",
+        "result": "TRUE -> handoff coordinator-2026-10-23 is STALE",
+        "state": "fail"
+      },
+      {
+        "claim": "Stale if (4): Project instruction still contains \"No in-process subagents\"",
+        "result": "TRUE (still contains) -> fork F3 stays open: the Project instruction contradicts the operator's order of 2026-10-23 and still names smard-ledger-handoff as the only format",
+        "state": "divergence"
+      },
+      {
+        "claim": "Loop runs at :23",
+        "result": "last run 16:56:24Z, outside the mark; the task's updated_at is also 16:56:24Z -> manual fire (fire_trigger) by another session",
+        "state": "divergence"
+      },
+      {
+        "claim": "Coordinator card reflects who coordinates",
+        "result": "NO: cse_018Whrgb ACTIVE; COORDINATOR 2 without a card; ORION ACTIVE",
+        "state": "fail"
+      },
+      {
+        "claim": "HANDSHAKE channel alive",
+        "result": "dormant: ATA-0011 and message 0017 date from 2026-10-22; only the reviewer heartbeat (16:47Z) and LOOP-STATE changed today",
+        "state": "divergence"
+      }
+    ]
+  },
+  "owed_by_operator": [
+    "Ratify or correct REQUIREMENT-ZERO r2 (o-c8-1): without it nothing from register r4 can enter the ratified scope.",
+    "Decide K1-K9 (knowledge substrate) or declare them incubated with a recorded reason.",
+    "Edit the Project instruction: delegation to cloud sessions and explicit acceptance of /smard-agent-flow:handoff alongside smard-ledger-handoff (F3).",
+    "Provide the PostgreSQL 18 credential (scram-sha-256) for CREATE EXTENSION vector and for the pg_trgm query; license and Hugging Face token for EmbeddingGemma 2 (o-c9-2).",
+    "Decide the fate of the reviewer's \"LOOP handshake\" task, which wakes an idle session every hour.",
+    "Require COORDINATOR 2 to WRITE the handoff (seq 10), the channel card and the update of the cards of ORION and of the previous coordinator, so the chain and the channel again reflect who coordinates."
+  ]
+}

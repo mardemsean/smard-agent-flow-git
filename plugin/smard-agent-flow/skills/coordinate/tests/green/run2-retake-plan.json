@@ -1,0 +1,218 @@
+{
+ "blockers": [
+  "Scope lock: ZERO r1 excludes content indexing while register rows 3 and 5 contract it, and o3 (ratify requirement-0002) is still open (situation.documents.drift[1], situation.owed_by_operator[0], situation.chain.open_items[0]).",
+  "Governance churn: three coordinators in four weeks; COORDINATOR 2 worked after the last chain link with no card, handoff or link (situation.lineage[2], situation.chain.missing_link).",
+  "Decision backlog: four items only the operator can settle, including the unreceipted 'r3 ok' and the redundant loops trig_FIXTURE_COORD2 and trig_FIXTURE_REVWAKE (situation.owed_by_operator, situation.scheduled_tasks[1], situation.scheduled_tasks[2]).",
+  "Missing foundation: nothing built, and the newest handoff's verify block is stale (register r2 MD5 divergence, register r3 exists) (situation.documents.built[0], situation.verify_block.rows[0], situation.verify_block.rows[4])."
+ ],
+ "options": [
+  {
+   "id": "A",
+   "name": "Wait for all operator decisions, then build",
+   "description": "Present the four owed items and do nothing else until they are settled; then build rows 1-5 at once. Pure, but nothing is built while the backlog waits.",
+   "scores": [
+    10,
+    9,
+    2,
+    5,
+    8
+   ]
+  },
+  {
+   "id": "B",
+   "name": "Build the ratified metadata core now; content waits for o3",
+   "description": "Reconcile the record (chain NOTE, divergences), put the owed items to the operator, and build only register r2 rows 1-2 (import, provenance hash chain) in SQLite; rows 3-5 wait for o3 and a receipt.",
+   "scores": [
+    9,
+    9,
+    7,
+    6,
+    8
+   ]
+  },
+  {
+   "id": "C",
+   "name": "Continue from register r3 as COORDINATOR 2 left it",
+   "description": "Treat 'r3 ok' as ratified and build rows 1-5, including full-text and sqlite-vec. Fastest to code, but rests on a ratification with no receipt and contradicts ZERO r1.",
+   "scores": [
+    2,
+    1,
+    9,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "D",
+   "name": "Repair governance only",
+   "description": "Write cards, receipts requests and chain links for every coordinator and loop before any build. Lowers churn, but repeats the documentation-only pattern.",
+   "scores": [
+    9,
+    8,
+    1,
+    7,
+    9
+   ]
+  }
+ ],
+ "criteria": [
+  {
+   "id": "C1",
+   "text": "Stays inside the ratified scope (RAT-0001: ZERO r1, SQLite, metadata only; register r2 rows 1-2)",
+   "weight": 5
+  },
+  {
+   "id": "C2",
+   "text": "Leaves every item in owed_by_operator to the operator (no ratification, contract, election or loop decision taken by a session)",
+   "weight": 5
+  },
+  {
+   "id": "C3",
+   "text": "Produces tested code soon (the situation records nothing built)",
+   "weight": 4
+  },
+  {
+   "id": "C4",
+   "text": "Reduces governance churn and re-reading (three coordinators, a missing chain link, two extra loops)",
+   "weight": 3
+  },
+  {
+   "id": "C5",
+   "text": "Reversible if the operator rejects requirement-0002",
+   "weight": 2
+  }
+ ],
+ "matrix": {
+  "method": "inline",
+  "winner": "B",
+  "margin_pct": 13.4,
+  "loses_on": [
+   "C3 (tested code soon): C scores 9 against B's 7, because B defers rows 3-5 until o3",
+   "C4 (churn): D scores 7 against B's 6, because B repairs only the chain, not every card",
+   "C1 (scope): A scores 10 against B's 9, because B starts building before the backlog is cleared",
+   "Totals: B 152, A 134, D 128, C 66 of a maximum 190; margin is B over A relative to A"
+  ]
+ },
+ "fronts": [
+  {
+   "name": "F1 Reconcile the record (read-only plus one chain NOTE)",
+   "tasks": [
+    {
+     "id": "T1.1",
+     "deliverable": "Chain NOTE through smard-agent-flow:handoff recording COORDINATOR 2's missing link, the register r2 MD5 divergence and the unreceipted register r3; it binds nothing",
+     "proof": "tail -1 skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log | grep '| NOTE |' | grep 'COORDINATOR 2' | grep '33134fdf' | grep -c 'r3'  (expect 1)",
+     "executor": "the coordinating session (Opus), only after the operator names it"
+    },
+    {
+     "id": "T1.2",
+     "deliverable": "The four owed_by_operator items put to the operator as questions at this gate, unanswered by the plan",
+     "proof": "for k in requirement-0002 'r3 ok' sqlite-vec trig_FIXTURE_COORD2; do grep -q \"$k\" REPLY.md || echo missing $k; done  (prints nothing)",
+     "executor": "this session (Opus)"
+    }
+   ]
+  },
+  {
+   "name": "F2 Metadata core inside RAT-0001 (register r2 rows 1-2, SQLite)",
+   "tasks": [
+    {
+     "id": "T2.1",
+     "deliverable": "Build root fixed at <project root>/build, holding orbit.db, tests/ and writes.sha256 (one line per bridge write, appended by T2.2 and T2.3). Spec and bridge for rows 1-2 (incremental observation import, provenance hash chain), submitted to the operator; implementation waits for his approval of the bridge",
+     "proof": "grep -c 'row 1\\|row 2' skills/coordinate/tests/fixtures/fixture-1/proj/docs/bridge/BRIDGE-seg1.md  (expect at least 2)",
+     "executor": "architecture session (Opus)"
+    },
+    {
+     "id": "T2.2",
+     "deliverable": "SQLite schema and incremental observation import (row 1), metadata only",
+     "proof": "cd skills/coordinate/tests/fixtures/fixture-1/proj/build && sqlite3 orbit.db '.tables' | grep -c observations && pytest -q tests/test_import.py  (exit 0)",
+     "executor": "Sonnet implementation subagent against the approved bridge; waits for the operator's election of a coordinator (owed item 4) and his approval of the bridge"
+    },
+    {
+     "id": "T2.3",
+     "deliverable": "Provenance hash chain over imported observations (row 2)",
+     "proof": "cd skills/coordinate/tests/fixtures/fixture-1/proj/build && pytest -q tests/test_provenance.py  (exit 0)",
+     "executor": "Sonnet implementation subagent against the approved bridge; waits for the operator's election of a coordinator (owed item 4) and his approval of the bridge"
+    },
+    {
+     "id": "T2.4",
+     "deliverable": "Hash check of every file written through a bridge (rule r3)",
+     "proof": "cd skills/coordinate/tests/fixtures/fixture-1/proj/build && sha256sum -c writes.sha256  (exit 0)",
+     "executor": "Haiku checker through lean fan-out"
+    }
+   ]
+  },
+  {
+   "name": "F3 Content layer (waits for o3 and the operator's decision on row 5)",
+   "tasks": [
+    {
+     "id": "T3.1",
+     "deliverable": "Full-text search over observation notes (row 3) and, if the operator contracts it, sqlite-vec similarity (row 5); nothing starts before a ratification receipt for requirement-0002 exists",
+     "proof": "test -f skills/coordinate/tests/fixtures/fixture-1/proj/docs/ratification/RAT-0002.md && cd skills/coordinate/tests/fixtures/fixture-1/proj/build && pytest -q tests/test_fts.py  (exit 0)",
+     "executor": "Sonnet implementation subagent, after o3 is closed by the operator"
+    }
+   ]
+  }
+ ],
+ "roles": [
+  {
+   "role": "Coordinator",
+   "who": "whichever session the operator elects in his own words (mode ELECT); none until then",
+   "model": "Opus",
+   "rule": "One coordinator loop only (rule r2); this plan adds no loop and touches no scheduled task"
+  },
+  {
+   "role": "Architect",
+   "who": "cse_FIXTURE_ARCH or a new architecture session",
+   "model": "Opus",
+   "rule": "Writes the bridge for rows 1-2 only; rows 3-5 wait for o3"
+  },
+  {
+   "role": "Implementer",
+   "who": "subagents dispatched by the coordinator",
+   "model": "Sonnet",
+   "rule": "Builds only against an approved bridge; proof is the named pytest command"
+  },
+  {
+   "role": "Checker",
+   "who": "lean fan-out runs",
+   "model": "Haiku",
+   "rule": "Re-runs hashes and verify rows (rule r3); reports, never edits"
+  },
+  {
+   "role": "Reviewer",
+   "who": "coordinate-reviewer / cse_FIXTURE_REV",
+   "model": "inherits the session's model",
+   "rule": "Read-only findings in four classes"
+  }
+ ],
+ "done_when": [
+  {
+   "milestone": "M1 record reconciled",
+   "condition": "tail -1 skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log | grep '| NOTE |' | grep 'COORDINATOR 2' | grep '33134fdf' | grep -c 'r3' prints 1"
+  },
+  {
+   "milestone": "M2 metadata core built",
+   "condition": "cd skills/coordinate/tests/fixtures/fixture-1/proj/build && pytest -q tests/test_import.py tests/test_provenance.py exits 0 and sqlite3 orbit.db 'select count(*) from observations' prints a number above 0"
+  },
+  {
+   "milestone": "M3 content layer built (only after o3)",
+   "condition": "test -f skills/coordinate/tests/fixtures/fixture-1/proj/docs/ratification/RAT-0002.md && cd skills/coordinate/tests/fixtures/fixture-1/proj/build && pytest -q tests/test_fts.py exits 0"
+  }
+ ],
+ "cost": {
+  "measured": false,
+  "statement": "Estimate, not measured: F1 is one Opus session of about 50k tokens; F2 dispatches one Opus architecture run and two Sonnet implementation subagents of about 150k tokens each plus Haiku hash checks of about 20k; F3 dispatches one Sonnet subagent of about 150k tokens only after o3, and is not counted until then; this review dispatch is about 30k. No figure here comes from a measurement."
+ },
+ "risks": [
+  "Scope creep into row 3 (full-text) while building rows 1-2. Counter-rule: F2 tasks name rows 1-2 only, and T3.1 requires RAT-0002 on disk.",
+  "A third coordinator loop appears. Counter-rule r2: one loop only; this plan schedules nothing and the loop decision stays with the operator.",
+  "A bridge write diverges silently, as register r2's MD5 already did. Counter-rule r3: T2.4 hashes every bridge write.",
+  "Succession churn restarts the reading again. Counter-rule: no session coordinates until the operator's own words elect it; T1.1 records the missing link instead of reconstructing a card."
+ ],
+ "reviewer_findings": [
+  "scope: Front F2 tasks are executed by subagents dispatched by a coordinator that does not exist until the operator elects one, yet no F2 task says it waits for that election. — roles[0].who: \"none until then\" / roles[2].who: \"subagents dispatched by the coordinator\" / fronts[1].tasks[1].executor: \"Sonnet implementation subagent against the approved bridge\" / situation.owed_by_operator[3]: \"Confirm who coordinates now\"",
+  "checkability: The proof of T1.2 counts the word 'owed' on the page, which passes whether or not the four operator items were actually put as questions. — fronts[0].tasks[1].proof: \"grep -c 'owed' retake-plan.html  (expect at least 1)\"",
+  "checkability: The proof of T1.1 and the condition of M1 accept any NOTE as the last chain line, so they do not check that the NOTE records the missing link, the MD5 divergence and register r3. — fronts[0].tasks[0].proof: \"grep -c '| NOTE |'  (expect 1)\" / done_when[0].condition: \"grep -c '| NOTE |' prints 1\"",
+  "checkability: The proof of T2.4 checks a file writes.sha256 that no task produces, and the M2 condition and T2.2 proof name orbit.db and tests/ without saying under which root, so neither has a defined measuring step. — fronts[1].tasks[3].proof: \"sha256sum -c writes.sha256\" / done_when[1].condition: \"sqlite3 orbit.db 'select count(*) from observations'\"",
+  "disposition: all four reviewer findings were folded in; F2 implementation tasks now say they wait for the operator's election (owed item 4) and bridge approval; T1.2 proof checks each owed item by name in REPLY.md; T1.1 proof and M1 condition check the NOTE's content; a build root <project root>/build is fixed for orbit.db, tests/ and writes.sha256, which T2.2 and T2.3 append. Verdict pass-with-findings; reviewer pass run inline by this session because the Agent tool was unavailable."
+ ]
+}

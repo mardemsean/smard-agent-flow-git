@@ -1,0 +1,10 @@
+{
+  "scope": "handoffs",
+  "facts": [
+    {"claim": "Newest handoff is coordinator-2026-10-05", "source": "", "observed": "HANDOFF.coordinator-2026-10-05.md", "tag": "verified-this-run"},
+    {"claim": "Next step is to ratify requirement-0002", "source": "HANDOFF.coordinator-2026-10-05.md", "observed": "DONE-WHEN", "tag": "recommendation"}
+  ],
+  "changed_after_cutoff": [],
+  "open_questions": [],
+  "plan": "ratify requirement-0002 first"
+}

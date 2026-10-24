@@ -1,0 +1,3 @@
+- 2026-10-04 09:40 -03: ATA-0001 opened.
+- 2026-10-05 09:20 -03: ATA-0002: T1-T2 accepted; sessions OCIOSA; loop hourly.
+- 2026-10-07 13:23 -03: no news (loop).

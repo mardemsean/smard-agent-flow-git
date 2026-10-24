@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retake plan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column of 76ch, dark-first, big type for reading at a distance */
+:root{
+  --bg:#12141a; --panel:#181b22; --panel-2:#1f232c; --border:#2b2f3a; --border-strong:#3f3f46;
+  --fg:#e4e4e7; --fg-strong:#fafafa; --muted:#9a9aa6;
+  --accent:#00d492; --accent-subtle:#04755833;
+  --ok:#22c55e; --warn:#eab308; --danger:#ef4444; --aim:#a78bfa; --info:#22b8d9;
+  --ok-subtle:#22c55e26; --warn-subtle:#eab30826; --danger-subtle:#ef444426; --aim-subtle:#a78bfa26; --info-subtle:#22b8d926;
+  --display:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono","Cascadia Mono",Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){
+  --bg:#f6f5f1; --panel:#ffffff; --panel-2:#eeede7; --border:#d8d6cd; --border-strong:#b9b6a9;
+  --fg:#1f2126; --fg-strong:#0c0d10; --muted:#5e6068;
+  --accent:#0a8f66; --accent-subtle:#0a8f6622;
+  --ok:#15803d; --warn:#a16207; --danger:#b91c1c; --aim:#6d28d9; --info:#0e7490;
+  --ok-subtle:#15803d1f; --warn-subtle:#a162071f; --danger-subtle:#b91c1c1f; --aim-subtle:#6d28d91f; --info-subtle:#0e74901f;
+  color-scheme:light;
+}}
+:root[data-theme="light"]{
+  --bg:#f6f5f1; --panel:#ffffff; --panel-2:#eeede7; --border:#d8d6cd; --border-strong:#b9b6a9;
+  --fg:#1f2126; --fg-strong:#0c0d10; --muted:#5e6068;
+  --accent:#0a8f66; --accent-subtle:#0a8f6622;
+  --ok:#15803d; --warn:#a16207; --danger:#b91c1c; --aim:#6d28d9; --info:#0e7490;
+  --ok-subtle:#15803d1f; --warn-subtle:#a162071f; --danger-subtle:#b91c1c1f; --aim-subtle:#6d28d91f; --info-subtle:#0e74901f;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:19px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+main{max-width:76ch;margin:0 auto;min-width:0}
+h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin:0 0 .35rem;color:var(--fg-strong);text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--display);font-size:1.45rem;line-height:1.2;margin:2.6rem 0 .9rem;color:var(--fg-strong);text-wrap:balance;border-top:3px solid var(--accent);padding-top:.7rem}
+h3{font-size:1.12rem;margin:1.4rem 0 .5rem;color:var(--fg-strong)}
+p{margin:0 0 1rem}
+.eyebrow{font-family:var(--mono);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.lead{font-size:1.2rem;line-height:1.5;color:var(--fg-strong);background:var(--panel);border-left:6px solid var(--accent);padding:1rem 1.2rem;margin:1.2rem 0 0}
+.meta{color:var(--muted);font-size:.95rem;margin-top:.8rem}
+nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 0}
+nav a{font-family:var(--mono);font-size:.9rem;color:var(--fg);text-decoration:none;border:1px solid var(--border-strong);padding:.3rem .7rem;border-radius:3px;background:var(--panel)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+.tag{display:inline-block;font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;padding:.1rem .5rem;border-radius:3px;border:1px solid transparent;white-space:nowrap;vertical-align:middle}
+.t-ver{color:var(--ok);background:var(--ok-subtle);border-color:var(--ok)}
+.t-inf{color:var(--aim);background:var(--aim-subtle);border-color:var(--aim)}
+.t-ass{color:var(--muted);background:var(--panel-2);border-color:var(--border-strong)}
+.t-car{color:var(--info);background:var(--info-subtle);border-color:var(--info)}
+.pill{display:inline-block;font-family:var(--mono);font-size:.82rem;font-weight:500;padding:.15rem .55rem;border-radius:999px}
+.p-ok{background:var(--ok-subtle);color:var(--ok)} .p-warn{background:var(--warn-subtle);color:var(--warn)} .p-dan{background:var(--danger-subtle);color:var(--danger)} .p-aim{background:var(--aim-subtle);color:var(--aim)} .p-mut{background:var(--panel-2);color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--border);border-radius:4px;margin:0 0 1rem}
+table{border-collapse:collapse;width:100%;font-size:.98rem;line-height:1.45;font-variant-numeric:tabular-nums}
+th,td{text-align:left;vertical-align:top;padding:.6rem .7rem;border-bottom:1px solid var(--border)}
+th{background:var(--panel-2);color:var(--fg-strong);font-weight:600;font-size:.9rem;letter-spacing:.02em}
+tr:last-child td{border-bottom:none}
+td.k{font-family:var(--mono);font-size:.9rem;white-space:nowrap;color:var(--fg-strong)}
+code{font-family:var(--mono);font-size:.9em;background:var(--panel-2);padding:.05rem .35rem;border-radius:3px}
+.chain{list-style:none;padding:0;margin:0;border-left:3px solid var(--border-strong)}
+.chain li{position:relative;padding:.2rem 0 1.1rem 1.4rem}
+.chain li::before{content:"";position:absolute;left:-9px;top:.55rem;width:15px;height:15px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.chain li.gap::before{background:var(--danger)}
+.chain li.now::before{background:var(--warn)}
+.chain .who{font-family:var(--mono);font-size:.95rem;color:var(--fg-strong);font-weight:500}
+.chain .when{font-family:var(--mono);font-size:.85rem;color:var(--muted);margin-left:.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.9rem;margin:0 0 1rem}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.9rem 1rem;min-width:0}
+.card h3{margin:0 0 .5rem;font-size:1rem;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.card ul{margin:0;padding-left:1.1rem}
+.card li{margin-bottom:.35rem}
+.warnbox{background:var(--warn-subtle);border:1px solid var(--warn);border-radius:4px;padding:.9rem 1rem;margin:0 0 1rem}
+.danbox{background:var(--danger-subtle);border:1px solid var(--danger);border-radius:4px;padding:.9rem 1rem;margin:0 0 1rem}
+ul.plain{padding-left:1.2rem} ul.plain li{margin-bottom:.45rem}
+.legend{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;font-size:.9rem;color:var(--muted);margin:.6rem 0 0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.cmd{font-family:var(--mono);font-size:.92rem;background:var(--panel-2);border:1px solid var(--border-strong);border-radius:4px;padding:.8rem 1rem;overflow-x:auto;white-space:pre;margin:0 0 .8rem;color:var(--fg-strong)}
+td.n{text-align:right;font-family:var(--mono)}
+tr.win td{background:var(--accent-subtle)}
+td.wrap{white-space:normal}
+@media (max-width:480px){ body{font-size:17px} h1{font-size:1.6rem} h2{font-size:1.25rem} .lead{padding:.8rem .9rem} }
+</style>
+</head>
+<body>
+<main id="root"></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+(function(){
+const DATA = /*DATA*/;
+const h=React.createElement;
+const A=x=>Array.isArray(x)?x:[];
+const Pill=({k,children})=>h('span',{className:'pill '+k},children);
+const Th=({cols})=>h('thead',null,h('tr',null,cols.map((c,i)=>h('th',{key:i},c))));
+const Bul=({items})=>A(items).length?h('ul',{className:'plain'},A(items).map((x,i)=>h('li',{key:i},x))):h('p',{className:'meta'},'None recorded.');
+const sections=['diagnostico','opcoes','plano','dia0','papeis','done','custo','riscos'];
+const options=A(DATA.options), criteria=A(DATA.criteria), M=DATA.matrix||{loses_on:[]}, fronts=A(DATA.fronts), roles=A(DATA.roles), done=A(DATA.done_when), cost=DATA.cost||{measured:false,statement:''};
+const sc=(o,i)=>{const v=A(o.scores)[i];return typeof v==='number'?v:null;};
+const total=o=>criteria.reduce((a,c,i)=>a+(sc(o,i)||0)*c.weight,0);
+const max=criteria.reduce((a,c)=>a+10*c.weight,0);
+const win=options.find(o=>o.id===M.winner);
+const ranked=options.slice().sort((a,b)=>total(b)-total(a));
+const calcWin=ranked[0], calcMargin=ranked.length>1&&total(ranked[1])>0?Math.round((total(ranked[0])-total(ranked[1]))/total(ranked[1])*100):0;
+const differs=!!calcWin&&(calcWin.id!==M.winner||calcMargin!==Math.round(M.margin_pct));
+document.title='Retake plan'+(win?' - option '+win.id:'');
+const FrontTable=({f})=>h('div',{className:'tbl'},h('table',null,
+  h(Th,{cols:['Task','Deliverable','Proof','Executor']}),
+  h('tbody',null,A(f.tasks).map((t,i)=>h('tr',{key:i},h('td',{className:'k'},t.id),h('td',null,t.deliverable),h('td',null,t.proof),h('td',null,t.executor))))));
+const later=fronts.slice(1);
+
+const App=()=>h(React.Fragment,null,
+ h('div',{className:'eyebrow'},'Retake plan · '+(M.method==='engine'?'scored by the decision engine':'scored inline')),
+ h('h1',null,'From a stalled project to a built system'),
+ win?h('p',{className:'lead'},'Recommended: option '+win.id+', '+win.name+'. Weighted total '+total(win)+' of '+max+', ahead of the runner-up by about '+M.margin_pct+'%. '+win.description):null,
+ differs?h('div',{className:'warnbox'},'Supplied matrix values differ from the recomputed totals.'):null,
+ h('nav',null,sections.map(id=>h('a',{key:id,href:'#'+id},id))),
+
+ h('h2',{id:'diagnostico'},'1. Why the project stopped'),
+ h(Bul,{items:DATA.blockers}),
+
+ h('h2',{id:'opcoes'},'2. Options compared (weighted matrix, weights visible)'),
+ h('p',{className:'meta'},'Scale 1–10 per criterion; weight 1–5; maximum total '+max+'. '+(M.method==='engine'?'Scored by the decision-matrix engine.':'Scored inline in the session, not by the decision-matrix engine.')+' The numbers inform; they do not decide.'),
+ h('div',{className:'tbl'},h('table',null,
+  h('thead',null,h('tr',null,h('th',null,'Criterion'),h('th',null,'Weight'),options.map(o=>h('th',{key:o.id},o.id)))),
+  h('tbody',null,criteria.map((c,i)=>h('tr',{key:c.id},h('td',null,h('strong',null,c.id+' '),c.text),h('td',{className:'n'},c.weight),options.map(o=>h('td',{key:o.id,className:'n'},sc(o,i)===null?'\u2014':sc(o,i))))),
+   h('tr',null,h('td',null,h('strong',null,'Weighted total')),h('td',null),options.map(o=>h('td',{key:o.id,className:'n'},h('strong',null,total(o)))))))),
+ h('div',{className:'tbl'},h('table',null,
+  h(Th,{cols:['Option','Description','Total']}),
+  h('tbody',null,options.map(o=>h('tr',{key:o.id,className:o.id===M.winner?'win':''},h('td',{className:'k'},o.id),h('td',null,h('strong',null,o.name),h('br'),o.description),h('td',{className:'n'},total(o))))))),
+ win?h('p',null,'Option '+win.id+' wins with a margin of '+M.margin_pct+'%.'+(A(M.loses_on).length?' Where it loses:':'')):null,
+ A(M.loses_on).length?h(Bul,{items:M.loses_on}):null,
+
+ h('h2',{id:'plano'},'3. The plan in fronts'),
+ later.length?later.map((f,i)=>h(React.Fragment,{key:i},h('h3',null,f.name),h(FrontTable,{f}))):h('p',{className:'meta'},'No further fronts recorded.'),
+
+ h('h2',{id:'dia0'},'4. Day 0: what depends on the operator'),
+ fronts.length?h(React.Fragment,null,h('h3',null,fronts[0].name),
+   h('ul',{className:'plain'},A(fronts[0].tasks).map((t,i)=>h('li',{key:i},h('strong',null,t.id+'. '),t.deliverable,h('br'),h('span',{className:'meta'},'Proof: '+t.proof+' · Executor: '+t.executor))))):h('p',{className:'meta'},'No day-0 front recorded.'),
+
+ h('h2',{id:'papeis'},'5. Roles, models and cadence'),
+ roles.length?h('div',{className:'tbl'},h('table',null,
+  h(Th,{cols:['Role','Who','Model','Rule']}),
+  h('tbody',null,roles.map((r,i)=>h('tr',{key:i},h('td',{className:'k',style:{whiteSpace:'normal'}},r.role),h('td',null,r.who),h('td',null,r.model),h('td',null,r.rule)))))):h('p',{className:'meta'},'No roles recorded.'),
+
+ h('h2',{id:'done'},'6. Verifiable completion conditions'),
+ done.length?h('ul',{className:'plain'},done.map((d,i)=>h('li',{key:i},h('strong',null,d.milestone+' is done when: '),d.condition))):h('p',{className:'meta'},'None recorded.'),
+
+ h('h2',{id:'custo'},'7. Cost and quota'),
+ h('p',null,h(Pill,{k:cost.measured?'p-ok':'p-warn'},cost.measured?'measured':'estimate, not measured'),' ',cost.statement),
+
+ h('h2',{id:'riscos'},'8. Risks and how they are handled'),
+ h(Bul,{items:DATA.risks}),
+ A(DATA.reviewer_findings).length?h(React.Fragment,null,h('h3',null,'Reviewer findings'),h(Bul,{items:DATA.reviewer_findings})):null
+);
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+})();
+</script>
+</body>
+</html>
