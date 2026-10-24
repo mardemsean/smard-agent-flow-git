@@ -19,11 +19,11 @@ Authorization of use is recorded separately; none is inferred from these states.
 
 **Inputs, outputs and generated documents:** the project's coordination configuration and session records in; a tagged situation report, a retake plan, cards, messages, receipts and chain lines out. Pages for reading are HTML + React; Markdown is a machine payload only.
 **Canonical sources and readings per action:** SESSION-MEMORY, DOCUMENTARY-RATIFICATION and CAPABILITIES-INTEGRATIONS, plus the project's coordination configuration.
-**Tools, access and external effects:** both agents are read-only. The ELECT step writes only cards, messages, receipts, chain lines and task renames, and never deletes.
+**Tools, access and external effects:** both agents are read-only. The surveyor's tool list includes the device-bridge read tools (`mcp__remote-devices__device_list_dir`) and a device shell (`mcp__remote-devices__device_bash`) whose read-only use is enforced by the prompt, not by the tool; this deviates from the plan's four-tool list, per design 5.2. The ELECT step writes only cards, messages, receipts, chain lines and the disabling and renaming of the scheduled tasks the operator named, and never deletes.
 **Authorizations required and delegated limits:** the operator elects; the operator's words are quoted in the election record. No agent ratifies for the operator.
 **Secrets:** none handled or stored.
-**Installation, registration and ownership of the files:** ships with the plugin; the three files belong to the plugin.
-**Resume, update, removal and preservation of data:** remove by deleting the three files and reverting the `plugin.json` version bump; data written by ELECT stays in the project.
+**Installation, registration and ownership of the files:** ships with the plugin; the skill directory and the two agents belong to the plugin.
+**Resume, update, removal and preservation of data:** remove by deleting the skill directory `plugin/smard-agent-flow/skills/coordinate/`, the two agents `plugin/smard-agent-flow/agents/coordinate-surveyor.md` and `coordinate-reviewer.md`, and the `coordinate` rows in `AGENTS.md`, `INDEX.md`, the method skill (`plugin/smard-agent-flow/skills/method/SKILL.md`) and `plugin/README.md`, and by reverting the `plugin.json` version bump; data written by ELECT stays in the project.
 **Verified compatibility and evidence of operation:** Claude Code plugin format; the full model id in the agent frontmatter is documented by Claude Code. Evidence: `skills/coordinate/tests/TEST-GREEN-2026-10-24.md`.
 **Positive/negative tests and regression, when executable:** `test_schemas.sh`, `test_render.sh`, `run_surveyor_fixture.sh selftest`, `run_reviewer_sample.sh validate`, all under `skills/coordinate/tests/`.
 **How the generated documents will be presented in the chat:** a link to the HTML + React page; the chat carries the answer and the next action only.

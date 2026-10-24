@@ -150,7 +150,7 @@ const App=()=>h(React.Fragment,null,
  A(vb.rows).length?h('div',{className:'tbl'},h('table',null,
    h(Th,{cols:['Claim','Result now','State']}),
    h('tbody',null,A(vb.rows).map((r,i)=>{const s=STATE[r.state]||STATE.fail;return h('tr',{key:i},
-     h('td',null,r.claim),h('td',null,r.result),h('td',null,h(Pill,{k:s[0]},s[1])));})))):null,
+     h('td',null,r.claim),h('td',null,r.result),h('td',null,h(Pill,{k:s[0]},s[1])));})))):(vb.status==='rerun'?h('p',{className:'meta'},'The verify block was rerun but lists no rows.'):null),
 
  h('h2',{id:'pendencias'},'7. What depends on the operator'),
  owed.length?h('ul',{className:'plain'},owed.map((x,i)=>h('li',{key:i},x))):h('p',null,'Nothing is owed by the operator.')

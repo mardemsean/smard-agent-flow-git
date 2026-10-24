@@ -81,4 +81,4 @@ written by the coordinator or its loop. Fixture-1: `ATA-0001.md`, `ATA-0002.md`.
 
 Nothing in the channel is deleted, overwritten or renamed, and no session edits
 another session's file. A divergence is reported in a new message. Deactivating
-a scheduled loop (ELECT step 4) renames the scheduled task, not a channel file.
+a scheduled loop (ELECT step 4) disables and renames the scheduled task, not a channel file.

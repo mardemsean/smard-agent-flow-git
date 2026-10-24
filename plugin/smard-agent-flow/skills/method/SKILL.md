@@ -36,6 +36,7 @@ are in `AGENTS.md`; this is only the route.
 | Alter a prompt, skill, MCP or adapter | `docs/production-workflow/METHOD-BASELINE.md`, `docs/production-workflow/templates/CAPABILITIES-INTEGRATIONS.md` |
 | Open a PR, integrate or release | `docs/production-workflow/templates/LEARNING-DELIVERY.md` (DEL record) |
 | Hand off or resume a session | `docs/production-workflow/SESSION-MEMORY.md`, `docs/production-workflow/templates/SESSION-CHECKPOINT.md`, `docs/production-workflow/templates/PASSAGE-RECORD.md` |
+| Resume or coordinate a multi-session project | The plugin skill `coordinate`; readings: `docs/production-workflow/SESSION-MEMORY.md`, `docs/production-workflow/templates/DOCUMENTARY-RATIFICATION.md`, `docs/production-workflow/capabilities/COORDINATE-0.5.0.md` |
 
 ## 3. Boundaries (summary; the source is `AGENTS.md`, section Boundaries)
 

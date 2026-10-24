@@ -13,15 +13,18 @@ CONFIG=$D/assets/examples/coordination.fixture-1.json
 FIX=$D/tests/fixtures/fixture-1
 CUTOFF=2026-10-05T12:30:00Z
 BUDGET=60
+SCHEMAS=$D/assets
 SCOPES="handoffs channel tasks-and-docs"
 
-prompts() {
+prompts() { # [fixture root] [scopes...]
+  local fix=${1:-$FIX}; shift || true
+  local scopes=${*:-$SCOPES}
   [ -f "$PROMPT" ] || { echo "FAIL prompts: $PROMPT missing"; return 1; }
-  python3 -I - "$PROMPT" "$CONFIG" "$FIX" "$CUTOFF" "$BUDGET" $SCOPES <<'PY'
+  python3 -I - "$PROMPT" "$CONFIG" "$fix" "$CUTOFF" "$BUDGET" "$SCHEMAS" $scopes <<'PY'
 import json, re, sys
 tpl = open(sys.argv[1], encoding="utf-8").read()
 cfg = json.load(open(sys.argv[2], encoding="utf-8"))
-fix, cutoff, budget, scopes = sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6:]
+fix, cutoff, budget, schemas, scopes = sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7:]
 cfg["project_root"] = fix + "/proj"
 if cfg.get("channel"):
     cfg["channel"]["path"] = fix + "/channel"
@@ -30,8 +33,9 @@ for s in scopes:
     out = (tpl.replace("{scope}", s)
               .replace("{config_json}", json.dumps(cfg, indent=2))
               .replace("{cutoff_utc}", cutoff)
-              .replace("{size_budget_kb}", budget))
-    left = sorted(set(re.findall(r"\{(?:scope|config_json|cutoff_utc|size_budget_kb)\}", out)))
+              .replace("{size_budget_kb}", budget)
+              .replace("{schemas_dir}", schemas))
+    left = sorted(set(re.findall(r"\{(?:scope|config_json|cutoff_utc|size_budget_kb|schemas_dir)\}", out)))
     if left:
         print("FAIL prompt %s: unsubstituted %s" % (s, left)); rc = 1
     print("===== DISPATCH PROMPT scope=%s (agent coordinate-surveyor) =====" % s)
@@ -76,11 +80,25 @@ selftest() {
   local fails=0
   if validate "$D/tests/fixtures/captures-bad" >/dev/null; then echo "FAIL selftest: bad capture accepted"; fails=$((fails+1)); else echo "PASS selftest: bad capture rejected"; fi
   if validate "$D/tests/fixtures/captures-sample"; then echo "PASS selftest: sample capture accepted"; else echo "FAIL selftest: sample capture rejected"; fails=$((fails+1)); fi
+  # padded copy: one handoff over the 60 KB budget; the handoffs prompt must carry the budget and the size rule
+  local tmp out h
+  tmp=$(mktemp -d)
+  cp -r "$FIX" "$tmp/fixture-1"
+  h=$tmp/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md
+  python3 -I -c 'import sys; open(sys.argv[1], "a", encoding="utf-8").write("\n<!-- padding -->\n" + ("x" * 99 + "\n") * 700)' "$h"
+  if [ "$(wc -c < "$h")" -gt $((BUDGET * 1024)) ]; then echo "PASS selftest: padded handoff exceeds ${BUDGET} KB"; else echo "FAIL selftest: padded handoff exceeds ${BUDGET} KB"; fails=$((fails+1)); fi
+  out=$(prompts "$tmp/fixture-1" handoffs 2>&1)
+  if [ $? -eq 0 ] && printf '%s' "$out" | grep -qF "Size budget: \`${BUDGET}\` KB per file" \
+     && printf '%s' "$out" | grep -qF "a file over \`${BUDGET}\` KB is read only in its cold-start section" \
+     && printf '%s' "$out" | grep -qF "\"project_root\": \"$tmp/fixture-1/proj\""; then
+    echo "PASS selftest: padded-copy handoffs prompt carries the ${BUDGET} KB budget"
+  else echo "FAIL selftest: padded-copy handoffs prompt carries the ${BUDGET} KB budget"; fails=$((fails+1)); fi
+  rm -rf "$tmp"
   [ "$fails" -eq 0 ]
 }
 
 case "${1:-}" in
-  prompts) prompts ;;
+  prompts) shift; prompts "$@" ;;
   validate) validate "${2:-}" ;;
   selftest) selftest ;;
   *) echo "usage: $0 prompts|validate [dir]|selftest" >&2; exit 2 ;;
