@@ -17,6 +17,7 @@ This index maps responsibilities; it does not prove reading or approval.
 | [Memory between sessions](docs/production-workflow/SESSION-MEMORY.md) | Two persistent records (`sledge-handoff.md`, `DIAMOND.md`), checkpoint and succession; hook not yet implemented |
 | [Adaptation to Spec Kit](docs/production-workflow/SPECKIT-ADAPTATION.md) | Corrected preflight: dialogue, gates, ratification binding and segmented execution |
 | [Coordinate capability](docs/production-workflow/capabilities/COORDINATE-0.5.0.md) | The plugin skill `coordinate` (shipped in the `smard-agent-flow` plugin, not in this method tree): survey, retake plan and election across sessions; reads [Memory between sessions](docs/production-workflow/SESSION-MEMORY.md), [Ratification receipt](docs/production-workflow/templates/DOCUMENTARY-RATIFICATION.md) and [Capabilities inventory](docs/production-workflow/capabilities/COORDINATE-0.5.0.md) |
+| [Dont-speak-alien capability](docs/production-workflow/capabilities/DONT-SPEAK-ALIEN-0.6.0.md) | The plugin skill `dont-speak-alien` (shipped in the `smard-agent-flow` plugin, not in this method tree): rewrites a reply in Simplified Technical English with a literal Portuguese version, checked by a script |
 
 ## Available templates, not filled-in product documents
 

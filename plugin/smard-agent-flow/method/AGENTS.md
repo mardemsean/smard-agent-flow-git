@@ -16,6 +16,7 @@ material conflict must be made explicit, not resolved silently.
 | Take an architectural decision | Requirement, earlier decisions and the pertinent preflight | Alternatives, consequences and an identifiable decision |
 | Specify or delegate | Ratified requirement, applicable ADRs and the execution bridge | Coverage, canonical tasks and a bounded mandate |
 | Resume or coordinate a multi-session project | SESSION-MEMORY, DOCUMENTARY-RATIFICATION, CAPABILITIES-INTEGRATIONS and the project's coordination configuration | Tagged situation report, approved retake plan, election record with the operator's words quoted |
+| Rewrite a reply in plain technical language (operator says Esclareça!) | The plugin skill `dont-speak-alien`; reading: `reference/ste-rules.md` (inside the skill) | A Simplified Technical English rewrite and a literal Portuguese version, checked by the script |
 | Alter a prompt, skill, MCP or adapter | Baseline, pertinent inventory and the contracts of the adopted tool | Provenance, permissions, install/removal and compatibility verified |
 | Alter deterministic execution | Technical contract, configuration and the area's existing tests | Positive and negative coverage; regression test for a bug |
 | Open a PR, integrate or release | Existing review/release rules and the pertinent DEL record | Evidence and authorizations of the current revision |
