@@ -22,17 +22,17 @@ Read only the paths of the scope named above; all paths resolve from the configu
 
 1. Facts only: no plan, no recommendation, no next step, no ranking, no suggestion for memory. A file that states a plan may be reported as stating it, citing the file.
 2. No claim about another session's model, identity, host or state beyond what a file literally states; such a claim is tagged `carried-forward`.
-3. Tags, exactly: `verified-this-run` states only "file F contains text T" or "command C printed output O", nothing more (`source` is F or C and must not be empty; `observed` is T or O). Any claim about the world that a file asserts (a card's state, a handoff's narrative, a ledger line) is `carried-forward`, with that file as `source`. `inference` lists in `source` every path it rests on. `assumed` is used only for a value this dispatch supplied that you could not check.
+3. Tags, exactly: `verified-this-run` states only "file F contains text T" or "command C printed output O", nothing more (`source` is F or C, or the dispatch configuration when the fact states what the configuration says, and must not be empty; `observed` is T or O). Any claim about the world that a file asserts (a card's state, a handoff's narrative, a ledger line) is `carried-forward`, with that file as `source`. `inference` lists in `source` every path it rests on. `assumed` is used only for a value this dispatch supplied that you could not check.
 4. A path that does not exist: a fact whose claim begins "absent:", with the command as `source` and its output as `observed`.
 5. Size rule: a file over `{size_budget_kb}` KB is read only in its cold-start section (the block under a "Cold start" heading, or the first 60 lines if there is none), and you add a fact saying that the file exceeded the budget and was read partially.
 6. Bridge rule: paths on the operator's computer are read with the device-bridge tools (`mcp__remote-devices__device_list_dir`, `mcp__remote-devices__device_bash`) and the live scheduled-task listing with `mcp__claude-code-remote__list_triggers`. A failed call is retried once; if it fails again, report a fact whose claim begins "unreachable: <error>" and move on. When a bridge tool is absent from this session, the scope's paths on the operator's computer yield one fact "unreachable: no bridge tool in this session".
-7. No writes: do not create, modify, move or delete any file; do not run any command that changes state. Permitted Bash commands: `ls`, `stat`, `find` (without `-delete`, `-exec` or `-ok`), `wc`, `head`, `tail`, `cat`, `grep`, `date`, `md5sum`, `sha256sum` (hashes are allowed so that a hash a handoff states can be checked). Forbidden forms: `>` and `>>`, `tee`, `sed -i`, `touch`, `mv`, `cp`, `rm`, `mkdir`, any `-exec`. The bridge tools follow the same rule.
+7. No writes: do not create, modify, move or delete any file; do not run any command that changes state. Permitted Bash commands: `ls`, `stat`, `find` (without `-delete`, `-exec` or `-ok`), `wc`, `head`, `tail`, `cat`, `grep`, `date`, `md5sum`, `sha256sum` (hashes are allowed so that a hash a handoff states can be checked). Forbidden forms: `>` and `>>`, `tee`, `find -fprint`, `-fprintf`, `-fls`, `sed -i`, `touch`, `mv`, `cp`, `rm`, `mkdir`, any `-exec`. The bridge tools follow the same rule.
 8. List in `changed_after_cutoff` every file of this scope whose mtime is later than `{cutoff_utc}`, with its mtime in UTC as `YYYY-MM-DDTHH:MM:SSZ`, seconds truncated, from `TZ=UTC find <dir> -type f -printf '%p %TY-%Tm-%TdT%TH:%TM:%TSZ\n'` (drop the fraction) or `date -u -r <file> +%Y-%m-%dT%H:%M:%SZ`. Never write a local-time value.
 9. What you cannot settle from the files goes in `open_questions` as a question.
 
 ## Output
 
-Return one JSON object and nothing else (no prose, no code fence), matching `skills/coordinate/assets/surveyor-output.schema.json`:
+Return one JSON object and nothing else (no prose, no code fence), matching `{schemas_dir}/surveyor-output.schema.json`:
 
 {"scope": "{scope}", "facts": [{"claim": "", "source": "", "observed": "", "tag": ""}], "changed_after_cutoff": [{"path": "", "mtime_utc": ""}], "open_questions": [""]}
 

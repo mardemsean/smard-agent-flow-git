@@ -35,7 +35,7 @@
     {
       "id": "C",
       "name": "Context engine directly, without a metadata core",
-      "description": "Skip the provider table and the incremental index; ingest a subset of B:\\ into pgvector and measure the cascade. Quick demonstration, but contradicts ZERO r1 and line 1 of r4 (incremental indexing is the base).",
+      "description": "Skip the provider table and the incremental index; ingest a subset of <data volume>\\ into pgvector and measure the cascade. Quick demonstration, but contradicts ZERO r1 and line 1 of r4 (incremental indexing is the base).",
       "scores": [
         3,
         8,
@@ -106,7 +106,7 @@
       "tasks": [
         {
           "id": "D0-01",
-          "deliverable": "One coordinator, one loop: the elected session writes the channel card and handoff seq 10 and closes the cards of ORION and cse_018Whrgb; the hourly :23 task stays as registrar; the \"Coordenadora 2\" cycle and the reviewer's \"LOOP handshake\" are removed or suspended by the operator.",
+          "deliverable": "One coordinator, one loop: the elected session writes the channel card and handoff seq 10 and closes the cards of ORION and cse_EXAMPLE_COORD1; the hourly :23 task stays as registrar; the \"Coordenadora 2\" cycle and the reviewer's \"LOOP handshake\" are removed or suspended by the operator.",
           "proof": "One coordinator with an ACTIVE card and handoff seq 10 in the chain.",
           "executor": "Coordinator (Opus); operator decides the schedules"
         },
@@ -118,7 +118,7 @@
         },
         {
           "id": "D0-03",
-          "deliverable": "Physical foundation: dedicated cluster B:\\SDI-PGDATA on port 5433, roles sdi_owner/sdi_collector/sdi_reader, CREATE EXTENSION vector and pg_trgm, private git repository in B:\\SMARD-DRIVE-INDEX-DB\\repo with only construction and specs.",
+          "deliverable": "Physical foundation: dedicated cluster <data volume>\\SDI-PGDATA on port 5433, roles sdi_owner/sdi_collector/sdi_reader, CREATE EXTENSION vector and pg_trgm, private git repository in <project root>\\repo with only construction and specs.",
           "proof": "Cluster on 5433 answers; vector and pg_trgm installable; repository created.",
           "executor": "Operator runs the PowerShell commands; coordinator drafts setup.sql"
         },
@@ -165,7 +165,7 @@
         },
         {
           "id": "S1-06",
-          "deliverable": "Full load of B:\\ measured on the dedicated cluster.",
+          "deliverable": "Full load of <data volume>\\ measured on the dedicated cluster.",
           "proof": "Time recorded; target PRF-001 below 10 s.",
           "executor": "Sonnet; measurement reported to the operator"
         }
@@ -222,7 +222,7 @@
     },
     {
       "role": "Implementation",
-      "who": "Invoke-LeanFanout on SMARD-SERVER (the database is there)",
+      "who": "Invoke-LeanFanout on <host> (the database is there)",
       "model": "Sonnet, auto-approve envelope (3 sonnet)",
       "rule": "one S-xx task per agent, against the bridge; two attempts and stop; report = result, evidence, pending item"
     },
@@ -234,7 +234,7 @@
     },
     {
       "role": "Adversarial review",
-      "who": "cse_01ERj9 (or a new one), only at converge",
+      "who": "cse_EXAMPLE_REVIEWER (or a new one), only at converge",
       "model": "Opus or Fable, by operator order",
       "rule": "no hourly loop; summoned by ATA"
     },
@@ -252,7 +252,7 @@
     },
     {
       "milestone": "Segment 1",
-      "condition": "S1-01..S1-06 green on the dedicated cluster; full load of B:\\ below 10 s; RLS matrix green; totals equal to robocopy /L."
+      "condition": "S1-01..S1-06 green on the dedicated cluster; full load of <data volume>\\ below 10 s; RLS matrix green; totals equal to robocopy /L."
     },
     {
       "milestone": "Segment 2",
@@ -265,10 +265,10 @@
   ],
   "cost": {
     "measured": false,
-    "statement": "Quota used and week elapsed are not measurable from this cloud session; before the first fan-out they are read from B:\\persistent-memory\\spend-ledger.md and the account panel and declared in the required form (quota X% used, Y% of the week, estimated cost Z USD). Prior estimate, to be confirmed: segment 1 with six Sonnet tasks of about 150 thousand tokens each and one 300 thousand token coordinator session is about 1.2 million tokens; segment 2, with embeddings and bakeoff, about 2 million. All inside the auto-approve envelope if the tasks are launched in series of three."
+    "statement": "Quota used and week elapsed are not measurable from this cloud session; before the first fan-out they are read from <data volume>\\persistent-memory\\spend-ledger.md and the account panel and declared in the required form (quota X% used, Y% of the week, estimated cost Z USD). Prior estimate, to be confirmed: segment 1 with six Sonnet tasks of about 150 thousand tokens each and one 300 thousand token coordinator session is about 1.2 million tokens; segment 2, with embeddings and bakeoff, about 2 million. All inside the auto-approve envelope if the tasks are launched in series of three."
   },
   "risks": [
-    "Write through the bridge with stale content: every write to B:\\ is checked by hash before use (rule r-c8-1).",
+    "Write through the bridge with stale content: every write to <data volume>\\ is checked by hash before use (rule r-c8-1).",
     "Citations of other models: no version or license enters a record without a primary source (rule r-c9-1).",
     "pg_textsearch and pgvectorscale on Windows: treated as experimental; native FTS is the already ratified fallback (adjustment 1 of r4).",
     "Scope drift: nothing of segment 2 starts before RAT-0003; if r2 is rejected, segment 1 proceeds alone and the plan is revised.",

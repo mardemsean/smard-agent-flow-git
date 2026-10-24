@@ -41,6 +41,56 @@ render_case situation "$A/situation-report.template.html" "$E/situation.smard-20
   sucessao sessoes estado cadeia tarefas verificacao pendencias
 render_case plan "$A/retake-plan.template.html" "$E/retake-plan.smard-2026-10-24.json" \
   diagnostico opcoes plano dia0 papeis done custo riscos
+# verify_block variants: "no block" shows the warning box; "rerun" with empty rows shows the no-rows text
+python3 -I - "$E/situation.smard-2026-10-24.json" "$T" <<'PY'
+import json, sys
+d = json.load(open(sys.argv[1])); t = sys.argv[2]
+d["verify_block"] = {"status": "no block", "rows": []}
+json.dump(d, open(t + "/vb-noblock.json", "w"))
+d["verify_block"] = {"status": "rerun", "rows": []}
+json.dump(d, open(t + "/vb-norows.json", "w"))
+PY
+for v in noblock norows; do
+  python3 -I "$R" "$A/situation-report.template.html" "$T/vb-$v.json" "$T/vb-$v.html" >/dev/null 2>&1
+  rc_is "verify_block $v renders (exit 0)" 0 $?
+done
+if ! command -v node >/dev/null 2>&1; then echo "SKIP verify_block page text (node absent)"
+else
+  for v in noblock norows; do
+    python3 -I - "$T/vb-$v.html" "$T/vb-$v.js" <<'PY'
+import re, sys
+html = open(sys.argv[1], encoding="utf-8").read()
+blocks = [m.group(1) for m in re.finditer(r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", html, re.S)]
+open(sys.argv[2], "w", encoding="utf-8").write(blocks[-1] if blocks else "")
+PY
+    # evaluate the page script with a minimal React stub and collect every rendered text node
+    cat > "$T/vb-run.js" <<'JS'
+const fs = require('fs');
+const [, , f, v] = process.argv;
+const src = fs.readFileSync(f, 'utf8');
+const texts = [];
+const walk = (n) => { if (n == null || n === false) return; if (Array.isArray(n)) return n.forEach(walk);
+  if (typeof n === 'string' || typeof n === 'number') { texts.push(String(n)); return; }
+  if (typeof n.t === 'function') return walk(n.t(Object.assign({}, n.p, {children: n.c})));
+  walk(n.c); };
+const React = {createElement: (t, p, ...c) => ({t, p: p || {}, c: c.length === 1 ? c[0] : c}), Fragment: 'frag',
+  useState: (x) => [typeof x === 'function' ? x() : x, () => {}], useEffect: () => {}, useMemo: (fn) => fn(), useRef: (x) => ({current: x})};
+const ReactDOM = {createRoot: () => ({render: walk})};
+const el = {setAttribute() {}, getAttribute() { return null; }, addEventListener() {}, classList: {add() {}, remove() {}, toggle() {}}};
+const document = {getElementById: () => el, documentElement: el, querySelector: () => el, title: ''};
+const window = {matchMedia: () => ({matches: false, addEventListener() {}}), addEventListener() {}};
+const localStorage = {getItem() { return null; }, setItem() {}};
+new Function('React', 'ReactDOM', 'document', 'window', 'localStorage', src)(React, ReactDOM, document, window, localStorage);
+const all = texts.join('\n');
+const W = 'The latest handoff carries no verify block', N = 'The verify block was rerun but lists no rows.';
+const [want, notWant] = v === 'noblock' ? [W, N] : [N, W];
+process.exit(all.includes(want) && !all.includes(notWant) ? 0 : 1);
+JS
+    if node "$T/vb-run.js" "$T/vb-$v.js" "$v"; then ok "verify_block $v page shows the expected text"; else bad "verify_block $v page shows the expected text"; fi
+  done
+fi
+# examples carry no machine path, session id or task id
+if grep -lP '/home/|/root/|[A-Z]:\\\\|cse_(?!EXAMPLE|autor\b)|session_0|trig_0' "$E"/*.json >/dev/null; then bad "examples have no path, session id or task id"; else ok "examples have no path, session id or task id"; fi
 # templates carry no absolute path, hostname or session id
 for t in situation-report retake-plan; do
   if grep -nE 'cse_|session_0|[A-Z]:\\\\?|/home/|/Users/' "$A/$t.template.html" >/dev/null; then bad "$t template has no path or session id"; else ok "$t template has no path or session id"; fi

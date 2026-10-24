@@ -60,7 +60,8 @@ section (item 2 above) before acting; the rules are not restated here.
    none; say which was used. Dispatch three `coordinate-surveyor` runs in parallel, one per
    scope `handoffs`, `channel`, `tasks-and-docs`, each with the prompt built from
    `prompts/surveyor-dispatch.md` by substituting `{scope}`, `{config_json}`,
-   `{cutoff_utc}` and `{size_budget_kb}`. In-process dispatch in cloud and
+   `{cutoff_utc}`, `{size_budget_kb}` (default 60 unless the operator sets
+   another) and `{schemas_dir}` (this skill's `assets` directory). In-process dispatch in cloud and
    desktop sessions; the same prompt may go through a lean fan-out launcher on a
    server. State the route taken. Validate each reply against
    `assets/surveyor-output.schema.json`; a reply that fails is re-dispatched
@@ -136,24 +137,29 @@ conversation. Without them, refuse, say what is missing, and ask. Approving a
 plan, a handoff line, a card or a message is not an election.
 
 1. **Record the election:** quote the operator's words verbatim; they go into
-   every record below.
+   every record below. If the quoted election names a session other than this
+   one, record the quote, write nothing, and report; this skill never writes a
+   card or message on behalf of another session.
 2. **Identity:** read this session's identity from the environment variables the
    channel protocol names, never from a file. Absent → card step INCOMPLETE.
 3. **Card and message** via the channel adapter: follow the live protocol file,
    mirror an existing card's shape, write this session's own card and one
    message to all sessions citing the quote and the PLAN records.
-4. **Loops:** deactivate only the redundant loops the operator named, by
-   renaming the task with the prefix `DISABLED <YYYY-MM-DD>: ` and saying so in the
-   message; never delete. No scheduled-task tool, or `scheduler: "none"`,
+4. **Loops:** deactivate only the redundant loops the operator named:
+   set the scheduled task disabled through the scheduler tool AND rename it
+   with the prefix `DISABLED <YYYY-MM-DD>: `, then verify both by re-listing
+   the task, and say so in the message; never delete. If the tool cannot
+   disable the task, the step is INCOMPLETE and the reply says so ("renamed
+   only" is never "done"). No scheduled-task tool, or `scheduler: "none"`,
    → step INCOMPLETE.
 5. **Receipts and chain:** write a ratification receipt for each item the
    operator authorized in the same words, per the DOCUMENTARY-RATIFICATION
    template (ROOT), with SHA-256 digests. Append the chain link through the
    configured `handoff_skill` in the way that skill defines (a WRITE at session
    end, or its chain-log entry format when it has one); if the skill offers no
-   way to append a single link, write the link line yourself in the chain log's
-   documented format `<UTC> | seq <n> | NOTE | <id> | <text> | <source>` and say
-   so. Never a third format. Verify every write made through a device bridge by re-reading
+   way to append a single link, write the link line yourself in the log (the
+   file matching `chain_log_glob` under `project_root`) in its documented
+   format `<UTC> | seq <n> | TURN | <id> | <text> | <source>` and say so. Never a third format. Verify every write made through a device bridge by re-reading
    its hash before relying on it.
 6. **Report** in ten lines: who coordinates, the quote, what was recorded (paths
    and digests), INCOMPLETE steps, what is owed by the operator, the first next
@@ -182,4 +188,4 @@ The operator's explicit order wins over both.
 - It never decides items reserved to the operator (ratification, contract,
   credential, publication, deletion); it records the operator's words.
 - It never edits another session's card or file.
-- It never deletes anything; deactivation is by renaming.
+- It never deletes anything; deactivation is disabling plus renaming.

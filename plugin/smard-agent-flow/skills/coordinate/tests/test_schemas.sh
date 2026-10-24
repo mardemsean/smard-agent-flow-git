@@ -67,6 +67,7 @@ mut("plan-method", plan, lambda x: x["matrix"].__setitem__("method", "guess"))
 mut("sit-vstatus", sit, lambda x: x["verify_block"].__setitem__("status", "ok"))
 mut("sit-extra", sit, lambda x: x.__setitem__("extra", 1))
 mut("sit-nochain", sit, lambda x: x.pop("chain"))
+mut("plan-one-option", plan, lambda x: x.__setitem__("options", x["options"][:1]))
 shutil.copy(sys.argv[3], t + "/tags.schema.json")
 json.dump({"$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "refprobe.schema.json",
            "type": "object", "required": ["tag"], "additionalProperties": False,
@@ -81,6 +82,7 @@ expect "situation extra top-level key fails" 1 "$SS" "$T/sit-extra.json"
 expect "situation without chain fails" 1 "$SS" "$T/sit-nochain.json"
 expect "situation tag 'confirmed' fails" 1 "$SS" "$T/sit-bad-tag.json"
 expect "plan without cost.statement fails" 1 "$PS" "$T/plan-no-statement.json"
+expect "plan with one option fails" 1 "$PS" "$T/plan-one-option.json"
 expect "\$ref schema accepts valid tag" 0 "$T/refprobe.schema.json" "$T/ref-ok.json"
 expect "\$ref schema rejects invalid tag" 1 "$T/refprobe.schema.json" "$T/ref-bad.json"
 # Task 5: reviewer output schema and the reviewer sample runner
@@ -136,9 +138,14 @@ ref = os.path.join(os.path.dirname(sys.argv[1]), "assets", "handshake-v1.referen
 for name, txt in (("SKILL.md", t), ("handshake-v1.reference.md", open(ref, encoding="utf-8").read())):
     for pat in (r"/home/", r"/root/", r"[A-Z]:\\", r"cse_(?!autor\b)"):  # the field name cse_autor is documented; session ids are not
         if re.search(pat, txt): bad.append("%s contains %s" % (name, pat))
+import glob
+for ex in sorted(glob.glob(os.path.join(os.path.dirname(sys.argv[1]), "assets", "examples", "*.json"))):
+    txt = open(ex, encoding="utf-8").read()
+    for pat in (r"/home/", r"/root/", r"[A-Z]:\\\\", r"cse_(?!EXAMPLE|autor\b)", r"session_0", r"trig_0"):
+        if re.search(pat, txt): bad.append("examples/%s contains %s" % (os.path.basename(ex), pat))
 if bad: print("; ".join(bad)); sys.exit(1)
 PY2
 ); rc=$?
-if [ "$rc" -eq 0 ]; then echo "PASS SKILL.md frontmatter"; else echo "FAIL SKILL.md frontmatter ($out)"; FAILS=$((FAILS+1)); fi
+if [ "$rc" -eq 0 ]; then echo "PASS SKILL.md frontmatter; no leak in SKILL.md, handshake reference or assets/examples"; else echo "FAIL SKILL.md frontmatter / leak check ($out)"; FAILS=$((FAILS+1)); fi
 [ "$FAILS" -eq 0 ] && echo "ALL PASS" || echo "$FAILS FAILED"
 [ "$FAILS" -eq 0 ]
