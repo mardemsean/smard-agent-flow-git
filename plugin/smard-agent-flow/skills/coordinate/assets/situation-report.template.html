@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Situation report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column of 76ch, dark-first, big type for reading at a distance */
+:root{
+  --bg:#12141a; --panel:#181b22; --panel-2:#1f232c; --border:#2b2f3a; --border-strong:#3f3f46;
+  --fg:#e4e4e7; --fg-strong:#fafafa; --muted:#9a9aa6;
+  --accent:#00d492; --accent-subtle:#04755833;
+  --ok:#22c55e; --warn:#eab308; --danger:#ef4444; --aim:#a78bfa; --info:#22b8d9;
+  --ok-subtle:#22c55e26; --warn-subtle:#eab30826; --danger-subtle:#ef444426; --aim-subtle:#a78bfa26; --info-subtle:#22b8d926;
+  --display:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono","Cascadia Mono",Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){
+  --bg:#f6f5f1; --panel:#ffffff; --panel-2:#eeede7; --border:#d8d6cd; --border-strong:#b9b6a9;
+  --fg:#1f2126; --fg-strong:#0c0d10; --muted:#5e6068;
+  --accent:#0a8f66; --accent-subtle:#0a8f6622;
+  --ok:#15803d; --warn:#a16207; --danger:#b91c1c; --aim:#6d28d9; --info:#0e7490;
+  --ok-subtle:#15803d1f; --warn-subtle:#a162071f; --danger-subtle:#b91c1c1f; --aim-subtle:#6d28d91f; --info-subtle:#0e74901f;
+  color-scheme:light;
+}}
+:root[data-theme="light"]{
+  --bg:#f6f5f1; --panel:#ffffff; --panel-2:#eeede7; --border:#d8d6cd; --border-strong:#b9b6a9;
+  --fg:#1f2126; --fg-strong:#0c0d10; --muted:#5e6068;
+  --accent:#0a8f66; --accent-subtle:#0a8f6622;
+  --ok:#15803d; --warn:#a16207; --danger:#b91c1c; --aim:#6d28d9; --info:#0e7490;
+  --ok-subtle:#15803d1f; --warn-subtle:#a162071f; --danger-subtle:#b91c1c1f; --aim-subtle:#6d28d91f; --info-subtle:#0e74901f;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:19px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+main{max-width:76ch;margin:0 auto;min-width:0}
+h1{font-family:var(--display);font-size:2rem;line-height:1.15;margin:0 0 .35rem;color:var(--fg-strong);text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:var(--display);font-size:1.45rem;line-height:1.2;margin:2.6rem 0 .9rem;color:var(--fg-strong);text-wrap:balance;border-top:3px solid var(--accent);padding-top:.7rem}
+h3{font-size:1.12rem;margin:1.4rem 0 .5rem;color:var(--fg-strong)}
+p{margin:0 0 1rem}
+.eyebrow{font-family:var(--mono);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.lead{font-size:1.2rem;line-height:1.5;color:var(--fg-strong);background:var(--panel);border-left:6px solid var(--accent);padding:1rem 1.2rem;margin:1.2rem 0 0}
+.meta{color:var(--muted);font-size:.95rem;margin-top:.8rem}
+nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 0}
+nav a{font-family:var(--mono);font-size:.9rem;color:var(--fg);text-decoration:none;border:1px solid var(--border-strong);padding:.3rem .7rem;border-radius:3px;background:var(--panel)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+.tag{display:inline-block;font-family:var(--mono);font-size:.78rem;letter-spacing:.03em;padding:.1rem .5rem;border-radius:3px;border:1px solid transparent;white-space:nowrap;vertical-align:middle}
+.t-ver{color:var(--ok);background:var(--ok-subtle);border-color:var(--ok)}
+.t-inf{color:var(--aim);background:var(--aim-subtle);border-color:var(--aim)}
+.t-ass{color:var(--muted);background:var(--panel-2);border-color:var(--border-strong)}
+.t-car{color:var(--info);background:var(--info-subtle);border-color:var(--info)}
+.pill{display:inline-block;font-family:var(--mono);font-size:.82rem;font-weight:500;padding:.15rem .55rem;border-radius:999px}
+.p-ok{background:var(--ok-subtle);color:var(--ok)} .p-warn{background:var(--warn-subtle);color:var(--warn)} .p-dan{background:var(--danger-subtle);color:var(--danger)} .p-aim{background:var(--aim-subtle);color:var(--aim)} .p-mut{background:var(--panel-2);color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--border);border-radius:4px;margin:0 0 1rem}
+table{border-collapse:collapse;width:100%;font-size:.98rem;line-height:1.45;font-variant-numeric:tabular-nums}
+th,td{text-align:left;vertical-align:top;padding:.6rem .7rem;border-bottom:1px solid var(--border)}
+th{background:var(--panel-2);color:var(--fg-strong);font-weight:600;font-size:.9rem;letter-spacing:.02em}
+tr:last-child td{border-bottom:none}
+td.k{font-family:var(--mono);font-size:.9rem;white-space:nowrap;color:var(--fg-strong)}
+code{font-family:var(--mono);font-size:.9em;background:var(--panel-2);padding:.05rem .35rem;border-radius:3px}
+.chain{list-style:none;padding:0;margin:0;border-left:3px solid var(--border-strong)}
+.chain li{position:relative;padding:.2rem 0 1.1rem 1.4rem}
+.chain li::before{content:"";position:absolute;left:-9px;top:.55rem;width:15px;height:15px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.chain li.gap::before{background:var(--danger)}
+.chain li.now::before{background:var(--warn)}
+.chain .who{font-family:var(--mono);font-size:.95rem;color:var(--fg-strong);font-weight:500}
+.chain .when{font-family:var(--mono);font-size:.85rem;color:var(--muted);margin-left:.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.9rem;margin:0 0 1rem}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:.9rem 1rem;min-width:0}
+.card h3{margin:0 0 .5rem;font-size:1rem;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.card ul{margin:0;padding-left:1.1rem}
+.card li{margin-bottom:.35rem}
+.warnbox{background:var(--warn-subtle);border:1px solid var(--warn);border-radius:4px;padding:.9rem 1rem;margin:0 0 1rem}
+.danbox{background:var(--danger-subtle);border:1px solid var(--danger);border-radius:4px;padding:.9rem 1rem;margin:0 0 1rem}
+ul.plain{padding-left:1.2rem} ul.plain li{margin-bottom:.45rem}
+.legend{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;font-size:.9rem;color:var(--muted);margin:.6rem 0 0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.cmd{font-family:var(--mono);font-size:.92rem;background:var(--panel-2);border:1px solid var(--border-strong);border-radius:4px;padding:.8rem 1rem;overflow-x:auto;white-space:pre;margin:0 0 .8rem;color:var(--fg-strong)}
+td.n{text-align:right;font-family:var(--mono)}
+tr.win td{background:var(--accent-subtle)}
+td.wrap{white-space:normal}
+@media (max-width:480px){ body{font-size:17px} h1{font-size:1.6rem} h2{font-size:1.25rem} .lead{padding:.8rem .9rem} }
+</style>
+</head>
+<body>
+<main id="root"></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+(function(){
+const DATA = /*DATA*/;
+const h=React.createElement;
+const A=x=>Array.isArray(x)?x:[];
+const T={'verified-this-run':'t-ver','carried-forward':'t-car','inference':'t-inf','assumed':'t-ass'};
+const Tag=({k})=>k?h('span',{className:'tag '+(T[k]||'t-ass')},k):null;
+const Pill=({k,children})=>h('span',{className:'pill '+k},children);
+const STATE={ok:['p-ok','holds'],divergence:['p-warn','divergence'],fail:['p-dan','fails']};
+const Th=({cols})=>h('thead',null,h('tr',null,cols.map((c,i)=>h('th',{key:i},c))));
+const Empty=({what})=>h('p',{className:'meta'},'No '+what+' recorded.');
+const Items=({items})=>A(items).length?h('ul',null,A(items).map((x,i)=>h('li',{key:i},x.text,' ',h(Tag,{k:x.tag})))):h('p',{className:'meta'},'None recorded.');
+document.title=DATA.project+' - Situation report';
+const sections=[['sucessao','Succession'],['sessoes','Sessions'],['estado','State'],['cadeia','Chain'],['tarefas','Tasks'],['verificacao','Verification'],['pendencias','Pending']];
+const lineage=A(DATA.lineage), sessions=A(DATA.sessions), docs=DATA.documents||{}, chain=DATA.chain||{links:[],open_items:[]},
+  tasks=A(DATA.scheduled_tasks), vb=DATA.verify_block||{status:'no block',rows:[]}, owed=A(DATA.owed_by_operator);
+const links=A(chain.links);
+
+const App=()=>h(React.Fragment,null,
+ h('div',{className:'eyebrow'},DATA.project+' · Situation report · '+DATA.generated_at),
+ h('h1',null,'Situation, sessions, roles and succession'),
+ h('p',{className:'meta'},'Sources: '+A(DATA.sources).join('; ')+'.'),
+ h('div',{className:'legend'},['verified-this-run','carried-forward','inference','assumed'].map(k=>h('span',{key:k},h(Tag,{k}),' '))),
+ h('nav',null,sections.map(s=>h('a',{key:s[0],href:'#'+s[0]},s[0]))),
+
+ h('h2',{id:'sucessao'},'1. Line of succession'),
+ lineage.length?h('ul',{className:'chain'},lineage.map((s,i)=>h('li',{key:i,className:i===lineage.length-1?'now':''},
+   h('span',{className:'who'},s.who),h('span',{className:'when'},s.period),' ',h(Tag,{k:s.tag}),
+   h('p',{style:{margin:'.3rem 0 0'}},s.claim)))):h(Empty,{what:'lineage'}),
+
+ h('h2',{id:'sessoes'},'2. Sessions, assigned roles and live state'),
+ sessions.length?h('div',{className:'tbl'},h('table',null,
+   h(Th,{cols:['Session','Role','Live state','Source','Tag']}),
+   h('tbody',null,sessions.map((r,i)=>h('tr',{key:i},
+     h('td',{className:'k',style:{whiteSpace:'normal'}},r.id),h('td',null,r.role),h('td',null,r.live_state),h('td',null,r.source),h('td',null,h(Tag,{k:r.tag}))))))):h(Empty,{what:'sessions'}),
+
+ h('h2',{id:'estado'},'3. State of the product and its documents'),
+ h('div',{className:'grid'},[['Ratified','ratified'],['Proposed, not ratified','proposed'],['Built','built'],['Open drift','drift']].map(c=>
+   h('div',{key:c[1],className:'card'},h('h3',null,c[0]),h(Items,{items:docs[c[1]]})))),
+
+ h('h2',{id:'cadeia'},'4. Handoff chain'),
+ links.length?h('div',{className:'tbl'},h('table',null,
+   h(Th,{cols:['Link','Date','Session','Content']}),
+   h('tbody',null,links.map((r,i)=>h('tr',{key:i},
+     h('td',{className:'k'},r.seq),h('td',{className:'k'},r.date),h('td',null,r.session),h('td',null,r.content)))))):h(Empty,{what:'chain links'}),
+ chain.missing_link?h('div',{className:'danbox'},h('strong',null,'Missing link. '),'The work after the last recorded link has no handoff in the chain.'):null,
+ A(chain.open_items).length?h(React.Fragment,null,h('h3',null,'Open items in the chain'),h('ul',{className:'plain'},A(chain.open_items).map((x,i)=>h('li',{key:i},x)))):null,
+
+ h('h2',{id:'tarefas'},'5. Scheduled tasks'),
+ tasks.length?h('div',{className:'tbl'},h('table',null,
+   h(Th,{cols:['Task','Schedule','Model / permission','Last run','Reading']}),
+   h('tbody',null,tasks.map((r,i)=>h('tr',{key:i},
+     h('td',{className:'k',style:{whiteSpace:'normal'}},r.name),h('td',null,r.schedule),h('td',null,r.model_permission),h('td',null,r.last_run),h('td',null,r.reading)))))):h(Empty,{what:'scheduled tasks'}),
+
+ h('h2',{id:'verificacao'},'6. Verify block of the latest handoff against the live state'),
+ vb.status==='no block'?h('div',{className:'warnbox'},'The latest handoff carries no verify block, so nothing could be rerun against the live state.'):null,
+ A(vb.rows).length?h('div',{className:'tbl'},h('table',null,
+   h(Th,{cols:['Claim','Result now','State']}),
+   h('tbody',null,A(vb.rows).map((r,i)=>{const s=STATE[r.state]||STATE.fail;return h('tr',{key:i},
+     h('td',null,r.claim),h('td',null,r.result),h('td',null,h(Pill,{k:s[0]},s[1])));})))):(vb.status==='rerun'?h('p',{className:'meta'},'The verify block was rerun but lists no rows.'):null),
+
+ h('h2',{id:'pendencias'},'7. What depends on the operator'),
+ owed.length?h('ul',{className:'plain'},owed.map((x,i)=>h('li',{key:i},x))):h('p',null,'Nothing is owed by the operator.')
+);
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+})();
+</script>
+</body>
+</html>

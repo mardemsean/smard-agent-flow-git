@@ -1,0 +1,50 @@
+{
+ "data": [
+  {
+   "id": "trig_FIXTURE_LOOP",
+   "name": "ORBIT coordinator: channel loop",
+   "cron_expression": "23 * * * *",
+   "enabled": true,
+   "persist_session": false,
+   "last_run": {
+    "status": "SUCCEEDED",
+    "fired_at": "2026-10-07T16:23:00Z"
+   },
+   "prompt": "Hourly recorder: read the channel, write minutes only if something is new, update LOOP-STATE.json. Never decide."
+  },
+  {
+   "id": "trig_FIXTURE_COORD2",
+   "name": "Coordinator 2: supervision cycle",
+   "cron_expression": "",
+   "run_once_at": "2026-10-07T18:03:00Z",
+   "enabled": true,
+   "persist_session": true,
+   "persistent_session_id": "session_FIXTURE_COORD2",
+   "prompt": "Supervision cycle of COORDINATOR 2: read LOOP-STATE.json, check the :23 loop, reschedule +60 min."
+  },
+  {
+   "id": "trig_FIXTURE_REVWAKE",
+   "name": "LOOP reviewer wake",
+   "cron_expression": "46 * * * *",
+   "enabled": true,
+   "persist_session": true,
+   "persistent_session_id": "session_FIXTURE_REV",
+   "last_run": {
+    "status": "SUCCEEDED",
+    "fired_at": "2026-10-07T16:46:00Z",
+    "finished_at": "2026-10-07T16:46:00Z"
+   },
+   "prompt": "LOOP: read minutes 0002 and run one cycle."
+  },
+  {
+   "id": "trig_FIXTURE_OLDHB",
+   "name": "Sessions heartbeat",
+   "cron_expression": "46 * * * *",
+   "enabled": false,
+   "last_run": {
+    "status": "SUCCEEDED",
+    "fired_at": "2026-10-01T13:46:00Z"
+   }
+  }
+ ]
+}

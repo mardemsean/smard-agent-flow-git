@@ -1,0 +1,218 @@
+{
+  "scope": "handoffs",
+  "facts": [
+    {
+      "claim": "Two files match HANDOFF.*.md under project_root; both are within recent_handoffs=2, so both were read and none is listed by name only.",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1/proj -name 'HANDOFF.*.md'",
+      "observed": "./HANDOFF.coordinator-2026-10-05.md\n./HANDOFF.orbit-plan-0310.md",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "One file matches handoff-chain.*.log under project_root and was read whole.",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1/proj -name 'handoff-chain.*.log'",
+      "observed": "./handoff-chain.orbit.log",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "All three scope files are under the 60 KB budget and were read whole.",
+      "source": "stat -c '%n %s' (in skills/coordinate/tests/fixtures/fixture-1/proj)",
+      "observed": "HANDOFF.coordinator-2026-10-05.md 3249; HANDOFF.orbit-plan-0310.md 936; handoff-chain.orbit.log 1185",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "By stated timestamp, the newest handoff is coordinator-2026-10-05 (2026-10-05T12:30:00Z) and the older is orbit-plan-0310 (2026-10-03T11:10:00Z); file mtimes cannot order them because all were written within the same second.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:11; skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md:11; TZ=UTC stat",
+      "observed": "SESSION: coordinator-2026-10-05 | cloud | 2026-10-05T12:30:00Z / SESSION: orbit-plan-0310 | cloud | 2026-10-03T11:10:00Z; mtimes 2026-10-24T19:37:15.6863Z for both",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff declares itself incomplete at step M4.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:3",
+      "observed": "completeness: INCOMPLETE: M4",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff states that the coordinator session ends, its successor is COORDINATOR 2, register r2 (rows 1-4) was written and nothing was built.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:6",
+      "observed": "STATE: Coordinator session ends; successor is COORDINATOR 2. Register r2 (rows 1-4) written. Nothing built. [verified-this-run]",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The newest handoff records two failures tried: a denied scheduled-task delete and a parse error in chain log line 7.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:7",
+      "observed": "TRIED: delete of a scheduled task denied / parse error in chain log line 7",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The newest handoff names its files: docs/drafts/COMPONENT-REGISTER-r2.md, handoff-chain.orbit.log and ../channel/LOOP-STATE.json.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:8",
+      "observed": "FILES: docs/drafts/COMPONENT-REGISTER-r2.md, handoff-chain.orbit.log, ../channel/LOOP-STATE.json",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff states its first command and done-when condition for COORDINATOR 2.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:9-10",
+      "observed": "FIRST COMMAND: confirm register r2 is the file described; reference only: `md5sum docs/drafts/COMPONENT-REGISTER-r2.md` / DONE-WHEN: COORDINATOR 2 has run READ on this file, re-checked the Verify block, and given the operator a ten-line state.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff states harness session cse_FIXTURE_COORD1, continues from orbit-plan-0310, and chain position orbit seq 3.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:13-16",
+      "observed": "session: coordinator-2026-10-05 / harness-session: cse_FIXTURE_COORD1 / continues from: orbit-plan-0310 / chain: orbit seq 3",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The newest handoff states four stale-if conditions.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:17",
+      "observed": "Stale if: (1) register r2 MD5 changes; (2) a message numbered 0004 or higher exists in ../channel/messages; (3) a COMPONENT-REGISTER-r3.md exists; (4) the CLAUDE.md no longer names SQLite.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff asserts register r2 MD5 11111111111111111111111111111111, validated at 2026-10-05T12:28Z, with no repository and continuation state needs-verification.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:20-24",
+      "observed": "change state: no repository; docs/drafts/COMPONENT-REGISTER-r2.md MD5 11111111111111111111111111111111; latest validation ... at 2026-10-05T12:28Z; continuation state: needs-verification (nothing built)",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The newest handoff's Verify block lists four checks: register r2 MD5, last channel message 0003__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md, one recurring scheduled task trig_FIXTURE_LOOP enabled, and kanban/config.yml absent.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:26-32",
+      "observed": "register r2 ... 1111...; ls ../channel/messages | tail -1 -> 0003__de-cse_FIXTURE_REV__para-cse_FIXTURE_COORD1.md; scheduled-tasks.json, enabled true -> trig_FIXTURE_LOOP; ls kanban/config.yml -> absent (operator runs kanban-md init)",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff records a verbatim operator correction that the project does not use kanban.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:34-35",
+      "observed": "\"o projeto nao usa kanban\" (2026-10-04 09:12 -03)",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff states its M4 board check expects the operator to run kanban-md init, while the verbatim operator correction in the same file says the project does not use kanban.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:32 and :35",
+      "observed": "absent (operator runs kanban-md init) / \"o projeto nao usa kanban\"",
+      "tag": "inference"
+    },
+    {
+      "claim": "The newest handoff asserts ATA-0001 and ATA-0002 were done and the loop moved to the hourly scheduled task trig_FIXTURE_LOOP.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:40",
+      "observed": "work done: ATA-0001 and ATA-0002; loop moved to the hourly scheduled task trig_FIXTURE_LOOP. [verified-this-run]",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The newest handoff asserts register r2 rows 1-3 are CONTRACTED by the operator, row 4 is PRE-CONTRACTED, and r3 is pending operator review of a proposed row 5.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:43",
+      "observed": "status: active; r2 rows 1-3 CONTRACTED by the operator, row 4 PRE-CONTRACTED; r3 pending his review of a proposed row 5. [verified-this-run]",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The newest handoff states the next step that the successor runs READ and does not create a second loop.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:41",
+      "observed": "next steps: successor runs READ, does not create a second loop.",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff's what-not-to-retry section records 140 calls, 3 errors, a denied scheduled-task delete (disable instead) and a chain log line 7 lacking a seq field.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:46-48",
+      "observed": "scan: 140 calls, 3 errors [verified-this-run] / DO NOT delete a scheduled task: denied by the auto mode classifier; disable instead. / FIX chain log: line 7 had no seq field -> rewrite the line.",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The newest handoff lists open chain items OWED o3, RULE r2 and RULE r3.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:51-53",
+      "observed": "OWED o3: operator ratifies requirement-0002 (content layer) / RULE r2: one coordinator loop only (trig_FIXTURE_LOOP) / RULE r3: verify every bridge write by hash",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff's ledger block states phase 'handoff to COORDINATOR 2', last progress 2026-10-05T12:28:00Z and finished_at null.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:57",
+      "observed": "\"phase\": \"handoff to COORDINATOR 2\", \"next\": \"COORDINATOR 2 runs READ and asks the operator to ratify requirement-0002\", ... \"last_progress_at\": \"2026-10-05T12:28:00Z\", \"finished_at\": null",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The older handoff orbit-plan-0310 declares itself COMPLETE, chain orbit seq 1, continues from none.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md:3,13-15",
+      "observed": "completeness: COMPLETE / session: orbit-plan-0310 / continues from: none / chain: orbit seq 1",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The older handoff asserts plan v0.1 was ratified (RAT-0001), SQLite was chosen as storage engine, and nothing was built.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md:6",
+      "observed": "STATE: Plan v0.1 ratified (RAT-0001). Storage engine chosen: SQLite. Nothing built. [verified-this-run]",
+      "tag": "carried-forward"
+    },
+    {
+      "claim": "The older handoff states it is stale if a requirement-0002 exists, and its done-when is the operator ratifying requirement-0002.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md:10,16",
+      "observed": "DONE-WHEN: operator ratifies requirement-0002 / Stale if: a requirement-0002 exists",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The chain log asserts at seq 2 (session orbit-specify-1355) that requirement-0002 was drafted, so the older handoff's own stale-if condition is asserted as met.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log:5-6 and skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md:16",
+      "observed": "seq 2 | OPEN OWED | o2 | requirement-0002 drafted for ratification | orbit-specify-1355 / Stale if: a requirement-0002 exists",
+      "tag": "inference"
+    },
+    {
+      "claim": "The chain log has 11 lines over seq 1 to seq 3, from sessions orbit-plan-0310, orbit-specify-1355 and coordinator-2026-10-05; the last entry is TURN t3 at 2026-10-05T12:30:00Z.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log",
+      "observed": "11 lines; last: 2026-10-05T12:30:00Z | seq 3 | TURN | t3 | coordinator hands off to COORDINATOR 2; nothing built | coordinator-2026-10-05",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Per the chain log, o1 and o2 are closed (o2 folded into o3), and o3, r2 and r3 are opened at seq 3; no line closes o3, r2 or r3.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log:2,4,5,7-10",
+      "observed": "CLOSE o1 ... RAT-0001; CLOSE o2 | o2 | folded into o3; OPEN OWED o3; OPEN RULE r2; OPEN RULE r3",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Chain log line 7 currently contains a seq field, unlike the newest handoff's statement that line 7 had no seq field.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log:7 and skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:48",
+      "observed": "2026-10-05T12:30:00Z | seq 3 | OPEN OWED | o3 | operator ratifies requirement-0002 (content layer); supersedes o2 | coordinator-2026-10-05",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "No handoff file exists for session orbit-specify-1355, which the chain log records at seq 2.",
+      "source": "find skills/coordinate/tests/fixtures/fixture-1/proj -name 'HANDOFF.*.md'; ls skills/coordinate/tests/fixtures/fixture-1/proj/handoff-archive",
+      "observed": "only HANDOFF.coordinator-2026-10-05.md and HANDOFF.orbit-plan-0310.md; handoff-archive is empty",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "The newest handoff says it continues from orbit-plan-0310 (seq 1), while the chain log places orbit-specify-1355 at seq 2 between them.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md:15 and skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log:4-6",
+      "observed": "continues from: orbit-plan-0310 / seq 2 ... orbit-specify-1355",
+      "tag": "inference"
+    },
+    {
+      "claim": "The chain log records no RULE r1 although the newest handoff's open items begin at r2.",
+      "source": "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log",
+      "observed": "OPEN RULE lines: r2, r3 only",
+      "tag": "verified-this-run"
+    },
+    {
+      "claim": "Every file in this scope has an mtime of 2026-10-24T19:37:15Z, later than the cut-off 2026-10-05T12:30:00Z, and later than every timestamp the files state.",
+      "source": "TZ=UTC stat -c '%n %y' HANDOFF.* handoff-chain.*",
+      "observed": "all three: 2026-10-24 19:37:15.686... +0000",
+      "tag": "verified-this-run"
+    }
+  ],
+  "changed_after_cutoff": [
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.coordinator-2026-10-05.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/HANDOFF.orbit-plan-0310.md",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    },
+    {
+      "path": "skills/coordinate/tests/fixtures/fixture-1/proj/handoff-chain.orbit.log",
+      "mtime_utc": "2026-10-24T19:37:15Z"
+    }
+  ],
+  "open_questions": [
+    "Was chain log line 7 rewritten after the newest handoff was written, or does the handoff's 'line 7 had no seq field' refer to a different version of the log?",
+    "Where is the handoff of session orbit-specify-1355 (chain seq 2), and why does the newest handoff say it continues from orbit-plan-0310 rather than orbit-specify-1355?",
+    "Does RULE r1 exist anywhere, given the chain log opens only r2 and r3?",
+    "Why do all scope files carry mtimes of 2026-10-24 when their stated timestamps are 2026-10-03 to 2026-10-05: were they edited after the cut-off or only copied?",
+    "Is M4 incomplete because of the kanban board, given the operator's verbatim correction that the project does not use kanban?"
+  ]
+}

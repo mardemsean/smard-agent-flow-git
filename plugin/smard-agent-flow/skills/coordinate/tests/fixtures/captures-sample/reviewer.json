@@ -1,0 +1,23 @@
+{
+  "findings": [
+    {
+      "class": "checkability",
+      "finding": "The completion condition of the last milestone names no command; it defers to benchmarks the plan does not identify, so no run can say it is met.",
+      "evidence": "done_when[3].condition: \"declared only when lines 6, 7, 8 and 10 of r4 are measured against the benchmarks the operator fixed\"",
+      "what_changes_if_true": "The milestone cannot be closed by any check, so the plan declares a goal it cannot verify."
+    },
+    {
+      "class": "checkability",
+      "finding": "The proof of S1-06 records a time but names no command that produces or compares it.",
+      "evidence": "fronts[1].tasks[5].proof: \"Time recorded; target PRF-001 below 10 s.\"",
+      "what_changes_if_true": "Segment 1 could be declared green on a time that no run reproduces."
+    },
+    {
+      "class": "scope",
+      "finding": "Front 1 builds against bridge seg1, which the situation lists as proposed, not ratified; the front does not say it waits for that authorization.",
+      "evidence": "situation.documents.proposed[3]: \"BRIDGE seg1 r1\" / fronts[1].name: \"Segment 1: local index core\"",
+      "what_changes_if_true": "Front 1 would run on a mandate that is not yet authorized."
+    }
+  ],
+  "verdict": "pass-with-findings"
+}

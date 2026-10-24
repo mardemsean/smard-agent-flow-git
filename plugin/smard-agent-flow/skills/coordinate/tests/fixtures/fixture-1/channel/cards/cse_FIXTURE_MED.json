@@ -1,0 +1,11 @@
+{
+  "esquema": "harness/handshake-de-sessao/v1",
+  "id_nuvem": "cse_FIXTURE_MED",
+  "uuid_sessao": "00000000-0000-0000-0000-000000000000",
+  "projeto": "orbit-ledger",
+  "modelo_configurado": "claude-opus-5-5",
+  "papel": "MEDIATOR of inter-session cooperation, designated by the operator on 2026-09-10",
+  "estado": "ATIVO: folder created; waiting for cards",
+  "ultima_lida": "",
+  "emitido_em_utc": "2026-09-10T19:00:00Z"
+}
