@@ -1,13 +1,13 @@
 {
   "name": "smard-agent-flow",
   "displayName": "SMard Agent Flow",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Routes the work of agents through the smard-agent-flow-git method (from discomfort to production): points to the documentary contract, the template and the right rules for each action, without redefining policy.",
   "author": {
     "name": "SMard Labs"
   },
   "repository": "https://github.com/mardemsean/smard-agent-flow-git",
-  "keywords": ["workflow", "method", "specs", "ratification", "handoff"],
+  "keywords": ["workflow", "method", "specs", "ratification", "handoff", "simplified-technical-english"],
   "userConfig": {
     "method_repo": {
       "type": "string",
