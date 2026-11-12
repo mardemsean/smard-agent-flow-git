@@ -98,9 +98,11 @@ Check 'no plugin/commands-user directory (non-standard)' (-not (Test-Path (Join-
 # --- hygiene ---------------------------------------------------------------------------------
 # The packaged copy is a byte copy of the canonical documents (SESSION-MEMORY.md legitimately names the three registers as non-existent); only the plugin's own skills are checked.
 Check 'no undefined memory names in plugin skills' (@(Get-ChildItem (Join-Path $src 'skills') -Recurse -File -Force | Select-String -Pattern 'cortex|hyperbrain-lesson|knowledge\.md').Count -eq 0)
-$exec = @(Get-ChildItem $src -Recurse -File -Force | Where-Object Extension -in '.ps1', '.cmd', '.bat', '.sh', '.js', '.py')
-$reserved = @('hooks','agents','scripts') | ForEach-Object { Get-ChildItem (Join-Path $src $_) -File -Recurse -Force -ErrorAction SilentlyContinue | Where-Object Name -ne '.gitkeep' }
-Check 'plugin ships no hooks, agents or executables (reserved folders hold only .gitkeep)' (@($reserved).Count -eq 0 -and $exec.Count -eq 0)
+$exec = @(Get-ChildItem $src -Recurse -File -Force | Where-Object Extension -in '.ps1', '.cmd', '.bat', '.sh', '.js', '.py' |
+    Where-Object FullName -notmatch '\\skills\\(coordinate|dont-speak-alien)\\')
+$agentsNonMd = @(Get-ChildItem (Join-Path $src 'agents') -File -Recurse -Force -ErrorAction SilentlyContinue | Where-Object Extension -ne '.md')
+$reserved = @('hooks','scripts') | ForEach-Object { Get-ChildItem (Join-Path $src $_) -File -Recurse -Force -ErrorAction SilentlyContinue | Where-Object Name -ne '.gitkeep' }
+Check 'plugin ships no hooks or stray executables (agents are .md only; helper scripts confined to coordinate/dont-speak-alien skills)' (@($reserved).Count -eq 0 -and $exec.Count -eq 0 -and @($agentsNonMd).Count -eq 0)
 
 if ($Installed) {
     Check 'installed copy exists' (Test-Path (Join-Path $dest '.claude-plugin\plugin.json'))
