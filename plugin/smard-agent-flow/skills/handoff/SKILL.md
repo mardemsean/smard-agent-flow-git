@@ -17,7 +17,7 @@ operator and stop.
 
 ## Read before acting (mandatory)
 
-1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
+1. `${CLAUDE_PLUGIN_ROOT}/skills/smard-agent-flow/SKILL.md`, section 1.
 2. `docs/production-workflow/SESSION-MEMORY.md` (the two persistent records, the
    checkpoint envelope and the succession contract).
 3. `docs/production-workflow/templates/SESSION-CHECKPOINT.md`

@@ -47,8 +47,8 @@ Check 'marketplace entry does not pin a second version' ($null -eq $entry[0].ver
 
 # --- skills ----------------------------------------------------------------------------------
 $skills = @(Get-ChildItem (Join-Path $src 'skills') -Directory | ForEach-Object { Join-Path $_.FullName 'SKILL.md' })
-Check 'ten skills present' (@($skills).Count -eq 10) "found $(@($skills).Count)"
-Check 'method skill exists' (Test-Path (Join-Path $src 'skills\method\SKILL.md'))
+Check 'twelve skills present' (@($skills).Count -eq 12) "found $(@($skills).Count)"
+Check 'router skill exists' (Test-Path (Join-Path $src 'skills\smard-agent-flow\SKILL.md'))
 $bad = @()
 foreach ($s in $skills) {
     if (-not (Test-Path $s)) { $bad += "$s missing"; continue }
@@ -62,7 +62,7 @@ foreach ($s in $skills) {
 Check 'every skill has frontmatter with name = folder and description, no BOM' (@($bad).Count -eq 0) ($bad -join '; ')
 
 # every repo path the method skill points to must exist at the root AND in the packaged copy
-$text = [IO.File]::ReadAllText((Join-Path $src 'skills\method\SKILL.md'))
+$text = [IO.File]::ReadAllText((Join-Path $src 'skills\smard-agent-flow\SKILL.md'))
 $paths = [regex]::Matches($text, '`((?:docs/|[A-Z]+\.md)[^`]*)`') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique
 $missing = @()
 foreach ($p in $paths) {
