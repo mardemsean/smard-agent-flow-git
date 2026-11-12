@@ -13,7 +13,7 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 
 ## Read before acting (mandatory)
 
-1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
+1. `${CLAUDE_PLUGIN_ROOT}/skills/smard-agent-flow/SKILL.md`, section 1.
 2. The current ZERO or requirement, if one exists, and the pertinent exploration (AGENTS.md, row "Found or change an intent").
 3. `docs/production-workflow/templates/REQUIREMENT-ZERO.MD`
 4. `docs/production-workflow/templates/requirement-NNNN.md`

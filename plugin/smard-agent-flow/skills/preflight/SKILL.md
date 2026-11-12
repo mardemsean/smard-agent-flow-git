@@ -13,7 +13,7 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 
 ## Read before acting (mandatory)
 
-1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
+1. `${CLAUDE_PLUGIN_ROOT}/skills/smard-agent-flow/SKILL.md`, section 1.
 2. The current requirement and the pertinent earlier decisions (ADRs) (AGENTS.md, row "Take an architectural decision").
 3. `docs/production-workflow/templates/PREFLIGHT-ADR.md`
 4. `docs/production-workflow/DOCUMENTARY-CONTRACT.md`

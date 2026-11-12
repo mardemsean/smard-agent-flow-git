@@ -1,5 +1,5 @@
 ---
-name: method
+name: smard-agent-flow
 description: Use when exploring a software idea, creating or altering the method's documents, founding requirements, deciding architecture, specifying, delegating, opening a PR, delivering or handing off a session in the smard-agent-flow-git flow (discomfort to production). Indicates which canonical documents to read before acting.
 ---
 

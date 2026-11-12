@@ -13,7 +13,7 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 
 ## Read before acting (mandatory)
 
-1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
+1. `${CLAUDE_PLUGIN_ROOT}/skills/smard-agent-flow/SKILL.md`, section 1.
 2. The current SPECS-TASKS-BRIDGE (coverage map, commitments without coverage, changes during execution).
 3. `docs/production-workflow/templates/LEARNING-DELIVERY.md`
 4. `docs/production-workflow/WORKFLOW.md`, sections on PRs/issues and on closing the cycle.

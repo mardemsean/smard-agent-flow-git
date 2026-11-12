@@ -13,7 +13,7 @@ All relative paths below start from the ROOT. If neither exists, tell the operat
 
 ## Read before acting (mandatory)
 
-1. The general route: `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1:
+1. The general route: `${CLAUDE_PLUGIN_ROOT}/skills/smard-agent-flow/SKILL.md`, section 1:
    `AGENTS.md`, `METHODOLOGY.md`, `RULES.md`, `INDEX.md`.
 2. `docs/production-workflow/METHOD-BASELINE.md`
 3. `docs/production-workflow/templates/REPOSITORY-CONSTITUTION.md`
