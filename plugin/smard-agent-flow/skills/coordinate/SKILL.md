@@ -18,7 +18,7 @@ are relative to this skill's directory.
 
 ## Read before acting (mandatory)
 
-1. `${CLAUDE_PLUGIN_ROOT}/skills/method/SKILL.md`, section 1.
+1. `${CLAUDE_PLUGIN_ROOT}/skills/smard-agent-flow/SKILL.md`, section 1.
 2. `${CLAUDE_PLUGIN_ROOT}/skills/handoff/SKILL.md`, only the sections "Trust rules
    (every mode)" and "Chain log (M2)".
 3. The schemas of the mode: `assets/situation.schema.json` (SURVEY),

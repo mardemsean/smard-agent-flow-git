@@ -6,10 +6,12 @@
     /plugin marketplace add mardemsean/smard-agent-flow-git     (or the local clone path)
     /plugin install smard-agent-flow@smard-agent-flow-marketplace
   This script is the fallback that needs no marketplace. It installs two things, because a plugin skill is always namespaced:
-    1. the plugin folder  -> <config>\skills\smard-agent-flow      (loads as smard-agent-flow@skills-dir; skills /smard-agent-flow:method, :clarify, ...)
+    1. the plugin folder  -> <config>\skills\smard-agent-flow      (loads as smard-agent-flow@skills-dir; skills /smard-agent-flow:smard-agent-flow, :clarify, ...)
     2. the user command   -> <config>\commands\smard-agent-flow.md (the short entry point /smard-agent-flow, source: .claude\commands at the repo root)
   <config> is $env:CLAUDE_CONFIG_DIR when set, else $env:USERPROFILE\.claude.
   Before copying it refreshes the packaged copy of the method (sync-method.ps1) and proves it has no drift.
+  A release package (packaging\build.ps1) ships this script without sync-method.ps1 and without the canonical
+  documents; there the packaged copy is final and the refresh is skipped.
   The script only copies. An existing different command file is backed up first. Files present in the destination
   but not in the source are reported, never removed. -Uninstall sends both destinations to the Recycle Bin.
 .EXAMPLE
@@ -59,12 +61,14 @@ if ($Uninstall) {
 
 # --- preflight -------------------------------------------------------------------------------
 if (-not (Test-OurPlugin $src)) { throw "Plugin source not found or not smard-agent-flow: $src" }
-if (-not (Test-Path (Join-Path $src 'skills\method\SKILL.md'))) { throw 'Source skill skills\method\SKILL.md is missing.' }
+if (-not (Test-Path (Join-Path $src 'skills\smard-agent-flow\SKILL.md'))) { throw 'Source skill skills\smard-agent-flow\SKILL.md is missing.' }
 if (-not (Test-Path $cmdSrc)) { throw "User command source not found: $cmdSrc" }
 $sync = Join-Path $PSScriptRoot 'sync-method.ps1'
-if (-not $WhatIfPreference) { & $sync }
-& $sync -Check
-if ($LASTEXITCODE -ne 0) { throw 'Packaged copy of the method differs from the repo root; run sync-method.ps1.' }
+if (Test-Path $sync) {
+    if (-not $WhatIfPreference) { & $sync }
+    & $sync -Check
+    if ($LASTEXITCODE -ne 0) { throw 'Packaged copy of the method differs from the repo root; run sync-method.ps1.' }
+}
 if ((Test-Path $dest) -and -not (Test-OurPlugin $dest)) { throw "Refusing to overwrite ${dest}: it is not the smard-agent-flow plugin." }
 $version = (Get-Content (Join-Path $src '.claude-plugin\plugin.json') -Raw | ConvertFrom-Json).version
 
@@ -98,7 +102,7 @@ if (-not $WhatIfPreference) {
     Write-Host ''
     Write-Host 'Next: start a NEW Claude Code session (or run /reload-plugins), then use:'
     Write-Host '  /smard-agent-flow           short entry point (user command)'
-    Write-Host '  /smard-agent-flow:method    the plugin skill (always namespaced)'
+    Write-Host '  /smard-agent-flow:smard-agent-flow    the plugin skill (always namespaced)'
     Write-Host 'Proof that it loads, in your own terminal:'
     Write-Host "  claude plugin validate `"$dest`" --strict"
     Write-Host '  claude plugin list'
