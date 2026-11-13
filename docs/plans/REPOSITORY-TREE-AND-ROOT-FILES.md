@@ -34,7 +34,7 @@
 
 | File | Trigger (per the documentary contract) |
 | --- | --- |
-| `LICENSE` | licensing decision by the rights holder before distribution under a declared license |
+| `LICENSE` | licensing decision by the rights holder before distribution under a declared license. Written on 2026-11-13: MIT, inherited from `github/spec-kit` by decision of the rights holder |
 | `CHANGELOG.md` or `RELEASE-NOTES.md` | before announcing a version with impact on users |
 | `CONTRIBUTING.md` | before opening contribution to other people or agents |
 | `SECURITY.md` | before making the plugin available to external users |

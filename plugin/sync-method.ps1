@@ -18,9 +18,10 @@ $ErrorActionPreference = 'Stop'
 $repo   = Split-Path $PSScriptRoot -Parent
 $bundle = Join-Path $PSScriptRoot 'smard-agent-flow\method'
 
-# Files the eight skills and the method router cite. Paths are relative to the repo root.
+# Files the eight skills and the method router cite, plus the LICENSE that every copy must carry.
+# Paths are relative to the repo root.
 $files = @(
-    'AGENTS.md', 'METHODOLOGY.md', 'RULES.md', 'INDEX.md', 'README.md',
+    'AGENTS.md', 'METHODOLOGY.md', 'RULES.md', 'INDEX.md', 'README.md', 'LICENSE',
     'explore.md', 'specs.md', 'adrZERO.md', 'plugin\README.md',
     '.claude\skills\grill-me\SKILL.md'
 )
