@@ -11,3 +11,7 @@ __pycache__/
 
 # Local inter-session memory; publication requires explicit promotion.
 /.session-memory/
+
+# Release files written by packaging/build.ps1
+/dist/
+node_modules/

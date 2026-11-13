@@ -128,6 +128,7 @@ or change any repository's review, merge, or deploy policy.
 | --- | --- | --- |
 | The method documents | In elaboration: design authorized for elaboration; operational details proposed where no explicit decision exists | [METHODOLOGY.md](METHODOLOGY.md) |
 | Claude Code plugin and marketplace | Packaged: twelve skills and two read-only agents; no hooks, no MCP servers | [plugin/README.md](plugin/README.md) |
+| Installers (Windows setup, ZIP, Node.js) | First release: checked on Linux and under Wine; the run on Windows is the operator's validation. winget manifest prepared, not submitted | [plugin/README.md](plugin/README.md) |
 | Precompact hook and automatic session recovery | Not implemented | [specs.md](specs.md), [SESSION-MEMORY.md](docs/production-workflow/SESSION-MEMORY.md) |
 | Spec Kit integration | Future investigation; installs or modifies nothing yet | [specs.md](specs.md) |
 | GitHub Actions checks named in the workflow | Interface design only; no such jobs exist in this repository | [specs.md](specs.md) |
@@ -137,17 +138,31 @@ or change any repository's review, merge, or deploy policy.
 
 ### Install
 
-In Claude Code, add the marketplace and install the plugin:
+SMard Agent Flow is a plugin for Claude Code, so Claude Code must already be
+installed. The installers of this release are for Windows.
+
+**The short way.** Download `SMardAgentFlow-Setup-<version>.exe` from the
+[latest release](https://github.com/mardemsean/smard-agent-flow-git/releases/latest)
+and double-click it. Then open a new Claude Code session and type
+`/smard-agent-flow`. The installer asks for no administrator password and only
+copies files into your Claude Code settings folder.
+
+| Other ways | How |
+| --- | --- |
+| Inside Claude Code | Add the marketplace and install the plugin (the two commands below). |
+| Node.js | `npx github:mardemsean/smard-agent-flow-git` |
+| ZIP | Download `smard-agent-flow-<version>-windows.zip` from the release, extract it, double-click `Install.cmd`. |
+| winget | Manifest prepared as `SMardLabs.SMardAgentFlow`; not yet in the winget community repository. |
 
 ```text
 /plugin marketplace add mardemsean/smard-agent-flow-git
 /plugin install smard-agent-flow@smard-agent-flow-marketplace
 ```
 
-The repository is private: the marketplace clone uses your machine's git
-credentials. The other routes (repository settings for teammates, cloud
-sessions, a script without a marketplace), the ROOT rule the skills follow, and
-the verification and release steps are in [plugin/README.md](plugin/README.md).
+While the repository is private, the downloads and these commands use your
+GitHub access. Every route, how to remove the plugin, the ROOT rule the skills
+follow, and the verification and release steps are in
+[plugin/README.md](plugin/README.md).
 
 ### Start here
 
