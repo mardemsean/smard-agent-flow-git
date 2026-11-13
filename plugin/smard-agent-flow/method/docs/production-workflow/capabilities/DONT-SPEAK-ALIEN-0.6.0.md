@@ -34,5 +34,5 @@ Tests: `bash plugin/smard-agent-flow/skills/dont-speak-alien/tests/test_ste_chec
 ## 4. Decision and removal
 
 **Risks:** the checker has small verb lists and gives false positives. The model reviews each finding.
-**Removal:** delete `plugin/smard-agent-flow/skills/dont-speak-alien/`, the `dont-speak-alien` rows in `AGENTS.md`, `INDEX.md` and `plugin/smard-agent-flow/skills/method/SKILL.md`, the sentence part in `plugin/README.md`, this file, and the `simplified-technical-english` keyword, and revert the `plugin.json` version to 0.5.0.
+**Removal:** delete `plugin/smard-agent-flow/skills/dont-speak-alien/`, the `dont-speak-alien` rows in `AGENTS.md`, `INDEX.md` and `plugin/smard-agent-flow/skills/smard-agent-flow/SKILL.md`, the sentence part in `plugin/README.md`, this file, and the `simplified-technical-english` keyword, and revert the `plugin.json` version to 0.5.0.
 **Effective decision:** proposed; takes effect when the operator merges the 0.6.0 release.
