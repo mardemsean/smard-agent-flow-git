@@ -43,10 +43,10 @@ foreach ($rel in $files) {
 }
 
 # Files in the bundle that no longer exist at the root are drift too (reported, never deleted).
-$known = $files | ForEach-Object { $_.ToLowerInvariant() }
+$known = $files | ForEach-Object { $_.Replace('\', '/').ToLowerInvariant() }
 $orphans = @(Get-ChildItem $bundle -Recurse -File -Force -ErrorAction SilentlyContinue |
     ForEach-Object { $_.FullName.Substring($bundle.Length + 1) } |
-    Where-Object { $_.ToLowerInvariant() -notin $known })
+    Where-Object { $_.Replace('\', '/').ToLowerInvariant() -notin $known })
 
 if ($Check) {
     if ($drift.Count -or $orphans.Count) {
