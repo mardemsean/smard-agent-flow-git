@@ -18,6 +18,7 @@
 | `docs/plans/`, `docs/windows/` | implementation plans; Windows notes | reserved |
 | `plugin/smard-agent-flow/` | the plugin: `.claude-plugin/plugin.json`, `skills/`, `method/` (packaged copy), reserved `commands/`, `agents/`, `hooks/`, `rules/`, `scripts/`, `assets/` | present |
 | `plugin/README.md`, `install.ps1`, `sync-method.ps1`, `test.ps1` | install routes, bundle sync, static tests | present |
+| `packaging/`, `package.json` | release build (`build.ps1`), Windows installer script and ZIP launchers, Node installer and its tests, winget manifest templates; `dist/` is build output, not versioned | present (added on 2026-11-13 at the operator's request, for the first release) |
 | `.claude-plugin/marketplace.json` | marketplace `smard-agent-flow-marketplace` | present |
 | `.claude/commands/`, `.claude/settings.json`, `.claude/skills/` | project command, repository settings, repository skills | present |
 | `commands/`, `agents/`, `hooks/`, `rules/`, `scripts/`, `assets/`, `templates/`, `tests/` | root-level components for the day the whole repository is the plugin (section 4) | reserved |
@@ -35,7 +36,7 @@
 | File | Trigger (per the documentary contract) |
 | --- | --- |
 | `LICENSE` | licensing decision by the rights holder before distribution under a declared license. Written on 2026-11-13: MIT, inherited from `github/spec-kit` by decision of the rights holder |
-| `CHANGELOG.md` or `RELEASE-NOTES.md` | before announcing a version with impact on users |
+| `CHANGELOG.md` or `RELEASE-NOTES.md` | before announcing a version with impact on users. `CHANGELOG.md` written on 2026-11-13 for the first release (0.6.2) |
 | `CONTRIBUTING.md` | before opening contribution to other people or agents |
 | `SECURITY.md` | before making the plugin available to external users |
 | `CODE_OF_CONDUCT.md` | before opening a community under that policy |

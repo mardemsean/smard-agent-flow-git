@@ -1,0 +1,58 @@
+SMard Agent Flow {{VERSION}} - from discomfort to production
+============================================================
+
+SMard Agent Flow is a plugin (an add-on) for Claude Code.
+You need Claude Code already installed on this computer.
+
+INSTALL
+  1. Extract this ZIP to a folder (right-click the ZIP, "Extract All").
+  2. Double-click  Install.cmd
+  3. Open a NEW Claude Code session and type:  /smard-agent-flow
+
+REMOVE
+  Double-click  Uninstall.cmd
+  The files go to the Recycle Bin.
+
+WHAT IT CHANGES
+  It copies files into your Claude Code settings folder (.claude in your
+  user folder) and nothing else. It does not need an administrator password.
+    skills\smard-agent-flow\         the plugin
+    commands\smard-agent-flow.md     the /smard-agent-flow command
+
+IF WINDOWS SHOWS A WARNING
+  Windows can warn about files that come from the internet. The installer
+  in this ZIP is a text script; you can open files\plugin\install.ps1 in
+  Notepad and read what it does.
+
+License: MIT. See LICENSE.txt.
+More: https://github.com/mardemsean/smard-agent-flow-git
+
+
+------------------------------------------------------------
+EM PORTUGUÊS
+------------------------------------------------------------
+
+O SMard Agent Flow é um plugin (um complemento) para o Claude Code.
+O Claude Code precisa estar instalado neste computador.
+
+INSTALAR
+  1. Extraia este ZIP para uma pasta (botão direito no ZIP, "Extrair Tudo").
+  2. Dê dois cliques em  Install.cmd
+  3. Abra uma NOVA sessão do Claude Code e digite:  /smard-agent-flow
+
+REMOVER
+  Dê dois cliques em  Uninstall.cmd
+  Os arquivos vão para a Lixeira.
+
+O QUE ELE ALTERA
+  Ele copia arquivos para a pasta de configurações do Claude Code (.claude
+  na sua pasta de usuário) e nada mais. Não pede senha de administrador.
+    skills\smard-agent-flow\         o plugin
+    commands\smard-agent-flow.md     o comando /smard-agent-flow
+
+SE O WINDOWS MOSTRAR UM AVISO
+  O Windows pode avisar sobre arquivos que vieram da internet. O instalador
+  deste ZIP é um script de texto; você pode abrir files\plugin\install.ps1
+  no Bloco de Notas e ler o que ele faz.
+
+Licença: MIT. Veja LICENSE.txt.

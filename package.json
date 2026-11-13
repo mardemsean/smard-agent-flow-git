@@ -1,0 +1,29 @@
+{
+  "name": "smard-agent-flow",
+  "version": "0.6.2",
+  "private": true,
+  "description": "SMard Agent Flow: installs the smard-agent-flow plugin for Claude Code (from discomfort to production).",
+  "license": "MIT",
+  "author": "SMard Labs",
+  "homepage": "https://github.com/mardemsean/smard-agent-flow-git#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mardemsean/smard-agent-flow-git.git"
+  },
+  "bin": {
+    "smard-agent-flow": "packaging/npm/smard-agent-flow.js"
+  },
+  "files": [
+    "packaging/npm/smard-agent-flow.js",
+    "plugin/smard-agent-flow/",
+    ".claude/commands/smard-agent-flow.md",
+    "/LICENSE",
+    "/README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test packaging/npm/"
+  }
+}

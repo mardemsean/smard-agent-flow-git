@@ -30,6 +30,9 @@ Check 'manifest has version and description' (![string]::IsNullOrWhiteSpace($m.v
 Check 'manifest declares user_config method_repo as non-sensitive' ($m.userConfig.method_repo.sensitive -eq $false)
 $extra = Get-ChildItem (Join-Path $src '.claude-plugin') -Force | Where-Object Name -ne 'plugin.json'
 Check 'only plugin.json inside .claude-plugin' (@($extra).Count -eq 0)
+$pkg = $null
+try { $pkg = Get-Content (Join-Path $repo 'package.json') -Raw | ConvertFrom-Json } catch { }
+Check 'package.json (Node installer) has the same version as the manifest' ($null -ne $pkg -and $pkg.version -eq $m.version) "package.json $($pkg.version), manifest $($m.version)"
 
 # --- marketplace at the repo root ------------------------------------------------------------
 $mkPath = Join-Path $repo '.claude-plugin\marketplace.json'
