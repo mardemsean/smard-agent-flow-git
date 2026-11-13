@@ -101,7 +101,7 @@ the operator's validation before a release is published.
 | `plugin/install.ps1` | Fallback install without a marketplace (`@skills-dir`), plus the user command |
 | `plugin/test.ps1` | Static tests; `-Installed` also compares the installed copy |
 | `packaging/build.ps1` | Builds the release files into `dist/`: Windows installer, ZIP, npm package, winget manifests, checksums. Publishes nothing |
-| `packaging/windows/`, `packaging/npm/`, `packaging/winget/` | NSIS script and ZIP launchers; Node installer and its tests; winget manifest templates |
+| `packaging/windows/`, `packaging/npm/`, `packaging/winget/`, `packaging/release-notes/` | NSIS script and ZIP launchers; Node installer and its tests; winget manifest templates; the text of each release page |
 | `package.json` (repo root) | Makes the repository installable with `npx`; its version must equal the plugin version |
 | `.claude/commands/smard-agent-flow.md` (repo root) | The entry command. Loaded as a project command in any clone, including cloud sessions of this repository |
 
@@ -128,9 +128,20 @@ npm test
 1. Edit the canonical documents at the repo root, never the packaged copy.
 2. `pwsh -NoProfile -File .\plugin\sync-method.ps1`, then `test.ps1`.
 3. Bump `version` in `plugin/smard-agent-flow/.claude-plugin/plugin.json` and in `package.json`; marketplace users receive updates only when it changes.
-4. For a release with installers: add the version to `CHANGELOG.md`, run `pwsh -NoProfile -File .\packaging\build.ps1`
-   (needs NSIS 3 and npm), run the installer on Windows, then attach the files of `dist/` to a GitHub release
-   tagged `v<version>`.
+4. For a release with installers: add the version to `CHANGELOG.md`, write `packaging/release-notes/v<version>.md`
+   in plain language for a person who is not a developer, and build (needs NSIS 3 and npm):
+
+   ```powershell
+   pwsh -NoProfile -File .\packaging\build.ps1
+   ```
+
+   Run `dist\SMardAgentFlow-Setup-<version>.exe` on Windows, then `pwsh -NoProfile -File .\plugin\test.ps1 -Installed`
+   and `/smard-agent-flow` in a new Claude Code session. Then create the release as a draft, read it, and publish it:
+
+   ```powershell
+   gh release create v<version> --draft --title "SMard Agent Flow <version>" `
+     --notes-file .\packaging\release-notes\v<version>.md (Get-ChildItem .\dist -File).FullName
+   ```
 
 ## Other harnesses
 
