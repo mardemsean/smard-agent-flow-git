@@ -80,7 +80,7 @@ Check 'packaged copy method/ exists with the four root documents' ($four -notcon
 Check 'sync-method.ps1 -Check exits 0 (no drift)' ($LASTEXITCODE -eq 0)
 $broken = @()
 foreach ($f in Get-ChildItem (Join-Path $src 'method') -Recurse -File -Include *.md, *.MD) {
-    foreach ($mt in [regex]::Matches([IO.File]::ReadAllText($f.FullName), '\]\(([^)#:]+)')) {
+    foreach ($mt in [regex]::Matches([IO.File]::ReadAllText($f.FullName), '\]\((?![A-Za-z][A-Za-z0-9+.-]*:)([^)#:]+)')) {
         $target = Join-Path $f.DirectoryName $mt.Groups[1].Value
         if (-not (Test-Path $target)) { $broken += "$($f.Name) -> $($mt.Groups[1].Value)" }
     }
