@@ -8,7 +8,7 @@
 
 | Path | Purpose | State |
 | --- | --- | --- |
-| `METHODOLOGY.md`, `RULES.md`, `AGENTS.md`, `INDEX.md`, `README.md`, `explore.md`, `specs.md`, `adrZERO.md` | the method, in English | present |
+| `METHODOLOGY.md`, `RULES.md`, `AGENTS.md`, `INDEX.md`, `README.md`, `MISSION.md` (and its translation `MISSION.pt-BR.md`), `explore.md`, `specs.md`, `adrZERO.md` | the method, in English | present |
 | `docs/production-workflow/` | canonical docs, prompts, templates of the method | present |
 | `docs/requirements/` | `REQUIREMENT-ZERO.MD` and `requirement-NNNN.md` of this repository as a product | reserved |
 | `docs/explorations/` | `EXP-NNNN.md` | reserved |
@@ -18,9 +18,10 @@
 | `docs/plans/`, `docs/windows/` | implementation plans; Windows notes | reserved |
 | `plugin/smard-agent-flow/` | the plugin: `.claude-plugin/plugin.json`, `skills/`, `method/` (packaged copy), reserved `commands/`, `agents/`, `hooks/`, `rules/`, `scripts/`, `assets/` | present |
 | `plugin/README.md`, `install.ps1`, `sync-method.ps1`, `test.ps1` | install routes, bundle sync, static tests | present |
+| `packaging/`, `package.json` | release build (`build.ps1`), Windows installer script and ZIP launchers, Node installer and its tests, winget manifest templates; `dist/` is build output, not versioned | present (added on 2026-11-13 at the operator's request, for the first release) |
 | `.claude-plugin/marketplace.json` | marketplace `smard-agent-flow-marketplace` | present |
 | `.claude/commands/`, `.claude/settings.json`, `.claude/skills/` | project command, repository settings, repository skills | present |
-| `commands/`, `agents/`, `hooks/`, `rules/`, `scripts/`, `assets/`, `templates/`, `tests/` | root-level components for the day the whole repository is the plugin (section 4) | reserved |
+| `commands/`, `agents/`, `hooks/`, `rules/`, `scripts/`, `assets/` (holds `author-card.png`, the image of the README author card), `templates/`, `tests/` | root-level components for the day the whole repository is the plugin (section 4) | reserved |
 | `.github/ISSUE_TEMPLATE/`, `.github/workflows/` | intake templates; CI that runs `plugin/test.ps1`, `sync-method.ps1 -Check` and the link check | reserved |
 | `.kirocrew/` | Kiro Crew adapter | reserved |
 | `.antigravity-plugin/`, `.codex-plugin/`, `.cursor-plugin/`, `.hermes-plugin/`, `.kimi-plugin/`, `.opencode/`, `.pi/`, `.agents/` | per-harness adapters, mirroring superpowers 7.0.0 | reserved |
@@ -34,12 +35,13 @@
 
 | File | Trigger (per the documentary contract) |
 | --- | --- |
-| `LICENSE` | licensing decision by the rights holder before distribution under a declared license |
-| `CHANGELOG.md` or `RELEASE-NOTES.md` | before announcing a version with impact on users |
+| `LICENSE` | licensing decision by the rights holder before distribution under a declared license. Written on 2026-11-13: MIT, inherited from `github/spec-kit` by decision of the rights holder |
+| `CHANGELOG.md` or `RELEASE-NOTES.md` | before announcing a version with impact on users. `CHANGELOG.md` written on 2026-11-13 for the first release (0.6.2) |
 | `CONTRIBUTING.md` | before opening contribution to other people or agents |
 | `SECURITY.md` | before making the plugin available to external users |
 | `CODE_OF_CONDUCT.md` | before opening a community under that policy |
 | `SUPPORT.md` | before inviting users to depend on the plugin |
+| `CITATION.cff` | when the work is to be cited. Written on 2026-11-14 at the operator's request; the README carries the ABNT reference |
 | `CODEOWNERS` | when review routing by owners is adopted |
 | `.github/PULL_REQUEST_TEMPLATE.md` | when standardizing PR evidence helps review (the DEL block) |
 | `GEMINI.md`, `gemini-extension.json` | when the Gemini adapter is adopted |

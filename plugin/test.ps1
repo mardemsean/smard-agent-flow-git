@@ -30,6 +30,12 @@ Check 'manifest has version and description' (![string]::IsNullOrWhiteSpace($m.v
 Check 'manifest declares user_config method_repo as non-sensitive' ($m.userConfig.method_repo.sensitive -eq $false)
 $extra = Get-ChildItem (Join-Path $src '.claude-plugin') -Force | Where-Object Name -ne 'plugin.json'
 Check 'only plugin.json inside .claude-plugin' (@($extra).Count -eq 0)
+$pkg = $null
+try { $pkg = Get-Content (Join-Path $repo 'package.json') -Raw | ConvertFrom-Json } catch { }
+$cffVersion = [regex]::Match([IO.File]::ReadAllText((Join-Path $repo 'CITATION.cff')), '(?m)^version:\s*"?([^"\s]+)').Groups[1].Value
+$readme = [IO.File]::ReadAllText((Join-Path $repo 'README.md'))
+Check 'CITATION.cff and the README references cite the version of the manifest' ($cffVersion -eq $m.version -and $readme.Contains("$($m.version). Natal: SMard Labs") -and $readme.Contains("version   = {$($m.version)}")) "CITATION.cff $cffVersion, manifest $($m.version)"
+Check 'package.json (Node installer) has the same version as the manifest' ($null -ne $pkg -and $pkg.version -eq $m.version) "package.json $($pkg.version), manifest $($m.version)"
 
 # --- marketplace at the repo root ------------------------------------------------------------
 $mkPath = Join-Path $repo '.claude-plugin\marketplace.json'
@@ -80,7 +86,7 @@ Check 'packaged copy method/ exists with the four root documents' ($four -notcon
 Check 'sync-method.ps1 -Check exits 0 (no drift)' ($LASTEXITCODE -eq 0)
 $broken = @()
 foreach ($f in Get-ChildItem (Join-Path $src 'method') -Recurse -File -Include *.md, *.MD) {
-    foreach ($mt in [regex]::Matches([IO.File]::ReadAllText($f.FullName), '\]\(([^)#:]+)')) {
+    foreach ($mt in [regex]::Matches([IO.File]::ReadAllText($f.FullName), '\]\((?![A-Za-z][A-Za-z0-9+.-]*:)([^)#:]+)')) {
         $target = Join-Path $f.DirectoryName $mt.Groups[1].Value
         if (-not (Test-Path $target)) { $broken += "$($f.Name) -> $($mt.Groups[1].Value)" }
     }
@@ -99,7 +105,7 @@ Check 'no plugin/commands-user directory (non-standard)' (-not (Test-Path (Join-
 # The packaged copy is a byte copy of the canonical documents (SESSION-MEMORY.md legitimately names the three registers as non-existent); only the plugin's own skills are checked.
 Check 'no undefined memory names in plugin skills' (@(Get-ChildItem (Join-Path $src 'skills') -Recurse -File -Force | Select-String -Pattern 'cortex|hyperbrain-lesson|knowledge\.md').Count -eq 0)
 $exec = @(Get-ChildItem $src -Recurse -File -Force | Where-Object Extension -in '.ps1', '.cmd', '.bat', '.sh', '.js', '.py' |
-    Where-Object FullName -notmatch '\\skills\\(coordinate|dont-speak-alien)\\')
+    Where-Object FullName -notmatch '[\\/]skills[\\/](coordinate|dont-speak-alien)[\\/]')
 $agentsNonMd = @(Get-ChildItem (Join-Path $src 'agents') -File -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.Extension -ne '.md' -and $_.Name -ne '.gitkeep' })
 $reserved = @('hooks','scripts') | ForEach-Object { Get-ChildItem (Join-Path $src $_) -File -Recurse -Force -ErrorAction SilentlyContinue | Where-Object Name -ne '.gitkeep' }
 Check 'plugin ships no hooks or stray executables (agents are .md only; helper scripts confined to coordinate/dont-speak-alien skills)' (@($reserved).Count -eq 0 -and $exec.Count -eq 0 -and @($agentsNonMd).Count -eq 0)

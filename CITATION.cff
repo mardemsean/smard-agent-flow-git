@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: >-
+  If you use SMard Agent Flow or its method documents, please cite it with the
+  metadata below. An ABNT NBR 6023 reference is in the README, section
+  "How to cite".
+type: software
+title: "SMard Agent Flow: from discomfort to production"
+abstract: >-
+  A human-led software workflow for the age of autonomous coding agents. It
+  accompanies a person from a discomfort that still has no language to the
+  observed effects of real software in use, and connects creative exploration
+  to spec-driven and task-driven execution without replacing the executor.
+authors:
+  - family-names: Mardem
+    given-names: Sean
+    orcid: "https://orcid.org/0009-0004-5677-2402"
+    affiliation: SMard Labs
+    email: smardlabs@mardemsean.org
+    city: Natal
+    country: BR
+version: 0.6.2
+date-released: "2026-11-13"
+license: MIT
+url: "https://github.com/mardemsean/smard-agent-flow-git"
+repository-code: "https://github.com/mardemsean/smard-agent-flow-git"
+keywords:
+  - coding agents
+  - agentic harness
+  - human-led workflow
+  - spec-driven development
+  - ratification
+  - computational epistemology
+references:
+  - type: software
+    title: Spec Kit
+    authors:
+      - name: "GitHub, Inc."
+    url: "https://github.com/github/spec-kit"
+    license: MIT
+    notes: >-
+      The documentary part of the method that covers the workflow for Git and
+      CI/CD was heavily inspired by the Spec-Driven Development workflow
+      documentation published with Spec Kit.

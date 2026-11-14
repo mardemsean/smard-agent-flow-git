@@ -15,6 +15,7 @@
         "name": "SMard Labs"
       },
       "repository": "https://github.com/mardemsean/smard-agent-flow-git",
+      "license": "MIT",
       "category": "workflow",
       "keywords": ["workflow", "method", "specs", "ratification", "handoff"]
     }

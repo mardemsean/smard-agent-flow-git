@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.6.0.schema.json
+PackageIdentifier: SMardLabs.SMardAgentFlow
+PackageVersion: {{VERSION}}
+PackageLocale: en-US
+Publisher: SMard Labs
+PublisherUrl: https://github.com/mardemsean
+PackageName: SMard Agent Flow
+PackageUrl: {{REPO_URL}}
+License: MIT
+LicenseUrl: {{REPO_URL}}/blob/main/LICENSE
+Copyright: Copyright (c) 2026 Sean Mardem (SMard Labs). Copyright GitHub, Inc.
+ShortDescription: A human-led software workflow for coding agents, from discomfort to production.
+Description: |-
+  SMard Agent Flow is a workflow plugin for coding agents. It accompanies a person from a first
+  discomfort to the observed effects of real software in use, and connects creative
+  exploration to the tool that runs the tasks. This installer sets it up for Claude Code: it copies the plugin and the
+  /smard-agent-flow command into the Claude Code settings folder of the current user.
+  Claude Code must already be installed.
+Tags:
+  - claude-code
+  - plugin
+  - workflow
+  - spec-driven-development
+  - agents
+ReleaseNotesUrl: {{REPO_URL}}/releases/tag/v{{VERSION}}
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

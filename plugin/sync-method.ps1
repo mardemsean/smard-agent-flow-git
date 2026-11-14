@@ -18,9 +18,11 @@ $ErrorActionPreference = 'Stop'
 $repo   = Split-Path $PSScriptRoot -Parent
 $bundle = Join-Path $PSScriptRoot 'smard-agent-flow\method'
 
-# Files the eight skills and the method router cite. Paths are relative to the repo root.
+# Files the eight skills and the method router cite, plus the LICENSE that every copy must carry.
+# Paths are relative to the repo root.
 $files = @(
-    'AGENTS.md', 'METHODOLOGY.md', 'RULES.md', 'INDEX.md', 'README.md',
+    'AGENTS.md', 'METHODOLOGY.md', 'RULES.md', 'INDEX.md', 'README.md', 'LICENSE',
+    'MISSION.md', 'MISSION.pt-BR.md', 'assets\author-card.png',
     'explore.md', 'specs.md', 'adrZERO.md', 'plugin\README.md',
     '.claude\skills\grill-me\SKILL.md'
 )
@@ -42,10 +44,10 @@ foreach ($rel in $files) {
 }
 
 # Files in the bundle that no longer exist at the root are drift too (reported, never deleted).
-$known = $files | ForEach-Object { $_.ToLowerInvariant() }
+$known = $files | ForEach-Object { $_.Replace('\', '/').ToLowerInvariant() }
 $orphans = @(Get-ChildItem $bundle -Recurse -File -Force -ErrorAction SilentlyContinue |
     ForEach-Object { $_.FullName.Substring($bundle.Length + 1) } |
-    Where-Object { $_.ToLowerInvariant() -notin $known })
+    Where-Object { $_.Replace('\', '/').ToLowerInvariant() -notin $known })
 
 if ($Check) {
     if ($drift.Count -or $orphans.Count) {
