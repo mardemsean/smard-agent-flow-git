@@ -128,11 +128,6 @@ Function RunHarnessInstaller
     Return
   ${EndIf}
   DetailPrint "SMard Agent Flow -> $1"
-  ; diagnostic: record the exact expanded command line
-  FileOpen $2 "$INSTDIR\nsexec.log" a
-  FileSeek $2 0 END
-  FileWrite $2 '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "$INSTDIR\files\packaging\install-harness.ps1" -Harness $1 -Log "$INSTDIR\install.log"$\r$\n'
-  FileClose $2
   ExecWait '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "$INSTDIR\files\packaging\install-harness.ps1" -Harness $1 -Log "$INSTDIR\install.log"' $2
   ${If} $2 <> "0"
     MessageBox MB_OK|MB_ICONSTOP "$(TXT_PWFAILED)$\r$\n$\r$\n$1" /SD IDOK
@@ -173,6 +168,7 @@ Section "-Payload"
   !insertmacro RunForSect ${sec_copilot} "copilot"
 
   ; Fail when nothing was selected.
+  ClearErrors
   FileOpen $2 "$INSTDIR\installed-harnesses.txt" r
   ${If} ${Errors}
     MessageBox MB_OK|MB_ICONEXCLAMATION "$(TXT_NOHARNESS)" /SD IDOK
@@ -214,6 +210,7 @@ Function un.UninstallOneHarness
 FunctionEnd
 
 Section "Uninstall"
+  ClearErrors
   FileOpen $2 "$INSTDIR\installed-harnesses.txt" r
   ${IfNot} ${Errors}
     ClearErrors
