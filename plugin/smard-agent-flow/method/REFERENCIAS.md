@@ -2,7 +2,8 @@
 
 The works that the documentary review of this method covered. The list follows
 ABNT NBR 6023 for the references and NBR 6033 for the alphabetical order;
-citations in the text follow NBR 10520.
+citations in the text follow NBR 10520. The works were published in English, so
+the references are written in English.
 
 ## What the review was
 
@@ -27,28 +28,28 @@ and traceable results.
 ## References
 
 BMAD CODE. **BMAD-METHOD**: breakthrough method for agile AI driven
-development. [*S. l.*]: BMad Code, 2026. Repositório de código. Disponível em:
-https://github.com/bmad-code-org/BMAD-METHOD. Acesso em: 14 out. 2026.
+development. [*S. l.*]: BMad Code, 2026. Code repository. Available at:
+https://github.com/bmad-code-org/BMAD-METHOD. Accessed on: 14 Oct. 2026.
 
-DELIMARSKY, Den; RIEM, Manfred. **Spec Kit**. Versão 0.10.2. [*S. l.*]:
-GitHub, 2026. Repositório de código. Disponível em:
-https://github.com/github/spec-kit. Acesso em: 14 out. 2026.
+DELIMARSKY, Den; RIEM, Manfred. **Spec Kit**. Version 0.10.2. [*S. l.*]:
+GitHub, 2026. Code repository. Available at:
+https://github.com/github/spec-kit. Accessed on: 14 Oct. 2026.
 
 EL ASSAS, Akram. **Test-driven development**: a comprehensive guide. [*S. l.*:
-*s. n.*], 2026. Repositório de código. Disponível em:
-https://github.com/aelassas/tdd. Acesso em: 14 out. 2026.
+*s. n.*], 2026. Code repository. Available at:
+https://github.com/aelassas/tdd. Accessed on: 14 Oct. 2026.
 
 FISSION AI. **OpenSpec**: spec-driven development (SDD) for AI coding
-assistants. [*S. l.*]: Fission AI, 2026. Repositório de código. Disponível em:
-https://github.com/Fission-AI/OpenSpec. Acesso em: 14 out. 2026.
+assistants. [*S. l.*]: Fission AI, 2026. Code repository. Available at:
+https://github.com/Fission-AI/OpenSpec. Accessed on: 14 Oct. 2026.
 
-GITLAB. **The GitLab handbook**. [*S. l.*]: GitLab, [2026]. Repositório de
-conteúdo. Disponível em:
-https://gitlab.com/gitlab-com/content-sites/handbook. Acesso em: 14 out. 2026.
+GITLAB. **The GitLab handbook**. [*S. l.*]: GitLab, [2026]. Content
+repository. Available at:
+https://gitlab.com/gitlab-com/content-sites/handbook. Accessed on: 14 Oct. 2026.
 
 GOOGLE. **Google engineering practices documentation**. [*S. l.*]: Google,
-2024. Repositório de documentação. Disponível em:
-https://github.com/google/eng-practices. Acesso em: 14 out. 2026.
+2024. Documentation repository. Available at:
+https://github.com/google/eng-practices. Accessed on: 14 Oct. 2026.
 
 ## How the references were written
 
