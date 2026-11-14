@@ -131,7 +131,7 @@ npm test
 
 1. Edit the canonical documents at the repo root, never the packaged copy.
 2. `pwsh -NoProfile -File .\plugin\sync-method.ps1`, then `test.ps1`.
-3. Bump `version` in `plugin/smard-agent-flow/.claude-plugin/plugin.json` and in `package.json`; marketplace users receive updates only when it changes.
+3. Bump `version` in `plugin/smard-agent-flow/.claude-plugin/plugin.json`, in `package.json`, and in `CITATION.cff` (with `date-released`) and the "How to cite" section of the README; marketplace users receive updates only when it changes.
 4. For a release with installers: add the version to `CHANGELOG.md`, write `packaging/release-notes/v<version>.md`
    in plain language for a person who is not a developer, and build (needs NSIS 3 and npm):
 

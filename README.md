@@ -25,6 +25,7 @@ development, even when it runs autonomously, still reflects human choices.
 <a href="#get-started">Get started</a> ·
 <a href="#method-docs-canonical-sources">Docs</a> ·
 <a href="#attribution-and-license">License</a> ·
+<a href="#how-to-cite">Cite</a> ·
 <a href="#author">Author</a>
 </p>
 
@@ -214,6 +215,42 @@ Because of that origin, this repository inherits the license declared by the
 source repository, the MIT License, by decision of the rights holder on
 2026-11-13. [LICENSE](LICENSE) carries the license text and keeps GitHub's
 copyright notice next to ours.
+
+## How to cite
+
+GitHub shows a **Cite this repository** button on the repository page, fed by
+the file `CITATION.cff`; the button gives APA and BibTeX. The other formats are
+written out here.
+
+**ABNT (NBR 6023)**
+
+> MARDEM, Sean. **SMard Agent Flow**: from discomfort to production. Versão
+> 0.6.2. Natal: SMard Labs, 2026. Disponível em:
+> https://github.com/mardemsean/smard-agent-flow-git. Acesso em: 14 nov. 2026.
+
+Replace the date after "Acesso em:" with the day you consulted the repository.
+In the text, under NBR 10520: (Mardem, 2026) or Mardem (2026).
+
+| Style | Reference |
+| --- | --- |
+| APA 7 | Mardem, S. (2026). *SMard Agent Flow: From discomfort to production* (Version 0.6.2) [Computer software]. SMard Labs. https://github.com/mardemsean/smard-agent-flow-git |
+| Chicago (author-date) | Mardem, Sean. 2026. *SMard Agent Flow: From Discomfort to Production*. V. 0.6.2. SMard Labs. https://github.com/mardemsean/smard-agent-flow-git. |
+| IEEE | S. Mardem, *SMard Agent Flow: From Discomfort to Production*, version 0.6.2. SMard Labs, 2026. [Online]. Available: https://github.com/mardemsean/smard-agent-flow-git |
+| MLA 9 | Mardem, Sean. *SMard Agent Flow: From Discomfort to Production*. Version 0.6.2, SMard Labs, 2026, github.com/mardemsean/smard-agent-flow-git. |
+
+```bibtex
+@software{mardem_smard_agent_flow_2026,
+  author    = {Mardem, Sean},
+  title     = {{SMard Agent Flow}: from discomfort to production},
+  version   = {0.6.2},
+  year      = {2026},
+  month     = nov,
+  publisher = {SMard Labs},
+  address   = {Natal, Brazil},
+  url       = {https://github.com/mardemsean/smard-agent-flow-git},
+  license   = {MIT}
+}
+```
 
 ## Author
 
