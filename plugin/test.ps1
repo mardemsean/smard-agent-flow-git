@@ -32,6 +32,9 @@ $extra = Get-ChildItem (Join-Path $src '.claude-plugin') -Force | Where-Object N
 Check 'only plugin.json inside .claude-plugin' (@($extra).Count -eq 0)
 $pkg = $null
 try { $pkg = Get-Content (Join-Path $repo 'package.json') -Raw | ConvertFrom-Json } catch { }
+$cffVersion = [regex]::Match([IO.File]::ReadAllText((Join-Path $repo 'CITATION.cff')), '(?m)^version:\s*"?([^"\s]+)').Groups[1].Value
+$readme = [IO.File]::ReadAllText((Join-Path $repo 'README.md'))
+Check 'CITATION.cff and the README references cite the version of the manifest' ($cffVersion -eq $m.version -and $readme.Contains("$($m.version). Natal: SMard Labs") -and $readme.Contains("version   = {$($m.version)}")) "CITATION.cff $cffVersion, manifest $($m.version)"
 Check 'package.json (Node installer) has the same version as the manifest' ($null -ne $pkg -and $pkg.version -eq $m.version) "package.json $($pkg.version), manifest $($m.version)"
 
 # --- marketplace at the repo root ------------------------------------------------------------
