@@ -2,51 +2,21 @@
   "findings": [
     {
       "class": "reserved",
-      "finding": "Task D0-02 schedules the batch ratification of ZERO r2, requirement-0003, constitution r2 and the bridge seg1 mandate for day 0, and the Day 0 milestone assumes the signature as a completion condition, so the plan plans a ratification that only the operator owes.",
+      "finding": "Task D0-02 schedules the batch ratification of ZERO r2, requirement-0003, constitution r2 and the bridge mandate for day 0, and the Day 0 milestone assumes the signature as a completion condition, so the plan plans a ratification that only the operator owes.",
       "evidence": "fronts[0].tasks[1].deliverable: \"Batch ratification RAT-0003: ZERO r2 + requirement-0003\" / done_when[0].condition: \"RAT-0003 signed\" / situation.owed_by_operator[0]: \"Ratify or correct REQUIREMENT-ZERO r2\"",
       "what_changes_if_true": "The Day 0 milestone, and every front gated on it, cannot be declared done by any session, because its completion depends on an operator decision the plan has no standing to schedule."
     },
     {
       "class": "reserved",
       "finding": "Task D0-01 and the adversarial review role pre-decide the outcome of the LOOP handshake task (removed or suspended, no hourly loop), although deciding its fate is listed as owed by the operator.",
-      "evidence": "fronts[0].tasks[0].deliverable: \"the reviewer's \\\"LOOP handshake\\\" are removed or suspended by the operator\" / roles[4].rule: \"no hourly loop; summoned by ATA\" / situation.owed_by_operator[4]: \"Decide the fate of the reviewer's \\\"LOOP handshake\\\" task\"",
-      "what_changes_if_true": "The governance front and the role table rest on an outcome the operator may not choose, so the coordination layout of the plan may be invalid as written."
+      "evidence": "fronts[0].tasks[0].deliverable: \"the reviewer's \\\"LOOP handshake\\\" are removed or suspended by the operator\" / roles[4].rule: \"no hourly loop; summoned by minute\" / situation.owed_by_operator[3]: \"Decide the fate of the reviewer's \\\"LOOP handshake\\\" task\"",
+      "what_changes_if_true": "The governance front and the role table rest on an outcome the operator may not choose, so the coordination layout of the plan may be invalid on day 0."
     },
     {
       "class": "reserved",
-      "finding": "Task D0-04 schedules the edit of the Project instruction on day 0 and fixes its resulting content as the proof, while that edit is an item owed by the operator.",
-      "evidence": "fronts[0].tasks[3].deliverable: \"Project instruction corrected for delegation to cloud sessions\" / fronts[0].tasks[3].proof: \"Project instruction no longer contains \\\"No in-process subagents\\\"\" / situation.owed_by_operator[2]: \"Edit the Project instruction\"",
-      "what_changes_if_true": "The cloud delegation that Front 1 and Front 2 rely on stays contradicted by the Project instruction until the operator acts, so those fronts inherit an unresolved governance dependency."
-    },
-    {
-      "class": "scope",
-      "finding": "Front 1 is scheduled for week 1 against the bridge, while BRIDGE seg1 r1 is only proposed and its mandate is authorized inside RAT-0003; unlike Front 2, Front 1 does not say that it waits for that authorization.",
-      "evidence": "fronts[1].name: \"Front 1 - Segment 1: local index core (week 1)\" / fronts[0].tasks[1].deliverable: \"authorization of the bridge seg1 mandate\" / roles[2].rule: \"one S-xx task per agent, against the bridge\" / situation.documents.proposed[3].text: \"BRIDGE seg1 r1\"",
-      "what_changes_if_true": "Segment 1 could start against an unratified bridge, which also undercuts the risk claim that segment 1 can proceed alone if r2 is rejected."
-    },
-    {
-      "class": "scope",
-      "finding": "Task D0-03 and its proof require CREATE EXTENSION vector and pg_trgm on day 0, which depends on the PostgreSQL credential owed by the operator, and the task does not say that it waits for that credential.",
-      "evidence": "fronts[0].tasks[2].deliverable: \"CREATE EXTENSION vector and pg_trgm\" / fronts[0].tasks[2].proof: \"vector and pg_trgm installable\" / situation.owed_by_operator[3]: \"Provide the PostgreSQL 18 credential (scram-sha-256) for CREATE EXTENSION vector\" / situation.documents.built[1].text: \"CREATE EXTENSION still pending a credential\"",
-      "what_changes_if_true": "The physical foundation, and therefore all of Front 1, is blocked on an operator credential that the plan does not list as a precondition."
-    },
-    {
-      "class": "scope",
-      "finding": "Task S2-03 builds the dense arm on EmbeddingGemma 2, whose license and Hugging Face token are owed by the operator, while Front 2 states only that it waits for RAT-0003.",
-      "evidence": "fronts[2].tasks[2].deliverable: \"pgvector EmbeddingGemma 2 fp32 768d\" / fronts[2].name: \"after RAT-0003\" / situation.owed_by_operator[3]: \"license and Hugging Face token for EmbeddingGemma 2\"",
-      "what_changes_if_true": "Segment 2 can be unblocked by RAT-0003 and still be unable to run its search cascade and bakeoff, so its week 2 timing does not hold."
-    },
-    {
-      "class": "checkability",
-      "finding": "The proofs of S2-03 and S2-04 and the Segment 2 milestone rely on \"the operator's questions\" and \"real questions\" answered by the database, a set that is not fixed anywhere and a judgement of what counts as real and answered.",
-      "evidence": "fronts[2].tasks[3].proof: \"5 real questions answered by the database\" / fronts[2].tasks[2].proof: \"with the operator's questions\" / done_when[2].condition: \"answers five real questions about the operator's collection\"",
-      "what_changes_if_true": "No command can decide that Segment 2 is done, so its completion would rest on judgement rather than on a check."
-    },
-    {
-      "class": "checkability",
-      "finding": "The Full context engine milestone is declared against benchmarks named only by product, with no measuring step, metric or threshold stated.",
-      "evidence": "done_when[3].condition: \"measured against the benchmarks the operator fixed (JB Context, Serena, Context7, Augment)\"",
-      "what_changes_if_true": "The final milestone has no checkable target, so the plan cannot state when the context engine is complete."
+      "finding": "The chain records a missing link at seq 10 while the situation states work continued for about 30 hours without a handoff; the plan assumes the elected coordinator writes seq 10, but no task assigns that write before the fronts start.",
+      "evidence": "situation.chain.missing_link: true / fronts[0].tasks[0].deliverable: \"writes the channel card and handoff seq 10\" / situation.lineage[3]: \"No HANDOFF.*.md and no chain line after seq 9\"",
+      "what_changes_if_true": "If seq 10 is not written before segment 1 starts, the hourly registrar keeps reading a stale handoff as current and every fan-out worker orients from outdated context."
     }
   ],
   "verdict": "fail"
