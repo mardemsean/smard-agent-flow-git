@@ -13,7 +13,7 @@ below are the author's own reading of each source.
 
 | Source | Role in the review |
 | --- | --- |
-| Spec Kit (GitHub, 2026) | Specification-driven flow; with OpenSpec, a candidate for the official source of one same change. The documentary part of this method that covers the workflow for Git and CI/CD was heavily inspired by its Spec-Driven Development workflow documentation |
+| Spec Kit (Delimarsky; Riem, 2026) | Specification-driven flow; with OpenSpec, a candidate for the official source of one same change. The documentary part of this method that covers the workflow for Git and CI/CD was heavily inspired by its Spec-Driven Development workflow documentation |
 | OpenSpec (Fission AI, 2026) | Specification-driven flow; with Spec Kit, a candidate for the official source of one same change |
 | BMAD-METHOD (BMad Code, 2026) | Complement for discovery and planning |
 | The GitLab handbook (GitLab, [2026]) | Complement for discovery and planning; the product development flow |
@@ -30,6 +30,10 @@ BMAD CODE. **BMAD-METHOD**: breakthrough method for agile AI driven
 development. [*S. l.*]: BMad Code, 2026. Repositório de código. Disponível em:
 https://github.com/bmad-code-org/BMAD-METHOD. Acesso em: 14 out. 2026.
 
+DELIMARSKY, Den; RIEM, Manfred. **Spec Kit**. Versão 0.10.2. [*S. l.*]:
+GitHub, 2026. Repositório de código. Disponível em:
+https://github.com/github/spec-kit. Acesso em: 14 out. 2026.
+
 EL ASSAS, Akram. **Test-driven development**: a comprehensive guide. [*S. l.*:
 *s. n.*], 2026. Repositório de código. Disponível em:
 https://github.com/aelassas/tdd. Acesso em: 14 out. 2026.
@@ -38,9 +42,6 @@ FISSION AI. **OpenSpec**: spec-driven development (SDD) for AI coding
 assistants. [*S. l.*]: Fission AI, 2026. Repositório de código. Disponível em:
 https://github.com/Fission-AI/OpenSpec. Acesso em: 14 out. 2026.
 
-GITHUB. **Spec Kit**. [*S. l.*]: GitHub, 2026. Repositório de código.
-Disponível em: https://github.com/github/spec-kit. Acesso em: 14 out. 2026.
-
 GITLAB. **The GitLab handbook**. [*S. l.*]: GitLab, [2026]. Repositório de
 conteúdo. Disponível em:
 https://gitlab.com/gitlab-com/content-sites/handbook. Acesso em: 14 out. 2026.
@@ -48,6 +49,21 @@ https://gitlab.com/gitlab-com/content-sites/handbook. Acesso em: 14 out. 2026.
 GOOGLE. **Google engineering practices documentation**. [*S. l.*]: Google,
 2024. Repositório de documentação. Disponível em:
 https://github.com/google/eng-practices. Acesso em: 14 out. 2026.
+
+## How the references were written
+
+A source that says how it wants to be cited is cited that way. Of the six, only
+Spec Kit does: its `CITATION.cff`, at the commit of the snapshot, names two
+authors, version 0.10.2 and the release date 2026-06-11. The other five carry
+no citation file; they are entered under the owner of the repository, or under
+the person when the repository is personal.
+
+Well-known repositories of the field (for example `huggingface/transformers`,
+`pytorch/pytorch`, `google-research/bert`) ask to be cited through a
+`CITATION.cff` file or a BibTeX entry, with author, title, version or year, and
+address; none of them gives a place of publication. The entries above keep the
+ABNT order of elements, and `[S. l.]` (*sine loco*) is the ABNT mark for a
+place that the source does not state.
 
 ## Evidence
 

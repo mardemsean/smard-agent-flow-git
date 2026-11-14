@@ -71,8 +71,12 @@ references:
     year: 2024
   - type: software
     title: Spec Kit
+    version: 0.10.2
     authors:
-      - name: "GitHub, Inc."
+      - family-names: Delimarsky
+        given-names: Den
+      - family-names: Riem
+        given-names: Manfred
     url: "https://github.com/github/spec-kit"
     commit: 96774bc52fd7dccc7185791e1cac7572b9e09dea
     license: MIT
