@@ -230,11 +230,11 @@ written out here.
 
 **ABNT (NBR 6023)**
 
-> MARDEM, Sean. **SMard Agent Flow**: from discomfort to production. Versão
-> 0.6.2. Natal: SMard Labs, 2026. Disponível em:
-> https://github.com/mardemsean/smard-agent-flow-git. Acesso em: 14 nov. 2026.
+> MARDEM, Sean. **SMard Agent Flow**: from discomfort to production. Version
+> 0.6.2. Natal: SMard Labs, 2026. Available at:
+> https://github.com/mardemsean/smard-agent-flow-git. Accessed on: 14 Nov. 2026.
 
-Replace the date after "Acesso em:" with the day you consulted the repository.
+Replace the date after "Accessed on:" with the day you consulted the repository.
 In the text, under NBR 10520: (Mardem, 2026) or Mardem (2026).
 
 | Style | Reference |
