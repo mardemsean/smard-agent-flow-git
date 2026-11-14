@@ -2,7 +2,7 @@
   "name": "smard-agent-flow",
   "version": "0.6.2",
   "private": true,
-  "description": "SMard Agent Flow: installs the smard-agent-flow plugin for Claude Code (from discomfort to production).",
+  "description": "SMard Agent Flow, from discomfort to production. This package sets the smard-agent-flow plugin up for Claude Code.",
   "license": "MIT",
   "author": "SMard Labs",
   "homepage": "https://github.com/mardemsean/smard-agent-flow-git#readme",

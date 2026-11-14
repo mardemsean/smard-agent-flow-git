@@ -18,6 +18,7 @@ Prepared on 2026-11-13. The first version offered as a release with installers.
   Git and CI/CD was heavily inspired by GitHub's Spec-Driven Development workflow
   documentation (GitHub Spec Kit); the README says so and `LICENSE` keeps GitHub's
   copyright notice.
+- `MISSION.md`: why the method exists, with a Portuguese translation.
 - The README is now the front page of the product: what it is, the cycle, the
   state of each piece, how to install.
 

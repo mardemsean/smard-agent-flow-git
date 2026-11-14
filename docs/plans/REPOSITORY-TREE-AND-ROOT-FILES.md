@@ -8,7 +8,7 @@
 
 | Path | Purpose | State |
 | --- | --- | --- |
-| `METHODOLOGY.md`, `RULES.md`, `AGENTS.md`, `INDEX.md`, `README.md`, `explore.md`, `specs.md`, `adrZERO.md` | the method, in English | present |
+| `METHODOLOGY.md`, `RULES.md`, `AGENTS.md`, `INDEX.md`, `README.md`, `MISSION.md` (and its translation `MISSION.pt-BR.md`), `explore.md`, `specs.md`, `adrZERO.md` | the method, in English | present |
 | `docs/production-workflow/` | canonical docs, prompts, templates of the method | present |
 | `docs/requirements/` | `REQUIREMENT-ZERO.MD` and `requirement-NNNN.md` of this repository as a product | reserved |
 | `docs/explorations/` | `EXP-NNNN.md` | reserved |
@@ -21,7 +21,7 @@
 | `packaging/`, `package.json` | release build (`build.ps1`), Windows installer script and ZIP launchers, Node installer and its tests, winget manifest templates; `dist/` is build output, not versioned | present (added on 2026-11-13 at the operator's request, for the first release) |
 | `.claude-plugin/marketplace.json` | marketplace `smard-agent-flow-marketplace` | present |
 | `.claude/commands/`, `.claude/settings.json`, `.claude/skills/` | project command, repository settings, repository skills | present |
-| `commands/`, `agents/`, `hooks/`, `rules/`, `scripts/`, `assets/`, `templates/`, `tests/` | root-level components for the day the whole repository is the plugin (section 4) | reserved |
+| `commands/`, `agents/`, `hooks/`, `rules/`, `scripts/`, `assets/` (holds `author-card.png`, the image of the README author card), `templates/`, `tests/` | root-level components for the day the whole repository is the plugin (section 4) | reserved |
 | `.github/ISSUE_TEMPLATE/`, `.github/workflows/` | intake templates; CI that runs `plugin/test.ps1`, `sync-method.ps1 -Check` and the link check | reserved |
 | `.kirocrew/` | Kiro Crew adapter | reserved |
 | `.antigravity-plugin/`, `.codex-plugin/`, `.cursor-plugin/`, `.hermes-plugin/`, `.kimi-plugin/`, `.opencode/`, `.pi/`, `.agents/` | per-harness adapters, mirroring superpowers 7.0.0 | reserved |

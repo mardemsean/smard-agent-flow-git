@@ -53,8 +53,8 @@ Var CmdChanged
 !insertmacro MUI_LANGUAGE "English"
 !insertmacro MUI_LANGUAGE "PortugueseBR"
 
-LangString TXT_WELCOME ${LANG_ENGLISH} "Setup adds the ${PRODUCT} ${VERSION} plugin to Claude Code on this computer.$\r$\n$\r$\nYou need Claude Code already installed. You do not need an administrator password. Setup only copies files into your Claude Code settings folder.$\r$\n$\r$\nClick Next to continue."
-LangString TXT_WELCOME ${LANG_PORTUGUESEBR} "Este instalador adiciona o plugin ${PRODUCT} ${VERSION} ao Claude Code neste computador.$\r$\n$\r$\nO Claude Code precisa estar instalado. Não é preciso senha de administrador. O instalador apenas copia arquivos para a pasta de configurações do Claude Code.$\r$\n$\r$\nClique em Próximo para continuar."
+LangString TXT_WELCOME ${LANG_ENGLISH} "Setup installs ${PRODUCT} ${VERSION} for Claude Code on this computer.$\r$\n$\r$\nYou need Claude Code already installed. You do not need an administrator password. Setup only copies files into your Claude Code settings folder.$\r$\n$\r$\nClick Next to continue."
+LangString TXT_WELCOME ${LANG_PORTUGUESEBR} "Este instalador instala o ${PRODUCT} ${VERSION} para o Claude Code neste computador.$\r$\n$\r$\nO Claude Code precisa estar instalado. Não é preciso senha de administrador. O instalador apenas copia arquivos para a pasta de configurações do Claude Code.$\r$\n$\r$\nClique em Próximo para continuar."
 LangString TXT_FINISH ${LANG_ENGLISH} "${PRODUCT} is installed.$\r$\n$\r$\nOpen a NEW Claude Code session and type:$\r$\n$\r$\n        /smard-agent-flow$\r$\n$\r$\nTo remove it later, use Installed apps in the Windows Settings."
 LangString TXT_FINISH ${LANG_PORTUGUESEBR} "O ${PRODUCT} está instalado.$\r$\n$\r$\nAbra uma NOVA sessão do Claude Code e digite:$\r$\n$\r$\n        /smard-agent-flow$\r$\n$\r$\nPara remover depois, use Aplicativos instalados nas Configurações do Windows."
 LangString TXT_FOREIGN ${LANG_ENGLISH} "This folder already exists and it is not the ${PRODUCT} plugin. Setup changed nothing."

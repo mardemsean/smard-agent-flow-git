@@ -13,10 +13,11 @@ development, even when it runs autonomously, still reflects human choices.
 <p>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"></a>
 <img src="https://img.shields.io/badge/status-in%20elaboration-orange" alt="Status: in elaboration">
-<img src="https://img.shields.io/badge/Claude%20Code-plugin-555555" alt="Claude Code plugin">
+<img src="https://img.shields.io/badge/harnesses-12%20vendors-555555" alt="Harnesses: 12 vendors">
 </p>
 
 <p>
+<a href="MISSION.md">Mission</a> ·
 <a href="#why-this-exists">Why</a> ·
 <a href="#what-it-actually-does">What it does</a> ·
 <a href="#the-cycle">The cycle</a> ·
@@ -42,7 +43,7 @@ forcing that discomfort into a form before it is ready.
 | --- | --- |
 | **The problem** | Spec kits and agentic flows assume the idea is already finished, and leave the human to brief, supervise, or approve. |
 | **What you get** | A cycle from exploration to observation that you can enter anywhere, documents elaborated in view, and three distinctions that never collapse. |
-| **How it ships** | A Claude Code plugin with a marketplace: twelve namespaced skills and two read-only agents, plus the short entry command `/smard-agent-flow`. |
+| **How it ships** | A plugin for coding-agent harnesses: twelve namespaced skills and two read-only agents, plus the short entry command `/smard-agent-flow`. Created in Claude Code; today it operates in harnesses of twelve vendors. |
 | **Who it is for** | People who build software with autonomous coding agents and want to stay at the origin of the choice. |
 | **What it does not do** | Replace your executor, install hooks or MCP servers, activate automations, or change any repository's review, merge, or deploy policy. |
 
@@ -127,7 +128,8 @@ or change any repository's review, merge, or deploy policy.
 | Piece | State | Source |
 | --- | --- | --- |
 | The method documents | In elaboration: design authorized for elaboration; operational details proposed where no explicit decision exists | [METHODOLOGY.md](METHODOLOGY.md) |
-| Claude Code plugin and marketplace | Packaged: twelve skills and two read-only agents; no hooks, no MCP servers | [plugin/README.md](plugin/README.md) |
+| Plugin and marketplace | Packaged: twelve skills and two read-only agents; no hooks, no MCP servers | [plugin/README.md](plugin/README.md) |
+| Harnesses | In operation in harnesses of twelve vendors (statement of the operator, 2026-11-14). The installers in this repository set it up for Claude Code; the adapter folders for other harnesses here are reserved | [plugin/README.md](plugin/README.md) |
 | Installers (Windows setup, ZIP, Node.js) | First release: checked on Linux and under Wine; the run on Windows is the operator's validation. winget manifest prepared, not submitted | [plugin/README.md](plugin/README.md) |
 | Precompact hook and automatic session recovery | Not implemented | [specs.md](specs.md), [SESSION-MEMORY.md](docs/production-workflow/SESSION-MEMORY.md) |
 | Spec Kit integration | Future investigation; installs or modifies nothing yet | [specs.md](specs.md) |
@@ -138,8 +140,9 @@ or change any repository's review, merge, or deploy policy.
 
 ### Install
 
-SMard Agent Flow is a plugin for Claude Code, so Claude Code must already be
-installed. The installers of this release are for Windows.
+SMard Agent Flow is not tied to one harness. The installers of this release
+set it up for Claude Code, the harness in which it was created, so Claude Code
+must already be installed. They are for Windows.
 
 **The short way.** Download `SMardAgentFlow-Setup-<version>.exe` from the
 [latest release](https://github.com/mardemsean/smard-agent-flow-git/releases/latest)
@@ -168,7 +171,8 @@ follow, and the verification and release steps are in
 
 | Document | What you find there |
 | --- | --- |
-| [plugin/README.md](plugin/README.md) | The Claude Code plugin and marketplace: install routes, the ROOT rule of the skills, verification and release steps. |
+| [MISSION.md](MISSION.md) | Why this exists: what we found when we audited our own repositories, and who answers for it. |
+| [plugin/README.md](plugin/README.md) | The plugin and its marketplace: install routes, the ROOT rule of the skills, verification and release steps. |
 | [explore.md](explore.md) | The EXPLORE phase, stage by stage, and the story of the discomfort and the systems-engineer thesis, in the method's own voice. |
 | [specs.md](specs.md) | The method's own specification: invariants, states, and the document chain. |
 | [adrZERO.md](adrZERO.md) | ADR-0000, the foundational decision to wrap an executor rather than replace it. |
@@ -213,23 +217,13 @@ copyright notice next to ours.
 
 ## Author
 
-<table>
-<tr>
-<td width="160" align="center" valign="top">
-<img src="https://github.com/mardemsean.png?size=200" width="140" alt="Sean Mardem">
-</td>
-<td valign="top">
-<p><b>Sean Mardem</b></p>
-<p><b>Computational epistemologist, linguist and systems engineer.</b><br>
-Founder of SMard Labs.</p>
-<p><i>Advancing safe, ethical, and reliable AI.</i></p>
-<p>I build and audit the harnesses that turn large language models into reliable
-agents: the loops, memory, verification gates and argumentation rules that sit
-around the model.</p>
-<p>Natal, Brazil<br>
+<p align="center">
+<a href="https://mardemsean.org"><img src="assets/author-card.png" width="760" alt="Project author: Sean Mardem. Computational Linguistics and Epistemology. Applied Engineer in Agentic Harness Construction. Founder of SMard Labs, CEO of Ominis-Watson LLM Projects, UFRN. Natal, RN, Brazil."></a>
+</p>
+
+<p align="center">
 <a href="https://mardemsean.org">mardemsean.org</a> ·
-<a href="mailto:smardlabs@mardemsean.org">smardlabs@mardemsean.org</a></p>
-<p>
+<a href="mailto:smardlabs@mardemsean.org">smardlabs@mardemsean.org</a> ·
 <a href="https://github.com/mardemsean">GitHub</a> ·
 <a href="https://www.linkedin.com/in/sean-mardem-2643b9204/">LinkedIn</a> ·
 <a href="https://orcid.org/0009-0004-5677-2402">ORCID</a> ·
@@ -237,6 +231,3 @@ around the model.</p>
 <a href="https://huggingface.co/sean-mardem">Hugging Face</a> ·
 <a href="https://www.youtube.com/@sean.mardem">YouTube</a>
 </p>
-</td>
-</tr>
-</table>

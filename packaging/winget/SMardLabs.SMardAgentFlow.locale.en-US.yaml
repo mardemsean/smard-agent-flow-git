@@ -9,11 +9,11 @@ PackageUrl: {{REPO_URL}}
 License: MIT
 LicenseUrl: {{REPO_URL}}/blob/main/LICENSE
 Copyright: Copyright (c) 2026 Sean Mardem (SMard Labs). Copyright GitHub, Inc.
-ShortDescription: A human-led software workflow for Claude Code, from discomfort to production.
+ShortDescription: A human-led software workflow for coding agents, from discomfort to production.
 Description: |-
-  SMard Agent Flow is a plugin for Claude Code. It accompanies a person from a first
+  SMard Agent Flow is a workflow plugin for coding agents. It accompanies a person from a first
   discomfort to the observed effects of real software in use, and connects creative
-  exploration to the tool that runs the tasks. The installer copies the plugin and the
+  exploration to the tool that runs the tasks. This installer sets it up for Claude Code: it copies the plugin and the
   /smard-agent-flow command into the Claude Code settings folder of the current user.
   Claude Code must already be installed.
 Tags:
