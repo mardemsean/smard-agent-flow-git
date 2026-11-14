@@ -211,6 +211,12 @@ here only to credit the source. This attribution is about the documents: it does
 not mean that Spec Kit is installed or integrated (see
 [*Honest about state*](#honest-about-state)).
 
+Spec Kit was not the only reading. The documentary review behind the method
+covered six public repositories: Spec Kit, OpenSpec, BMAD-METHOD, the GitLab
+handbook, Google's engineering practices documentation, and a guide to
+test-driven development. [REFERENCIAS.md](REFERENCIAS.md) lists them as ABNT
+references, with the commit of each snapshot and the evidence of the review.
+
 Because of that origin, this repository inherits the license declared by the
 source repository, the MIT License, by decision of the rights holder on
 2026-11-13. [LICENSE](LICENSE) carries the license text and keeps GitHub's
@@ -224,11 +230,11 @@ written out here.
 
 **ABNT (NBR 6023)**
 
-> MARDEM, Sean. **SMard Agent Flow**: from discomfort to production. Versão
-> 0.6.2. Natal: SMard Labs, 2026. Disponível em:
-> https://github.com/mardemsean/smard-agent-flow-git. Acesso em: 14 nov. 2026.
+> MARDEM, Sean. **SMard Agent Flow**: from discomfort to production. Version
+> 0.6.2. Natal: SMard Labs, 2026. Available at:
+> https://github.com/mardemsean/smard-agent-flow-git. Accessed on: 14 Nov. 2026.
 
-Replace the date after "Acesso em:" with the day you consulted the repository.
+Replace the date after "Accessed on:" with the day you consulted the repository.
 In the text, under NBR 10520: (Mardem, 2026) or Mardem (2026).
 
 | Style | Reference |
