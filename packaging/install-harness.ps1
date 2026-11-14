@@ -61,7 +61,14 @@ function Get-TreeHashes($root) {
 }
 
 function Test-IsOurs($folder) {
-  Test-Path (Join-Path $folder $manifest.marker)
+  if (Test-Path (Join-Path $folder $manifest.marker)) { return $true }
+  # Installations made before the marker existed carry plugin.json or a router SKILL.md
+  # naming smard-agent-flow; both prove the folder is this plugin.
+  $manifestFile = Join-Path $folder 'plugin.json'
+  if ((Test-Path $manifestFile) -and ((Get-Content $manifestFile -Raw) -like '*"name": "smard-agent-flow"*')) { return $true }
+  $skillFile = Join-Path $folder 'SKILL.md'
+  if ((Test-Path $skillFile) -and ((Get-Content $skillFile -Raw) -like '*name: smard-agent-flow*')) { return $true }
+  return $false
 }
 
 function Write-Router-Skill($destDir) {
@@ -95,7 +102,11 @@ function Install-SkillPack($target) {
   Write-Host "Skill pack -> $destDir"
   if ($PSCmdlet.ShouldProcess($destDir, 'Install skill pack')) {
     if ((Test-Path $destDir) -and -not (Test-IsOurs $destDir)) { throw "Refusing to touch ${destDir}: it is not a SMard Agent Flow folder." }
-    if (Test-Path $destDir) { Remove-Item $destDir -Recurse -Force }  # ours: verified above
+    if (Test-Path $destDir) {
+      $bak = "$destDir.bak-{0:yyyyMMdd-HHmmss}" -f (Get-Date)
+      Rename-Item $destDir $bak
+      Write-Host "Backup of the previous version: $bak"
+    }
     Write-Router-Skill $destDir
     $a = @(Get-TreeHashes $destDir)
     if ($a.Count -lt 10) { throw 'Installed skill pack looks incomplete.' }
@@ -113,10 +124,9 @@ function Uninstall-SkillPack($target) {
 function Install-Agents($target) {
   $base = Resolve-Dest $target.dest
   Write-Host "Agents -> $base"
+  # Agents directories are shared namespaces (they hold the user's own agents too):
+  # we add our two files, back up a differing copy of them, and never refuse the folder.
   $markerPath = Join-Path $base $manifest.marker
-  if ((Test-Path $base) -and -not (Test-Path $markerPath) -and (Get-ChildItem $base -File -ErrorAction SilentlyContinue)) {
-    throw "Refusing to touch ${base}: no SMard Agent Flow marker and the folder is not empty."
-  }
   New-Item -ItemType Directory -Force $base | Out-Null
   foreach ($f in Get-ChildItem (Join-Path $payload 'agents') -Filter *.md) {
     $dest = Join-Path $base $f.Name
