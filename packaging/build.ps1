@@ -78,8 +78,8 @@ $filesRoot = Join-Path $zipRoot 'files'
 # command, and the harness-agnostic installer (manifest + engine + the Copilot block).
 Copy-Tree $plugin (Join-Path $filesRoot 'payload' 'plugin' 'smard-agent-flow')
 Copy-Item (Join-Path $repo 'plugin' 'install.ps1') (Join-Path $filesRoot 'payload' 'plugin' 'install.ps1')
-New-Item -ItemType Directory -Force (Join-Path $filesRoot 'payload' 'commands') | Out-Null
-Copy-Item $cmdSrc (Join-Path $filesRoot 'payload' 'commands' 'smard-agent-flow.md')
+New-Item -ItemType Directory -Force (Join-Path $filesRoot 'payload' '.claude' 'commands') | Out-Null
+Copy-Item $cmdSrc (Join-Path $filesRoot 'payload' '.claude' 'commands' 'smard-agent-flow.md')
 New-Item -ItemType Directory -Force (Join-Path $filesRoot 'packaging') | Out-Null
 foreach ($f in 'harnesses.json', 'install-harness.ps1') {
     Copy-Item (Join-Path $PSScriptRoot $f) (Join-Path $filesRoot 'packaging' $f)
