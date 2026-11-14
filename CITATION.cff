@@ -32,11 +32,51 @@ keywords:
   - computational epistemology
 references:
   - type: software
+    title: BMAD-METHOD
+    authors:
+      - name: "BMad Code, LLC"
+    url: "https://github.com/bmad-code-org/BMAD-METHOD"
+    commit: 8f0d50e1817fdd8fcf05a20c524218222d13cd8d
+    license: MIT
+    year: 2026
+  - type: generic
+    title: "Test-Driven Development: A Comprehensive Guide"
+    authors:
+      - family-names: El Assas
+        given-names: Akram
+    url: "https://github.com/aelassas/tdd"
+    commit: aa81c10a1f251ed7f4c7fa3a64a79780a9f3f4fe
+    year: 2026
+  - type: software
+    title: OpenSpec
+    authors:
+      - name: OpenSpec Contributors
+    url: "https://github.com/Fission-AI/OpenSpec"
+    commit: 9111a7654d7800391459431fff4eaf66e33a3d2e
+    license: MIT
+    year: 2026
+  - type: generic
+    title: The GitLab Handbook
+    authors:
+      - name: GitLab
+    url: "https://gitlab.com/gitlab-com/content-sites/handbook"
+    commit: d64ae3845579a3ac5f9a38af63710d9597225d53
+  - type: generic
+    title: Google Engineering Practices Documentation
+    authors:
+      - name: Google
+    url: "https://github.com/google/eng-practices"
+    commit: 3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c
+    license: CC-BY-3.0
+    year: 2024
+  - type: software
     title: Spec Kit
     authors:
       - name: "GitHub, Inc."
     url: "https://github.com/github/spec-kit"
+    commit: 96774bc52fd7dccc7185791e1cac7572b9e09dea
     license: MIT
+    year: 2026
     notes: >-
       The documentary part of the method that covers the workflow for Git and
       CI/CD was heavily inspired by the Spec-Driven Development workflow

@@ -42,6 +42,7 @@
 | `CODE_OF_CONDUCT.md` | before opening a community under that policy |
 | `SUPPORT.md` | before inviting users to depend on the plugin |
 | `CITATION.cff` | when the work is to be cited. Written on 2026-11-14 at the operator's request; the README carries the ABNT reference |
+| `REFERENCIAS.md`, `docs/references/` | when works are cited (house rule: NBR 6023 and NBR 6033). Written on 2026-11-14 at the operator's request; `docs/references/SUPERPAK-MANIFEST.json` is the manifest of the reviewed snapshots |
 | `CODEOWNERS` | when review routing by owners is adopted |
 | `.github/PULL_REQUEST_TEMPLATE.md` | when standardizing PR evidence helps review (the DEL block) |
 | `GEMINI.md`, `gemini-extension.json` | when the Gemini adapter is adopted |
