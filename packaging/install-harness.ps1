@@ -32,9 +32,11 @@ param(
   [string]$Harness,
   [switch]$All,
   [switch]$List,
-  [switch]$Uninstall
+  [switch]$Uninstall,
+  [string]$Log
 )
 $ErrorActionPreference = 'Stop'
+if ($Log) { Start-Transcript -Path $Log -Append -ErrorAction SilentlyContinue | Out-Null }
 
 $homeDir = [Environment]::GetFolderPath('UserProfile')
 $scriptDir = $PSScriptRoot
@@ -85,13 +87,11 @@ function Write-Router-Skill($destDir) {
   foreach ($sub in 'skills', 'method', 'agents') {
     $src = Join-Path $payload $sub
     if (Test-Path $src) {
-      robocopy $src (Join-Path $destDir "$sub-pack-tmp") /E /NFL /NDL /NJH /NJS /NP | Out-Null
+      $name = if ($sub -eq 'skills') { 'skills-pack' } else { $sub }
+      robocopy $src (Join-Path $destDir $name) /E /NFL /NDL /NJH /NJS /NP | Out-Null
       if ($LASTEXITCODE -ge 8) { throw "robocopy failed with exit code $LASTEXITCODE" }
-      Rename-Item (Join-Path $destDir "$sub-pack-tmp") (Join-Path $destDir $sub) -Force
     }
   }
-  # skills-pack holds the twelve skills; keep the canonical names inside it
-  if (Test-Path (Join-Path $destDir 'skills')) { Rename-Item (Join-Path $destDir 'skills') (Join-Path $destDir 'skills-pack') }
   Copy-Item (Join-Path $payload '.claude-plugin\plugin.json') (Join-Path $destDir 'plugin.json') -Force
   [IO.File]::WriteAllText((Join-Path $destDir $manifest.marker), "SMard Agent Flow plugin marker. Safe to overwrite/replace.`n", [Text.UTF8Encoding]::new($false))
 }

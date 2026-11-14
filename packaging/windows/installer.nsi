@@ -119,14 +119,21 @@ Function .onInit
 FunctionEnd
 
 Function RunHarnessInstaller
-  ; inputs: $0 = section index, $1 = harness id. Runs install-harness.ps1 and records the id.
+  ; stack on entry: section index pushed first, harness id pushed last (top)
+  Pop $1  ; harness id
+  Pop $0  ; section index
   SectionGetFlags $0 $2
   IntOp $2 $2 & ${SF_SELECTED}
   ${If} $2 <> ${SF_SELECTED}
     Return
   ${EndIf}
   DetailPrint "SMard Agent Flow -> $1"
-  ExecWait '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "& "$INSTDIR\files\packaging\install-harness.ps1" -Harness "$1" *>&1 | Out-File -Append -Encoding utf8 "$INSTDIR\install.log""' $2
+  ; diagnostic: record the exact expanded command line
+  FileOpen $2 "$INSTDIR\nsexec.log" a
+  FileSeek $2 0 END
+  FileWrite $2 '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "$INSTDIR\files\packaging\install-harness.ps1" -Harness $1 -Log "$INSTDIR\install.log"$\r$\n'
+  FileClose $2
+  ExecWait '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "$INSTDIR\files\packaging\install-harness.ps1" -Harness $1 -Log "$INSTDIR\install.log"' $2
   ${If} $2 <> "0"
     MessageBox MB_OK|MB_ICONSTOP "$(TXT_PWFAILED)$\r$\n$\r$\n$1" /SD IDOK
     SetErrorLevel 3
@@ -139,13 +146,11 @@ Function RunHarnessInstaller
   FileClose $2
 FunctionEnd
 
-; $0 = section index, $1 = harness id
+; $0 = section index, $1 = harness id (stack: sect pushed first, id second)
 !macro RunForSect sect id
   Push "${sect}"
   Push "${id}"
   Call RunHarnessInstaller
-  Pop $2
-  Pop $2
 !macroend
 
 Section "-Payload"
@@ -205,7 +210,7 @@ Function un.UninstallOneHarness
     Return
   ${EndIf}
   DetailPrint "Removing SMard Agent Flow -> $0"
-  ExecWait '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "& "$INSTDIR\files\packaging\install-harness.ps1" -Uninstall -Harness "$0" *>&1 | Out-File -Append -Encoding utf8 "$INSTDIR\install.log""' $1
+  ExecWait '"$SYSDIR\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "$INSTDIR\files\packaging\install-harness.ps1" -Uninstall -Harness $0 -Log "$INSTDIR\install.log"' $1
 FunctionEnd
 
 Section "Uninstall"
