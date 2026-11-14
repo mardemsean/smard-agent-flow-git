@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// Installs the smard-agent-flow plugin for Claude Code. Same contract as plugin/install.ps1:
+// Sets the smard-agent-flow plugin up for Claude Code. Same contract as plugin/install.ps1:
 // it only copies, it refuses a destination that is not this plugin, it backs up a different
 // entry command, and it never removes files it did not bring.
 
@@ -131,7 +131,7 @@ function uninstall(dryRun) {
 }
 
 function help() {
-  console.log(`SMard Agent Flow: installer of the ${NAME} plugin for Claude Code.
+  console.log(`SMard Agent Flow: this installer sets the ${NAME} plugin up for Claude Code.
 
 Usage:
   smard-agent-flow [install]     copy the plugin and the /smard-agent-flow command

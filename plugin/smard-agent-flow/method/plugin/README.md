@@ -1,4 +1,8 @@
-# smard-agent-flow plugin for Claude Code
+# smard-agent-flow plugin
+
+The plugin was created in Claude Code and operates today in harnesses of twelve vendors (statement of the
+operator, 2026-11-14). This document covers what this repository ships: the plugin in the Claude Code plugin
+format, its marketplace, and installers that set it up for Claude Code.
 
 Twelve namespaced skills (`/smard-agent-flow:smard-agent-flow`, `:clarify`, `:specify`, `:preflight`, `:constitution`,
 `:tasks`, `:implement`, `:analyze`, `:converge`, `:handoff`, `:coordinate`, `:dont-speak-alien`) plus the short entry command `/smard-agent-flow`.
@@ -96,7 +100,7 @@ the operator's validation before a release is published.
 | --- | --- |
 | `.claude-plugin/marketplace.json` (repo root) | Marketplace `smard-agent-flow-marketplace`, one plugin entry with source `./plugin/smard-agent-flow` |
 | `plugin/smard-agent-flow/` | The plugin: `.claude-plugin/plugin.json`, `skills/<name>/SKILL.md`, `method/` (packaged copy of the method) |
-| `plugin/smard-agent-flow/method/` | Byte-identical copy of the 31 canonical files (root documents, README set, LICENSE, grill-me skill, docs/production-workflow), so the skills work without a clone of this repository and every relative link inside the copy resolves |
+| `plugin/smard-agent-flow/method/` | Byte-identical copy of the 34 canonical files (root documents, mission and its translation, README set and its author card, LICENSE, grill-me skill, docs/production-workflow), so the skills work without a clone of this repository and every relative link inside the copy resolves |
 | `plugin/sync-method.ps1` | Refreshes the packaged copy from the repo root; `-Check` exits 1 on any drift. Run it after editing a canonical document |
 | `plugin/install.ps1` | Fallback install without a marketplace (`@skills-dir`), plus the user command |
 | `plugin/test.ps1` | Static tests; `-Installed` also compares the installed copy |
@@ -147,4 +151,5 @@ npm test
 
 The skills are plain Markdown with two plugin variables (`${CLAUDE_PLUGIN_ROOT}`, `${user_config.method_repo}`).
 A harness without plugin substitution needs those two resolved at install time to the installed folder; the
-packaged copy under `method/` makes that a copy operation. Not done in this version.
+packaged copy under `method/` makes that a copy operation. This repository does not ship that step yet: the
+adapter folders at its root are reserved, and no installer here targets a harness other than Claude Code.

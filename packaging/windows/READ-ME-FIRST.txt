@@ -1,8 +1,9 @@
 SMard Agent Flow {{VERSION}} - from discomfort to production
 ============================================================
 
-SMard Agent Flow is a plugin (an add-on) for Claude Code.
-You need Claude Code already installed on this computer.
+SMard Agent Flow is a workflow plugin (an add-on) for coding agents.
+This package sets it up for Claude Code, which must already be installed
+on this computer.
 
 INSTALL
   1. Extract this ZIP to a folder (right-click the ZIP, "Extract All").
@@ -32,8 +33,9 @@ More: https://github.com/mardemsean/smard-agent-flow-git
 EM PORTUGUÊS
 ------------------------------------------------------------
 
-O SMard Agent Flow é um plugin (um complemento) para o Claude Code.
-O Claude Code precisa estar instalado neste computador.
+O SMard Agent Flow é um plugin (um complemento) de workflow para agentes
+de código. Este pacote o instala para o Claude Code, que precisa estar
+instalado neste computador.
 
 INSTALAR
   1. Extraia este ZIP para uma pasta (botão direito no ZIP, "Extrair Tudo").

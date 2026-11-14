@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Installs the smard-agent-flow plugin for Claude Code without a marketplace (Windows, PowerShell 7).
+  Sets the smard-agent-flow plugin up for Claude Code without a marketplace (Windows, PowerShell 7).
 .DESCRIPTION
   Preferred route on any machine: the marketplace at the repository root
     /plugin marketplace add mardemsean/smard-agent-flow-git     (or the local clone path)
