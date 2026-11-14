@@ -107,3 +107,7 @@ if (-not $WhatIfPreference) {
     Write-Host "  claude plugin validate `"$dest`" --strict"
     Write-Host '  claude plugin list'
 }
+
+# robocopy reports success with exit codes 0-7 (1 = files copied); without this line
+# the process exit code would stay 1 and every caller would read a false failure.
+exit 0
