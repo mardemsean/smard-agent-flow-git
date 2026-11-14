@@ -1,0 +1,125 @@
+{
+  "name": "SMard-software-life-cycle-SUPERPAK",
+  "created_at_utc": "2026-10-14T04:11:52Z",
+  "scope": "Complete tracked source snapshots of all six requested repositories.",
+  "limitations": [
+    "Repository archives do not include git history, untracked files, external links, releases, issues or external submodule contents.",
+    "Git LFS objects, if present, may be pointers as supplied by the provider.",
+    "Category labels are an index only; no source files were filtered out.",
+    "Original licenses and notices are preserved. Missing/ambiguous API license metadata does not grant reuse rights."
+  ],
+  "repositories": [
+    {
+      "folder": "spec-kit",
+      "repository": "github/spec-kit",
+      "source_url": "https://github.com/github/spec-kit",
+      "branch": "main",
+      "commit": "96774bc52fd7dccc7185791e1cac7572b9e09dea",
+      "archive_url": "https://codeload.github.com/github/spec-kit/zip/96774bc52fd7dccc7185791e1cac7572b9e09dea",
+      "license_api": "MIT",
+      "archive_sha256": "07865dc11ea7b7cdcd1eaccd02bd88664f8c67f9d78c19246f5cca7a4938a1f9",
+      "archive_bytes": 5718826,
+      "files": 929,
+      "uncompressed_bytes": 15721510,
+      "categories": {
+        "templates": 52,
+        "workflows-pipelines": 176,
+        "documentation": 173,
+        "licenses-notices": 2
+      }
+    },
+    {
+      "folder": "openspec",
+      "repository": "Fission-AI/OpenSpec",
+      "source_url": "https://github.com/Fission-AI/OpenSpec",
+      "branch": "main",
+      "commit": "9111a7654d7800391459431fff4eaf66e33a3d2e",
+      "archive_url": "https://codeload.github.com/Fission-AI/OpenSpec/zip/9111a7654d7800391459431fff4eaf66e33a3d2e",
+      "license_api": "MIT",
+      "archive_sha256": "7685a89c1b6f1b506a0f23171914c8c5bc50c53af29b0df526b65a66caa1f936",
+      "archive_bytes": 3836226,
+      "files": 1287,
+      "uncompressed_bytes": 10112656,
+      "categories": {
+        "documentation": 733,
+        "templates": 58,
+        "workflows-pipelines": 72,
+        "licenses-notices": 1
+      }
+    },
+    {
+      "folder": "bmad-method",
+      "repository": "bmad-code-org/BMAD-METHOD",
+      "source_url": "https://github.com/bmad-code-org/BMAD-METHOD",
+      "branch": "main",
+      "commit": "8f0d50e1817fdd8fcf05a20c524218222d13cd8d",
+      "archive_url": "https://codeload.github.com/bmad-code-org/BMAD-METHOD/zip/8f0d50e1817fdd8fcf05a20c524218222d13cd8d",
+      "license_api": "NOASSERTION",
+      "archive_sha256": "a41e0721f6195949c59c827d8d865cd17656a32f4ee7d5aff6428cd4dea2f1d6",
+      "archive_bytes": 1866461,
+      "files": 574,
+      "uncompressed_bytes": 4437114,
+      "categories": {
+        "documentation": 321,
+        "templates": 58,
+        "workflows-pipelines": 12,
+        "licenses-notices": 1
+      }
+    },
+    {
+      "folder": "google-engineering-practices",
+      "repository": "google/eng-practices",
+      "source_url": "https://github.com/google/eng-practices",
+      "branch": "master",
+      "commit": "3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c",
+      "archive_url": "https://codeload.github.com/google/eng-practices/zip/3bb3ec25b3b0199f4940b1aa75f0ac5c5753301c",
+      "license_api": "NOASSERTION",
+      "archive_sha256": "ae81dad59ca26cdfdcc54a8142fcfe426201efdc2835cc46f55ffbad4fd37d81",
+      "archive_bytes": 43771,
+      "files": 17,
+      "uncompressed_bytes": 91679,
+      "categories": {
+        "workflows-pipelines": 1,
+        "licenses-notices": 1,
+        "documentation": 14
+      }
+    },
+    {
+      "folder": "tdd",
+      "repository": "aelassas/tdd",
+      "source_url": "https://github.com/aelassas/tdd",
+      "branch": "main",
+      "commit": "aa81c10a1f251ed7f4c7fa3a64a79780a9f3f4fe",
+      "archive_url": "https://codeload.github.com/aelassas/tdd/zip/aa81c10a1f251ed7f4c7fa3a64a79780a9f3f4fe",
+      "license_api": null,
+      "archive_sha256": "32b66778b555dd3f8ac4bd3c5c53310e0efc79c1ca0029a003f8d323c2230b52",
+      "archive_bytes": 173355,
+      "files": 27,
+      "uncompressed_bytes": 244244,
+      "categories": {
+        "workflows-pipelines": 2,
+        "documentation": 1
+      }
+    },
+    {
+      "folder": "gitlab-handbook",
+      "repository": "gitlab-com/content-sites/handbook",
+      "source_url": "https://gitlab.com/gitlab-com/content-sites/handbook",
+      "branch": "main",
+      "commit": "d64ae3845579a3ac5f9a38af63710d9597225d53",
+      "archive_url": "https://gitlab.com/api/v4/projects/42817607/repository/archive.zip?sha=d64ae3845579a3ac5f9a38af63710d9597225d53",
+      "license_api": null,
+      "archive_sha256": "dd1751fc195010cedd63097efa3c6a518322f037e5c24a3a47b0d4022bf5aebb",
+      "archive_bytes": 149341455,
+      "files": 6718,
+      "uncompressed_bytes": 186600567,
+      "categories": {
+        "documentation": 4774,
+        "workflows-pipelines": 369,
+        "templates": 28,
+        "licenses-notices": 60
+      }
+    }
+  ],
+  "total_source_files": 9552
+}

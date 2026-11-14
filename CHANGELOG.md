@@ -21,6 +21,8 @@ Prepared on 2026-11-13. The first version offered as a release with installers.
 - `MISSION.md`: why the method exists, with a Portuguese translation.
 - `CITATION.cff` (the "Cite this repository" button of GitHub) and a "How to cite"
   section in the README, with the ABNT NBR 6023 reference first.
+- `REFERENCIAS.md`: the six repositories that the documentary review covered, as
+  ABNT references, with the commit of each snapshot.
 - The README is now the front page of the product: what it is, the cycle, the
   state of each piece, how to install.
 

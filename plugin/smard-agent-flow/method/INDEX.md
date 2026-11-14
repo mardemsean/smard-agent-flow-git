@@ -8,6 +8,7 @@ This index maps responsibilities; it does not prove reading or approval.
 | --- | --- |
 | [README](README.md) | Entry orientation and state of the laboratory |
 | [Mission](MISSION.md) | Why the method exists; original in English, with a [Portuguese translation](MISSION.pt-BR.md) |
+| [References](REFERENCIAS.md) | Works covered by the documentary review, as ABNT references, with the evidence of the snapshots |
 | [METHODOLOGY](METHODOLOGY.md) | Intent and articulation of the cycle |
 | [RULES](RULES.md) | Human–agent working rules |
 | [AGENTS](AGENTS.md) | Operational routing and readings per action |

@@ -100,7 +100,7 @@ the operator's validation before a release is published.
 | --- | --- |
 | `.claude-plugin/marketplace.json` (repo root) | Marketplace `smard-agent-flow-marketplace`, one plugin entry with source `./plugin/smard-agent-flow` |
 | `plugin/smard-agent-flow/` | The plugin: `.claude-plugin/plugin.json`, `skills/<name>/SKILL.md`, `method/` (packaged copy of the method) |
-| `plugin/smard-agent-flow/method/` | Byte-identical copy of the 34 canonical files (root documents, mission and its translation, README set and its author card, LICENSE, grill-me skill, docs/production-workflow), so the skills work without a clone of this repository and every relative link inside the copy resolves |
+| `plugin/smard-agent-flow/method/` | Byte-identical copy of the 36 canonical files (root documents, mission and its translation, references and their evidence manifest, README set and its author card, LICENSE, grill-me skill, docs/production-workflow), so the skills work without a clone of this repository and every relative link inside the copy resolves |
 | `plugin/sync-method.ps1` | Refreshes the packaged copy from the repo root; `-Check` exits 1 on any drift. Run it after editing a canonical document |
 | `plugin/install.ps1` | Fallback install without a marketplace (`@skills-dir`), plus the user command |
 | `plugin/test.ps1` | Static tests; `-Installed` also compares the installed copy |

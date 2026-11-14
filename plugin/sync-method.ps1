@@ -22,7 +22,7 @@ $bundle = Join-Path $PSScriptRoot 'smard-agent-flow\method'
 # Paths are relative to the repo root.
 $files = @(
     'AGENTS.md', 'METHODOLOGY.md', 'RULES.md', 'INDEX.md', 'README.md', 'LICENSE',
-    'MISSION.md', 'MISSION.pt-BR.md', 'assets\author-card.png',
+    'MISSION.md', 'MISSION.pt-BR.md', 'REFERENCIAS.md', 'docs\references\SUPERPAK-MANIFEST.json', 'assets\author-card.png',
     'explore.md', 'specs.md', 'adrZERO.md', 'plugin\README.md',
     '.claude\skills\grill-me\SKILL.md'
 )
