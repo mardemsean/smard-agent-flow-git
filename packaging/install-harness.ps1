@@ -164,6 +164,7 @@ function Install-InstructionsMerge($target) {
   New-Item -ItemType Directory -Force (Split-Path $dest) | Out-Null
   if (Test-Path $dest) {
     $current = Get-Content $dest -Raw
+    if (-not $current) { $current = '' }
     if ($current -like "*$blockBegin*$blockEnd*") {
       $current = [regex]::Replace($current, [regex]::Escape($blockBegin) + '.*?' + [regex]::Escape($blockEnd), $block, 'Singleline')
       [IO.File]::WriteAllText($dest, $current, [Text.UTF8Encoding]::new($false))
@@ -183,6 +184,7 @@ function Uninstall-InstructionsMerge($target) {
   $dest = Resolve-Dest $target.dest
   if (-not (Test-Path $dest)) { Write-Host "Not installed: $dest"; return }
   $current = Get-Content $dest -Raw
+  if (-not $current) { Write-Host "Not installed (empty file): $dest"; return }
   if ($current -notlike "*$blockBegin*") { Write-Host "No SMard Agent Flow block in $dest"; return }
   $new = [regex]::Replace($current, "`n*" + [regex]::Escape($blockBegin) + '.*?' + [regex]::Escape($blockEnd) + "`n*", "`n")
   [IO.File]::WriteAllText($dest, $new.TrimStart(), [Text.UTF8Encoding]::new($false))
