@@ -1,29 +1,39 @@
 SMard Agent Flow {{VERSION}} - from discomfort to production
 ============================================================
 
-SMard Agent Flow is a workflow plugin (an add-on) for coding agents.
-This package sets it up for Claude Code, which must already be installed
-on this computer.
+SMard Agent Flow is a workflow plugin (an add-on) for coding agents. It was
+created in Claude Code and today operates in harnesses of twelve vendors.
+This package installs it into the harnesses YOU choose.
+
+WHAT IS IN THIS ZIP
+  Install-All.cmd            installs into every harness detected on this
+                             computer (recommended)
+  Install-<harness>.cmd      one installer per harness (Claude Code, Kimi
+                             Code, Junie, IBM Bob, Hermes, Grok, Cursor,
+                             Windsurf, Codex, Antigravity, Kilo, OpenCode,
+                             Copilot)
+  Uninstall-All.cmd          removes it from every harness it was installed in
+  Install.cmd / Uninstall.cmd  the classic Claude Code pair
+  files\                     the package the installers copy from
+  LICENSE.txt                MIT
 
 INSTALL
   1. Extract this ZIP to a folder (right-click the ZIP, "Extract All").
-  2. Double-click  Install.cmd
-  3. Open a NEW Claude Code session and type:  /smard-agent-flow
-
-REMOVE
-  Double-click  Uninstall.cmd
-  The files go to the Recycle Bin.
+  2. Double-click  Install-All.cmd
+     (or the Install-<harness>.cmd of the harness you use).
+  3. Open a NEW session of the harness and invoke smard-agent-flow
+     (in Claude Code, type:  /smard-agent-flow)
 
 WHAT IT CHANGES
-  It copies files into your Claude Code settings folder (.claude in your
-  user folder) and nothing else. It does not need an administrator password.
-    skills\smard-agent-flow\         the plugin
-    commands\smard-agent-flow.md     the /smard-agent-flow command
+  Only your own settings folders, one skill (or agent file) per harness, and
+  nothing else. It never asks for an administrator password. Whatever differs
+  from a previous version is backed up next to it with a .bak- date suffix,
+  and a folder that is not SMard Agent Flow is never touched.
 
 IF WINDOWS SHOWS A WARNING
-  Windows can warn about files that come from the internet. The installer
-  in this ZIP is a text script; you can open files\plugin\install.ps1 in
-  Notepad and read what it does.
+  Windows can warn about files that come from the internet. The installers in
+  this ZIP are text scripts; you can open files\packaging\install-harness.ps1
+  in Notepad and read what it does.
 
 License: MIT. See LICENSE.txt.
 More: https://github.com/mardemsean/smard-agent-flow-git
@@ -33,28 +43,39 @@ More: https://github.com/mardemsean/smard-agent-flow-git
 EM PORTUGUÊS
 ------------------------------------------------------------
 
-O SMard Agent Flow é um plugin (um complemento) de workflow para agentes
-de código. Este pacote o instala para o Claude Code, que precisa estar
-instalado neste computador.
+O SMard Agent Flow é um plugin (um complemento) de workflow para agentes de
+código. Ele foi criado no Claude Code e hoje opera em harnesses de doze
+fabricantes. Este pacote o instala nos harnesses que VOCÊ escolher.
+
+O QUE TEM NESTE ZIP
+  Install-All.cmd            instala em todos os harnesses detectados neste
+                             computador (recomendado)
+  Install-<harness>.cmd      um instalador por harness (Claude Code, Kimi
+                             Code, Junie, IBM Bob, Hermes, Grok, Cursor,
+                             Windsurf, Codex, Antigravity, Kilo, OpenCode,
+                             Copilot)
+  Uninstall-All.cmd          remove de todos os harnesses onde foi instalado
+  Install.cmd / Uninstall.cmd  o par clássico do Claude Code
+  files\                     o pacote de onde os instaladores copiam
+  LICENSE.txt                MIT
 
 INSTALAR
   1. Extraia este ZIP para uma pasta (botão direito no ZIP, "Extrair Tudo").
-  2. Dê dois cliques em  Install.cmd
-  3. Abra uma NOVA sessão do Claude Code e digite:  /smard-agent-flow
-
-REMOVER
-  Dê dois cliques em  Uninstall.cmd
-  Os arquivos vão para a Lixeira.
+  2. Dê dois cliques em  Install-All.cmd
+     (ou no Install-<harness>.cmd do harness que você usa).
+  3. Abra uma NOVA sessão do harness e invoque smard-agent-flow
+     (no Claude Code, digite:  /smard-agent-flow)
 
 O QUE ELE ALTERA
-  Ele copia arquivos para a pasta de configurações do Claude Code (.claude
-  na sua pasta de usuário) e nada mais. Não pede senha de administrador.
-    skills\smard-agent-flow\         o plugin
-    commands\smard-agent-flow.md     o comando /smard-agent-flow
+  Apenas as suas próprias pastas de configurações, uma skill (ou arquivo de
+  agente) por harness, e nada mais. Não pede senha de administrador. O que
+  diferir de uma versão anterior é guardado ao lado com sufixo .bak- com a
+  data, e uma pasta que não é do SMard Agent Flow nunca é alterada.
 
 SE O WINDOWS MOSTRAR UM AVISO
-  O Windows pode avisar sobre arquivos que vieram da internet. O instalador
-  deste ZIP é um script de texto; você pode abrir files\plugin\install.ps1
-  no Bloco de Notas e ler o que ele faz.
+  O Windows pode avisar sobre arquivos que vieram da internet. Os
+  instaladores deste ZIP são scripts de texto; você pode abrir
+  files\packaging\install-harness.ps1 no Bloco de Notas e ler o que ele faz.
 
 Licença: MIT. Veja LICENSE.txt.
+Mais: https://github.com/mardemsean/smard-agent-flow-git

@@ -1,0 +1,95 @@
+{
+  "description": "Harness targets for the harness-agnostic install of SMard Agent Flow. Destinations use ~ for the user profile. Every target honours the install contract: copy, verify by hash, never remove what is not ours, back up what differs, refuse a foreign destination. Evidence of each format was verified on a real Windows machine before listing.",
+  "marker": ".smard-agent-flow",
+  "harnesses": [
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "always": true,
+      "note": "Canonical plugin route. Uses plugin/install.ps1 from the same package.",
+      "targets": [ { "kind": "claude-plugin" } ]
+    },
+    {
+      "id": "kimi-code",
+      "name": "Kimi Code",
+      "note": "One self-contained skill 'smard-agent-flow' in the user skills directory.",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.agents/skills" } ]
+    },
+    {
+      "id": "junie",
+      "name": "JetBrains Junie (RustRover and other JetBrains IDEs)",
+      "note": "Skills in ~/.junie/skills.",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.junie/skills" } ]
+    },
+    {
+      "id": "ibm-bob",
+      "name": "IBM Bob",
+      "note": "Skills in ~/.bob/skills.",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.bob/skills" } ]
+    },
+    {
+      "id": "hermes",
+      "name": "Hermes Agent (desktop and CLI)",
+      "note": "Skills in ~/.hermes/skills.",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.hermes/skills" } ]
+    },
+    {
+      "id": "grok",
+      "name": "Grok (xAI CLI)",
+      "note": "Skills in ~/.grok/skills.",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.grok/skills" } ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "note": "Skills in ~/.cursor/skills.",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.cursor/skills" } ]
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf",
+      "note": "Skills in ~/.windsurf/skills.",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.windsurf/skills" } ]
+    },
+    {
+      "id": "codex",
+      "name": "OpenAI Codex CLI",
+      "note": "Skills in ~/.codex/skills (the folder may be a symlink; we resolve it).",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.codex/skills" } ]
+    },
+    {
+      "id": "antigravity",
+      "name": "Antigravity IDE (Gemini)",
+      "note": "Skills in ~/.gemini/skills, the shared skill store of the Gemini/Antigravity family.",
+      "targets": [ { "kind": "skill-pack", "dest": "~/.gemini/skills" } ]
+    },
+    {
+      "id": "kilo",
+      "name": "Kilo Code",
+      "note": "Agent markdown files in ~/.config/kilo/agents.",
+      "targets": [ { "kind": "agents", "dest": "~/.config/kilo/agents" } ]
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode",
+      "note": "Agent markdown files in ~/.config/opencode/agents.",
+      "targets": [ { "kind": "agents", "dest": "~/.config/opencode/agents" } ]
+    },
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot (CLI instructions)",
+      "note": "Merges a marked block into ~/.copilot/copilot-instructions.md without touching the rest of the file.",
+      "targets": [ { "kind": "instructions-merge", "dest": "~/.copilot/copilot-instructions.md" } ]
+    }
+  ],
+  "notApplicable": [
+    { "id": "kiro-crew", "reason": "KiroCrew inherits plugins installed for Claude Code (~/.claude/plugins/synced); no own step needed." },
+    { "id": "kimi-work-desktop", "reason": "No user skill/plugin mechanism verified; covered by Kimi Code." },
+    { "id": "llama-cpp", "reason": "Inference server only; no skill mechanism." },
+    { "id": "ollama", "reason": "Model runtime only; no skill mechanism." },
+    { "id": "lm-studio", "reason": "Model runtime only; no skill mechanism verified." },
+    { "id": "deepseek-harness", "reason": "No user skill/plugin mechanism verified on this machine." },
+    { "id": "jetbrains-air", "reason": "MCP/ACP agent host only in this release; no skill store." },
+    { "id": "glm", "reason": "Harness not present on the reference machine." }
+  ]
+}

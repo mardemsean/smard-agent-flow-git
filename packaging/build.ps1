@@ -73,25 +73,87 @@ Write-WindowsText $licenseTxt (Get-Content (Join-Path $repo 'LICENSE') -Raw)
 # --- 1. ZIP with Install.cmd -----------------------------------------------------------------
 $zipName = "smard-agent-flow-$version-windows"
 $zipRoot = Join-Path $stage $zipName
-Copy-Tree $plugin (Join-Path $zipRoot 'files' 'plugin' 'smard-agent-flow')
-New-Item -ItemType Directory -Force (Join-Path $zipRoot 'files' '.claude' 'commands') | Out-Null
-Copy-Item (Join-Path $repo 'plugin' 'install.ps1') (Join-Path $zipRoot 'files' 'plugin' 'install.ps1')
-Copy-Item $cmdSrc (Join-Path $zipRoot 'files' '.claude' 'commands' 'smard-agent-flow.md')
-Copy-Item $licenseTxt (Join-Path $zipRoot 'LICENSE.txt')
-foreach ($name in 'Install.cmd', 'Uninstall.cmd') {
+$filesRoot = Join-Path $zipRoot 'files'
+# Payload: the plugin (with its own install.ps1, the canonical Claude Code route), the entry
+# command, and the harness-agnostic installer (manifest + engine + the Copilot block).
+Copy-Tree $plugin (Join-Path $filesRoot 'payload' 'plugin' 'smard-agent-flow')
+Copy-Item (Join-Path $repo 'plugin' 'install.ps1') (Join-Path $filesRoot 'payload' 'plugin' 'install.ps1')
+New-Item -ItemType Directory -Force (Join-Path $filesRoot 'payload' 'commands') | Out-Null
+Copy-Item $cmdSrc (Join-Path $filesRoot 'payload' 'commands' 'smard-agent-flow.md')
+New-Item -ItemType Directory -Force (Join-Path $filesRoot 'packaging') | Out-Null
+foreach ($f in 'harnesses.json', 'install-harness.ps1') {
+    Copy-Item (Join-Path $PSScriptRoot $f) (Join-Path $filesRoot 'packaging' $f)
+}
+Copy-Item (Join-Path $windows 'copilot-instructions.block.md') (Join-Path $filesRoot 'packaging' 'copilot-instructions.block.md')
+
+# Root launchers: the classic Claude pair plus one installer per harness and Install-All.
+$cmdTemplate = @'
+@echo off
+setlocal
+title SMard Agent Flow - Install {NAME}
+if not exist "%~dp0files\packaging\install-harness.ps1" goto notextracted
+set "PS=powershell"
+where pwsh >nul 2>nul
+if not errorlevel 1 set "PS=pwsh"
+%PS% -NoProfile -ExecutionPolicy Bypass -File "%~dp0files\packaging\install-harness.ps1" -Harness {ID} %*
+if errorlevel 1 goto failed
+echo.
+echo Done. Start a NEW session of {NAME} and invoke smard-agent-flow.
+goto end
+:notextracted
+echo The files are not here. Extract the whole ZIP first: right-click the ZIP, choose "Extract All",
+echo then run this file from the new folder.
+goto end
+:failed
+echo.
+echo The installation did not finish. Read the messages above.
+:end
+echo.
+pause
+'@
+$harnesses = (Get-Content (Join-Path $PSScriptRoot 'harnesses.json') -Raw | ConvertFrom-Json).harnesses
+foreach ($h in $harnesses) {
+    $launcher = $cmdTemplate.Replace('{ID}', $h.id).Replace('{NAME}', $h.name)
+    Write-WindowsText (Join-Path $zipRoot "Install-$($h.id).cmd") $launcher
+}
+foreach ($name in 'Install.cmd', 'Uninstall.cmd', 'Install-All.cmd') {
     Write-WindowsText (Join-Path $zipRoot $name) (Get-Content (Join-Path $windows $name) -Raw)
 }
+$uninstallAll = @'
+@echo off
+setlocal
+title SMard Agent Flow - Uninstall everywhere
+if not exist "%~dp0files\packaging\install-harness.ps1" goto notextracted
+set "PS=powershell"
+where pwsh >nul 2>nul
+if not errorlevel 1 set "PS=pwsh"
+%PS% -NoProfile -ExecutionPolicy Bypass -File "%~dp0files\packaging\install-harness.ps1" -All -Uninstall %*
+if errorlevel 1 goto failed
+goto end
+:notextracted
+echo The files are not here. Extract the whole ZIP first: right-click the ZIP, choose "Extract All",
+echo then run this file from the new folder.
+goto end
+:failed
+echo.
+echo The removal did not finish. Read the messages above.
+:end
+echo.
+pause
+'@
+Write-WindowsText (Join-Path $zipRoot 'Uninstall-All.cmd') $uninstallAll
 Write-WindowsText (Join-Path $zipRoot 'READ-ME-FIRST.txt') -Bom `
     (Expand-Tokens (Get-Content (Join-Path $windows 'READ-ME-FIRST.txt') -Raw) @{ VERSION = $version })
+Copy-Item $licenseTxt (Join-Path $zipRoot 'LICENSE.txt')
 $zip = Join-Path $OutDir "$zipName.zip"
 [IO.Compression.ZipFile]::CreateFromDirectory($zipRoot, $zip, 'Optimal', $true)
 
 # --- 2. Windows installer --------------------------------------------------------------------
 $fileList = Join-Path $stage 'files.nsh'
-$lines = foreach ($group in ($pluginFiles | Group-Object { Split-Path $_ })) {
+$lines = foreach ($group in (Get-RelativeFiles $filesRoot | Group-Object { Split-Path $_ })) {
     $sub = $group.Name.Replace('/', '\')
-    'SetOutPath "$PluginDir{0}"' -f $(if ($sub) { "\$sub" } else { '' })
-    foreach ($rel in $group.Group) { 'File "{0}"' -f (Join-Path $plugin $rel) }
+    'SetOutPath "$INSTDIR\files{0}"' -f $(if ($sub) { "\$sub" } else { '' })
+    foreach ($rel in $group.Group) { 'File "{0}"' -f (Join-Path $filesRoot $rel) }
 }
 Set-Content -LiteralPath $fileList -Value $lines -Encoding utf8NoBOM
 $exe = Join-Path $OutDir "SMardAgentFlow-Setup-$version.exe"

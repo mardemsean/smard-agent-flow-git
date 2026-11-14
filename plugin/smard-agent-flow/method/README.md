@@ -130,8 +130,8 @@ or change any repository's review, merge, or deploy policy.
 | --- | --- | --- |
 | The method documents | In elaboration: design authorized for elaboration; operational details proposed where no explicit decision exists | [METHODOLOGY.md](METHODOLOGY.md) |
 | Plugin and marketplace | Packaged: twelve skills and two read-only agents; no hooks, no MCP servers | [plugin/README.md](plugin/README.md) |
-| Harnesses | In operation in harnesses of twelve vendors (statement of the operator, 2026-11-14). The installers in this repository set it up for Claude Code; the adapter folders for other harnesses here are reserved | [plugin/README.md](plugin/README.md) |
-| Installers (Windows setup, ZIP, Node.js) | First release: checked on Linux and under Wine; the run on Windows is the operator's validation. winget manifest prepared, not submitted | [plugin/README.md](plugin/README.md) |
+| Harnesses | In operation in harnesses of twelve vendors (statement of the operator, 2026-11-14). The installers of this release set it up for thirteen targets, among them Claude Code, Kimi Code, JetBrains Junie, IBM Bob, Hermes, Grok, Cursor, Windsurf, Codex, Antigravity, Kilo, OpenCode and Copilot | [plugin/README.md](plugin/README.md) |
+| Installers (Windows setup, ZIP, Node.js) | First release: checked on Linux and under Wine, then run on a real Windows machine; the setup offers a picker of harnesses. winget manifest prepared, not submitted | [plugin/README.md](plugin/README.md) |
 | Precompact hook and automatic session recovery | Not implemented | [specs.md](specs.md), [SESSION-MEMORY.md](docs/production-workflow/SESSION-MEMORY.md) |
 | Spec Kit integration | Future investigation; installs or modifies nothing yet | [specs.md](specs.md) |
 | GitHub Actions checks named in the workflow | Interface design only; no such jobs exist in this repository | [specs.md](specs.md) |
@@ -141,21 +141,25 @@ or change any repository's review, merge, or deploy policy.
 
 ### Install
 
-SMard Agent Flow is not tied to one harness. The installers of this release
-set it up for Claude Code, the harness in which it was created, so Claude Code
-must already be installed. They are for Windows.
+SMard Agent Flow is not tied to one harness. It was created in Claude Code and
+today operates in harnesses of twelve vendors. The installers of this release
+are for Windows and let you pick your harness: Claude Code, Kimi Code,
+JetBrains Junie, IBM Bob, Hermes Agent, Grok, Cursor, Windsurf, OpenAI Codex,
+Antigravity (Gemini), Kilo Code, OpenCode and GitHub Copilot.
 
 **The short way.** Download `SMardAgentFlow-Setup-<version>.exe` from the
 [latest release](https://github.com/mardemsean/smard-agent-flow-git/releases/latest)
-and double-click it. Then open a new Claude Code session and type
-`/smard-agent-flow`. The installer asks for no administrator password and only
-copies files into your Claude Code settings folder.
+and double-click it. The setup lists the harnesses it finds on your computer
+(already ticked); confirm or adjust, and it installs the plugin into each one
+you keep. It asks for no administrator password and only copies files into
+your own settings folders. Then open a new session of the harness and invoke
+the `smard-agent-flow` skill (in Claude Code: `/smard-agent-flow`).
 
 | Other ways | How |
 | --- | --- |
 | Inside Claude Code | Add the marketplace and install the plugin (the two commands below). |
-| Node.js | `npx github:mardemsean/smard-agent-flow-git` |
-| ZIP | Download `smard-agent-flow-<version>-windows.zip` from the release, extract it, double-click `Install.cmd`. |
+| Node.js | `npx github:mardemsean/smard-agent-flow-git` (sets up Claude Code) |
+| ZIP | Download `smard-agent-flow-<version>-windows.zip` from the release, extract it, and double-click `Install-All.cmd` (every detected harness) or the `Install-<harness>.cmd` of your choice. |
 | winget | Manifest prepared as `SMardLabs.SMardAgentFlow`; not yet in the winget community repository. |
 
 ```text
